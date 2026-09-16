@@ -1,26 +1,142 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Oh My Açaí — design tokens (1:1 with the Figma file)
+ * Figma: Oh My Acai / Screens / Home  (1440 × 10661)
+ * ------------------------------------------------------------------ */
+
+@theme {
+  /* Brand colours -------------------------------------------------- */
+  --color-plum: #4d294e; /* deep purple – hero, FAQ, footer, cards  */
+  --color-mauve: #9d5988; /* primary button + card 02               */
+  --color-gold: #d4973c; /* ochre – marquee, badge, blob, card 03  */
+  --color-gold-soft: #d4983e; /* video overlay cards                    */
+  --color-amber: #e6a002; /* first product slide                    */
+  --color-ink: #111111; /* body copy on light                     */
+  --color-cream: #f0edff; /* button label                           */
+  --color-mist: #f1f1f1; /* footer secondary copy                  */
+  --color-star: #faa700; /* review stars                           */
+
+  /* Type ----------------------------------------------------------- */
+  --font-display: var(--font-phonk);
+  --font-body: var(--font-lato);
+  --font-menu: var(--font-bayon);
+  --font-nav: var(--font-manrope);
+  --font-wordmark: var(--font-boldonse);
+
+  /* Motion --------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ * Phonk — the Figma display face (Slava Antipov).
+ * Drop Phonk-Regular.woff2 / .woff into /public/fonts to go pixel-exact.
+ * Until then the stack falls through to the closest free substitute
+ * loaded in layout.tsx, so nothing breaks.
+ * ------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Phonk';
+  /* Any one of these is enough — the browser takes the first that resolves,
+     so the raw .otf/.ttf from the download works without converting. */
+  src:
+    url('/fonts/Phonk-Regular.woff2') format('woff2'),
+    url('/fonts/Phonk-Regular.woff') format('woff'),
+    url('/fonts/Phonk-Regular.otf') format('opentype'),
+    url('/fonts/Phonk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Figma canvas width — every absolute value below is authored against it */
+  --design-width: 1440;
+  --pattern-opacity: 0.06;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Lenis owns scrolling */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #fff;
+}
+
+/* Display type ------------------------------------------------------ */
+.font-display {
+  font-family: var(--font-display), 'Archivo', system-ui, sans-serif;
+  font-weight: 900;
+  font-variation-settings: 'wdth' 118, 'wght' 900;
+  letter-spacing: -0.01em;
+}
+
+/* When the real Phonk file is present it has a single weight and needs
+   no synthetic width, so neutralise the substitute's tuning. */
+@supports (font-variation-settings: normal) {
+  .font-display {
+    font-synthesis-weight: none;
+  }
+}
+
+.font-menu {
+  font-family: var(--font-menu), 'Archivo', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Berry texture ----------------------------------------------------- */
+/* Strength is per-placement in the artboard, not global. Sampled off the
+   Figma render: the product panels carry it at ~0.28 (clearly readable),
+   while the cards, FAQ, footer and franchise bands sit near 0.06. Override
+   with `[--pattern-opacity:0.28]` on the element. */
+.berry-pattern {
+  background-image: url('/svg/pattern-tile.svg');
+  background-repeat: repeat;
+  background-size: 33px 33px;
+  opacity: var(--pattern-opacity);
+  pointer-events: none;
+}
+
+/* Scrollbar --------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f3eef3;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-mauve);
+  border-radius: 99px;
+}
+
+/* Reduced motion ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility: hide native scrollbar on drag rails ---------------------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
