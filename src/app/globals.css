@@ -103,7 +103,7 @@ body {
 .berry-pattern {
   background-image: url('/svg/pattern-tile.svg');
   background-repeat: repeat;
-  background-size: 33px 33px;
+  background-size: 33px 66px;
   opacity: var(--pattern-opacity);
   pointer-events: none;
 }
