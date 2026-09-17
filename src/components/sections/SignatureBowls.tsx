@@ -21,8 +21,6 @@ export default function SignatureBowls() {
       </div>
 
       <div className="relative bg-gold">
-        <div aria-hidden className="berry-pattern absolute inset-0" />
-
         <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-24 pt-4 sm:px-10 lg:px-[60px] lg:pb-[140px]">
           {/* Title block ------------------------------------------------ */}
           <div className="flex flex-col gap-6 pb-14 lg:flex-row lg:items-end lg:justify-between lg:pb-[167px]">

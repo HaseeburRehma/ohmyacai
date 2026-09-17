@@ -29,8 +29,6 @@ export default function Footer() {
       </div>
 
       <div className="relative overflow-hidden bg-plum pt-6">
-        <div aria-hidden className="berry-pattern absolute inset-0" />
-
         <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-2 sm:px-10 lg:px-[60px]">
           {/* Logo + tagline ------------------------------------------- */}
           <InView

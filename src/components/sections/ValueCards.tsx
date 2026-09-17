@@ -47,11 +47,6 @@ export default function ValueCards() {
                   card.bg
                 )}
               >
-                <div
-                  aria-hidden
-                  className="berry-pattern absolute inset-0 overflow-hidden rounded-[32px]"
-                />
-
                 {/* Starburst badge — Figma: 98 × 95, rotate −160°, top −50 */}
                 <motion.div
                   initial={{ rotate: -200, scale: 0.6, opacity: 0 }}

@@ -23,8 +23,6 @@ export default function Faq({
   return (
     <section id="faq" className="relative w-full bg-white">
       <div className="relative bg-plum px-6 pb-4 pt-20 sm:px-10 lg:px-[60px] lg:pb-6 lg:pt-[160px]">
-        <div aria-hidden className="berry-pattern absolute inset-0" />
-
         <div className="relative mx-auto flex w-full max-w-[1320px] flex-col gap-8">
           <div className="flex flex-col gap-4">
             <InView

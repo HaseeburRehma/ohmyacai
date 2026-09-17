@@ -137,12 +137,14 @@ function Slide({
       className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center overflow-hidden [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2"
       style={{ backgroundColor: slide.bg, transformStyle: 'preserve-3d' }}
     >
-      {/* berry texture over the lower half — Figma "Vector", 452 of 898.
-          Sampled at ~0.28 white on the artboard, not the 0.06 the quieter
-          bands use. */}
+      {/* Berry texture over the lower half — Figma "Vector", 452 of 898.
+          The product panel is the ONLY surface that carries it: the artboard
+          also has a faint one on the cards, FAQ, footer and franchise bands,
+          but it was dropped there by request so the texture stays a signature
+          of this section. Kept lighter than the artboard's ~0.28 sample. */}
       <div
         aria-hidden
-        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.28] [--pattern-size:3.675cqh_7.351cqh]"
+        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.16] [--pattern-size:3.675cqh_7.351cqh]"
       />
 
       {/* Bowl — Figma: pre-rotation box 623.5 × 831.3, centred at 50% / 53.36%.

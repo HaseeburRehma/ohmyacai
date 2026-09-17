@@ -96,10 +96,10 @@ body {
 }
 
 /* Berry texture ----------------------------------------------------- */
-/* Strength is per-placement in the artboard, not global. Sampled off the
-   Figma render: the product panels carry it at ~0.28 (clearly readable),
-   while the cards, FAQ, footer and franchise bands sit near 0.06. Override
-   with `[--pattern-opacity:0.28]` on the element.
+/* Used on the product panels only. The artboard also carries a faint version
+   on the cards, FAQ, footer and franchise bands (~0.06), but those were
+   dropped by request so the texture reads as this one section's signature.
+   Strength and scale are variables so a placement can tune them.
 
    The tile is a 33 x 66 half-drop: one motif per 33 x 33 of area. Size is a
    variable too, so a surface whose proportions differ from the artboard (the

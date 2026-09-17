@@ -77,11 +77,6 @@ export default function FranchiseBowls() {
                     bowl.bg
                   )}
                 >
-                  <div
-                    aria-hidden
-                    className="berry-pattern absolute inset-0 rounded-3xl"
-                  />
-
                   {/* Bowl — Figma: 236 × 314, centred, top −40 */}
                   <motion.div
                     variants={{

@@ -128,8 +128,6 @@ export default function VideoFeature() {
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
             className="relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-plum px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
           >
-            <div aria-hidden className="berry-pattern absolute inset-0" />
-
             {/* Heading — Figma: centred, cap height at y 125 */}
             <motion.h2
               initial={{ opacity: 0, y: 34 }}

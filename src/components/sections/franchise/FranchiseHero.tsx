@@ -17,8 +17,6 @@ import { FRANCHISE_FORM, FRANCHISE_HERO } from '@/data/site';
 export default function FranchiseHero() {
   return (
     <section className="relative isolate w-full overflow-hidden bg-plum pt-[102px]">
-      <div aria-hidden className="berry-pattern absolute inset-0" />
-
       {/* Decorative fruit — Figma coordinates as % of the 1440 × 780 frame */}
       <Fruit
         src="/img/fruit-blueberry-lg.png"
