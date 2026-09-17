@@ -141,10 +141,14 @@ function Slide({
           The product panel is the ONLY surface that carries it: the artboard
           also has a faint one on the cards, FAQ, footer and franchise bands,
           but it was dropped there by request so the texture stays a signature
-          of this section. Kept lighter than the artboard's ~0.28 sample. */}
+          of this section.
+
+          0.22 against the artboard's 0.28: measured on a texture-only crop the
+          Figma weave has a mean alpha of 0.0476 and this sits at 0.0387, so it
+          reads a touch lighter by request while keeping the same weight. */}
       <div
         aria-hidden
-        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.16] [--pattern-size:3.675cqh_7.351cqh]"
+        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.22] [--pattern-size:6.793cqh_7.350cqh]"
       />
 
       {/* Bowl — Figma: pre-rotation box 623.5 × 831.3, centred at 50% / 53.36%.
