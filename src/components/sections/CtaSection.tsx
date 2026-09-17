@@ -17,8 +17,13 @@ export default function CtaSection() {
     offset: ['start end', 'end start'],
   });
 
-  const rightY = useTransform(scrollYProgress, [0, 1], [90, -90]);
-  const leftY = useTransform(scrollYProgress, [0, 1], [-90, 90]);
+  /* ±22px, not ±90. The artboard has no parallax at all, and the section is
+     a fixed 710px box that clips: the cups are placed so the drift stays
+     inside it at every scroll position (see the placement note below). At ±90
+     the left cup travelled 131px through the bottom edge and the right cup
+     103px through the top, which read as the art being sliced flat. */
+  const rightY = useTransform(scrollYProgress, [0, 1], [22, -22]);
+  const leftY = useTransform(scrollYProgress, [0, 1], [-22, 22]);
 
   return (
     <section
@@ -37,10 +42,21 @@ export default function CtaSection() {
 
           The bleed is a fixed 40px rather than the artboard's −120/1440, which
           as a percentage kept slicing more off the cups the wider the screen
-          got. Deliberate deviation: both cups now read whole at every width. */}
+          got. Deliberate deviation: both cups now read whole at every width.
+
+          Vertical placement is also a deliberate deviation. The artboard puts
+          the left cup's box centre at y 555 and the right cup's at y 222; the
+          cup art sits inset inside its 415.23 × 553.64 box (x 19.58–82.11%,
+          y 10.66–82.54% of the file), and once rotated −8.35° its visible
+          bounds are 313.7 × 431.3 around that centre — reaching 234.85 above
+          it and 196.49 below. Figma's own left cup therefore runs 41px past
+          the bottom of the 710px frame. Here both centres are pulled to where
+          the art clears the frame with the parallax at full travel: 487 for
+          the left (art bottom 705 of 710) and 261 for the right (art top 4).
+          Neither cup is ever sliced. */}
       <motion.div
         style={{ y: rightY }}
-        className="pointer-events-none absolute -right-10 top-[-7.72%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
+        className="pointer-events-none absolute -right-10 top-[-2.2%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
         aria-hidden
       >
         <Image
@@ -53,7 +69,7 @@ export default function CtaSection() {
       </motion.div>
       <motion.div
         style={{ y: leftY }}
-        className="pointer-events-none absolute -left-10 top-[39.18%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
+        className="pointer-events-none absolute -left-10 top-[29.6%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
         aria-hidden
       >
         <Image
