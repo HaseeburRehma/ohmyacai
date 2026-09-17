@@ -17,41 +17,51 @@ export const MARQUEE_WORDS = [
   'Blend Bold',
 ];
 
-/** Horizontal product carousel — 5 full-bleed slides (Figma: Products) */
+/** Horizontal product carousel — 5 full-bleed slides (Figma: Products).
+ *  `bg` is the panel artwork exported from Figma at 720 × 898: the flat colour
+ *  with the berry texture already fading in from the halfway mark. Cropped to
+ *  671px (11 × the texture's 61px period) so it repeats horizontally without a
+ *  seam on panels wider than the artboard. `color` backs it so no sub-pixel
+ *  gap can show through. */
 export const SLIDES = [
   {
     eyebrow: 'Strawberry, Mango & Berries',
     title: 'Tropical Mango Bowl',
     body: 'nutritious & delicious smoothies that blend effortlessly into your life',
-    bg: '#e6a002',
+    color: '#e6a002',
+    bg: '/img/panel/panel-1.png',
     image: '/img/bowl-slide.png',
   },
   {
     eyebrow: 'Açaí, Banana & Granola',
     title: 'Classic Açaí Bowl',
     body: 'nutritious & delicious smoothies that blend effortlessly into your life',
-    bg: '#4d294e',
+    color: '#4d294e',
+    bg: '/img/panel/panel-2.png',
     image: '/img/bowl-slide-2.png',
   },
   {
     eyebrow: 'Blueberry, Blackberry & Chia',
     title: 'Berry Bliss Bowl',
     body: 'nutritious & delicious smoothies that blend effortlessly into your life',
-    bg: '#9d5988',
+    color: '#008000',
+    bg: '/img/panel/panel-3.png',
     image: '/img/bowl-slide.png',
   },
   {
     eyebrow: 'Cacao, Almond & Coconut',
     title: 'Cacao Crunch Bowl',
     body: 'nutritious & delicious smoothies that blend effortlessly into your life',
-    bg: '#d4973c',
+    color: '#fec5da',
+    bg: '/img/panel/panel-4.png',
     image: '/img/bowl-slide-2.png',
   },
   {
     eyebrow: 'Peanut Butter, Banana & Oat',
     title: 'Peanut Butter Bowl',
     body: 'nutritious & delicious smoothies that blend effortlessly into your life',
-    bg: '#4d294e',
+    color: '#ed0018',
+    bg: '/img/panel/panel-5.png',
     image: '/img/bowl-slide.png',
   },
 ];

@@ -53,7 +53,6 @@
 :root {
   /* Figma canvas width — every absolute value below is authored against it */
   --design-width: 1440;
-  --pattern-opacity: 0.06;
 }
 
 html {
@@ -93,27 +92,6 @@ body {
 .font-menu {
   font-family: var(--font-menu), 'Archivo', system-ui, sans-serif;
   font-weight: 400;
-}
-
-/* Berry texture ----------------------------------------------------- */
-/* Used on the product panels only. The artboard also carries a faint version
-   on the cards, FAQ, footer and franchise bands (~0.06), but those were
-   dropped by request so the texture reads as this one section's signature.
-   Strength and scale are variables so a placement can tune them.
-
-   The tile is lifted straight out of the artboard render rather than rebuilt
-   from the berry glyph: autocorrelating the Figma texture puts its true
-   repeat at 61 x 66, and hand-assembling it at 33 x 66 gave a visibly denser
-   weave. `pattern-tile.png` is that 61 x 66 period as a white alpha mask,
-   normalised to full alpha so `--pattern-opacity` alone controls strength.
-   Size is a variable too, so a surface whose proportions differ from the
-   artboard can scale the texture with it. */
-.berry-pattern {
-  background-image: url('/svg/pattern-tile.png');
-  background-repeat: repeat;
-  background-size: var(--pattern-size, 61px 66px);
-  opacity: var(--pattern-opacity);
-  pointer-events: none;
 }
 
 /* Scrollbar --------------------------------------------------------- */

@@ -117,6 +117,15 @@ export default function ProductCarousel() {
 
 /* ------------------------------------------------------------------ */
 
+/** sRGB relative luminance of a #rrggbb colour (WCAG). */
+function luminance(hex: string) {
+  const ch = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+}
+
 function Slide({
   slide,
   index,
@@ -124,6 +133,13 @@ function Slide({
   slide: (typeof SLIDES)[number];
   index: number;
 }) {
+  /* The artboard only draws the gold and plum panels, both with white copy.
+     Three of the five supplied artworks are much lighter — white on the pale
+     pink (#fec5da) is a 1.3:1 contrast ratio — so the copy flips to ink on any
+     light panel. The threshold sits above gold's 0.42 so the two Figma panels
+     keep their white type exactly as drawn. */
+  const onLight = luminance(slide.color) > 0.55;
+
   return (
     <article
       /* A size container, so everything inside can be keyed to the panel's
@@ -135,22 +151,21 @@ function Slide({
          extra width is just more background. All values below are the Figma
          px divided by 898. */
       className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center overflow-hidden [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2"
-      style={{ backgroundColor: slide.bg, transformStyle: 'preserve-3d' }}
+      /* The Figma panel artwork carries the flat colour AND the berry
+         texture with its fade. `auto 100%` scales it by HEIGHT so the texture
+         keeps its true scale and the fade line stays at the halfway mark, and
+         it repeats across the extra width of a panel wider than the 720px
+         artboard — seamlessly, because the file is cropped to a whole number
+         of the texture's 61px periods. */
+      style={{
+        backgroundColor: slide.color,
+        backgroundImage: `url('${slide.bg}')`,
+        backgroundSize: 'auto 100%',
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'left top',
+        transformStyle: 'preserve-3d',
+      }}
     >
-      {/* Berry texture over the lower half — Figma "Vector", 452 of 898.
-          The product panel is the ONLY surface that carries it: the artboard
-          also has a faint one on the cards, FAQ, footer and franchise bands,
-          but it was dropped there by request so the texture stays a signature
-          of this section.
-
-          0.22 against the artboard's 0.28: measured on a texture-only crop the
-          Figma weave has a mean alpha of 0.0476 and this sits at 0.0387, so it
-          reads a touch lighter by request while keeping the same weight. */}
-      <div
-        aria-hidden
-        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.22] [--pattern-size:6.793cqh_7.350cqh]"
-      />
-
       {/* Bowl — Figma: pre-rotation box 623.5 × 831.3, centred at 50% / 53.36%.
           Driven by HEIGHT + the art's own aspect: a half-viewport panel is
           wider than the 720:898 artboard one, so a width percentage would
@@ -170,7 +185,7 @@ function Slide({
       </div>
 
       {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title */}
-      <div className="absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] text-white">
+      <div className={`absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] ${onLight ? 'text-ink' : 'text-white'}`}>
         <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
@@ -211,7 +226,7 @@ function Slide({
       {/* index marker */}
       <span
         aria-hidden
-        className="font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] text-white/60"
+        className={`font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] ${onLight ? 'text-ink/60' : 'text-white/60'}`}
       >
         0{index + 1} / 0{SLIDES.length}
       </span>
