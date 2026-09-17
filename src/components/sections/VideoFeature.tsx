@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useCallback, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
@@ -10,21 +9,6 @@ import { useGSAP } from '@gsap/react';
 import { VIDEO_CARDS } from '@/data/site';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-
-/* WebGL, so client-only. Until it mounts the panel shows the photograph the
-   model was built from, at the same size — nothing shifts when it swaps. */
-const AcaiCup3D = dynamic(() => import('@/components/three/AcaiCup3D'), {
-  ssr: false,
-  loading: () => (
-    <Image
-      src="/img/bowl-hero-b.png"
-      alt="Açaí bowl"
-      fill
-      sizes="(max-width: 1024px) 60vw, 34vw"
-      className="object-contain"
-    />
-  ),
-});
 
 /**
  * Figma: the 1320 × 1040 plum panel (rounded 60) with a centred bowl and four
@@ -73,15 +57,13 @@ export default function VideoFeature() {
       const mm = gsap.matchMedia();
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        /* Cup: scrubbed to the panel's travel through the viewport. No CSS
-           rotate any more — the cup is a 3D scene now, and rotating its canvas
-           tilts the whole frame rather than the object, which read as the cup
-           lying on its side. Rotation belongs to the model. */
+        /* Cup: scrubbed to the panel's travel through the viewport. */
         gsap.fromTo(
           '[data-video-cup]',
-          { yPercent: 7, scale: 0.95, z: -50 },
+          { yPercent: 7, rotate: -18, scale: 0.95, z: -50 },
           {
             yPercent: -7,
+            rotate: -12,
             scale: 1.02,
             z: 60,
             ease: 'none',
@@ -173,22 +155,21 @@ export default function VideoFeature() {
             {/* Bowl. Positioning and animation are on separate elements on
                 purpose: GSAP writes the whole `transform`, so animating the
                 same node would wipe the `-translate-x/y-1/2` centring and drop
-                the cup into the corner.
-
-                The cup itself is real 3D geometry — grab it and it spins a
-                full 360°. The wrapper stays `pointer-events-none` so the rest
-                of the panel is unaffected; only the canvas takes the pointer. */}
-            <div className="pointer-events-none relative z-20 mx-auto -my-4 h-[300px] w-[86%] sm:h-[360px] lg:absolute lg:left-[48.5%] lg:top-[62.3%] lg:mx-0 lg:h-[60.6%] lg:w-[33.5%] lg:-translate-x-1/2 lg:-translate-y-1/2">
+                the cup into the corner. */}
+            <div className="pointer-events-none relative mx-auto -my-4 h-[300px] w-[86%] sm:h-[360px] lg:absolute lg:left-[48.5%] lg:top-[62.3%] lg:mx-0 lg:h-[60.6%] lg:w-[33.5%] lg:-translate-x-1/2 lg:-translate-y-1/2">
               <div
                 data-video-cup
                 style={{ transformStyle: 'preserve-3d' }}
                 className="relative size-full"
               >
-                <AcaiCup3D className="pointer-events-auto absolute inset-0 drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]" />
+                <Image
+                  src="/img/bowl-hero-b.png"
+                  alt="Açaí bowl"
+                  fill
+                  sizes="(max-width: 1024px) 60vw, 34vw"
+                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:object-fill lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
+                />
               </div>
-              <span className="pointer-events-none absolute inset-x-0 -bottom-1 text-center text-[0.6875rem] uppercase tracking-[0.18em] text-white/45 lg:-bottom-4">
-                Drag to rotate
-              </span>
             </div>
 
             {/* Callout cards — a grid on phones, the Figma float from lg up.
