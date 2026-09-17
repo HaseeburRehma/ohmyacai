@@ -94,6 +94,45 @@ body {
   font-weight: 400;
 }
 
+/* Berry texture ------------------------------------------------------ *
+ * The artboard's vector pattern, recovered from the supplied panel artwork:
+ * solving the compositing equation across three differently-coloured panels
+ * shows it is pure white at a varying alpha on a 61 x 66 tile, and the three
+ * solutions agree to within 0.006 — so this is the artwork itself, not a
+ * lookalike. public/img/berry-tile.png is that tile, normalised to peak 1.
+ *
+ * Measured off the artboard renders, the plum surfaces carry it at 3% white
+ * and fade it in down the panel: 0.007 at the top edge, 0.033 at the bottom.
+ * The mask below reproduces that ramp — a fifth of full strength at the top,
+ * full at the bottom. (The same contrast measurement recovers 0.342 for the
+ * product panel where the artwork itself says 0.36, so these numbers are good
+ * to a few percent.)
+ *
+ * The product panels do NOT use this — their texture is baked into the
+ * supplied artwork. This is for the plum surfaces.
+ * -------------------------------------------------------------------- */
+.berry-vectors::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/img/berry-tile.png');
+  background-repeat: repeat;
+  background-size: 61px 66px;
+  opacity: var(--berry-opacity, 0.033);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / var(--berry-fade, 0.2)),
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / var(--berry-fade, 0.2)),
+    #000 100%
+  );
+}
+
 /* Scrollbar --------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 10px;

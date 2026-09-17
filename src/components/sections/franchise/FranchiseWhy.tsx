@@ -21,7 +21,7 @@ import { FRANCHISE_WHY } from '@/data/site';
  */
 export default function FranchiseWhy() {
   return (
-    <section className="relative w-full overflow-hidden bg-plum px-6 py-20 sm:px-10 lg:px-[60px] lg:py-[90px]">
+    <section className="berry-vectors relative w-full overflow-hidden bg-plum px-6 py-20 sm:px-10 lg:px-[60px] lg:py-[90px]">
       <div className="relative mx-auto w-full max-w-[1320px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-20">
           <InView

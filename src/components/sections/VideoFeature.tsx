@@ -12,7 +12,8 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /**
  * Figma: the 1320 × 1040 plum panel (rounded 60) with a centred bowl and four
- * gold callout cards floated around it.
+ * gold callout cards floated around it, over the berry texture at 3% faded in
+ * down the panel (`.berry-vectors`).
  *
  * That float composition needs width. At phone size the same 1320:1040 box is
  * only ~270px tall, which crushed the cards into unreadable 90px columns and
@@ -126,7 +127,7 @@ export default function VideoFeature() {
         >
           <motion.div
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-            className="relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-plum px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
+            className="berry-vectors relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-plum px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
           >
             {/* Heading — Figma: centred, cap height at y 125 */}
             <motion.h2

@@ -7,7 +7,7 @@ import { FRANCHISE_FORM, FRANCHISE_HERO } from '@/data/site';
 
 /**
  * Figma: "Hero — Franchise" (4128:133) — 1440 × 780, bg #4d294e with the berry
- * texture at 10%. Copy left at x80/y215, the white enquiry card right at
+ * texture at 3% (measured off the artboard render — see `.berry-vectors`). Copy left at x80/y215, the white enquiry card right at
  * x760/y94 (600 × 617, radius 32). Blueberry, strawberry and mango cutouts
  * bleed off the edges.
  *
@@ -16,7 +16,7 @@ import { FRANCHISE_FORM, FRANCHISE_HERO } from '@/data/site';
  */
 export default function FranchiseHero() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-plum pt-[102px]">
+    <section className="berry-vectors relative isolate w-full overflow-hidden bg-plum pt-[102px]">
       {/* Decorative fruit — Figma coordinates as % of the 1440 × 780 frame */}
       <Fruit
         src="/img/fruit-blueberry-lg.png"
