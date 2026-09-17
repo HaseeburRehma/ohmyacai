@@ -44,12 +44,17 @@ export default function Footer() {
                 transition={{ type: 'spring', stiffness: 260, damping: 14 }}
                 className="block"
               >
+                {/* The badge asset is the disc itself, edge to edge. The old
+                    /img/logo.png was the same mark sitting in the middle of a
+                    512px white square — the disc was 49% of it — so at 120px
+                    the footer showed a big white circle with a 59px logo
+                    floating inside it. */}
                 <Image
-                  src="/img/logo.png"
+                  src="/img/logo-badge.png"
                   alt="Oh My Açaí"
-                  width={240}
-                  height={240}
-                  className="size-[120px] rounded-full object-contain"
+                  width={768}
+                  height={768}
+                  className="size-[120px] rounded-full object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.35)]"
                 />
               </motion.a>
 
