@@ -58,7 +58,7 @@ export default function StoreSection() {
           </div>
         </InView>
 
-        <div className="flex w-full flex-col gap-7">
+        <div className="@container flex w-full flex-col gap-7">
           {/* The trigger sits on the h2, not on the lines. Each line starts
               translated 110% down, i.e. entirely outside its own
               `overflow-hidden` clip box — and IntersectionObserver clips a
@@ -74,11 +74,17 @@ export default function StoreSection() {
               hidden: {},
               visible: { transition: { staggerChildren: 0.08 } },
             }}
-            className="font-display text-[clamp(2.25rem,5.6vw,4rem)] uppercase leading-[1.2] text-ink"
+            /* Sized against the column, not the viewport, so the heading
+               always sets as the three lines below. Measured at every
+               breakpoint: the largest size that keeps "Deinen Eigenen" on one
+               line is 9.36% of the column width, and the ratio holds because
+               both scale together. 9.1cqw leaves a little slack, capped at
+               Figma's 64px so it never grows past the design. */
+            className="font-display text-[min(4rem,9.1cqw)] uppercase leading-[1.2] text-ink"
           >
             <span className="sr-only">Besuch deinen eigenen Store</span>
             {HEADING.map((line) => (
-              <span key={line} aria-hidden className="block overflow-hidden">
+              <span key={line} aria-hidden className="block overflow-hidden whitespace-nowrap">
                 <motion.span
                   className="block"
                   variants={{ hidden: { y: "110%" }, visible: { y: 0 } }}

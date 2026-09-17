@@ -71,9 +71,19 @@ export default function FranchiseBowls() {
                 <motion.div
                   initial="rest"
                   whileHover="hover"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  /* `--berry-*` tune the vectors for a card: stronger than the
+                     3% the big plum bands use, and with the fade switched off,
+                     because a 315 x 340 card is too small for a gradient to
+                     read and at 3% the texture vanishes on the gold one. */
+                  style={
+                    {
+                      transformStyle: 'preserve-3d',
+                      '--berry-opacity': 0.1,
+                      '--berry-fade': 1,
+                    } as React.CSSProperties
+                  }
                   className={cn(
-                    'relative size-full overflow-hidden rounded-3xl',
+                    'berry-vectors relative size-full overflow-hidden rounded-3xl',
                     bowl.bg
                   )}
                 >

@@ -68,7 +68,11 @@ function Step({
   index: number;
 }) {
   const photo = (
-    <div className="relative h-[240px] w-full overflow-hidden sm:h-[320px] lg:h-[470px]">
+    /* Below `lg` the photo is a full-width strip, so it gets the source's own
+       1440 x 936 aspect rather than a fixed height — a 320px strip at 768 was
+       hiding 36% of the frame. From `lg` it fills the row, whose height is
+       derived from the same aspect. */
+    <div className="relative aspect-[1440/936] w-full overflow-hidden lg:aspect-auto lg:h-full">
       <motion.div
         initial={{ scale: 1.12 }}
         whileInView={{ scale: 1 }}
@@ -149,7 +153,15 @@ function Step({
      once there are two columns, so it is done with `order` rather than by
      rendering the image twice. */
   return (
-    <section className="w-full lg:h-[470px]">
+    /* The row's height tracks the photo's aspect rather than sitting at a
+       fixed 470px. Each column is 50vw at `lg` and the source is 1440 x 936,
+       so the height that shows the whole frame is 50vw / 1.5385 = 32.5vw —
+       which is 468px at 1440, i.e. exactly the artboard's 470. Fixed, it only
+       matched at 1440: at 1920 the column was 960 wide against the same 470
+       and `object-cover` sliced a quarter off the top and bottom. The floor
+       keeps the copy column from crushing below `lg`, the ceiling stops the
+       row from becoming absurdly tall on ultra-wide. */
+    <section className="w-full lg:h-[clamp(470px,32.5vw,760px)]">
       <div className="grid lg:h-full lg:grid-cols-2">
         <div className={step.imageFirst ? '' : 'lg:order-2'}>{photo}</div>
         <div className={step.imageFirst ? '' : 'lg:order-1'}>{copy}</div>
