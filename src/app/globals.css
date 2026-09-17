@@ -99,11 +99,16 @@ body {
 /* Strength is per-placement in the artboard, not global. Sampled off the
    Figma render: the product panels carry it at ~0.28 (clearly readable),
    while the cards, FAQ, footer and franchise bands sit near 0.06. Override
-   with `[--pattern-opacity:0.28]` on the element. */
+   with `[--pattern-opacity:0.28]` on the element.
+
+   The tile is a 33 x 66 half-drop: one motif per 33 x 33 of area. Size is a
+   variable too, so a surface whose proportions differ from the artboard (the
+   product panels, which are half the viewport wide) can scale the texture
+   with it instead of getting a denser one. */
 .berry-pattern {
   background-image: url('/svg/pattern-tile.svg');
   background-repeat: repeat;
-  background-size: 33px 66px;
+  background-size: var(--pattern-size, 33px 66px);
   opacity: var(--pattern-opacity);
   pointer-events: none;
 }

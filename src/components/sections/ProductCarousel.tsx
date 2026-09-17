@@ -126,9 +126,15 @@ function Slide({
 }) {
   return (
     <article
-      /* @container so the panel's own type scales with it, exactly as the
-         720-wide Figma panel does. Aspect is Figma's 720:898. */
-      className="@container group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center overflow-hidden sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2"
+      /* A size container, so everything inside can be keyed to the panel's
+         HEIGHT (cqh). The artboard panel is 720 x 898; this one is half the
+         viewport wide by the viewport tall, so it gets wider on big screens
+         without getting taller. Sizing by width (cqw) therefore grew the type
+         and thinned the texture until the copy ran into the cup. Keyed to
+         height, the vertical composition is Figma's at every width and the
+         extra width is just more background. All values below are the Figma
+         px divided by 898. */
+      className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center overflow-hidden [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2"
       style={{ backgroundColor: slide.bg, transformStyle: 'preserve-3d' }}
     >
       {/* berry texture over the lower half — Figma "Vector", 452 of 898.
@@ -136,7 +142,7 @@ function Slide({
           bands use. */}
       <div
         aria-hidden
-        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.28]"
+        className="berry-pattern absolute inset-x-0 bottom-0 h-[50.3%] [--pattern-opacity:0.28] [--pattern-size:3.675cqh_7.351cqh]"
       />
 
       {/* Bowl — Figma: pre-rotation box 623.5 × 831.3, centred at 50% / 53.36%.
@@ -157,15 +163,15 @@ function Slide({
         />
       </div>
 
-      {/* Copy — Figma: inset 22px, 608 wide, 48px title */}
-      <div className="absolute left-[3.06%] right-[3.06%] top-[2.45%] z-10 flex flex-col gap-[max(0.4rem,1.1cqw)] text-white">
-        <p className="text-[clamp(0.75rem,2.22cqw,1.25rem)] font-bold uppercase tracking-[-0.5px]">
+      {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title */}
+      <div className="absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] text-white">
+        <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
-        <h3 className="font-display max-w-[84.4%] text-[clamp(1.5rem,6.67cqw,3.75rem)] uppercase leading-[1.2]">
+        <h3 className="font-display text-[clamp(1.5rem,5.345cqh,3.75rem)] uppercase leading-[1.2]">
           {slide.title}
         </h3>
-        <p className="max-w-[84.4%] text-[clamp(0.75rem,2.22cqw,1.25rem)] tracking-[-0.5px]">
+        <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] tracking-[-0.5px]">
           {slide.body}
         </p>
       </div>
@@ -174,7 +180,7 @@ function Slide({
       <button
         type="button"
         aria-label={`More about ${slide.title}`}
-        className="absolute right-[3.06%] top-[2.45%] z-10 grid size-[max(2.75rem,6.67cqw)] place-items-center rounded-full border border-ink bg-white transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:rotate-90 hover:scale-110"
+        className="absolute right-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 grid size-[max(2.75rem,5.345cqh)] place-items-center rounded-full border border-ink bg-white transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:rotate-90 hover:scale-110"
       >
         <svg viewBox="0 0 24 24" className="size-1/2" aria-hidden>
           <path
@@ -189,9 +195,9 @@ function Slide({
       {/* CTA */}
       <a
         href="#menu"
-        className="absolute bottom-[2.45%] left-[3.06%] z-10 inline-flex min-h-11 items-center rounded-full bg-ink px-[max(1.1rem,3.3cqw)] py-[max(0.6rem,1.67cqw)] transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-105"
+        className="absolute bottom-[max(1rem,2.45cqh)] left-[max(1rem,2.45cqh)] z-10 inline-flex min-h-11 items-center rounded-full bg-ink px-[max(1.1rem,2.67cqh)] py-[max(0.6rem,1.34cqh)] transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-105"
       >
-        <span className="font-display text-[clamp(1rem,3.33cqw,1.75rem)] uppercase leading-[1.2] tracking-[-0.5px] text-white">
+        <span className="font-display text-[clamp(1rem,2.673cqh,1.75rem)] uppercase leading-[1.2] tracking-[-0.5px] text-white">
           Get Now
         </span>
       </a>
@@ -199,7 +205,7 @@ function Slide({
       {/* index marker */}
       <span
         aria-hidden
-        className="font-menu absolute bottom-[3%] right-[3.6%] z-10 text-[clamp(0.75rem,2.5cqw,1.4rem)] text-white/60"
+        className="font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] text-white/60"
       >
         0{index + 1} / 0{SLIDES.length}
       </span>
