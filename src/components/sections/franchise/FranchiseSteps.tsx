@@ -139,7 +139,7 @@ function Step({
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="font-display w-fit rounded-full bg-mauve px-6 py-2.5 text-xl uppercase leading-[1.2] tracking-[-0.5px] text-white"
         >
-          Read More
+          Mehr erfahren
         </motion.a>
       </InView>
     </div>
@@ -154,7 +154,7 @@ function Step({
         <div className={step.imageFirst ? '' : 'lg:order-2'}>{photo}</div>
         <div className={step.imageFirst ? '' : 'lg:order-1'}>{copy}</div>
       </div>
-      <span className="sr-only">{`Step ${index + 1} of 3`}</span>
+      <span className="sr-only">{`Schritt ${index + 1} von 3`}</span>
     </section>
   );
 }

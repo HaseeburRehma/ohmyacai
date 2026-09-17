@@ -55,7 +55,7 @@ const FRUIT: Fruit[] = [
   { src: '/img/fruit-blueberry-sm.png', alt: '', l: 40.83, t: 93.76, w: 5.21, h: 8.69, depth: 80, z: 30, spin: 22, delay: 0.6 },
 ];
 
-const HEADLINE = ['Freshly', 'Blended', 'Moments'];
+const HEADLINE = ['Frisch', 'Gemixte', 'Momente'];
 
 const SPRING = { stiffness: 110, damping: 20, mass: 0.6 } as const;
 
@@ -137,7 +137,7 @@ export default function Hero() {
             >
               <Image
                 src="/img/bowl-hero-a.png"
-                alt="Açaí bowl with strawberry, banana and granola"
+                alt="Açaí Bowl mit Erdbeere, Banane und Granola"
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 34vw"
@@ -186,13 +186,13 @@ export default function Hero() {
               >
                 <Image
                   src="/svg/hero-stars.svg"
-                  alt="5 out of 5 stars"
+                  alt="5 von 5 Sternen"
                   width={142}
                   height={24}
                   className="h-5 w-[118px] sm:h-6 sm:w-[142px] lg:h-[1.67cqw] lg:w-[9.86cqw]"
                 />
                 <p className="whitespace-nowrap text-[13px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]">
-                  17,000+ 5 star reviews on
+                  17.000+ 5-Sterne-Bewertungen auf
                 </p>
                 <Image
                   src="/svg/hero-google.svg"
@@ -205,7 +205,7 @@ export default function Hero() {
 
               {/* Headline — per-line mask reveal */}
               <h1 className="font-display text-[clamp(2.5rem,8.4vw,3.5rem)] uppercase leading-[1.2] text-white lg:text-[clamp(3rem,4.444cqw,5.5rem)]">
-                <span className="sr-only">Freshly Blended Moments</span>
+                <span className="sr-only">Frisch gemixte Momente</span>
                 {HEADLINE.map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
                     <motion.span
@@ -236,7 +236,7 @@ export default function Hero() {
                 className="-mt-1 w-fit origin-left rounded-3xl bg-gold px-[15px] py-[5px]"
               >
                 <p className="font-display whitespace-nowrap text-[clamp(2rem,7vw,3rem)] uppercase leading-[1.2] text-white lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]">
-                  Start Here
+                  Los geht’s
                 </p>
               </motion.div>
 
@@ -246,8 +246,8 @@ export default function Hero() {
                 transition={{ duration: 0.7, delay: 0.7 }}
                 className="text-[15px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]"
               >
-                nutritious &amp; delicious smoothies that blend effortlessly into
-                your life
+                nahrhafte &amp; köstliche Smoothies, die sich mühelos in deinen
+                Alltag einfügen
               </motion.p>
             </div>
 
@@ -257,7 +257,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.8 }}
               className="w-fit"
             >
-              <PillButton href="#menu">Shop Now</PillButton>
+              <PillButton href="#menu">Jetzt bestellen</PillButton>
             </motion.div>
           </div>
         </motion.div>

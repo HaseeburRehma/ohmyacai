@@ -1,20 +1,23 @@
-/* All copy below is transcribed verbatim from the Figma file. */
+/* Site copy, in German. The Figma artboard is in English; this is the
+ * translated equivalent, kept in the same shape so every component reads
+ * unchanged. Brand names (Oh My Açaí, the social networks) and the Latin
+ * placeholder blocks the artboard ships with are left alone. */
 
 export const ANNOUNCEMENT =
-  'Discover the perfect harmony of fresh, vibrant flavors and nourishing goodness in every bowl — Explore Our Menu';
+  'Entdecke in jeder Bowl die perfekte Harmonie aus frischen, lebendigen Aromen und wertvollen Zutaten — zu unserer Karte';
 
 export const NAV_LINKS = [
-  { label: 'About', href: '/#about' },
+  { label: 'Über uns', href: '/#about' },
   { label: 'Blog', href: '/#blog' },
-  { label: 'Menu', href: '/#menu' },
+  { label: 'Karte', href: '/#menu' },
   { label: 'Franchise', href: '/franchise' },
 ];
 
 export const MARQUEE_WORDS = [
-  'Chill Smooth',
-  'Crafted Cold',
-  'Sip Slow',
-  'Blend Bold',
+  'Eisig Cremig',
+  'Kalt Gerührt',
+  'Langsam Genießen',
+  'Mutig Gemixt',
 ];
 
 /** Horizontal product carousel — 5 full-bleed slides (Figma: Products).
@@ -25,41 +28,41 @@ export const MARQUEE_WORDS = [
  *  gap can show through. */
 export const SLIDES = [
   {
-    eyebrow: 'Strawberry, Mango & Berries',
-    title: 'Tropical Mango Bowl',
-    body: 'nutritious & delicious smoothies that blend effortlessly into your life',
+    eyebrow: 'Erdbeere, Mango & Beeren',
+    title: 'Tropische Mango Bowl',
+    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/bowl-slide.png',
   },
   {
-    eyebrow: 'Açaí, Banana & Granola',
-    title: 'Classic Açaí Bowl',
-    body: 'nutritious & delicious smoothies that blend effortlessly into your life',
+    eyebrow: 'Açaí, Banane & Granola',
+    title: 'Klassische Açaí Bowl',
+    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#4d294e',
     bg: '/img/panel/panel-2.png',
     image: '/img/bowl-slide-2.png',
   },
   {
-    eyebrow: 'Blueberry, Blackberry & Chia',
-    title: 'Berry Bliss Bowl',
-    body: 'nutritious & delicious smoothies that blend effortlessly into your life',
+    eyebrow: 'Heidelbeere, Brombeere & Chia',
+    title: 'Beeren-Traum Bowl',
+    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#008000',
     bg: '/img/panel/panel-3.png',
     image: '/img/bowl-slide.png',
   },
   {
-    eyebrow: 'Cacao, Almond & Coconut',
-    title: 'Cacao Crunch Bowl',
-    body: 'nutritious & delicious smoothies that blend effortlessly into your life',
+    eyebrow: 'Kakao, Mandel & Kokos',
+    title: 'Kakao-Crunch Bowl',
+    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#fec5da',
     bg: '/img/panel/panel-4.png',
     image: '/img/bowl-slide-2.png',
   },
   {
-    eyebrow: 'Peanut Butter, Banana & Oat',
-    title: 'Peanut Butter Bowl',
-    body: 'nutritious & delicious smoothies that blend effortlessly into your life',
+    eyebrow: 'Erdnussbutter, Banane & Hafer',
+    title: 'Erdnussbutter Bowl',
+    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#ed0018',
     bg: '/img/panel/panel-5.png',
     image: '/img/bowl-slide.png',
@@ -68,12 +71,12 @@ export const SLIDES = [
 
 /** Signature bowls grid — 3 × 2 (Figma: Frame 44) */
 export const BOWLS = [
-  { name: 'Classic Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/bowl-1.png' },
-  { name: 'Tropical Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/bowl-2.png' },
-  { name: 'Berry Bliss Bowl', price: '$5.50', rating: '4.6', image: '/img/bowl-3.png' },
-  { name: 'Cacao Crunch Bowl', price: '$6.00', rating: '4.9', image: '/img/bowl-4.png' },
-  { name: 'Peanut Butter Bowl', price: '$7.00', rating: '4.8', image: '/img/bowl-5.png' },
-  { name: 'Coconut Dream Bowl', price: '$7.25', rating: '4.8', image: '/img/bowl-6.png' },
+  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/bowl-1.png' },
+  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/bowl-2.png' },
+  { name: 'Beeren-Traum Bowl', price: '$5.50', rating: '4.6', image: '/img/bowl-3.png' },
+  { name: 'Kakao-Crunch Bowl', price: '$6.00', rating: '4.9', image: '/img/bowl-4.png' },
+  { name: 'Erdnussbutter Bowl', price: '$7.00', rating: '4.8', image: '/img/bowl-5.png' },
+  { name: 'Kokos-Traum Bowl', price: '$7.25', rating: '4.8', image: '/img/bowl-6.png' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy).
@@ -106,22 +109,22 @@ export const VIDEO_CARDS = [
 export const VALUE_CARDS = [
   {
     n: '01',
-    title: 'Quality Without Compromise',
-    body: 'We carefully select our berries and  refine every step of the process to  ensure each bowl delivers.',
+    title: 'Qualität ohne Kompromisse',
+    body: 'Wir wählen unsere Beeren mit Sorgfalt aus und verfeinern jeden Schritt, damit jede Bowl hält, was sie verspricht.',
     bg: 'bg-plum',
     badge: '#4d294e',
   },
   {
     n: '02',
-    title: 'Craft In\nEvery Bowl',
-    body: 'From smooth blending to crunchy toppings, we focus on precision and care to create bowls that feel rich.',
+    title: 'Handwerk in\njeder Bowl',
+    body: 'Vom cremigen Mixen bis zum knusprigen Topping arbeiten wir präzise und sorgfältig — für Bowls, die richtig satt machen.',
     bg: 'bg-mauve',
     badge: '#9d5988',
   },
   {
     n: '03',
-    title: 'All the Moments\nThat Matter',
-    body: 'Oh My Açaí is more than a bowl — it’s  about creating space to pause,  connect, and enjoy your day.',
+    title: 'Für alle Momente,\ndie zählen',
+    body: 'Oh My Açaí ist mehr als eine Bowl — es geht um den Raum, kurz innezuhalten, sich zu treffen und den Tag zu genießen.',
     bg: 'bg-gold',
     badge: '#d4973c',
   },
@@ -130,24 +133,24 @@ export const VALUE_CARDS = [
 /** FAQ (Figma: FAQ Section → Content) */
 export const FAQS = [
   {
-    q: 'What makes Oh My Acai different',
-    a: 'At Oh My Açaí, we focus on quality in every step — from sourcing premium berries to crafting each bowl with precision.',
+    q: 'Was macht Oh My Açaí besonders',
+    a: 'Bei Oh My Açaí zählt Qualität in jedem Schritt — vom Einkauf erstklassiger Beeren bis zur präzisen Zubereitung jeder einzelnen Bowl.',
   },
   {
-    q: 'Do you offer takeaway and delivery',
-    a: 'Yes — every bowl on the menu is available for takeaway, and delivery is live across the neighbourhood through our partners.',
+    q: 'Gibt es Takeaway und Lieferung',
+    a: 'Ja — jede Bowl auf der Karte gibt es zum Mitnehmen, und im ganzen Viertel liefern wir über unsere Partner aus.',
   },
   {
-    q: 'Are your ingredients ethically sourced',
-    a: 'Our açaí is sourced from partner cooperatives in the Amazon basin, and our fruit is bought fresh from local growers each week.',
+    q: 'Sind eure Zutaten fair beschafft',
+    a: 'Unser Açaí kommt von Partnerkooperativen im Amazonasbecken, unser Obst kaufen wir jede Woche frisch bei Erzeugern aus der Region.',
   },
   {
-    q: 'Do you offer dairy free and vegan options',
-    a: 'Almost the entire menu is dairy free and vegan by default. Swap any topping and we will flag anything that is not.',
+    q: 'Habt ihr milchfreie und vegane Optionen',
+    a: 'Fast die gesamte Karte ist von Haus aus milchfrei und vegan. Tausch jedes Topping nach Belieben — wir sagen dir, wenn etwas nicht vegan ist.',
   },
   {
-    q: 'Is Oh My Acai a good place to relax',
-    a: 'That is the whole idea — soft seating, slow music and free wifi, built for a pause rather than a rush.',
+    q: 'Kann man bei Oh My Açaí gut entspannen',
+    a: 'Genau darum geht es — weiche Sitzecken, ruhige Musik und kostenloses WLAN, gemacht für eine Pause statt für Hektik.',
   },
 ];
 
@@ -155,69 +158,69 @@ export const FAQS = [
 export const REVIEW_SUMMARY = {
   name: 'Oh My Acai',
   score: '5.0',
-  count: '471 reviews on',
+  count: '471 Bewertungen auf',
 };
 
 export const REVIEWS = [
   {
     name: 'Jaspreet Singh',
-    when: '3 months ago',
+    when: 'vor 3 Monaten',
     body: 'Lorem ipsum dolor sit amet consectetur. Blandit pellentesque vitae gravida ultrices. In eleifend maecenas dictum felis. Ut porta lectus semper nunc est.',
   },
   {
     name: 'Amina Malik',
-    when: '2 months ago',
+    when: 'vor 2 Monaten',
     body: 'Proin fermentum, sapien vel interdum cursus, risus nibh varius libero, id pretium sem nulla ut justo. Sed at libero eget elit sollicitudin suscipit.',
   },
   {
     name: 'David Chen',
-    when: '1 month ago',
+    when: 'vor 1 Monat',
     body: 'Cras scelerisque, nunc ac porta convallis, arcu purus malesuada risus, vel facilisis velit dui quis nunc. Integer ultrices efficitur arcu.',
   },
   {
     name: 'Fatima Alvi',
-    when: '2 weeks ago',
+    when: 'vor 2 Wochen',
     body: 'Duis hendrerit purus vel diam elementum, vitae aliquam ex sollicitudin. Vivamus ac libero vitae libero varius facilisis.',
   },
   {
     name: 'Mark Johnson',
-    when: '5 days ago',
+    when: 'vor 5 Tagen',
     body: 'Mauris et nulla sit amet purus auctor posuere. Curabitur a libero quis magna suscipit viverra. Pellentesque habitant morbi tristique.',
   },
   {
     name: 'Sara Ahmed',
-    when: '4 days ago',
+    when: 'vor 4 Tagen',
     body: 'Phasellus auctor risus et massa pharetra, ac posuere orci fermentum. Donec vel diam nec arcu aliquam vestibulum eu vel massa.',
   },
   {
     name: 'Lucas Pereira',
-    when: '3 days ago',
+    when: 'vor 3 Tagen',
     body: 'Sed feugiat justo vel risus dictum, at fermentum quam luctus. Suspendisse potenti. Praesent at nunc sit amet lectus volutpat.',
   },
   {
     name: 'Emma Rodriguez',
-    when: '2 days ago',
+    when: 'vor 2 Tagen',
     body: 'Integer lacinia quam sit amet augue pharetra, eu fermentum purus scelerisque. Cras vel magna a felis ultricies condimentum.',
   },
   {
     name: 'Omar El-Sayed',
-    when: '1 day ago',
+    when: 'vor 1 Tag',
     body: 'Donec feugiat metus sit amet justo cursus gravida. Curabitur nec libero eu leo placerat consequat. Sed vitae pretium lectus.',
   },
   {
     name: 'Lina Wang',
-    when: 'Just now',
+    when: 'gerade eben',
     body: 'Vivamus nec magna vel urna facilisis fringilla ut vel felis. Nulla facilisi. Sed vitae massa vel leo elementum cursus a vel nisl.',
   },
 ];
 
 /** Footer (Figma: Footer - Desktop) */
 export const FOOTER_PAGES = [
-  'About',
+  'Über uns',
   'Blog',
-  'Menu',
-  'Location',
-  'Reservation',
+  'Karte',
+  'Standort',
+  'Reservierung',
   '404',
 ];
 
@@ -234,109 +237,109 @@ export const CONTACT = {
  * ------------------------------------------------------------------ */
 
 export const FRANCHISE_HERO = {
-  eyebrow: 'Franchise Programme 2026',
+  eyebrow: 'Franchise-Programm 2026',
   /** the middle span is set in gold in the artboard */
-  titleBefore: 'Bring ',
+  titleBefore: 'Hol ',
   titleAccent: 'Oh My Açaí',
-  titleAfter: ' To Your City',
-  body: 'A turnkey açaí bar with the recipes, berry supply chain and launch playbook already built — tell us where you want to open.',
+  titleAfter: ' in deine Stadt',
+  body: 'Eine schlüsselfertige Açaí-Bar: Rezepte, Beeren-Lieferkette und Eröffnungsplan stehen bereits — sag uns einfach, wo du starten willst.',
   stats: [
-    { value: '24 +', label: 'Stores trading' },
-    { value: '12', label: 'Countries' },
-    { value: '6 wks', label: 'To opening day' },
+    { value: '24 +', label: 'Filialen am Start' },
+    { value: '12', label: 'Länder' },
+    { value: '6 Wo.', label: 'Bis zur Eröffnung' },
   ],
 };
 
 export const FRANCHISE_FORM = {
-  title: 'Request The Franchise Pack',
-  body: 'Costs, territory map and the six-week opening plan — in your inbox within one working day.',
-  consent: 'I’d like Oh My Açaí to contact me about opening a store.',
-  submit: 'Send My Franchise Pack',
+  title: 'Franchise-Paket anfordern',
+  body: 'Kosten, Gebietskarte und der Sechs-Wochen-Eröffnungsplan — innerhalb eines Werktags in deinem Postfach.',
+  consent: 'Oh My Açaí darf mich zur Eröffnung einer eigenen Filiale kontaktieren.',
+  submit: 'Franchise-Paket schicken',
   budgets: [
-    'Under $150k',
-    '$150k – $250k',
-    '$250k – $400k',
-    '$400k +',
+    'Unter 150.000 $',
+    '150.000 – 250.000 $',
+    '250.000 – 400.000 $',
+    'Über 400.000 $',
   ],
 };
 
 export const FRANCHISE_BANNER = {
-  title: 'Açaí Franchise',
-  body: 'A ready-made açaí bar in a box — store design, equipment, recipes and supplier network, delivered as one package so you can open fast and stay consistent.',
-  cta: 'Learn More',
+  title: 'Açaí-Franchise',
+  body: 'Eine fertige Açaí-Bar im Paket — Ladenbau, Technik, Rezepte und Lieferantennetz aus einer Hand, damit du schnell eröffnest und überall gleich gut bleibst.',
+  cta: 'Mehr erfahren',
 };
 
 export const FRANCHISE_INTRO = {
-  titleBefore: 'Start Serving Bowls In Just ',
-  titleAccent: '6 Weeks',
-  body: 'From the day you sign, our team runs the build with you — site selection, fit-out, barista training and the launch campaign. Six weeks later you are blending your first bowls, with recipes, suppliers and packaging already locked in.',
+  titleBefore: 'Bowls servieren in nur ',
+  titleAccent: '6 Wochen',
+  body: 'Ab dem Tag der Unterschrift begleitet dich unser Team durch den Aufbau — Standortsuche, Ladenbau, Barista-Schulung und Eröffnungskampagne. Sechs Wochen später mixt du deine ersten Bowls, mit fest eingeplanten Rezepten, Lieferanten und Verpackungen.',
 };
 
 export const FRANCHISE_STEPS = [
   {
     n: '01',
-    label: 'Step 01',
-    title: 'Sign Up',
-    body: 'We map the opportunity in your city together. You get the territory study, the investment breakdown and a look at the numbers behind a working Oh My Açaí bar before anything is signed.',
+    label: 'Schritt 01',
+    title: 'Anmelden',
+    body: 'Wir schauen uns gemeinsam an, was in deiner Stadt möglich ist. Du bekommst die Gebietsanalyse, die Investitionsübersicht und einen Blick auf die Zahlen einer laufenden Oh My Açaí Bar — bevor irgendetwas unterschrieben wird.',
     image: '/img/fr/step-1.jpg',
-    alt: 'An açaí glass shot in the studio',
+    alt: 'Ein Açaí-Becher, im Studio fotografiert',
     bg: 'bg-cream',
     /** Figma alternates which half the photo sits on */
     imageFirst: true,
   },
   {
     n: '02',
-    label: 'Step 02',
-    title: 'Set Up',
-    body: 'Fit-out, equipment, POS and supply lines are handled by our team. Your crew trains on the full bowl menu until every build is identical to the one we serve in Los Angeles.',
+    label: 'Schritt 02',
+    title: 'Aufbauen',
+    body: 'Ladenbau, Technik, Kasse und Lieferwege übernimmt unser Team. Dein Team wird auf der kompletten Bowl-Karte geschult, bis jede Bowl genauso aussieht wie die, die wir in Los Angeles servieren.',
     image: '/img/fr/step-2.jpg',
-    alt: 'Two açaí glasses on the counter',
+    alt: 'Zwei Açaí-Becher auf dem Tresen',
     bg: 'bg-[#fdf3e3]',
     imageFirst: false,
   },
   {
     n: '03',
-    label: 'Step 03',
-    title: 'Serve',
-    body: 'Opening week is run with you — launch campaign, delivery platforms and local partnerships switched on together, so the queue is there from the first bowl you blend.',
+    label: 'Schritt 03',
+    title: 'Servieren',
+    body: 'Die Eröffnungswoche läuft gemeinsam mit dir — Launch-Kampagne, Lieferdienste und lokale Partner starten zusammen, damit die Schlange schon bei der ersten Bowl steht.',
     image: '/img/fr/step-3.jpg',
-    alt: 'A flat lay of finished açaí bowls',
+    alt: 'Fertige Açaí-Bowls von oben fotografiert',
     bg: 'bg-[#fdeef4]',
     imageFirst: true,
   },
 ];
 
 export const FRANCHISE_BOWLS = [
-  { name: 'Classic Açaí Bowl', image: '/img/bowl-1.png', bg: 'bg-plum' },
-  { name: 'Tropical Mango Bowl', image: '/img/bowl-2.png', bg: 'bg-gold' },
-  { name: 'Berry Bliss Bowl', image: '/img/bowl-3.png', bg: 'bg-mauve' },
-  { name: 'Cacao Crunch Bowl', image: '/img/bowl-4.png', bg: 'bg-plum' },
+  { name: 'Klassische Açaí Bowl', image: '/img/bowl-1.png', bg: 'bg-plum' },
+  { name: 'Tropische Mango Bowl', image: '/img/bowl-2.png', bg: 'bg-gold' },
+  { name: 'Beeren-Traum Bowl', image: '/img/bowl-3.png', bg: 'bg-mauve' },
+  { name: 'Kakao-Crunch Bowl', image: '/img/bowl-4.png', bg: 'bg-plum' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {
-  titleBefore: 'Meet Our ',
+  titleBefore: 'Unsere ',
   titleAccent: 'Bowls',
-  body: 'Every franchise opens with the same signature menu — six bowls built on the recipes our chefs refined in store, with seasonal specials dropped in four times a year so your counter never goes stale.',
+  body: 'Jedes Franchise startet mit derselben Signature-Karte — sechs Bowls nach den Rezepten, die unsere Küche im Laden verfeinert hat, dazu viermal im Jahr saisonale Specials, damit es an deiner Theke nie langweilig wird.',
 };
 
 export const FRANCHISE_WHY = {
-  titleBefore: 'Why ',
+  titleBefore: 'Warum ',
   titleAccent: 'Franchise',
-  titleAfter: ' With Oh My Açaí',
-  body: 'We take the guesswork out of running an açaí bar — proven recipes, a locked-in berry supply chain and a marketing playbook that has already filled counters in twelve countries. You bring the location and the energy.',
+  titleAfter: ' mit Oh My Açaí',
+  body: 'Wir nehmen dir das Rätselraten beim Betrieb einer Açaí-Bar ab — erprobte Rezepte, eine fest gesicherte Beeren-Lieferkette und ein Marketing-Playbook, das in zwölf Ländern schon Theken gefüllt hat. Du bringst den Standort und die Energie mit.',
   stats: [
-    { value: '24 +', label: 'Stores trading across 12 countries' },
-    { value: '12M', label: 'Açaí bowls served in the last year' },
-    { value: '6 wks', label: 'From signed contract to opening day' },
+    { value: '24 +', label: 'Filialen in zwölf Ländern' },
+    { value: '12 Mio.', label: 'Açaí-Bowls im letzten Jahr' },
+    { value: '6 Wo.', label: 'Vom Vertrag bis zur Eröffnung' },
   ],
 };
 
 export const FRANCHISE_PARTNER = {
-  titleBefore: 'Partner ',
-  titleAccent: 'Stories',
-  body: 'Our partners came from hospitality, retail and none of the above. Hear how they found a site, opened in six weeks and built a queue that comes back — in their own words.',
+  titleBefore: 'Stimmen unserer ',
+  titleAccent: 'Partner',
+  body: 'Unsere Partner kommen aus der Gastronomie, dem Einzelhandel und aus ganz anderen Branchen. Hör, wie sie einen Standort gefunden, in sechs Wochen eröffnet und sich eine Stammkundschaft aufgebaut haben — in ihren eigenen Worten.',
   poster: '/img/store.jpg',
 };
 
-/** The Franchise artboard uses the same five questions, punctuated. */
+/** Die Franchise-Seite nutzt dieselben fünf Fragen, mit Fragezeichen. */
 export const FRANCHISE_FAQS = FAQS.map((f) => ({ ...f, q: `${f.q}?` }));

@@ -13,7 +13,7 @@ import { FAQS } from '@/data/site';
  */
 export default function Faq({
   items = FAQS,
-  title = 'Frequently Asked Questions',
+  title = 'Häufige Fragen',
 }: {
   items?: { q: string; a: string }[];
   title?: string;
@@ -46,8 +46,8 @@ export default function Faq({
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <p className="text-base tracking-[-0.5px] text-white">
-                Everything you need to know before&nbsp; your first Oh My Açaí
-                bowl.
+                Alles, was du vor deiner ersten Oh My Açaí Bowl&nbsp; wissen
+                musst.
               </p>
             </InView>
           </div>

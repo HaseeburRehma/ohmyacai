@@ -162,21 +162,21 @@ function EnquiryForm() {
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row">
-          <input required className={FIELD} placeholder="First name" aria-label="First name" autoComplete="given-name" />
-          <input required className={FIELD} placeholder="Last name" aria-label="Last name" autoComplete="family-name" />
+          <input required className={FIELD} placeholder="Vorname" aria-label="Vorname" autoComplete="given-name" />
+          <input required className={FIELD} placeholder="Nachname" aria-label="Nachname" autoComplete="family-name" />
         </div>
-        <input required type="email" className={FIELD} placeholder="Email address" aria-label="Email address" autoComplete="email" />
-        <input required type="tel" className={FIELD} placeholder="Phone number" aria-label="Phone number" autoComplete="tel" />
+        <input required type="email" className={FIELD} placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autoComplete="email" />
+        <input required type="tel" className={FIELD} placeholder="Telefonnummer" aria-label="Telefonnummer" autoComplete="tel" />
         <div className="flex flex-col gap-4 sm:flex-row">
-          <input required className={FIELD} placeholder="Target city" aria-label="Target city" autoComplete="address-level2" />
+          <input required className={FIELD} placeholder="Wunschstadt" aria-label="Wunschstadt" autoComplete="address-level2" />
           <select
             required
             defaultValue=""
-            aria-label="Investment budget"
+            aria-label="Investitionsbudget"
             className={`${FIELD} appearance-none bg-[url('/svg/caret.svg')] bg-[length:12px_8px] bg-[right_1.25rem_center] bg-no-repeat pr-12`}
           >
             <option value="" disabled>
-              Investment budget
+              Investitionsbudget
             </option>
             {FRANCHISE_FORM.budgets.map((b) => (
               <option key={b} value={b}>

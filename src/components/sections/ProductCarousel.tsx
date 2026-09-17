@@ -200,7 +200,7 @@ function Slide({
       {/* Plus badge — Figma: 48px, top/right 22 */}
       <button
         type="button"
-        aria-label={`More about ${slide.title}`}
+        aria-label={`Mehr über ${slide.title}`}
         className="absolute right-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 grid size-[max(2.75rem,5.345cqh)] place-items-center rounded-full border border-ink bg-white transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:rotate-90 hover:scale-110"
       >
         <svg viewBox="0 0 24 24" className="size-1/2" aria-hidden>
@@ -219,7 +219,7 @@ function Slide({
         className="absolute bottom-[max(1rem,2.45cqh)] left-[max(1rem,2.45cqh)] z-10 inline-flex min-h-11 items-center rounded-full bg-ink px-[max(1.1rem,2.67cqh)] py-[max(0.6rem,1.34cqh)] transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-105"
       >
         <span className="font-display text-[clamp(1rem,2.673cqh,1.75rem)] uppercase leading-[1.2] tracking-[-0.5px] text-white">
-          Get Now
+          Jetzt holen
         </span>
       </a>
 

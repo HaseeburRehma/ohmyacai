@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
 
-const HEADING = ["Visit Your", "Very Own", "Store"];
+const HEADING = ['Besuch', 'Deinen Eigenen', 'Store'];
 
 /**
  * Figma: "Image Section → Content" — 675 × 520 rounded-24 photo on the left,
@@ -49,7 +49,7 @@ export default function StoreSection() {
             <motion.div style={{ y: imgY }} className="absolute inset-[-8%]">
               <Image
                 src="/img/store.jpg"
-                alt="Guests ordering at the Oh My Açaí counter"
+                alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
                 sizes="(max-width:1024px) 92vw, 675px"
                 className="object-cover object-bottom"
@@ -76,7 +76,7 @@ export default function StoreSection() {
             }}
             className="font-display text-[clamp(2.25rem,5.6vw,4rem)] uppercase leading-[1.2] text-ink"
           >
-            <span className="sr-only">Visit Your Very Own Store</span>
+            <span className="sr-only">Besuch deinen eigenen Store</span>
             {HEADING.map((line) => (
               <span key={line} aria-hidden className="block overflow-hidden">
                 <motion.span
@@ -99,9 +99,9 @@ export default function StoreSection() {
             viewOptions={{ once: true, amount: 0.3 }}
           >
             <p className="max-w-[640px] text-base leading-[1.2] tracking-[-0.5px] text-ink">
-              At Oh My Açaí, every bowl is thoughtfully crafted to deliver
-              more&nbsp; than just fruit. We blend velvety açaí with fresh fruit
-              and crunchy granola into a balanced, refreshing experience.
+              Bei Oh My Açaí steckt in jeder Bowl mehr als nur Obst. Wir mixen
+              samtiges Açaí mit frischen Früchten und knusprigem Granola zu
+              einem ausgewogenen, erfrischenden Erlebnis.
             </p>
           </InView>
 
@@ -114,7 +114,7 @@ export default function StoreSection() {
             viewOptions={{ once: true, amount: 0.3 }}
             className="w-fit"
           >
-            <PillButton href="#location">Get Directions</PillButton>
+            <PillButton href="#location">Route anzeigen</PillButton>
           </InView>
         </div>
       </div>

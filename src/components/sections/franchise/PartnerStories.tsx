@@ -61,7 +61,7 @@ export default function PartnerStories() {
             <div className="group relative aspect-[1320/480] w-full overflow-hidden rounded-3xl shadow-[0_24px_60px_-24px_rgba(77,41,78,0.5)]">
               <Image
                 src={FRANCHISE_PARTNER.poster}
-                alt="Inside an Oh My Açaí store"
+                alt="Blick in eine Filiale von Oh My Açaí"
                 fill
                 sizes="(max-width: 1024px) 92vw, 1320px"
                 className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
@@ -73,7 +73,7 @@ export default function PartnerStories() {
 
               <motion.button
                 type="button"
-                aria-label="Play partner stories film"
+                aria-label="Film mit Partnergeschichten abspielen"
                 whileHover={{ scale: 1.12 }}
                 whileTap={{ scale: 0.94 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}

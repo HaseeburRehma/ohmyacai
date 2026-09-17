@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-start">
               <motion.a
                 href="#top"
-                aria-label="Back to top"
+                aria-label="Nach oben"
                 whileHover={{ rotate: -8, scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 14 }}
                 className="block"
@@ -59,9 +59,9 @@ export default function Footer() {
               </motion.a>
 
               <p className="font-display text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] text-white lg:text-right">
-                Make every acai moment
+                Mach jeden Açaí-Moment
                 <br />
-                feel intentional
+                zu einem bewussten
               </p>
             </div>
           </InView>
@@ -77,7 +77,7 @@ export default function Footer() {
             <div className="flex flex-col items-start gap-10 sm:items-center sm:text-center">
               <div className="flex flex-col gap-2 sm:items-center">
                 <h3 className="font-display text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] text-white">
-                  Contact
+                  Kontakt
                 </h3>
                 <a
                   href={`mailto:${CONTACT.email}`}
@@ -125,19 +125,19 @@ export default function Footer() {
               className="absolute inset-x-0 top-0 block h-px origin-left bg-white/25"
             />
             <div className="flex flex-col items-center gap-3 pt-6 text-base tracking-[-0.5px] text-white/80 sm:flex-row sm:justify-between">
-              <p>© 2026 Oh My Açaí. All rights reserved.</p>
+              <p>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</p>
               <a
                 href="#"
                 className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
               >
-                Privacy Policy
+                Datenschutz
               </a>
               <button
                 type="button"
                 onClick={() => lenis?.scrollTo(0, { duration: 1.4 })}
                 className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
               >
-                Back to top
+                Nach oben
               </button>
             </div>
           </div>

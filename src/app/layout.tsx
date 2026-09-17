@@ -51,13 +51,13 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: 'Oh My Açaí — Freshly Blended Moments Start Here',
+  title: 'Oh My Açaí — Frisch gemixte Momente beginnen hier',
   description:
-    'Nutritious & delicious açaí bowls that blend effortlessly into your life. 17,000+ five-star reviews.',
+    'Nahrhafte & köstliche Açaí-Bowls, die sich mühelos in deinen Alltag einfügen. Über 17.000 Fünf-Sterne-Bewertungen.',
   openGraph: {
-    title: 'Oh My Açaí — Freshly Blended Moments Start Here',
+    title: 'Oh My Açaí — Frisch gemixte Momente beginnen hier',
     description:
-      'Nutritious & delicious açaí bowls that blend effortlessly into your life.',
+      'Nahrhafte & köstliche Açaí-Bowls, die sich mühelos in deinen Alltag einfügen.',
     type: 'website',
   },
 };
@@ -76,7 +76,7 @@ export default function RootLayout({
        aliases in globals.css are declared there and would resolve to an
        invalid value if the fonts were only defined further down the tree. */
     <html
-      lang="en"
+      lang="de"
       className={`${lato.variable} ${bayon.variable} ${manrope.variable} ${boldonse.variable} ${archivo.variable}`}
       style={
         {

@@ -61,13 +61,13 @@ export default function Navbar() {
                 className="hidden h-6 w-[21px] shrink-0 sm:block"
               />
               <p className="truncate text-[12px] font-bold tracking-[-0.5px] text-white sm:text-base">
-                <span className="sm:hidden">Fresh, vibrant flavors in every bowl</span>
+                <span className="sm:hidden">Frische, lebendige Aromen in jeder Bowl</span>
                 <span className="hidden sm:inline">{ANNOUNCEMENT}</span>
               </p>
             </div>
             <button
               type="button"
-              aria-label="Dismiss announcement"
+              aria-label="Ankündigung schließen"
               onClick={() => setShowBanner(false)}
               /* 20px mark, but a 44px-wide hit area. It can't also be 44 tall:
                  the artboard's announcement strip is only 32px and clips. */
@@ -116,7 +116,7 @@ export default function Navbar() {
           </ul>
           <button
             type="button"
-            aria-label="Open menu"
+            aria-label="Menü öffnen"
             aria-expanded={open}
             onClick={() => setOpen(true)}
             className="flex size-11 items-center justify-center lg:hidden"
@@ -146,7 +146,7 @@ export default function Navbar() {
         {/* Right: CTA */}
         <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-[82px]">
           <PillButton href="/#menu" labelClassName="text-[0.8125rem] sm:text-2xl">
-            Order Now
+            Jetzt bestellen
           </PillButton>
         </div>
       </motion.nav>
@@ -162,7 +162,7 @@ export default function Navbar() {
           >
             <button
               type="button"
-              aria-label="Close menu"
+              aria-label="Menü schließen"
               onClick={() => setOpen(false)}
               className="absolute right-6 top-6 grid size-11 place-items-center text-white"
             >

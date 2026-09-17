@@ -84,7 +84,7 @@ export default function CtaSection() {
 
       <div className="relative mx-auto flex h-full w-full max-w-[1440px] flex-col items-center justify-center gap-6 px-6">
         <h2 className="flex flex-col items-center">
-          <span className="sr-only">Make your açaí moment special</span>
+          <span className="sr-only">Mach deinen Açaí-Moment besonders</span>
 
           <InView
             variants={{
@@ -98,7 +98,7 @@ export default function CtaSection() {
               aria-hidden
               className="font-display block rounded-2xl bg-plum px-6 py-5 text-center text-[clamp(1.6rem,4.6vw,4rem)] uppercase leading-[1.2] tracking-[-0.06em] text-white lg:px-10 lg:py-[26px]"
             >
-              Make Your Acai
+              Mach deinen Açaí
             </span>
           </InView>
 
@@ -119,7 +119,7 @@ export default function CtaSection() {
               aria-hidden
               className="font-display block rounded-2xl bg-gold px-6 py-5 text-center text-[clamp(1.6rem,4.6vw,4rem)] uppercase leading-[1.2] tracking-[-0.06em] text-white lg:px-10 lg:py-[26px]"
             >
-              Moment special
+              Moment besonders
             </span>
           </InView>
         </h2>
@@ -130,8 +130,8 @@ export default function CtaSection() {
           viewOptions={{ once: true, amount: 0.3 }}
         >
           <p className="mt-4 max-w-[432px] text-center text-base leading-[1.2] tracking-[-0.5px] text-ink">
-            Every day deserves a better açaí bowl — one that feels refreshing,
-            indulgent, and made with intention.
+            Jeder Tag verdient eine bessere Açaí-Bowl — erfrischend, üppig und
+            mit Bedacht gemacht.
           </p>
         </InView>
 
@@ -140,7 +140,7 @@ export default function CtaSection() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           viewOptions={{ once: true, amount: 0.3 }}
         >
-          <PillButton href="#menu">Order Now</PillButton>
+          <PillButton href="#menu">Jetzt bestellen</PillButton>
         </InView>
       </div>
     </section>

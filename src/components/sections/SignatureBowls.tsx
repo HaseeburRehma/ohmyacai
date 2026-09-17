@@ -33,7 +33,7 @@ export default function SignatureBowls() {
               viewOptions={{ once: true, amount: 0.2 }}
             >
               <h2 className="font-display max-w-[811px] text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[1.2] text-white">
-                Explore Our
+                Entdecke unsere
                 <br />
                 Signature Bowls
               </h2>
@@ -48,8 +48,8 @@ export default function SignatureBowls() {
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <p className="max-w-[377px] text-base tracking-[-0.5px] text-white lg:pb-[24px]">
-                A selection of favorites crafted to&nbsp; delight every açaí
-                lover.
+                Eine Auswahl unserer Lieblinge — gemacht für alle, die Açaí
+                lieben.
               </p>
             </InView>
           </div>
@@ -153,13 +153,13 @@ function BowlCard({
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
                 <span className="font-menu block whitespace-nowrap text-xl leading-6 tracking-[-0.5px] text-mauve">
-                  Get This Bowl
+                  Diese Bowl holen
                 </span>
                 <span
                   aria-hidden
                   className="font-menu block whitespace-nowrap text-xl leading-6 tracking-[-0.5px] text-mauve"
                 >
-                  Get This Bowl
+                  Diese Bowl holen
                 </span>
               </motion.span>
             </span>

@@ -164,7 +164,7 @@ export default function VideoFeature() {
               >
                 <Image
                   src="/img/bowl-hero-b.png"
-                  alt="Açaí bowl"
+                  alt="Açaí Bowl"
                   fill
                   sizes="(max-width: 1024px) 60vw, 34vw"
                   className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:object-fill lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"

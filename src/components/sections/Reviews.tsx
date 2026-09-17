@@ -87,7 +87,7 @@ export default function Reviews() {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="rounded-2xl bg-white px-6 py-4 text-base font-bold text-ink shadow-[0_2px_10px_rgba(17,17,17,0.06)]"
             >
-              Leave Us a Review
+              Bewertung schreiben
             </motion.a>
           </div>
         </InView>
@@ -167,7 +167,7 @@ function RailButton({
     <motion.button
       type="button"
       onClick={onClick}
-      aria-label={dir === 'prev' ? 'Previous reviews' : 'Next reviews'}
+      aria-label={dir === 'prev' ? 'Vorherige Bewertungen' : 'Nächste Bewertungen'}
       whileHover={{ scale: disabled ? 1 : 1.12 }}
       whileTap={{ scale: disabled ? 1 : 0.94 }}
       className={cn(
