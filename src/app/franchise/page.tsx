@@ -11,7 +11,6 @@ import FranchiseSteps from '@/components/sections/franchise/FranchiseSteps';
 import FranchiseBowls from '@/components/sections/franchise/FranchiseBowls';
 import FranchiseWhy from '@/components/sections/franchise/FranchiseWhy';
 import PartnerStories from '@/components/sections/franchise/PartnerStories';
-import FranchiseStores from '@/components/sections/franchise/FranchiseStores';
 import { FRANCHISE_FAQS } from '@/data/site';
 
 export const metadata: Metadata = {
@@ -24,9 +23,6 @@ export const metadata: Metadata = {
  * Section order matches the Figma "Franchise" frame (4128:112) top to bottom:
  * Nav → Hero + enquiry form → Marquee → Banner → Intro → Steps 01-03 →
  * Meet Our Bowls → Why Franchise → Partner Stories → FAQ → CTA → Footer.
- *
- * `FranchiseStores` ("Visit Your Store") sits after Partner Stories by
- * request — it is not on the artboard.
  *
  * Nav, Marquee, FAQ, CTA and Footer are the same components the Home page
  * uses — the artboard reuses those instances too.
@@ -44,7 +40,6 @@ export default function FranchisePage() {
         <FranchiseBowls />
         <FranchiseWhy />
         <PartnerStories />
-        <FranchiseStores />
         <Faq items={FRANCHISE_FAQS} />
         <CtaSection />
       </main>

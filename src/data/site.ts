@@ -338,16 +338,5 @@ export const FRANCHISE_PARTNER = {
   poster: '/img/store.jpg',
 };
 
-/** "Visit Your Store" band on the Franchise page. Not on the artboard — it
- *  answers the question every prospect asks before signing, which is to go
- *  stand in a trading store first. Photo and CTA match the Home store band. */
-export const FRANCHISE_STORE = {
-  headingLines: ['Visit Your', 'Store'],
-  body: 'Before you sign anything, go and stand in one. Order a bowl, watch the counter through a lunch rush, and talk to the team running it — every trading store is open to prospective partners, no appointment needed.',
-  image: '/img/store.jpg',
-  imageAlt: 'Guests ordering at an Oh My Açaí counter',
-  cta: 'Get Directions',
-};
-
 /** The Franchise artboard uses the same five questions, punctuated. */
 export const FRANCHISE_FAQS = FAQS.map((f) => ({ ...f, q: `${f.q}?` }));

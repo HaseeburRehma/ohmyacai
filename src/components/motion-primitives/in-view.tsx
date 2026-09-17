@@ -40,9 +40,13 @@ export function InView({
 
   const [isViewed, setIsViewed] = useState(false)
 
+  /* `React.ElementType` no longer works here: @react-three/fiber augments
+     JSX.IntrinsicElements with every three.js element, so the union of all
+     their props collapses to `never` and TS rejects each prop below. Every
+     caller passes plain motion-div props, so name that type directly. */
   const MotionComponent = motion[
     as as keyof typeof motion
-  ] as React.ElementType;
+  ] as unknown as React.ComponentType<React.ComponentProps<typeof motion.div>>;
 
   return (
     <MotionComponent
