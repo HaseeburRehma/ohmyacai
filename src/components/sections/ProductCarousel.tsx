@@ -175,7 +175,7 @@ function Slide({
           region's bottom so the base stays put, tilted -7.11deg as in Figma. */}
       <div
         data-slide-art
-        className="pointer-events-none absolute inset-x-[7%] bottom-[5%] top-[14%]"
+        className="pointer-events-none absolute inset-x-[8%] bottom-[4%] top-[25%]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
