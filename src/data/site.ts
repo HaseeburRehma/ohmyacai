@@ -72,13 +72,17 @@ export const SLIDES = [
 ]
 
 /** Signature bowls grid — 3 × 2 (Figma: Frame 44) */
+/* The grid shares the branded Buenoacai cups with the product panels, so a
+ * flavour shows the same cup everywhere. The five panel flavours map 1:1 to
+ * their panel cups; Kokos-Traum has no panel, so it reuses the açaí cup
+ * (cup-2) — placed on card 6, which is not adjacent to card 1's cup-2. */
 export const BOWLS = [
-  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/bowl-1.png' },
-  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/bowl-2.png' },
-  { name: 'Beeren-Traum Bowl', price: '$5.50', rating: '4.6', image: '/img/bowl-3.png' },
-  { name: 'Kakao-Crunch Bowl', price: '$6.00', rating: '4.9', image: '/img/bowl-4.png' },
-  { name: 'Erdnussbutter Bowl', price: '$7.00', rating: '4.8', image: '/img/bowl-5.png' },
-  { name: 'Kokos-Traum Bowl', price: '$7.25', rating: '4.8', image: '/img/bowl-6.png' },
+  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/panel/cup-2.png' },
+  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/panel/cup-1.png' },
+  { name: 'Beeren-Traum Bowl', price: '$5.50', rating: '4.6', image: '/img/panel/cup-3.png' },
+  { name: 'Kakao-Crunch Bowl', price: '$6.00', rating: '4.9', image: '/img/panel/cup-4.png' },
+  { name: 'Erdnussbutter Bowl', price: '$7.00', rating: '4.8', image: '/img/panel/cup-5.png' },
+  { name: 'Kokos-Traum Bowl', price: '$7.25', rating: '4.8', image: '/img/panel/cup-2.png' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy).

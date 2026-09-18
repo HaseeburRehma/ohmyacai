@@ -109,14 +109,16 @@ function BowlCard({
           }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{ transformStyle: 'preserve-3d' }}
-          className="pointer-events-none absolute left-1/2 top-[36.36%] h-[85.11%] w-[81.18%] -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute left-1/2 top-[38%] h-[82%] w-[86%] -translate-x-1/2 -translate-y-1/2"
         >
+          {/* object-contain, not object-fill: the branded cups have a fixed
+              950:1450 aspect and must not be stretched to the card box. */}
           <Image
             src={bowl.image}
             alt={bowl.name}
             fill
             sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
-            className="rotate-[2.6deg] object-fill"
+            className="rotate-[2.6deg] object-contain drop-shadow-[6px_14px_22px_rgba(0,0,0,0.16)]"
           />
         </motion.div>
 
