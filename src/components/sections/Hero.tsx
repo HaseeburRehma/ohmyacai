@@ -123,8 +123,9 @@ export default function Hero() {
             <FruitPiece key={f.src} fruit={f} progress={scrollYProgress} />
           ))}
 
-          {/* Cup 1 — Figma IMG_3316, rotate 22.72°, the taller cup behind.
-              Boxed at its pre-rotation size (471.152 × 628.203). */}
+          {/* Cup 1 — the branded mango cup, the taller one behind, tilted
+              22.72° as in the artboard. object-contain so the cup keeps its
+              950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
             className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[-6%] max-lg:top-auto max-lg:bottom-0 max-lg:h-[46%] max-lg:w-[68%]"
@@ -136,18 +137,18 @@ export default function Hero() {
               className="relative size-full rotate-[8deg] lg:rotate-[22.72deg]"
             >
               <Image
-                src="/img/bowl-hero-a.png"
+                src="/img/panel/cup-1.png"
                 alt="Açaí Bowl mit Erdbeere, Banane und Granola"
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 34vw"
-                className="object-contain drop-shadow-[4px_10px_30px_rgba(0,0,0,0.45)] lg:object-fill"
+                className="object-contain drop-shadow-[4px_10px_30px_rgba(0,0,0,0.45)]"
               />
             </motion.div>
           </motion.div>
 
-          {/* Cup 2 — Figma IMG_3324, rotate −15.17°, the shorter cup in front.
-              Pre-rotation box 296.154 × 422.363. */}
+          {/* Cup 2 — the branded açaí cup, the shorter one in front, tilted
+              −15.17°. lg only; on phones just the single cup 1 reads. */}
           <motion.div
             style={{ y: bowlY, translateZ: 150, transformStyle: 'preserve-3d' }}
             className="absolute left-[55.17%] top-[24.55%] hidden h-[47.03%] w-[20.57%] lg:block"
@@ -159,12 +160,12 @@ export default function Hero() {
               className="relative size-full"
             >
               <Image
-                src="/img/bowl-hero-b.png"
+                src="/img/panel/cup-2.png"
                 alt=""
                 fill
                 priority
                 sizes="22vw"
-                className="object-fill drop-shadow-[26px_30px_34px_rgba(0,0,0,0.45)]"
+                className="object-contain drop-shadow-[26px_30px_34px_rgba(0,0,0,0.45)]"
               />
             </motion.div>
           </motion.div>
