@@ -92,95 +92,101 @@ function BowlCard({
       }}
       viewOptions={{ once: true, amount: 0.3 }}
     >
-      <Tilt3D max={8} scale={1.02} className="aspect-[424/539] w-full">
-      <motion.a
-        href="#menu"
-        initial="rest"
-        whileHover="hover"
-        whileFocus="hover"
-        style={{ transformStyle: 'preserve-3d' }}
-        className="group relative block size-full overflow-hidden rounded-3xl bg-white outline-none focus-visible:ring-4 focus-visible:ring-plum/40"
-      >
-        {/* Bowl artwork — Figma: rotate 2.6°, centred at 50% / 50% − 73.58 */}
-        <motion.div
-          variants={{
-            rest: { scale: 1, y: 0, z: 0 },
-            hover: { scale: 1.06, y: -10, z: 55 },
-          }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      <Tilt3D max={7} scale={1.02} className="aspect-[424/540] w-full">
+        {/* Figma "Frame 44" card: the cup photo fills the card on its own
+            coloured backdrop, a bottom fade carries the white copy — rating
+            top-right, name + price bottom-left, CTA bottom-right. */}
+        <motion.a
+          href="#menu"
+          initial="rest"
+          whileHover="hover"
+          whileFocus="hover"
           style={{ transformStyle: 'preserve-3d' }}
-          className="pointer-events-none absolute left-1/2 top-[38%] h-[82%] w-[86%] -translate-x-1/2 -translate-y-1/2"
+          className="group relative block size-full overflow-hidden rounded-3xl border-[1.5px] border-white/60 outline-none focus-visible:ring-4 focus-visible:ring-white/50"
         >
-          {/* object-contain, not object-fill: the branded cups have a fixed
-              950:1450 aspect and must not be stretched to the card box. */}
-          <Image
-            src={bowl.image}
-            alt={bowl.name}
-            fill
-            sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
-            className="rotate-[2.6deg] object-contain drop-shadow-[6px_14px_22px_rgba(0,0,0,0.16)]"
+          <motion.div
+            variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={bowl.image}
+              alt={bowl.name}
+              fill
+              sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Bottom fade to the card's backdrop colour, for legible copy */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-[52%]"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, transparent, ${bowl.fade} 78%)`,
+            }}
           />
-        </motion.div>
 
-        {/* Rating */}
-        <div className="absolute inset-x-6 top-6 flex items-center justify-end gap-1.5">
-          <span className="font-menu text-xl leading-6 tracking-[-0.5px] text-plum">
-            {bowl.rating}
-          </span>
-          <Image
-            src="/svg/card-star.svg"
-            alt=""
-            width={20}
-            height={20}
-            className="size-5"
-          />
-        </div>
-
-        {/* Title */}
-        <h3 className="font-menu absolute left-6 top-[80.9%] text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1] tracking-[-1px] text-plum">
-          {bowl.name}
-        </h3>
-
-        {/* Price + secondary CTA */}
-        <div className="absolute inset-x-6 bottom-[4.4%] flex items-end justify-between">
-          <span className="font-menu text-[26px] leading-[31.2px] tracking-[-0.5px] text-plum">
-            {bowl.price}
-          </span>
-
-          <span className="flex items-center gap-1.5">
-            <span className="flex h-6 flex-col overflow-hidden">
-              <motion.span
-                className="flex flex-col"
-                variants={{ rest: { y: 0 }, hover: { y: -24 } }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <span className="font-menu block whitespace-nowrap text-xl leading-6 tracking-[-0.5px] text-mauve">
-                  Diese Bowl holen
-                </span>
-                <span
-                  aria-hidden
-                  className="font-menu block whitespace-nowrap text-xl leading-6 tracking-[-0.5px] text-mauve"
-                >
-                  Diese Bowl holen
-                </span>
-              </motion.span>
+          {/* Rating — top right */}
+          <div className="absolute right-6 top-6 flex items-center gap-1.5">
+            <span className="font-menu text-xl leading-none tracking-[-0.5px] text-white">
+              {bowl.rating}
             </span>
-            <motion.span
-              variants={{ rest: { x: 0 }, hover: { x: 5 } }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="block"
-            >
-              <Image
-                src="/svg/card-arrow.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="size-4"
+            <svg viewBox="0 0 20 20" className="size-5" aria-hidden>
+              <path
+                d="M10 1.5l2.47 5.2 5.53.72-4.05 3.9 1.03 5.68L10 14.3l-5 2.7 1.03-5.68L2 7.42l5.53-.72L10 1.5z"
+                fill="#fff"
               />
-            </motion.span>
-          </span>
-        </div>
-      </motion.a>
+            </svg>
+          </div>
+
+          {/* Copy — bottom */}
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6">
+            <h3 className="font-display text-[clamp(1.35rem,2.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-white">
+              {bowl.name}
+            </h3>
+            <div className="flex items-end justify-between">
+              <span className="font-menu text-[26px] leading-none tracking-[-0.5px] text-white">
+                {bowl.price}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="flex h-6 flex-col overflow-hidden">
+                  <motion.span
+                    className="flex flex-col"
+                    variants={{ rest: { y: 0 }, hover: { y: -24 } }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <span className="font-menu block whitespace-nowrap text-lg uppercase leading-6 tracking-[-0.5px] text-white">
+                      Diese Bowl holen
+                    </span>
+                    <span
+                      aria-hidden
+                      className="font-menu block whitespace-nowrap text-lg uppercase leading-6 tracking-[-0.5px] text-white"
+                    >
+                      Diese Bowl holen
+                    </span>
+                  </motion.span>
+                </span>
+                <motion.svg
+                  viewBox="0 0 16 16"
+                  className="size-4"
+                  aria-hidden
+                  variants={{ rest: { x: 0 }, hover: { x: 5 } }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <path
+                    d="M2 8h11M9 4l4 4-4 4"
+                    fill="none"
+                    stroke="#fff"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </motion.svg>
+              </span>
+            </div>
+          </div>
+        </motion.a>
       </Tilt3D>
     </InView>
   );

@@ -72,17 +72,15 @@ export const SLIDES = [
 ]
 
 /** Signature bowls grid — 3 × 2 (Figma: Frame 44) */
-/* The grid shares the branded Buenoacai cups with the product panels, so a
- * flavour shows the same cup everywhere. The five panel flavours map 1:1 to
- * their panel cups; Kokos-Traum has no panel, so it reuses the açaí cup
- * (cup-2) — placed on card 6, which is not adjacent to card 1's cup-2. */
+/* Home "Signature Bowls" (Figma "Frame 44") — five full-bleed studio cards,
+ * each a cup photographed on its own coloured backdrop with a bottom fade for
+ * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/panel/cup-2.png' },
-  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/panel/cup-1.png' },
-  { name: 'Beeren-Traum Bowl', price: '$5.50', rating: '4.6', image: '/img/panel/cup-3.png' },
-  { name: 'Kakao-Crunch Bowl', price: '$6.00', rating: '4.9', image: '/img/panel/cup-4.png' },
-  { name: 'Erdnussbutter Bowl', price: '$7.00', rating: '4.8', image: '/img/panel/cup-5.png' },
-  { name: 'Kokos-Traum Bowl', price: '$7.25', rating: '4.8', image: '/img/panel/cup-2.png' },
+  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/signature/acai.jpg',   fade: '#864f33' },
+  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/signature/mango.jpg',  fade: '#fcba3f' },
+  { name: 'Beeren-Traum Bowl',    price: '$5.50', rating: '4.6', image: '/img/signature/green.jpg',  fade: '#abb264' },
+  { name: 'Kakao-Crunch Bowl',    price: '$6.00', rating: '4.9', image: '/img/signature/cream.jpg',  fade: '#d2c3b0' },
+  { name: 'Erdnussbutter Bowl',   price: '$7.00', rating: '4.8', image: '/img/signature/peanut.jpg', fade: '#895331' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy).
@@ -322,10 +320,10 @@ export const FRANCHISE_STEPS = [
  *  the height and centred, which makes the four cards identical by
  *  construction rather than by per-card nudging. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Klassische Açaí Bowl', image: '/img/fr/bowl-1.png', bg: 'bg-plum' },
-  { name: 'Tropische Mango Bowl', image: '/img/fr/bowl-2.png', bg: 'bg-gold' },
-  { name: 'Beeren-Traum Bowl', image: '/img/fr/bowl-3.png', bg: 'bg-mauve' },
-  { name: 'Kakao-Crunch Bowl', image: '/img/fr/bowl-4.png', bg: 'bg-plum' },
+  { name: 'Klassische Açaí Bowl', image: '/img/panel/cup-1.png', color: '#e6a002' },
+  { name: 'Tropische Mango Bowl', image: '/img/panel/cup-2.png', color: '#8c5737' },
+  { name: 'Beeren-Traum Bowl',    image: '/img/panel/cup-3.png', color: '#99a75a' },
+  { name: 'Kakao-Crunch Bowl',    image: '/img/panel/cup-4.png', color: '#d0c1b0' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {

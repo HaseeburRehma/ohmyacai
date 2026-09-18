@@ -44,15 +44,15 @@ export default function StoreSection() {
           className="w-full lg:w-[51.14%] lg:shrink-0"
         >
           <div className="relative aspect-[675/520] w-full overflow-hidden rounded-3xl">
-            {/* Figma crops to the lower 58% of the source (image scaled to
-                173.31% height, offset −73.32%) — object-bottom reproduces it. */}
+            {/* The updated Figma storefront is a full-height portrait; the
+                landscape card shows its centre band (menu boards + counter). */}
             <motion.div style={{ y: imgY }} className="absolute inset-[-8%]">
               <Image
                 src="/img/store.jpg"
                 alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
                 sizes="(max-width:1024px) 92vw, 675px"
-                className="object-cover object-bottom"
+                className="object-cover object-center"
               />
             </motion.div>
           </div>

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import Tilt3D from '@/components/ui/Tilt3D';
 import { FRANCHISE_BOWLS, FRANCHISE_BOWLS_HEAD } from '@/data/site';
-import { cn } from '@/lib/utils';
 
 /**
  * Figma: "Meet Our Bowls" (4128:160) — a centred two-tone heading over four
@@ -68,69 +67,41 @@ export default function FranchiseBowls() {
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <Tilt3D max={8} scale={1.03} className="aspect-[315/340] w-full">
+                {/* Figma "Meet Our Bowls" (4128:160): flat colour card + berry
+                    texture, the branded cup bleeding up from the bottom with
+                    its toppings showing, and the name top-left. */}
                 <motion.div
                   initial="rest"
                   whileHover="hover"
-                  /* `--berry-*` tune the vectors for a card: stronger than the
-                     3% the big plum bands use, and with the fade switched off,
-                     because a 315 x 340 card is too small for a gradient to
-                     read and at 3% the texture vanishes on the gold one. */
                   style={
                     {
-                      transformStyle: 'preserve-3d',
+                      backgroundColor: bowl.color,
                       '--berry-opacity': 0.1,
                       '--berry-fade': 1,
                     } as React.CSSProperties
                   }
-                  className={cn(
-                    '@container berry-vectors relative flex size-full flex-col overflow-hidden rounded-3xl',
-                    bowl.bg
-                  )}
+                  className="@container berry-vectors relative size-full overflow-hidden rounded-3xl"
                 >
-                  {/* Cup and name are stacked rather than absolutely placed.
-                      Absolute placement meant the name's second line ran into
-                      the cup as soon as a card got narrow — at `lg` the cards
-                      are only ~211px wide and every German name wraps. In a
-                      column the cup simply takes what the name leaves. */}
+                  <h3 className="font-display absolute left-[6.35%] right-[6.35%] top-[6.35%] z-10 text-[clamp(0.9rem,7.62cqw,1.5rem)] uppercase leading-[1.1] tracking-[-0.5px] text-white">
+                    {bowl.name}
+                  </h3>
+
                   <motion.div
                     variants={{
-                      rest: { y: 0, z: 0, scale: 1 },
-                      hover: { y: -10, z: 60, scale: 1.05 },
+                      rest: { y: 0, scale: 1 },
+                      hover: { y: -10, scale: 1.05 },
                     }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ transformStyle: 'preserve-3d' }}
-                    className="pointer-events-none relative min-h-0 flex-1"
+                    className="pointer-events-none absolute left-1/2 top-[24%] aspect-[950/1450] w-[92%] -translate-x-1/2"
                   >
                     <Image
                       src={bowl.image}
                       alt={bowl.name}
                       fill
                       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
-                      className="object-contain object-bottom"
+                      className="object-contain object-top drop-shadow-[6px_14px_22px_rgba(0,0,0,0.28)]"
                     />
                   </motion.div>
-
-                  {/* Sized against the card, not the viewport, so the name
-                      keeps its proportion in a 211px card and a 340px one
-                      alike — Figma's 24px in a 315 card is 7.62cqw. Measured
-                      against the four names, 8.45cqw is the largest size that
-                      still breaks every one of them across two lines, so
-                      7.62 has room to spare.
-
-                      The two-line floor sits on the span, not the h3: with
-                      border-box sizing the h3's own padding already exceeds
-                      2.5em, so a min-height there never binds and a name that
-                      fits on one line — "Beeren-Traum Bowl" does at 900px —
-                      left its card a whole line shorter, and therefore its cup
-                      a whole line smaller, than its neighbour's. */}
-                  <h3
-                    style={{ transform: 'translateZ(30px)' }}
-                    className="font-display flex shrink-0 items-end px-[6.35%] pb-[8%] pt-[4%] text-[clamp(0.85rem,7.62cqw,1.5rem)] uppercase leading-[1.25] tracking-[-0.5px] text-white"
-                  >
-                    <span className="line-clamp-2 flex min-h-[2.5em] w-full items-end">
-                      {bowl.name}
-                    </span>
-                  </h3>
                 </motion.div>
               </Tilt3D>
             </InView>
