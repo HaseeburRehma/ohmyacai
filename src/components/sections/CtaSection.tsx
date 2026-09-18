@@ -32,8 +32,10 @@ export default function CtaSection() {
       className="relative w-full overflow-hidden bg-white py-24 lg:h-[710px] lg:py-0"
     >
       {/* Bowls bleeding off the edges */}
-      {/* Figma: IMG_3316 at rotate(−8.35°) bleeding off the right edge, and a
-          mirrored copy off the left.
+      {/* Two branded cups bleed off the edges — cup-2 right, cup-3 left.
+          They are NOT a mirrored pair: mirroring flips the "OH MY! Açaí"
+          label backwards, so each side gets its own upright cup, tilted in
+          opposite directions for balance.
 
           The box is sized by HEIGHT with the art's own aspect ratio, not by a
           width percentage: this section is a fixed 710px tall but full width,
@@ -56,29 +58,28 @@ export default function CtaSection() {
           Neither cup is ever sliced. */}
       <motion.div
         style={{ y: rightY }}
-        className="pointer-events-none absolute -right-10 top-[-2.2%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
+        className="pointer-events-none absolute -right-14 top-[-6%] hidden aspect-[950/1450] h-[86%] lg:block"
         aria-hidden
       >
         <Image
-          src="/img/bowl-hero-a.png"
+          src="/img/panel/cup-2.png"
           alt=""
           fill
           sizes="30vw"
-          className="rotate-[-8.35deg] object-contain"
+          className="rotate-[8deg] object-contain drop-shadow-[16px_22px_30px_rgba(0,0,0,0.22)]"
         />
       </motion.div>
       <motion.div
         style={{ y: leftY }}
-        className="pointer-events-none absolute -left-10 top-[29.6%] hidden aspect-[415.23/553.64] h-[77.98%] lg:block"
+        className="pointer-events-none absolute -left-14 top-[24%] hidden aspect-[950/1450] h-[86%] lg:block"
         aria-hidden
       >
         <Image
-          src="/img/bowl-hero-a.png"
+          src="/img/panel/cup-3.png"
           alt=""
           fill
           sizes="30vw"
-          className="object-contain"
-          style={{ transform: 'scaleX(-1) rotate(-8.35deg)' }}
+          className="rotate-[-8deg] object-contain drop-shadow-[-16px_22px_30px_rgba(0,0,0,0.22)]"
         />
       </motion.div>
 

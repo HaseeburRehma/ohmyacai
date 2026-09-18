@@ -127,7 +127,7 @@ export default function VideoFeature() {
         >
           <motion.div
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-            className="berry-vectors relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-plum px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
+            className="berry-vectors relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-[#8c5737] px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
           >
             {/* Heading — Figma: centred, cap height at y 125 */}
             <motion.h2
@@ -163,11 +163,11 @@ export default function VideoFeature() {
                 className="relative size-full"
               >
                 <Image
-                  src="/img/bowl-hero-b.png"
-                  alt="Açaí Bowl"
+                  src="/img/panel/cup-4.png"
+                  alt="Oh My Açaí Bowl"
                   fill
                   sizes="(max-width: 1024px) 60vw, 34vw"
-                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:object-fill lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
+                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
                 />
               </div>
             </div>
