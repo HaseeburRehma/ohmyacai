@@ -309,11 +309,17 @@ export const FRANCHISE_STEPS = [
   },
 ];
 
+/** The cards use `/img/fr/` rather than the shared `/img/bowl-*.png`: the
+ *  originals are all 378 × 504, but the cup inside each sits at a different
+ *  height and size, so one CSS box rendered four different cups. These are the
+ *  same photos re-canvassed to Figma's 236 × 314 bowl box with the cup filling
+ *  the height and centred, which makes the four cards identical by
+ *  construction rather than by per-card nudging. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Klassische Açaí Bowl', image: '/img/bowl-1.png', bg: 'bg-plum' },
-  { name: 'Tropische Mango Bowl', image: '/img/bowl-2.png', bg: 'bg-gold' },
-  { name: 'Beeren-Traum Bowl', image: '/img/bowl-3.png', bg: 'bg-mauve' },
-  { name: 'Kakao-Crunch Bowl', image: '/img/bowl-4.png', bg: 'bg-plum' },
+  { name: 'Klassische Açaí Bowl', image: '/img/fr/bowl-1.png', bg: 'bg-plum' },
+  { name: 'Tropische Mango Bowl', image: '/img/fr/bowl-2.png', bg: 'bg-gold' },
+  { name: 'Beeren-Traum Bowl', image: '/img/fr/bowl-3.png', bg: 'bg-mauve' },
+  { name: 'Kakao-Crunch Bowl', image: '/img/fr/bowl-4.png', bg: 'bg-plum' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {

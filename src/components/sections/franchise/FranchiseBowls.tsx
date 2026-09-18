@@ -83,34 +83,53 @@ export default function FranchiseBowls() {
                     } as React.CSSProperties
                   }
                   className={cn(
-                    'berry-vectors relative size-full overflow-hidden rounded-3xl',
+                    '@container berry-vectors relative flex size-full flex-col overflow-hidden rounded-3xl',
                     bowl.bg
                   )}
                 >
-                  {/* Bowl — Figma: 236 × 314, centred, top −40 */}
+                  {/* Cup and name are stacked rather than absolutely placed.
+                      Absolute placement meant the name's second line ran into
+                      the cup as soon as a card got narrow — at `lg` the cards
+                      are only ~211px wide and every German name wraps. In a
+                      column the cup simply takes what the name leaves. */}
                   <motion.div
                     variants={{
                       rest: { y: 0, z: 0, scale: 1 },
-                      hover: { y: -12, z: 60, scale: 1.05 },
+                      hover: { y: -10, z: 60, scale: 1.05 },
                     }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     style={{ transformStyle: 'preserve-3d' }}
-                    className="pointer-events-none absolute left-1/2 top-[-15%] h-[104%] w-[86%] -translate-x-1/2"
+                    className="pointer-events-none relative min-h-0 flex-1"
                   >
                     <Image
                       src={bowl.image}
                       alt={bowl.name}
                       fill
-                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 315px"
-                      className="object-contain"
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
+                      className="object-contain object-bottom"
                     />
                   </motion.div>
 
+                  {/* Sized against the card, not the viewport, so the name
+                      keeps its proportion in a 211px card and a 340px one
+                      alike — Figma's 24px in a 315 card is 7.62cqw. Measured
+                      against the four names, 8.45cqw is the largest size that
+                      still breaks every one of them across two lines, so
+                      7.62 has room to spare.
+
+                      The two-line floor sits on the span, not the h3: with
+                      border-box sizing the h3's own padding already exceeds
+                      2.5em, so a min-height there never binds and a name that
+                      fits on one line — "Beeren-Traum Bowl" does at 900px —
+                      left its card a whole line shorter, and therefore its cup
+                      a whole line smaller, than its neighbour's. */}
                   <h3
                     style={{ transform: 'translateZ(30px)' }}
-                    className="font-display absolute inset-x-[6.35%] bottom-[8%] text-[clamp(1.1rem,2vw,1.5rem)] uppercase leading-[1.25] tracking-[-0.5px] text-white"
+                    className="font-display flex shrink-0 items-end px-[6.35%] pb-[8%] pt-[4%] text-[clamp(0.85rem,7.62cqw,1.5rem)] uppercase leading-[1.25] tracking-[-0.5px] text-white"
                   >
-                    {bowl.name}
+                    <span className="line-clamp-2 flex min-h-[2.5em] w-full items-end">
+                      {bowl.name}
+                    </span>
                   </h3>
                 </motion.div>
               </Tilt3D>
