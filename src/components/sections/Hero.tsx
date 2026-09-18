@@ -46,7 +46,6 @@ type Fruit = {
 const FRUIT: Fruit[] = [
   { src: '/img/fruit-strawberry.png', alt: '', l: 13.13, t: -14.37, w: 25, h: 42.09, depth: 190, z: 120, spin: -14, delay: 0.1 },
   { src: '/img/fruit-blueberry-lg.png', alt: '', l: 1.46, t: 25.95, w: 8.06, h: 12.81, depth: 120, z: 80, spin: 18, delay: 0.24 },
-  { src: '/img/fruit-straw-slice-lg.png', alt: '', l: 85.35, t: 27.73, w: 14.31, h: 18.93, depth: 150, z: 100, spin: 12, delay: 0.18 },
   { src: '/img/fruit-straw-slice-sm.png', alt: '', l: 50, t: 21.05, w: 6.94, h: 9.8, depth: 90, z: 40, spin: -20, delay: 0.3 },
   { src: '/img/fruit-mango.png', alt: '', l: 50, t: 53.79, w: 13.89, h: 19.93, depth: 210, z: 140, spin: 10, delay: 0.36 },
   { src: '/img/fruit-blackberry.png', alt: '', l: 83.82, t: 57.68, w: 6.94, h: 12.03, depth: 130, z: 90, spin: -16, delay: 0.42 },
