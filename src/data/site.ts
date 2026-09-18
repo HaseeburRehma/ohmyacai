@@ -21,11 +21,13 @@ export const MARQUEE_WORDS = [
 ];
 
 /** Horizontal product carousel — 5 full-bleed slides (Figma: Products).
- *  `bg` is the panel artwork exported from Figma at 720 × 898: the flat colour
- *  with the berry texture already fading in from the halfway mark. Cropped to
- *  671px (11 × the texture's 61px period) so it repeats horizontally without a
- *  seam on panels wider than the artboard. `color` backs it so no sub-pixel
- *  gap can show through. */
+ *  Backgrounds and cups both come from the Figma "Products" frame (4183:1514):
+ *  each panel is a flat colour with the gold berry-vector texture composited
+ *  into the bottom half, cropped to 671px (11 × the texture's 61px period) so
+ *  it repeats horizontally without a seam on panels wider than the 720px
+ *  artboard. `color` backs the image so no sub-pixel gap can show through.
+ *  `image` is the panel's own branded cup photo (Buenoacai 1–5), trimmed and
+ *  re-canvassed to a shared 950 × 1450 box so all five sit identically. */
 export const SLIDES = [
   {
     eyebrow: 'Erdbeere, Mango & Beeren',
@@ -33,41 +35,41 @@ export const SLIDES = [
     body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
-    image: '/img/bowl-slide.png',
+    image: '/img/panel/cup-1.png',
   },
   {
     eyebrow: 'Açaí, Banane & Granola',
     title: 'Klassische Açaí Bowl',
     body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
-    color: '#4d294e',
+    color: '#8c5737',
     bg: '/img/panel/panel-2.png',
-    image: '/img/bowl-slide-2.png',
+    image: '/img/panel/cup-2.png',
   },
   {
     eyebrow: 'Heidelbeere, Brombeere & Chia',
     title: 'Beeren-Traum Bowl',
     body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
-    color: '#008000',
+    color: '#99a75a',
     bg: '/img/panel/panel-3.png',
-    image: '/img/bowl-slide.png',
+    image: '/img/panel/cup-3.png',
   },
   {
     eyebrow: 'Kakao, Mandel & Kokos',
     title: 'Kakao-Crunch Bowl',
     body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
-    color: '#fec5da',
+    color: '#8c5737',
     bg: '/img/panel/panel-4.png',
-    image: '/img/bowl-slide-2.png',
+    image: '/img/panel/cup-4.png',
   },
   {
     eyebrow: 'Erdnussbutter, Banane & Hafer',
     title: 'Erdnussbutter Bowl',
     body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
-    color: '#ed0018',
+    color: '#d0c1b0',
     bg: '/img/panel/panel-5.png',
-    image: '/img/bowl-slide.png',
+    image: '/img/panel/cup-5.png',
   },
-];
+]
 
 /** Signature bowls grid — 3 × 2 (Figma: Frame 44) */
 export const BOWLS = [

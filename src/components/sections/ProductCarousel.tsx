@@ -117,15 +117,6 @@ export default function ProductCarousel() {
 
 /* ------------------------------------------------------------------ */
 
-/** sRGB relative luminance of a #rrggbb colour (WCAG). */
-function luminance(hex: string) {
-  const ch = [1, 3, 5].map((i) => {
-    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
-    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-  });
-  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
-}
-
 function Slide({
   slide,
   index,
@@ -133,13 +124,6 @@ function Slide({
   slide: (typeof SLIDES)[number];
   index: number;
 }) {
-  /* The artboard only draws the gold and plum panels, both with white copy.
-     Three of the five supplied artworks are much lighter — white on the pale
-     pink (#fec5da) is a 1.3:1 contrast ratio — so the copy flips to ink on any
-     light panel. The threshold sits above gold's 0.42 so the two Figma panels
-     keep their white type exactly as drawn. */
-  const onLight = luminance(slide.color) > 0.55;
-
   return (
     <article
       /* A size container, so everything inside can be keyed to the panel's
@@ -166,13 +150,15 @@ function Slide({
         transformStyle: 'preserve-3d',
       }}
     >
-      {/* Bowl — Figma: pre-rotation box 623.5 × 831.3, centred at 50% / 53.36%.
-          Driven by HEIGHT + the art's own aspect: a half-viewport panel is
-          wider than the 720:898 artboard one, so a width percentage would
-          stretch the cup as the screen widens. */}
+      {/* Cup — Figma 4183: the branded Buenoacai photo, box centred on the
+          panel with its vertical midpoint at 58.96% (Figma 50% + 80.5px of
+          898), height 94% of the panel, tilted -7.11deg. Sized by HEIGHT with
+          the cup's own 950:1450 aspect so it never stretches as the panel
+          widens; capped at 94% width so it cannot spill on the narrowest
+          phones. */}
       <div
         data-slide-art
-        className="pointer-events-none absolute left-1/2 top-[53.36%] h-[92.58%] w-[86.6%] -translate-x-1/2 -translate-y-1/2 lg:aspect-[623.5/831.3] lg:w-auto"
+        className="pointer-events-none absolute left-1/2 top-[58.96%] h-[94%] w-auto max-w-[94%] -translate-x-1/2 -translate-y-1/2 aspect-[950/1450]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
@@ -180,12 +166,12 @@ function Slide({
           alt={slide.title}
           fill
           sizes="(max-width:1024px) 86vw, 46vw"
-          className="rotate-[-3.11deg] object-contain transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
+          className="rotate-[-7.11deg] object-contain drop-shadow-[10px_18px_28px_rgba(0,0,0,0.28)] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
         />
       </div>
 
       {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title */}
-      <div className={`absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] ${onLight ? 'text-ink' : 'text-white'}`}>
+      <div className="absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] text-white">
         <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
@@ -226,7 +212,7 @@ function Slide({
       {/* index marker */}
       <span
         aria-hidden
-        className={`font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] ${onLight ? 'text-ink/60' : 'text-white/60'}`}
+        className="font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] text-white/60"
       >
         0{index + 1} / 0{SLIDES.length}
       </span>
