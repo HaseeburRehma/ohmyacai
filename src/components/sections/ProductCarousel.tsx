@@ -117,6 +117,15 @@ export default function ProductCarousel() {
 
 /* ------------------------------------------------------------------ */
 
+/** sRGB relative luminance of a #rrggbb colour (WCAG). */
+function luminance(hex: string) {
+  const ch = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+}
+
 function Slide({
   slide,
   index,
@@ -124,6 +133,13 @@ function Slide({
   slide: (typeof SLIDES)[number];
   index: number;
 }) {
+  /* The 4183 artboard draws white copy on every panel, but its beige panel
+     (#d0c1b0) leaves that at ~1.5:1 — unreadable. Only that panel is light
+     enough to flip: gold is 0.42, olive 0.35, brown 0.11, beige 0.55, so the
+     0.5 threshold catches beige alone and leaves the four dark panels white,
+     exactly as Figma draws them. */
+  const onLight = luminance(slide.color) > 0.5;
+
   return (
     <article
       /* A size container, so everything inside can be keyed to the panel's
@@ -171,7 +187,7 @@ function Slide({
       </div>
 
       {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title */}
-      <div className="absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] text-white">
+      <div className={`absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] ${onLight ? 'text-ink' : 'text-white'}`}>
         <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
@@ -212,7 +228,7 @@ function Slide({
       {/* index marker */}
       <span
         aria-hidden
-        className="font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] text-white/60"
+        className={`font-menu absolute bottom-[max(1.1rem,2.7cqh)] right-[max(1.1rem,2.9cqh)] z-10 text-[clamp(0.75rem,2cqh,1.4rem)] ${onLight ? 'text-ink/60' : 'text-white/60'}`}
       >
         0{index + 1} / 0{SLIDES.length}
       </span>
