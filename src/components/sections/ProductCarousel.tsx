@@ -166,15 +166,16 @@ function Slide({
         transformStyle: 'preserve-3d',
       }}
     >
-      {/* Cup — Figma 4183: the branded Buenoacai photo, box centred on the
-          panel with its vertical midpoint at 58.96% (Figma 50% + 80.5px of
-          898), height 94% of the panel, tilted -7.11deg. Sized by HEIGHT with
-          the cup's own 950:1450 aspect so it never stretches as the panel
-          widens; capped at 94% width so it cannot spill on the narrowest
-          phones. */}
+      {/* Cup — the branded Buenoacai photo. It sits in a region between the
+          title and the CTA and is fit with object-contain, so the whole cup is
+          always visible whatever the panel's aspect. The panel is
+          `w-1/2 x 100svh`, so its ratio swings from ~0.8 (Figma) on a tall
+          window to ~1 on a short wide one; keying the cup to height alone made
+          it tower and clip 7% off the base on the wide case. Anchored to the
+          region's bottom so the base stays put, tilted -7.11deg as in Figma. */}
       <div
         data-slide-art
-        className="pointer-events-none absolute left-1/2 top-[58.96%] h-[94%] w-auto max-w-[94%] -translate-x-1/2 -translate-y-1/2 aspect-[950/1450]"
+        className="pointer-events-none absolute inset-x-[7%] bottom-[5%] top-[14%]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
@@ -182,7 +183,7 @@ function Slide({
           alt={slide.title}
           fill
           sizes="(max-width:1024px) 86vw, 46vw"
-          className="rotate-[-7.11deg] object-contain drop-shadow-[10px_18px_28px_rgba(0,0,0,0.28)] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
+          className="rotate-[-7.11deg] object-contain object-bottom drop-shadow-[10px_18px_28px_rgba(0,0,0,0.28)] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
         />
       </div>
 
