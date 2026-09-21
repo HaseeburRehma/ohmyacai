@@ -17,13 +17,10 @@ export default function CtaSection() {
     offset: ['start end', 'end start'],
   });
 
-  /* ±22px, not ±90. The artboard has no parallax at all, and the section is
-     a fixed 710px box that clips: the cups are placed so the drift stays
-     inside it at every scroll position (see the placement note below). At ±90
-     the left cup travelled 131px through the bottom edge and the right cup
-     103px through the top, which read as the art being sliced flat. */
-  const rightY = useTransform(scrollYProgress, [0, 1], [22, -22]);
-  const leftY = useTransform(scrollYProgress, [0, 1], [-22, 22]);
+  /* Gentle ±10px drift only — the cups are bottom-anchored with an 8px gap,
+     so this never pushes them out of the clipped 710px frame. */
+  const rightY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  const leftY = useTransform(scrollYProgress, [0, 1], [-10, 10]);
 
   return (
     <section
@@ -31,34 +28,19 @@ export default function CtaSection() {
       data-cta
       className="relative w-full overflow-hidden bg-white py-24 lg:h-[710px] lg:py-0"
     >
-      {/* Bowls bleeding off the edges */}
-      {/* Two branded cups bleed off the edges — cup-2 right, cup-3 left.
-          They are NOT a mirrored pair: mirroring flips the "OH MY! Açaí"
-          label backwards, so each side gets its own upright cup, tilted in
-          opposite directions for balance.
+      {/* Two branded cups frame the copy — cup-2 right, cup-3 left. They are
+          NOT mirrored (that would flip the "OH MY! Açaí" label): each side is
+          its own cup, tilted outward.
 
-          The box is sized by HEIGHT with the art's own aspect ratio, not by a
-          width percentage: this section is a fixed 710px tall but full width,
-          so `w-[28.84%]` was 415px at 1440 and 554px at 1920 against the same
-          554px height — i.e. the cups stretched wider the wider the screen.
-
-          The bleed is a fixed 40px rather than the artboard's −120/1440, which
-          as a percentage kept slicing more off the cups the wider the screen
-          got. Deliberate deviation: both cups now read whole at every width.
-
-          Vertical placement is also a deliberate deviation. The artboard puts
-          the left cup's box centre at y 555 and the right cup's at y 222; the
-          cup art sits inset inside its 415.23 × 553.64 box (x 19.58–82.11%,
-          y 10.66–82.54% of the file), and once rotated −8.35° its visible
-          bounds are 313.7 × 431.3 around that centre — reaching 234.85 above
-          it and 196.49 below. Figma's own left cup therefore runs 41px past
-          the bottom of the 710px frame. Here both centres are pulled to where
-          the art clears the frame with the parallax at full travel: 487 for
-          the left (art bottom 705 of 710) and 261 for the right (art top 4).
-          Neither cup is ever sliced. */}
+          Fully on-screen, never cropped by the viewport edge: each sits in a
+          bottom-anchored column at the section edge and is fit with
+          object-contain, so the whole cup shows at any width. On narrower
+          screens the inner part simply falls behind the centre text blocks
+          (which are opaque), so the cups read as framing the copy rather than
+          being sliced. */}
       <motion.div
         style={{ y: rightY }}
-        className="pointer-events-none absolute -right-14 top-[-6%] hidden aspect-[950/1450] h-[86%] lg:block"
+        className="pointer-events-none absolute bottom-[8px] right-0 hidden h-[74%] w-[30%] lg:block xl:w-[26%]"
         aria-hidden
       >
         <Image
@@ -66,12 +48,12 @@ export default function CtaSection() {
           alt=""
           fill
           sizes="30vw"
-          className="rotate-[8deg] object-contain drop-shadow-[16px_22px_30px_rgba(0,0,0,0.22)]"
+          className="rotate-[6deg] object-contain object-right-bottom drop-shadow-[16px_22px_30px_rgba(0,0,0,0.22)]"
         />
       </motion.div>
       <motion.div
         style={{ y: leftY }}
-        className="pointer-events-none absolute -left-14 top-[24%] hidden aspect-[950/1450] h-[86%] lg:block"
+        className="pointer-events-none absolute bottom-[8px] left-0 hidden h-[74%] w-[30%] lg:block xl:w-[26%]"
         aria-hidden
       >
         <Image
@@ -79,7 +61,7 @@ export default function CtaSection() {
           alt=""
           fill
           sizes="30vw"
-          className="rotate-[-8deg] object-contain drop-shadow-[-16px_22px_30px_rgba(0,0,0,0.22)]"
+          className="rotate-[-6deg] object-contain object-left-bottom drop-shadow-[-16px_22px_30px_rgba(0,0,0,0.22)]"
         />
       </motion.div>
 
