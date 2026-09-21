@@ -103,28 +103,35 @@ export const BOWLS = [
   { name: 'Erdnussbutter Bowl',   price: '€12,90', rating: '4.8', image: '/img/signature/peanut.jpg', fade: '#895331' },
 ];
 
-/** Feature callouts floating over the video panel (Figma: placeholder copy).
+/** Feature callouts floating over the video panel (Figma: placeholder copy
+ *  was replaced with real Oh My Açaí value props).
  *  `pos` is lg-only: below that the cards sit in a grid, where a bare
  *  left/top would shove each one out of its grid cell. */
+export const VIDEO_HEADING = {
+  before: 'Mehr als eine ',
+  accent: 'Bowl',
+  after: ' — ein Ritual',
+};
+
 export const VIDEO_CARDS = [
   {
-    title: 'Lorem ipsum dolor sit amet',
-    body: 'Lorem ipsum dolor sit amet consectetur. Iaculis massa sem nullam interdum quis vitae a. Sed orci.',
+    title: 'Handverlesene Beeren',
+    body: 'Wir wählen unsere Açaí-Beeren aus Partnerkooperativen im Amazonasbecken — jede Bowl schmeckt nach ihrem Ursprung.',
     pos: 'lg:left-[8.6%] lg:top-[24.5%]',
   },
   {
-    title: 'Lorem ipsum dolor sit amet',
-    body: 'Lorem ipsum dolor sit amet consectetur. Sed rhoncus ac justo mattis eu ac morbi at velit vel.',
+    title: 'Frisch aus der Region',
+    body: 'Obst und Toppings kaufen wir jede Woche frisch bei Erzeugern in Düsseldorf und Umgebung ein.',
     pos: 'lg:left-[62.8%] lg:top-[32.8%]',
   },
   {
-    title: 'Lorem ipsum dolor sit amet',
-    body: 'Lorem ipsum dolor sit amet consectetur. Habitant velit odio at eget nam risus et rhoncus.',
+    title: 'Vegan von Haus aus',
+    body: 'Fast unsere gesamte Karte ist milchfrei und vegan — ohne Kompromisse beim Geschmack oder der Cremigkeit.',
     pos: 'lg:left-[10.6%] lg:top-[73%]',
   },
   {
-    title: 'Lorem ipsum dolor sit amet',
-    body: 'Lorem ipsum dolor sit amet consectetur. Enim sed mauris leo egestas pulvinar etiam aliquam.',
+    title: 'Ein Ort zum Bleiben',
+    body: 'Weiche Sitzecken, ruhige Musik und kostenloses WLAN — gemacht für eine Pause, nicht für die Hektik.',
     pos: 'lg:left-[65.4%] lg:top-[64.6%]',
   },
 ];
@@ -359,6 +366,10 @@ export const FRANCHISE_PARTNER = {
   titleAccent: 'Partner',
   body: 'Unsere Partner kommen aus der Gastronomie, dem Einzelhandel und aus ganz anderen Branchen. Hör, wie sie einen Standort gefunden, in sechs Wochen eröffnet und sich eine Stammkundschaft aufgebaut haben — in ihren eigenen Worten.',
   poster: '/img/store.jpg',
+  /** Ambient partner-story film. When you have a partner interview, replace
+   *  this URL with the mp4 (or set it to '' to show only the poster). */
+  video:
+    '/video/partner-preview.mp4',
 };
 
 /** Die Franchise-Seite nutzt dieselben fünf Fragen, mit Fragezeichen. */

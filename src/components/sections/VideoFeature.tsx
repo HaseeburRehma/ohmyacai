@@ -6,7 +6,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { VIDEO_CARDS } from '@/data/site';
+import { VIDEO_CARDS, VIDEO_HEADING } from '@/data/site';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -138,7 +138,9 @@ export default function VideoFeature() {
               style={{ translateZ: 40, transformStyle: 'preserve-3d' }}
               className="font-display relative text-center text-[clamp(1.5rem,7vw,2.25rem)] uppercase leading-[1.2] text-white lg:absolute lg:left-1/2 lg:top-[6%] lg:w-[min(90%,811px)] lg:-translate-x-1/2 lg:text-[clamp(1.5rem,4.4vw,4rem)]"
             >
-              Lorem ipsum dolor sit amet
+              {VIDEO_HEADING.before}
+              <span className="text-gold">{VIDEO_HEADING.accent}</span>
+              {VIDEO_HEADING.after}
             </motion.h2>
 
             {/* Ground shadow ellipse (desktop composition only) */}
