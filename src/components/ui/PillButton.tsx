@@ -11,6 +11,8 @@ type Props = {
   /** overrides the label size; must stay em-based so the roll still lines up */
   labelClassName?: string;
   onClick?: () => void;
+  /** open in a new tab (for external links like the Uber Eats order page) */
+  newTab?: boolean;
 };
 
 const VARIANTS = {
@@ -36,6 +38,7 @@ export default function PillButton({
   className,
   labelClassName,
   onClick,
+  newTab,
 }: Props) {
   const label = cn(
     'font-display block whitespace-nowrap uppercase leading-[1.2] tracking-[-0.5px]',
@@ -46,6 +49,8 @@ export default function PillButton({
     <motion.a
       href={href}
       onClick={onClick}
+      target={newTab ? '_blank' : undefined}
+      rel={newTab ? 'noopener noreferrer' : undefined}
       initial="rest"
       whileHover="hover"
       whileFocus="hover"

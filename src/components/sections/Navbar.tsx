@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ANNOUNCEMENT, NAV_LINKS } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
+import { ORDER_URL } from '@/data/site';
 import { cn } from '@/lib/utils';
 
 /**
@@ -145,7 +146,7 @@ export default function Navbar() {
 
         {/* Right: CTA */}
         <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-[82px]">
-          <PillButton href="/#menu" labelClassName="text-[0.8125rem] sm:text-2xl">
+          <PillButton href={ORDER_URL} newTab labelClassName="text-[0.8125rem] sm:text-2xl">
             Jetzt bestellen
           </PillButton>
         </div>

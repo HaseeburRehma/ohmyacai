@@ -141,14 +141,57 @@ const FIELD =
   'w-full rounded-2xl bg-cream px-5 py-[18px] text-base tracking-[-0.5px] text-ink outline-none transition placeholder:text-[#8a7e8b] focus-visible:ring-2 focus-visible:ring-mauve';
 
 function EnquiryForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<
+    'idle' | 'sending' | 'sent' | 'error'
+  >('idle');
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === 'sending') return;
+    const fd = new FormData(e.currentTarget);
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/franchise', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: fd.get('firstName'),
+          lastName: fd.get('lastName'),
+          email: fd.get('email'),
+          phone: fd.get('phone'),
+          city: fd.get('city'),
+          budget: fd.get('budget'),
+          consent: fd.get('consent') === 'on',
+        }),
+      });
+      setStatus(res.ok ? 'sent' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (status === 'sent') {
+    return (
+      <div className="flex min-h-[420px] flex-col items-center justify-center gap-4 rounded-[32px] bg-white p-10 text-center shadow-[4px_10px_30px_rgba(0,0,0,0.35)]">
+        <div className="grid size-16 place-items-center rounded-full bg-mauve">
+          <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
+            <path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <h2 className="font-display text-[clamp(1.5rem,3.2vw,2rem)] uppercase leading-[1.2] tracking-[-1px] text-plum">
+          Anfrage gesendet
+        </h2>
+        <p className="max-w-[360px] text-base leading-[1.4] tracking-[-0.5px] text-[#8a7e8b]">
+          Danke! Wir haben dir eine Bestätigung geschickt und melden uns
+          innerhalb eines Werktags mit deinem Franchise-Paket.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
+      onSubmit={onSubmit}
       className="flex flex-col gap-6 rounded-[32px] bg-white p-6 shadow-[4px_10px_30px_rgba(0,0,0,0.35)] sm:p-10"
     >
       <div className="flex flex-col gap-2.5">
@@ -162,15 +205,16 @@ function EnquiryForm() {
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row">
-          <input required className={FIELD} placeholder="Vorname" aria-label="Vorname" autoComplete="given-name" />
-          <input required className={FIELD} placeholder="Nachname" aria-label="Nachname" autoComplete="family-name" />
+          <input required name="firstName" className={FIELD} placeholder="Vorname" aria-label="Vorname" autoComplete="given-name" />
+          <input required name="lastName" className={FIELD} placeholder="Nachname" aria-label="Nachname" autoComplete="family-name" />
         </div>
-        <input required type="email" className={FIELD} placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autoComplete="email" />
-        <input required type="tel" className={FIELD} placeholder="Telefonnummer" aria-label="Telefonnummer" autoComplete="tel" />
+        <input required name="email" type="email" className={FIELD} placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse" autoComplete="email" />
+        <input required name="phone" type="tel" className={FIELD} placeholder="Telefonnummer" aria-label="Telefonnummer" autoComplete="tel" />
         <div className="flex flex-col gap-4 sm:flex-row">
-          <input required className={FIELD} placeholder="Wunschstadt" aria-label="Wunschstadt" autoComplete="address-level2" />
+          <input required name="city" className={FIELD} placeholder="Wunschstadt" aria-label="Wunschstadt" autoComplete="address-level2" />
           <select
             required
+            name="budget"
             defaultValue=""
             aria-label="Investitionsbudget"
             className={`${FIELD} appearance-none bg-[url('/svg/caret.svg')] bg-[length:12px_8px] bg-[right_1.25rem_center] bg-no-repeat pr-12`}
@@ -190,6 +234,7 @@ function EnquiryForm() {
       <label className="flex min-h-11 cursor-pointer items-center gap-3">
         <input
           type="checkbox"
+          name="consent"
           required
           className="size-5 shrink-0 appearance-none rounded-md border-[1.5px] border-mauve bg-white transition checked:bg-mauve checked:bg-[url('/svg/tick.svg')] checked:bg-[length:12px] checked:bg-center checked:bg-no-repeat"
         />
@@ -200,17 +245,25 @@ function EnquiryForm() {
 
       <motion.button
         type="submit"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        disabled={status === 'sending'}
+        whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
+        whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display w-full rounded-full bg-mauve px-6 py-3 text-2xl uppercase leading-[1.2] tracking-[-0.5px] text-cream outline-none focus-visible:ring-4 focus-visible:ring-gold/60"
+        className="font-display w-full rounded-full bg-mauve px-6 py-3 text-2xl uppercase leading-[1.2] tracking-[-0.5px] text-cream outline-none focus-visible:ring-4 focus-visible:ring-gold/60 disabled:opacity-70"
       >
-        {sent ? 'Thanks — check your inbox' : FRANCHISE_FORM.submit}
+        {status === 'sending' ? 'Wird gesendet …' : FRANCHISE_FORM.submit}
       </motion.button>
 
-      <p aria-live="polite" className="sr-only">
-        {sent ? 'Your franchise pack request has been recorded.' : ''}
-      </p>
+      {status === 'error' && (
+        <p role="alert" className="text-sm leading-[1.4] tracking-[-0.5px] text-[#b23b3b]">
+          Das hat leider nicht geklappt. Bitte versuch es erneut oder schreib
+          uns direkt an{' '}
+          <a href="mailto:info@tylotech.de" className="underline">
+            info@tylotech.de
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }

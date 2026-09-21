@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import Tilt3D from '@/components/ui/Tilt3D';
 import Scallop from '@/components/ui/Scallop';
-import { BOWLS } from '@/data/site';
+import { BOWLS, ORDER_URL } from '@/data/site';
 
 /**
  * Figma: the gold "Union" blob (y 2056 → 3976) holding
@@ -97,7 +97,9 @@ function BowlCard({
             coloured backdrop, a bottom fade carries the white copy — rating
             top-right, name + price bottom-left, CTA bottom-right. */}
         <motion.a
-          href="#menu"
+          href={ORDER_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           initial="rest"
           whileHover="hover"
           whileFocus="hover"

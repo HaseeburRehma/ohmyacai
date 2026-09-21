@@ -7,6 +7,7 @@ import VideoFeature from '@/components/sections/VideoFeature';
 import ValueCards from '@/components/sections/ValueCards';
 import CrossTapes from '@/components/sections/CrossTapes';
 import StoreSection from '@/components/sections/StoreSection';
+import InstagramReels from '@/components/sections/InstagramReels';
 import Reviews from '@/components/sections/Reviews';
 import Faq from '@/components/sections/Faq';
 import CtaSection from '@/components/sections/CtaSection';
@@ -16,7 +17,7 @@ import ScrollBar from '@/components/ui/ScrollBar';
 /**
  * Section order matches the Figma "Home" frame top to bottom:
  * Nav → Hero → Marquee → Products → Signature Bowls → Video panel →
- * Value cards → Crossed tapes → Store → Reviews → FAQ → CTA → Footer.
+ * Value cards → Crossed tapes → Store → Instagram → Reviews → FAQ → CTA → Footer.
  */
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <ValueCards />
         <CrossTapes />
         <StoreSection />
+        <InstagramReels />
         <Reviews />
         <Faq />
         <CtaSection />

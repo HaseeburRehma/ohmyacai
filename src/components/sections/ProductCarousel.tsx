@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { SLIDES } from '@/data/site';
+import { SLIDES, ORDER_URL } from '@/data/site';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -218,7 +218,9 @@ function Slide({
 
       {/* CTA */}
       <a
-        href="#menu"
+        href={ORDER_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="absolute bottom-[max(1rem,2.45cqh)] left-[max(1rem,2.45cqh)] z-10 inline-flex min-h-11 items-center rounded-full bg-ink px-[max(1.1rem,2.67cqh)] py-[max(0.6rem,1.34cqh)] transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-105"
       >
         <span className="font-display text-[clamp(1rem,2.673cqh,1.75rem)] uppercase leading-[1.2] tracking-[-0.5px] text-white">

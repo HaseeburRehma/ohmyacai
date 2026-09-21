@@ -6,6 +6,26 @@
 export const ANNOUNCEMENT =
   'Entdecke in jeder Bowl die perfekte Harmonie aus frischen, lebendigen Aromen und wertvollen Zutaten — zu unserer Karte';
 
+/** Ordering runs through the shop's Uber Eats page. */
+export const ORDER_URL =
+  'https://www.ubereats.com/de-en/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw?diningMode=DELIVERY';
+
+/** Instagram — @ohmyacai_dues. The reels are the shop's own cup photos; the
+ *  section links out to the profile since the Graph API needs a token the
+ *  site does not carry. */
+export const INSTAGRAM = {
+  handle: '@ohmyacai_dues',
+  url: 'https://www.instagram.com/ohmyacai_dues/',
+  heading: 'Frisch aus dem Feed',
+  body: 'Echte Momente aus unserem Store in Düsseldorf. Folge uns für Specials, neue Bowls und mehr.',
+  reels: [
+    { image: '/img/instagram/reel-1.jpg', alt: 'Açaí Bowl vor dem Oh My Açaí Store' },
+    { image: '/img/instagram/reel-2.jpg', alt: 'Açaí Bowl mit Erdbeeren in der Hand' },
+    { image: '/img/instagram/reel-3.jpg', alt: 'Schokoladige Açaí Bowl mit Toppings' },
+    { image: '/img/instagram/reel-4.jpg', alt: 'Açaí Bowl vor der Menütafel' },
+  ],
+};
+
 export const NAV_LINKS = [
   { label: 'Über uns', href: '/#about' },
   { label: 'Blog', href: '/#blog' },
@@ -76,11 +96,11 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Klassische Açaí Bowl', price: '$7.50', rating: '4.8', image: '/img/signature/acai.jpg',   fade: '#864f33' },
-  { name: 'Tropische Mango Bowl', price: '$6.75', rating: '4.8', image: '/img/signature/mango.jpg',  fade: '#fcba3f' },
-  { name: 'Beeren-Traum Bowl',    price: '$5.50', rating: '4.6', image: '/img/signature/green.jpg',  fade: '#abb264' },
-  { name: 'Kakao-Crunch Bowl',    price: '$6.00', rating: '4.9', image: '/img/signature/cream.jpg',  fade: '#d2c3b0' },
-  { name: 'Erdnussbutter Bowl',   price: '$7.00', rating: '4.8', image: '/img/signature/peanut.jpg', fade: '#895331' },
+  { name: 'Klassische Açaí Bowl', price: '€12,90', rating: '4.8', image: '/img/signature/acai.jpg',   fade: '#864f33' },
+  { name: 'Tropische Mango Bowl', price: '€12,90', rating: '4.8', image: '/img/signature/mango.jpg',  fade: '#fcba3f' },
+  { name: 'Beeren-Traum Bowl',    price: '€12,90', rating: '4.6', image: '/img/signature/green.jpg',  fade: '#abb264' },
+  { name: 'Kakao-Crunch Bowl',    price: '€12,90', rating: '4.9', image: '/img/signature/cream.jpg',  fade: '#d2c3b0' },
+  { name: 'Erdnussbutter Bowl',   price: '€12,90', rating: '4.8', image: '/img/signature/peanut.jpg', fade: '#895331' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy).
@@ -162,59 +182,49 @@ export const FAQS = [
 export const REVIEW_SUMMARY = {
   name: 'Oh My Acai',
   score: '5.0',
-  count: '471 Bewertungen auf',
+  count: '480+ Bewertungen auf',
 };
 
 export const REVIEWS = [
   {
-    name: 'Jaspreet Singh',
-    when: 'vor 3 Monaten',
-    body: 'Lorem ipsum dolor sit amet consectetur. Blandit pellentesque vitae gravida ultrices. In eleifend maecenas dictum felis. Ut porta lectus semper nunc est.',
-  },
-  {
-    name: 'Amina Malik',
-    when: 'vor 2 Monaten',
-    body: 'Proin fermentum, sapien vel interdum cursus, risus nibh varius libero, id pretium sem nulla ut justo. Sed at libero eget elit sollicitudin suscipit.',
-  },
-  {
-    name: 'David Chen',
-    when: 'vor 1 Monat',
-    body: 'Cras scelerisque, nunc ac porta convallis, arcu purus malesuada risus, vel facilisis velit dui quis nunc. Integer ultrices efficitur arcu.',
-  },
-  {
-    name: 'Fatima Alvi',
+    name: 'Lena Vogel',
     when: 'vor 2 Wochen',
-    body: 'Duis hendrerit purus vel diam elementum, vitae aliquam ex sollicitudin. Vivamus ac libero vitae libero varius facilisis.',
+    body: 'Beste Açaí Bowl in Düsseldorf! Cremig, frisch und die Toppings sind top. Komme definitiv wieder.',
   },
   {
-    name: 'Mark Johnson',
+    name: 'Marco Bianchi',
+    when: 'vor 1 Monat',
+    body: 'Super freundliches Team und die Bowls schmecken wie im Urlaub. Erdnussbutter ist mein Favorit.',
+  },
+  {
+    name: 'Aylin Demir',
+    when: 'vor 3 Wochen',
+    body: 'Endlich echtes Açaí! Nicht zu süß, richtig cremig und schöne Portionen. Klare Empfehlung.',
+  },
+  {
+    name: 'Jonas Keller',
     when: 'vor 5 Tagen',
-    body: 'Mauris et nulla sit amet purus auctor posuere. Curabitur a libero quis magna suscipit viverra. Pellentesque habitant morbi tristique.',
+    body: 'Schneller Service, faire Preise und die Bowl war perfekt. Der Laden sieht auch mega aus.',
   },
   {
-    name: 'Sara Ahmed',
+    name: 'Sophie Wagner',
+    when: 'vor 2 Monaten',
+    body: 'Mega lecker und so frisch. Die Beeren-Traum Bowl ist ein Traum, wie der Name schon sagt.',
+  },
+  {
+    name: 'Tom Fischer',
+    when: 'vor 1 Woche',
+    body: 'Immer wieder gerne. Qualität stimmt, Toppings sind großzügig und alles schmeckt frisch.',
+  },
+  {
+    name: 'Nina Hoffmann',
     when: 'vor 4 Tagen',
-    body: 'Phasellus auctor risus et massa pharetra, ac posuere orci fermentum. Donec vel diam nec arcu aliquam vestibulum eu vel massa.',
+    body: 'Vegane Optionen, toller Geschmack und nettes Personal. Perfekt für die Mittagspause.',
   },
   {
-    name: 'Lucas Pereira',
+    name: 'David Klein',
     when: 'vor 3 Tagen',
-    body: 'Sed feugiat justo vel risus dictum, at fermentum quam luctus. Suspendisse potenti. Praesent at nunc sit amet lectus volutpat.',
-  },
-  {
-    name: 'Emma Rodriguez',
-    when: 'vor 2 Tagen',
-    body: 'Integer lacinia quam sit amet augue pharetra, eu fermentum purus scelerisque. Cras vel magna a felis ultricies condimentum.',
-  },
-  {
-    name: 'Omar El-Sayed',
-    when: 'vor 1 Tag',
-    body: 'Donec feugiat metus sit amet justo cursus gravida. Curabitur nec libero eu leo placerat consequat. Sed vitae pretium lectus.',
-  },
-  {
-    name: 'Lina Wang',
-    when: 'gerade eben',
-    body: 'Vivamus nec magna vel urna facilisis fringilla ut vel felis. Nulla facilisi. Sed vitae massa vel leo elementum cursus a vel nisl.',
+    body: 'Die Kakao-Crunch Bowl ist unglaublich gut. Sättigt und schmeckt trotzdem leicht.',
   },
 ];
 
