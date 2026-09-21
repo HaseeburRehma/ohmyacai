@@ -366,10 +366,14 @@ export const FRANCHISE_PARTNER = {
   titleAccent: 'Partner',
   body: 'Ein Blick in unseren Flagship-Store in der Flinger Straße — Menschen, Bowls und der Ort, an dem wir das Konzept jeden Tag verfeinern. Das gleiche Erlebnis bringst du in deine Stadt.',
   poster: '/img/store.jpg',
-  /** Ambient partner-story film. When you have a partner interview, replace
-   *  this URL with the mp4 (or set it to '' to show only the poster). */
-  video:
-    '/video/partner-preview.mp4',
+  /** The store's own reel from @ohmyacai_dues — "the process / the result",
+   *  bowl-prep shot at the flagship. Loaded through Instagram's official
+   *  /embed/ iframe: no API token, no CDN dependency, and the video plays on
+   *  click inside the iframe. Swap `reel` for another shortcode any time. */
+  reel: 'DcygjUJs8-C',
+  embedUrl:
+    'https://www.instagram.com/reel/DcygjUJs8-C/embed/captioned/',
+  profileUrl: 'https://www.instagram.com/ohmyacai_dues/',
 };
 
 /** Die Franchise-Seite nutzt dieselben fünf Fragen, mit Fragezeichen. */
