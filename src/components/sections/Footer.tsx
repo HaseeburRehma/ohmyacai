@@ -127,7 +127,13 @@ export default function Footer() {
             <div className="flex flex-col items-center gap-3 pt-6 text-base tracking-[-0.5px] text-white/80 sm:flex-row sm:justify-between">
               <p>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</p>
               <a
-                href="#"
+                href="/impressum"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
+              >
+                Impressum
+              </a>
+              <a
+                href="/datenschutz"
                 className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
               >
                 Datenschutz

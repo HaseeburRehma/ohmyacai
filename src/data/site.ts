@@ -248,9 +248,9 @@ export const FOOTER_PAGES = [
 export const FOOTER_SOCIAL = ['Instagram', 'Facebook', 'Twitter', 'Pinterest'];
 
 export const CONTACT = {
-  email: 'hello@ohmyacai.com',
-  phone: '+880 1234 567 890',
-  address: ['1258 Melrose Ave Los ', 'Angeles, CA 90046 ', 'United States'],
+  email: 'info@ohmyacai.de',
+  phone: '01573 2016134',
+  address: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
 };
 
 /* ------------------------------------------------------------------ *
@@ -265,8 +265,8 @@ export const FRANCHISE_HERO = {
   titleAfter: ' in deine Stadt',
   body: 'Eine schlüsselfertige Açaí-Bar: Rezepte, Beeren-Lieferkette und Eröffnungsplan stehen bereits — sag uns einfach, wo du starten willst.',
   stats: [
-    { value: '24 +', label: 'Filialen am Start' },
-    { value: '12', label: 'Länder' },
+    { value: '1', label: 'Flagship-Store in Düsseldorf' },
+    { value: '30 +', label: 'Rezepte, Playbook & SOPs' },
     { value: '6 Wo.', label: 'Bis zur Eröffnung' },
   ],
 };
@@ -277,10 +277,10 @@ export const FRANCHISE_FORM = {
   consent: 'Oh My Açaí darf mich zur Eröffnung einer eigenen Filiale kontaktieren.',
   submit: 'Franchise-Paket schicken',
   budgets: [
-    'Unter 150.000 $',
-    '150.000 – 250.000 $',
-    '250.000 – 400.000 $',
-    'Über 400.000 $',
+    'Unter 80.000 €',
+    '80.000 – 150.000 €',
+    '150.000 – 250.000 €',
+    'Über 250.000 €',
   ],
 };
 
@@ -346,17 +346,17 @@ export const FRANCHISE_BOWLS = [
 export const FRANCHISE_BOWLS_HEAD = {
   titleBefore: 'Unsere ',
   titleAccent: 'Bowls',
-  body: 'Jedes Franchise startet mit derselben Signature-Karte — sechs Bowls nach den Rezepten, die unsere Küche im Laden verfeinert hat, dazu viermal im Jahr saisonale Specials, damit es an deiner Theke nie langweilig wird.',
+  body: 'Jedes Franchise startet mit derselben Signature-Karte — unsere Signature Bowls nach den Rezepten, die unsere Küche im Laden verfeinert hat, dazu viermal im Jahr saisonale Specials, damit es an deiner Theke nie langweilig wird.',
 };
 
 export const FRANCHISE_WHY = {
   titleBefore: 'Warum ',
   titleAccent: 'Franchise',
   titleAfter: ' mit Oh My Açaí',
-  body: 'Wir nehmen dir das Rätselraten beim Betrieb einer Açaí-Bar ab — erprobte Rezepte, eine fest gesicherte Beeren-Lieferkette und ein Marketing-Playbook, das in zwölf Ländern schon Theken gefüllt hat. Du bringst den Standort und die Energie mit.',
+  body: 'Wir starten das Franchise mit dem Rezept, das in unserem Flagship-Store in Düsseldorf jeden Tag ausverkauft ist — mit fest verhandelten Lieferanten, geschulten Baristas und einem Eröffnungsplan, der jeden Schritt vorgibt. Du bringst den Standort und die Energie mit.',
   stats: [
-    { value: '24 +', label: 'Filialen in zwölf Ländern' },
-    { value: '12 Mio.', label: 'Açaí-Bowls im letzten Jahr' },
+    { value: '100 %', label: 'Vegane, natürliche Zutaten' },
+    { value: '5', label: 'Signature Bowls von Tag 1' },
     { value: '6 Wo.', label: 'Vom Vertrag bis zur Eröffnung' },
   ],
 };
@@ -364,7 +364,7 @@ export const FRANCHISE_WHY = {
 export const FRANCHISE_PARTNER = {
   titleBefore: 'Stimmen unserer ',
   titleAccent: 'Partner',
-  body: 'Unsere Partner kommen aus der Gastronomie, dem Einzelhandel und aus ganz anderen Branchen. Hör, wie sie einen Standort gefunden, in sechs Wochen eröffnet und sich eine Stammkundschaft aufgebaut haben — in ihren eigenen Worten.',
+  body: 'Ein Blick in unseren Flagship-Store in der Flinger Straße — Menschen, Bowls und der Ort, an dem wir das Konzept jeden Tag verfeinern. Das gleiche Erlebnis bringst du in deine Stadt.',
   poster: '/img/store.jpg',
   /** Ambient partner-story film. When you have a partner interview, replace
    *  this URL with the mp4 (or set it to '' to show only the poster). */
@@ -374,3 +374,127 @@ export const FRANCHISE_PARTNER = {
 
 /** Die Franchise-Seite nutzt dieselben fünf Fragen, mit Fragezeichen. */
 export const FRANCHISE_FAQS = FAQS.map((f) => ({ ...f, q: `${f.q}?` }));
+
+/** Legal — content from the client's Impressum & Datenschutz PDFs. */
+export const COMPANY = {
+  name: 'Ohmyacai UG (haftungsbeschränkt)',
+  founder: 'Karim Asabar',
+  street: 'Flinger Str. 18',
+  city: '40213 Düsseldorf',
+  country: 'Deutschland',
+  phone: '01573 2016134',
+  email: 'info@ohmyacai.de',
+  web: 'ohmyacai.de',
+};
+
+export const IMPRESSUM = {
+  title: 'Impressum',
+  updated: 'Rechtliche Angaben',
+  sections: [
+    {
+      heading: 'Angaben gemäß § 5 DDG',
+      body:
+        'Ohmyacai UG (haftungsbeschränkt)\nFlinger Str. 18\n40213 Düsseldorf\nDeutschland',
+    },
+    {
+      heading: 'Vertreten durch',
+      body: 'Karim Asabar (Geschäftsführer)',
+    },
+    {
+      heading: 'Kontakt',
+      body:
+        'Telefon: 01573 2016134\nE-Mail: info@ohmyacai.de\nWeb: ohmyacai.de',
+    },
+    {
+      heading: 'Registereintrag',
+      body:
+        'Eingetragen im Handelsregister\nRegistergericht: Amtsgericht Düsseldorf\nRegisternummer: HRB (wird nachgetragen)',
+    },
+    {
+      heading: 'Umsatzsteuer-Identifikationsnummer',
+      body:
+        'Die Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz wird nachgetragen.',
+    },
+    {
+      heading: 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV',
+      body: 'Karim Asabar\nFlinger Str. 18, 40213 Düsseldorf',
+    },
+    {
+      heading: 'Verbraucherstreitbeilegung / Universalschlichtungsstelle',
+      body:
+        'Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+    },
+    {
+      heading: 'Haftung für Inhalte',
+      body:
+        'Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.',
+    },
+    {
+      heading: 'Haftung für Links',
+      body:
+        'Unser Angebot enthält gegebenenfalls Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
+    },
+    {
+      heading: 'Urheberrecht',
+      body:
+        'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.',
+    },
+  ],
+};
+
+export const DATENSCHUTZ = {
+  title: 'Datenschutzerklärung',
+  updated: 'Datenschutz',
+  sections: [
+    {
+      heading: '1 · Datenschutz auf einen Blick',
+      body:
+        'Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen entnehmen Sie der nachfolgenden Datenschutzerklärung.',
+    },
+    {
+      heading: '2 · Verantwortliche Stelle',
+      body:
+        'Verantwortlich für die Datenverarbeitung auf dieser Website ist:\n\nOhmyacai UG (haftungsbeschränkt)\nKarim Asabar\nFlinger Str. 18\n40213 Düsseldorf\nTelefon: 01573 2016134\nE-Mail: info@ohmyacai.de\n\nVerantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.',
+    },
+    {
+      heading: '3 · Ihre Rechte',
+      body:
+        'Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO). Sie haben außerdem ein Recht auf Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie ein Widerspruchsrecht (Art. 21 DSGVO). Eine erteilte Einwilligung können Sie jederzeit widerrufen.\n\nIhnen steht zudem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Zuständig ist in Nordrhein-Westfalen die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW), Kavalleriestraße 2–4, 40213 Düsseldorf.',
+    },
+    {
+      heading: '4 · Hosting',
+      body:
+        'Wir hosten die Inhalte unserer Website bei einem externen Dienstleister. Die Erfassung und Verarbeitung Ihrer Daten erfolgt ausschließlich in Deutschland bzw. der Europäischen Union. Mit dem Anbieter haben wir einen Vertrag über Auftragsverarbeitung (AVV) geschlossen. Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und effizienten Bereitstellung unserer Website (Art. 6 Abs. 1 lit. f DSGVO).',
+    },
+    {
+      heading: '5 · Server-Log-Dateien',
+      body:
+        'Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:\n• Browsertyp und Browserversion\n• verwendetes Betriebssystem\n• Referrer URL\n• Hostname des zugreifenden Rechners\n• Uhrzeit der Serveranfrage\n• IP-Adresse\n\nEine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zur technisch fehlerfreien Darstellung und Optimierung der Website.',
+    },
+    {
+      heading: '6 · Kontaktaufnahme',
+      body:
+        'Wenn Sie uns per E-Mail (info@ohmyacai.de), Telefon oder Kontaktformular kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Die Daten werden gelöscht, sobald sie für die Erreichung des Zwecks nicht mehr erforderlich sind, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.',
+    },
+    {
+      heading: '7 · Cookies',
+      body:
+        'Unsere Website verwendet gegebenenfalls Cookies. Technisch notwendige Cookies werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gesetzt. Für alle nicht notwendigen Cookies (z. B. Analyse, Marketing) holen wir Ihre Einwilligung über ein Cookie-Banner ein (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.',
+    },
+    {
+      heading: '8 · Analyse-Tools und Drittanbieter',
+      body:
+        'Soweit auf dieser Website Dienste von Drittanbietern zum Einsatz kommen (z. B. Web-Analyse wie Google Analytics, Marketing-Pixel wie der Meta-Pixel, Kartendienste wie Google Maps oder Reservierungs- und Bestellsysteme), erfolgt deren Einsatz ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie über das Cookie-Banner erteilen. Die konkret eingesetzten Dienste sowie deren Anbieter und Datenverarbeitung werden hier aufgeführt, sobald sie aktiv genutzt werden.',
+    },
+    {
+      heading: '9 · Soziale Medien',
+      body:
+        'Wir sind auf sozialen Netzwerken (z. B. Instagram, Facebook, TikTok) vertreten. Wenn Sie auf entsprechende Verlinkungen klicken, gelangen Sie auf die Seiten der jeweiligen Anbieter, für deren Datenverarbeitung deren eigene Datenschutzbestimmungen gelten.',
+    },
+    {
+      heading: '10 · Speicherdauer',
+      body:
+        'Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Gesetzliche Aufbewahrungsfristen (z. B. handels- und steuerrechtlich) bleiben unberührt.',
+    },
+  ],
+};
