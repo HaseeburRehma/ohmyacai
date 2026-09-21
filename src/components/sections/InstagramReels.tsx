@@ -1,17 +1,71 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import { INSTAGRAM } from '@/data/site';
 
 /**
- * Instagram reels strip — the shop's own cup photos in a 9:16 reel slider that
- * links out to @ohmyacai_dues. A scroll-snap rail on phones, a four-up row from
- * `lg`. The Graph API needs a token the static site can't carry, so the cards
- * are curated stills that deep-link to the profile rather than a live embed.
+ * Instagram reels — an auto-advancing slider of the shop's own reels from
+ * @ohmyacai_dues. One reel plays at a time, in the same preview: play/pause
+ * and mute/unmute controls live over the video, and the auto-advance pauses
+ * whenever the video is playing (or the user is hovering). Small thumbnails
+ * below act as dots — click one to jump to it.
+ *
+ * The video files are checked into /public/instagram so playback is
+ * cross-origin-safe and doesn't rely on the Meta Graph API. `alt` is the
+ * caption, `code` is the Instagram shortcode for the deep link.
  */
 export default function InstagramReels() {
+  const reels = INSTAGRAM.reels;
+  const [index, setIndex] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [hover, setHover] = useState(false);
+  const [prefersReduce, setPrefersReduce] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const on = () => setPrefersReduce(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+
+  /* Auto-advance every 6s, but only while nothing is playing and the user
+     isn't hovering — respect reduced-motion by skipping it entirely. */
+  useEffect(() => {
+    if (prefersReduce || playing || hover) return;
+    const id = window.setTimeout(() => setIndex((i) => (i + 1) % reels.length), 6000);
+    return () => window.clearTimeout(id);
+  }, [index, playing, hover, prefersReduce, reels.length]);
+
+  /* When the active reel changes, reset to the poster (paused). */
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.pause();
+    v.currentTime = 0;
+    setPlaying(false);
+  }, [index]);
+
+  const togglePlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, []);
+
+  const toggleMute = useCallback(() => setMuted((m) => !m), []);
+
+  const active = reels[index];
+
   return (
     <section
       id="instagram"
@@ -58,72 +112,172 @@ export default function InstagramReels() {
           </InView>
         </div>
 
-        {/* Reels ----------------------------------------------------- */}
-        <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible">
-          {INSTAGRAM.reels.map((reel, i) => (
-            <InView
-              key={reel.image}
-              variants={{
-                hidden: { opacity: 0, y: 44, scale: 0.96 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{
-                duration: 0.8,
-                delay: (i % 4) * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              viewOptions={{ once: true, amount: 0.25 }}
-              className="w-[64%] shrink-0 snap-center sm:w-[42%] lg:w-auto"
-            >
-              <motion.a
-                href={INSTAGRAM.url}
+        {/* Slider ---------------------------------------------------- */}
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="mx-auto flex max-w-[540px] flex-col items-center gap-6"
+        >
+          <div className="relative aspect-[9/16] w-full overflow-hidden rounded-3xl bg-plum shadow-[0_18px_44px_-18px_rgba(77,41,78,0.55)]">
+            {/* One <video> element that swaps its src per active reel. Keeping
+                a single element (rather than mounting/unmounting per slide)
+                avoids the browser tearing down + re-creating decoders. */}
+            <video
+              ref={videoRef}
+              key={active.code}
+              className="absolute inset-0 size-full object-cover"
+              src={active.video}
+              poster={active.poster}
+              muted={muted}
+              playsInline
+              loop
+              preload="metadata"
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+              onEnded={() => setPlaying(false)}
+              onClick={togglePlay}
+            />
+
+            {/* Fade-transition of the whole slide so the swap reads as a
+                slider, not just a poster flicker. */}
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={active.code + ':overlay'}
+                aria-hidden
+                initial={{ opacity: 0 }}
+                animate={{ opacity: playing ? 0 : 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
+                className="pointer-events-none absolute inset-0"
+              >
+                <Image
+                  src={active.poster}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 92vw, 540px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-plum/45 via-transparent to-plum/10" />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Handle badge, top-left */}
+            <span className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/45 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+              <InstagramGlyph className="size-3.5" />
+              {INSTAGRAM.handle}
+            </span>
+
+            {/* Auto-advance progress ring — top-right */}
+            <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2">
+              <span className="text-xs font-semibold text-white/85">
+                {String(index + 1).padStart(2, '0')} / {String(reels.length).padStart(2, '0')}
+              </span>
+            </div>
+
+            {/* Centre play button (only when paused) */}
+            <AnimatePresence>
+              {!playing && (
+                <motion.button
+                  key="play"
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label="Reel abspielen"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow-[0_8px_24px_rgba(0,0,0,0.25)] outline-none backdrop-blur focus-visible:ring-4 focus-visible:ring-gold sm:size-20"
+                >
+                  <svg viewBox="0 0 24 24" className="size-7 translate-x-0.5 sm:size-8" aria-hidden>
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#4d294e" />
+                  </svg>
+                </motion.button>
+              )}
+            </AnimatePresence>
+
+            {/* Bottom controls: prev, play/pause, mute, next, open-on-IG */}
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black/60 to-transparent p-3 sm:p-4">
+              <div className="flex items-center gap-1.5">
+                <IconBtn
+                  label="Vorheriger Reel"
+                  onClick={() =>
+                    setIndex((i) => (i - 1 + reels.length) % reels.length)
+                  }
+                >
+                  <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </IconBtn>
+                <IconBtn
+                  label={playing ? 'Reel pausieren' : 'Reel abspielen'}
+                  onClick={togglePlay}
+                >
+                  {playing ? (
+                    <path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  ) : (
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                  )}
+                </IconBtn>
+                <IconBtn
+                  label={muted ? 'Ton einschalten' : 'Ton ausschalten'}
+                  onClick={toggleMute}
+                >
+                  {muted ? (
+                    <>
+                      <path d="M4 10v4h3l4 3V7l-4 3H4z" fill="currentColor" />
+                      <path d="M15 9l4 6M19 9l-4 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </>
+                  ) : (
+                    <>
+                      <path d="M4 10v4h3l4 3V7l-4 3H4z" fill="currentColor" />
+                      <path d="M15 9c1.2 1 1.8 2 1.8 3s-.6 2-1.8 3M17 6c2.4 1.8 3.5 3.8 3.5 6s-1.1 4.2-3.5 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </>
+                  )}
+                </IconBtn>
+                <IconBtn
+                  label="Nächster Reel"
+                  onClick={() => setIndex((i) => (i + 1) % reels.length)}
+                >
+                  <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </IconBtn>
+              </div>
+
+              <a
+                href={`https://www.instagram.com/reel/${active.code}/`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${reel.alt} — auf Instagram ansehen`}
-                initial="rest"
-                whileHover="hover"
-                whileFocus="hover"
-                whileTap={{ scale: 0.98 }}
-                className="group relative block aspect-[9/16] w-full overflow-hidden rounded-3xl bg-plum outline-none focus-visible:ring-4 focus-visible:ring-mauve/50"
+                className="hidden items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-plum transition hover:bg-white sm:inline-flex"
               >
-                <motion.div
-                  variants={{ rest: { scale: 1 }, hover: { scale: 1.06 } }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={reel.image}
-                    alt={reel.alt}
-                    fill
-                    sizes="(max-width:640px) 64vw, (max-width:1024px) 42vw, 300px"
-                    className="object-cover"
-                  />
-                </motion.div>
+                Auf Instagram →
+              </a>
+            </div>
+          </div>
 
-                {/* legibility gradient + play glyph */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10"
+          {/* Thumbnail strip — doubles as dots + preview + jump-to */}
+          <div className="flex w-full items-center justify-center gap-3">
+            {reels.map((r, i) => (
+              <button
+                key={r.code}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Reel ${i + 1} von ${reels.length}: ${r.alt}`}
+                aria-current={i === index}
+                className={`relative aspect-[9/16] w-14 shrink-0 overflow-hidden rounded-xl outline-none transition sm:w-16 ${
+                  i === index
+                    ? 'ring-2 ring-plum ring-offset-2 ring-offset-white'
+                    : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                <Image
+                  src={r.poster}
+                  alt=""
+                  fill
+                  sizes="64px"
+                  className="object-cover"
                 />
-                <motion.span
-                  aria-hidden
-                  variants={{ rest: { opacity: 0.85, scale: 1 }, hover: { opacity: 1, scale: 1.1 } }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/25 backdrop-blur-sm"
-                >
-                  <svg viewBox="0 0 24 24" className="size-5" aria-hidden>
-                    <path d="M8 5v14l11-7L8 5z" fill="#fff" />
-                  </svg>
-                </motion.span>
-                <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-white">
-                  <InstagramGlyph className="size-4" />
-                  <span className="text-xs font-bold tracking-[-0.3px]">
-                    {INSTAGRAM.handle}
-                  </span>
-                </span>
-              </motion.a>
-            </InView>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -131,6 +285,29 @@ export default function InstagramReels() {
 }
 
 /* ------------------------------------------------------------------ */
+
+function IconBtn({
+  label,
+  onClick,
+  children,
+}: {
+  label: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="grid size-10 place-items-center rounded-full bg-white/90 text-plum outline-none backdrop-blur transition hover:bg-white focus-visible:ring-4 focus-visible:ring-white/40"
+    >
+      <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
+        {children}
+      </svg>
+    </button>
+  );
+}
 
 function InstagramGlyph({ className = 'size-5' }: { className?: string }) {
   return (

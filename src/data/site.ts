@@ -18,11 +18,34 @@ export const INSTAGRAM = {
   url: 'https://www.instagram.com/ohmyacai_dues/',
   heading: 'Frisch aus dem Feed',
   body: 'Echte Momente aus unserem Store in Düsseldorf. Folge uns für Specials, neue Bowls und mehr.',
+  /** Real reels from @ohmyacai_dues, downloaded so they play inline without
+   *  a Graph API token. `code` is the Instagram shortcode — the "Auf
+   *  Instagram ansehen" link uses it to open the original post. */
   reels: [
-    { image: '/img/instagram/reel-1.jpg', alt: 'Açaí Bowl vor dem Oh My Açaí Store' },
-    { image: '/img/instagram/reel-2.jpg', alt: 'Açaí Bowl mit Erdbeeren in der Hand' },
-    { image: '/img/instagram/reel-3.jpg', alt: 'Schokoladige Açaí Bowl mit Toppings' },
-    { image: '/img/instagram/reel-4.jpg', alt: 'Açaí Bowl vor der Menütafel' },
+    {
+      code: 'DcygjUJs8-C',
+      video: '/instagram/DcygjUJs8-C.mp4',
+      poster: '/instagram/DcygjUJs8-C.jpg',
+      alt: 'Bowl-Zubereitung: the process, the result',
+    },
+    {
+      code: 'DdbrcrExmq1',
+      video: '/instagram/DdbrcrExmq1.mp4',
+      poster: '/instagram/DdbrcrExmq1.jpg',
+      alt: 'Zuckerfreie Açaí-Bowl im Special',
+    },
+    {
+      code: 'DdUCZPuMOIr',
+      video: '/instagram/DdUCZPuMOIr.mp4',
+      poster: '/instagram/DdUCZPuMOIr.jpg',
+      alt: 'Açaí-Spot in Düsseldorf gefunden',
+    },
+    {
+      code: 'DdMgssAMmDr',
+      video: '/instagram/DdMgssAMmDr.mp4',
+      poster: '/instagram/DdMgssAMmDr.jpg',
+      alt: 'Oh My Açaí — Signature Reel',
+    },
   ],
 };
 
