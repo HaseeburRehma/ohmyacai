@@ -86,20 +86,24 @@ export default function FranchiseBowls() {
                     {bowl.name}
                   </h3>
 
+                  {/* The cup sits in the region below the title and is fit with
+                      object-contain, so the whole cup — base included — stays
+                      inside the card at every width instead of bleeding off
+                      the bottom edge. */}
                   <motion.div
                     variants={{
                       rest: { y: 0, scale: 1 },
-                      hover: { y: -10, scale: 1.05 },
+                      hover: { y: -8, scale: 1.04 },
                     }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="pointer-events-none absolute left-1/2 top-[24%] aspect-[950/1450] w-[92%] -translate-x-1/2"
+                    className="pointer-events-none absolute inset-x-[8%] bottom-[5%] top-[32%]"
                   >
                     <Image
                       src={bowl.image}
                       alt={bowl.name}
                       fill
                       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
-                      className="object-contain object-top drop-shadow-[6px_14px_22px_rgba(0,0,0,0.28)]"
+                      className="object-contain object-bottom drop-shadow-[6px_14px_22px_rgba(0,0,0,0.28)]"
                     />
                   </motion.div>
                 </motion.div>
