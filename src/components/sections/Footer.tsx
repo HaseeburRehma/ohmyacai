@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLenis } from 'lenis/react';
@@ -37,13 +38,17 @@ export default function Footer() {
             viewOptions={{ once: true, amount: 0.35 }}
           >
             <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-start">
-              <motion.a
-                href="#top"
-                aria-label="Nach oben"
-                whileHover={{ rotate: -8, scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 14 }}
+              {/* Footer badge links to the home page from any route; the
+                  "Nach oben" scroller is the separate button in the credit row. */}
+              <Link
+                href="/"
+                aria-label="Oh My Açaí — zur Startseite"
                 className="block"
               >
+                <motion.div
+                  whileHover={{ rotate: -8, scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 14 }}
+                >
                 {/* The badge asset is the disc itself, edge to edge. The old
                     /img/logo.png was the same mark sitting in the middle of a
                     512px white square — the disc was 49% of it — so at 120px
@@ -56,7 +61,8 @@ export default function Footer() {
                   height={768}
                   className="size-[120px] rounded-full object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.35)]"
                 />
-              </motion.a>
+                </motion.div>
+              </Link>
 
               <p className="font-display text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] text-white lg:text-right">
                 Mach jeden Açaí-Moment

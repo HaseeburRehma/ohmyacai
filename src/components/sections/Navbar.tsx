@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ANNOUNCEMENT, NAV_LINKS } from '@/data/site';
@@ -130,8 +131,9 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Centre: logo */}
-        <a href="#top" aria-label="Oh My Açaí — home" className="shrink-0">
+        {/* Centre: logo — always links to the home page (not the current
+            page's #top), so it works from /franchise, /impressum, /datenschutz. */}
+        <Link href="/" aria-label="Oh My Açaí — zur Startseite" className="shrink-0">
           <motion.div whileHover={{ rotate: -6, scale: 1.06 }} transition={{ type: 'spring', stiffness: 300, damping: 14 }}>
             <Image
               src="/img/logo-mark.png"
@@ -142,7 +144,7 @@ export default function Navbar() {
               className="h-12 w-[47px] object-contain sm:h-16 sm:w-[63px]"
             />
           </motion.div>
-        </a>
+        </Link>
 
         {/* Right: CTA */}
         <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-[82px]">
