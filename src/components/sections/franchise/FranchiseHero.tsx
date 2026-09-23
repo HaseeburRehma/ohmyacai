@@ -249,7 +249,7 @@ function EnquiryForm() {
         whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
         whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display w-full whitespace-nowrap rounded-full bg-mauve px-4 py-3 text-base uppercase leading-[1.15] tracking-[-0.5px] text-cream outline-none focus-visible:ring-4 focus-visible:ring-gold/60 disabled:opacity-70 sm:text-lg lg:text-2xl"
+        className="font-display w-full whitespace-nowrap rounded-full bg-mauve px-3 py-3 text-sm uppercase leading-[1.15] tracking-[-0.5px] text-cream outline-none focus-visible:ring-4 focus-visible:ring-gold/60 disabled:opacity-70 sm:px-4 sm:text-lg lg:text-2xl"
       >
         {status === 'sending' ? 'Wird gesendet …' : FRANCHISE_FORM.submit}
       </motion.button>
