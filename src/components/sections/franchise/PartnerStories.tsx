@@ -35,7 +35,7 @@ export default function PartnerStories() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             viewOptions={{ once: true, amount: 0.3 }}
           >
-            <h2 className="font-display text-[clamp(1.75rem,5vw,3rem)] uppercase leading-[1.2] tracking-[-0.5px] text-plum">
+            <h2 className="font-display text-[clamp(1.4rem,5vw,3rem)] uppercase leading-[1.15] tracking-[-0.5px] text-plum">
               {FRANCHISE_PARTNER.titleBefore}
               <span className="text-gold">
                 {FRANCHISE_PARTNER.titleAccent}
