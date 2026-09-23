@@ -85,9 +85,9 @@ export default function FranchiseBowls() {
                   </h3>
 
                   <motion.div
-                    variants={{ rest: { y: 0, scale: 1 }, hover: { y: -6, scale: 1.05 } }}
+                    variants={{ rest: { y: 0, scale: 1 }, hover: { y: -4, scale: 1.04 } }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="pointer-events-none absolute inset-x-[8%] bottom-[4%] top-[30%]"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 top-[38%]"
                   >
                     <Image
                       src={bowl.image}
@@ -95,7 +95,7 @@ export default function FranchiseBowls() {
                       fill
                       loading="lazy"
                       sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 20vw"
-                      className="object-contain object-bottom drop-shadow-[8px_18px_22px_rgba(0,0,0,0.35)]"
+                      className="object-cover object-bottom drop-shadow-[6px_14px_18px_rgba(0,0,0,0.35)]"
                     />
                   </motion.div>
                 </motion.div>
