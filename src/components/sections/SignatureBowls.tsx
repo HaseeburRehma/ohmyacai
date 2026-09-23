@@ -33,7 +33,7 @@ export default function SignatureBowls() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               viewOptions={{ once: true, amount: 0.2 }}
             >
-              <h2 className="font-display max-w-[811px] text-[clamp(1.75rem,6vw,4rem)] uppercase leading-[1.15] text-white">
+              <h2 className="font-display max-w-[811px] text-[clamp(1.5rem,5.4vw,4rem)] uppercase leading-[1.1] text-white">
                 Entdecke unsere
                 <br />
                 Signature Bowls
