@@ -235,7 +235,11 @@ function HoverMedia({
   active: boolean;
 }) {
   const [reduce, setReduce] = useState(false);
-  const [mount, setMount] = useState(false);
+  const [ioMount, setIoMount] = useState(false);
+  // Mount the <video> if the IntersectionObserver has ever fired OR the user
+  // has just hovered (some browsers throttle IO in inactive tabs, so hovering
+  // is the guaranteed fallback).
+  const mount = ioMount || active;
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -256,7 +260,7 @@ function HoverMedia({
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setMount(true);
+          setIoMount(true);
           io.disconnect();
         }
       },
