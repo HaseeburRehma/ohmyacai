@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import Tilt3D from '@/components/ui/Tilt3D';
@@ -79,6 +80,7 @@ function BowlCard({
   bowl: (typeof BOWLS)[number];
   index: number;
 }) {
+  const [active, setActive] = useState(false);
   return (
     <InView
       variants={{
@@ -103,22 +105,14 @@ function BowlCard({
           initial="rest"
           whileHover="hover"
           whileFocus="hover"
+          onMouseEnter={() => setActive(true)}
+          onMouseLeave={() => setActive(false)}
+          onFocus={() => setActive(true)}
+          onBlur={() => setActive(false)}
           style={{ transformStyle: 'preserve-3d' }}
           className="group relative block size-full overflow-hidden rounded-3xl border-[1.5px] border-white/60 outline-none focus-visible:ring-4 focus-visible:ring-white/50"
         >
-          <motion.div
-            variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={bowl.image}
-              alt={bowl.name}
-              fill
-              sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
-              className="object-cover"
-            />
-          </motion.div>
+          <HoverMedia bowl={bowl} active={active} />
 
           {/* Bottom fade to the card's backdrop colour, for legible copy */}
           <div
@@ -191,5 +185,79 @@ function BowlCard({
         </motion.a>
       </Tilt3D>
     </InView>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+/**
+ * Image on rest, video on hover / focus. The video is preloaded on the client
+ * (metadata only) so the swap has no lag, and it rewinds on leave so the next
+ * hover restarts from frame 0. On touch devices there is no hover, so a first
+ * tap plays the video and any tap outside the currently-playing card pauses
+ * it — the anchor's onClick is untouched so the actual navigation still works
+ * on the second tap, matching how touch users expect gallery cards to behave.
+ * Skipped entirely under prefers-reduced-motion (image stays visible always).
+ */
+function HoverMedia({
+  bowl,
+  active,
+}: {
+  bowl: (typeof BOWLS)[number];
+  active: boolean;
+}) {
+  const [reduce, setReduce] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const on = () => setReduce(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (active && !reduce) {
+      v.currentTime = 0;
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [active, reduce]);
+
+  return (
+    <motion.div
+      variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute inset-0"
+    >
+      <Image
+        src={bowl.image}
+        alt={bowl.name}
+        fill
+        sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
+        className="object-cover"
+      />
+      {!reduce && (
+        <motion.video
+          ref={videoRef}
+          src={bowl.video}
+          poster={bowl.image}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: active ? 1 : 0 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 size-full object-cover"
+        />
+      )}
+    </motion.div>
   );
 }
