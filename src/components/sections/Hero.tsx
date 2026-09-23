@@ -205,7 +205,7 @@ export default function Hero() {
               </motion.div>
 
               {/* Headline — per-line mask reveal */}
-              <h1 className="font-display text-[clamp(2.5rem,8.4vw,3.5rem)] uppercase leading-[1.2] text-white lg:text-[clamp(3rem,4.444cqw,5.5rem)]">
+              <h1 className="font-display text-[clamp(2rem,7.4vw,3rem)] uppercase leading-[1.15] text-white lg:text-[clamp(2.6rem,3.85cqw,4.8rem)]">
                 <span className="sr-only">Düsseldorfs beste Açaí Bowls</span>
                 {HEADLINE.map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
