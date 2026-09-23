@@ -114,8 +114,14 @@ export default function Footer() {
             </div>
 
             <ul className="flex flex-col gap-[19px] sm:items-end">
-              {FOOTER_SOCIAL.map((label, i) => (
-                <FooterLink key={label} label={label} delay={i * 0.05} />
+              {FOOTER_SOCIAL.map((item, i) => (
+                <FooterLink
+                  key={item.label}
+                  label={item.label}
+                  href={item.href}
+                  external
+                  delay={i * 0.05}
+                />
               ))}
             </ul>
           </div>
@@ -182,11 +188,23 @@ export default function Footer() {
 
 /* ------------------------------------------------------------------ */
 
-function FooterLink({ label, delay }: { label: string; delay: number }) {
+function FooterLink({
+  label,
+  delay,
+  href = '#',
+  external = false,
+}: {
+  label: string;
+  delay: number;
+  href?: string;
+  external?: boolean;
+}) {
   return (
     <li>
       <motion.a
-        href="#"
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        aria-label={external ? `${label} — in neuem Tab öffnen` : label}
         initial="rest"
         whileHover="hover"
         whileFocus="hover"

@@ -262,7 +262,14 @@ export const REVIEWS = [
  *  Reservierung/404 rows are dropped since the shop doesn't run those. */
 export const FOOTER_PAGES = ['Über uns', 'Blog', 'Karte', 'Standort'];
 
-export const FOOTER_SOCIAL = ['Instagram', 'Facebook'];
+/** Real social handles (opened in new tab). Order matches the store's own
+ *  activity — Instagram (@ohmyacai_dues) is the primary account, TikTok
+ *  (@ohmyacai.de) is where the reels get cross-posted. Facebook has no
+ *  active page so it isn't linked. */
+export const FOOTER_SOCIAL: { label: string; href: string }[] = [
+  { label: 'Instagram', href: 'https://www.instagram.com/ohmyacai_dues/' },
+  { label: 'TikTok',    href: 'https://www.tiktok.com/@ohmyacai.de' },
+];
 
 export const CONTACT = {
   email: 'info@ohmyacai.de',
@@ -319,8 +326,8 @@ export const FRANCHISE_STEPS = [
     label: 'Schritt 01',
     title: 'Anmelden',
     body: 'Wir schauen uns gemeinsam an, was in deiner Stadt möglich ist. Du bekommst die Gebietsanalyse, die Investitionsübersicht und einen Blick auf die Zahlen einer laufenden Oh My Açaí Bar — bevor irgendetwas unterschrieben wird.',
-    image: '/img/fr/step-1.jpg',
-    alt: 'Ein Açaí-Becher, im Studio fotografiert',
+    image: '/img/fr/step-1.webp',
+    alt: 'Illustration: Franchise-Handschlag über einer Karte, Açaí-Bowl daneben',
     bg: 'bg-cream',
     /** Figma alternates which half the photo sits on */
     imageFirst: true,
@@ -329,9 +336,9 @@ export const FRANCHISE_STEPS = [
     n: '02',
     label: 'Schritt 02',
     title: 'Aufbauen',
-    body: 'Ladenbau, Technik, Kasse und Lieferwege übernimmt unser Team. Dein Team wird auf der kompletten Bowl-Karte geschult, bis jede Bowl genauso aussieht wie die, die wir in Los Angeles servieren.',
-    image: '/img/fr/step-2.jpg',
-    alt: 'Zwei Açaí-Becher auf dem Tresen',
+    body: 'Ladenbau, Technik, Kasse und Lieferwege übernimmt unser Team. Dein Team wird auf der kompletten Bowl-Karte geschult, bis jede Bowl genauso aussieht wie die, die wir in unserem Flagship-Store in Düsseldorf servieren.',
+    image: '/img/fr/step-2.webp',
+    alt: 'Illustration: Team baut die neue Oh My Açaí Bar auf und trainiert die Bowl-Karte',
     bg: 'bg-[#fdf3e3]',
     imageFirst: false,
   },
@@ -340,8 +347,8 @@ export const FRANCHISE_STEPS = [
     label: 'Schritt 03',
     title: 'Servieren',
     body: 'Die Eröffnungswoche läuft gemeinsam mit dir — Launch-Kampagne, Lieferdienste und lokale Partner starten zusammen, damit die Schlange schon bei der ersten Bowl steht.',
-    image: '/img/fr/step-3.jpg',
-    alt: 'Fertige Açaí-Bowls von oben fotografiert',
+    image: '/img/fr/step-3.webp',
+    alt: 'Illustration: Eröffnungstag mit Warteschlange und einer Barista, die eine Bowl übergibt',
     bg: 'bg-[#fdeef4]',
     imageFirst: true,
   },

@@ -72,9 +72,12 @@ function Step({
        1440 x 936 aspect rather than a fixed height — a 320px strip at 768 was
        hiding 36% of the frame. From `lg` it fills the row, whose height is
        derived from the same aspect. */
-    <div className="relative aspect-[1440/936] w-full overflow-hidden lg:aspect-auto lg:h-full">
+    /* Illustrations now live here (not photos), so the container carries the
+       step's own bg colour and the image fits with object-contain — nothing
+       important in the artwork ever gets cropped. */
+    <div className={cn('relative aspect-[1440/936] w-full overflow-hidden lg:aspect-auto lg:h-full', step.bg)}>
       <motion.div
-        initial={{ scale: 1.12 }}
+        initial={{ scale: 1.06 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
@@ -85,7 +88,7 @@ function Step({
           alt={step.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
+          className="object-contain object-center"
         />
       </motion.div>
     </div>
