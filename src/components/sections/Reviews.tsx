@@ -58,7 +58,7 @@ export default function Reviews() {
           <div className="flex flex-col items-start gap-4 overflow-hidden rounded-3xl bg-ink/[0.04] p-5 sm:flex-row sm:items-center">
             <div className="flex flex-1 items-center gap-4">
               <Image
-                src="/img/avatar.png"
+                src="/img/logo-badge.png"
                 alt=""
                 width={64}
                 height={64}
@@ -116,7 +116,7 @@ export default function Reviews() {
                 <article className="flex h-full flex-col gap-1.5 rounded-3xl bg-ink/[0.04] p-5">
                   <div className="flex items-start gap-3">
                     <Image
-                      src="/img/avatar.png"
+                      src="/img/logo-badge.png"
                       alt=""
                       width={32}
                       height={32}
