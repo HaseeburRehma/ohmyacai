@@ -122,7 +122,7 @@ export default function CtaSection() {
           >
             <span
               aria-hidden
-              className="font-display block rounded-2xl bg-plum px-6 py-5 text-center text-[clamp(1.6rem,4.6vw,4rem)] uppercase leading-[1.2] tracking-[-0.06em] text-white lg:px-10 lg:py-[26px]"
+              className="font-display block rounded-2xl bg-plum px-5 py-4 text-center text-[clamp(1.15rem,4.6vw,4rem)] uppercase leading-[1.15] tracking-[-0.06em] text-white sm:px-6 sm:py-5 lg:px-10 lg:py-[26px]"
             >
               Mach deinen Açaí
             </span>
@@ -143,7 +143,7 @@ export default function CtaSection() {
           >
             <span
               aria-hidden
-              className="font-display block rounded-2xl bg-gold px-6 py-5 text-center text-[clamp(1.6rem,4.6vw,4rem)] uppercase leading-[1.2] tracking-[-0.06em] text-white lg:px-10 lg:py-[26px]"
+              className="font-display block rounded-2xl bg-gold px-5 py-4 text-center text-[clamp(1.15rem,4.6vw,4rem)] uppercase leading-[1.15] tracking-[-0.06em] text-white sm:px-6 sm:py-5 lg:px-10 lg:py-[26px]"
             >
               Moment besonders
             </span>
