@@ -63,75 +63,60 @@ export default function PartnerStories() {
           viewOptions={{ once: true, amount: 0.2 }}
           className="mt-10 lg:mt-[88px]"
         >
-          {/* Landscape card at every width — 4:3 on phones so the portrait
-              reel still reads big, 1320:480 from lg like the artboard. */}
+          {/* Landscape card, video fills edge-to-edge — the reel is now a
+              true 16:9 crop of the store, so no letterbox / blurred
+              backdrop is needed. 4:3 on phones so the shopfront still
+              reads, 1320:480 from lg like the artboard. */}
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-plum shadow-[0_24px_60px_-24px_rgba(77,41,78,0.5)] sm:aspect-[16/9] lg:aspect-[1320/480]">
-            {/* Ambient backdrop — the partner store photo, dimmed, always
-                behind the video so the plum frame reads as intentional. */}
-            <Image
-              src="/img/store.jpg"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 92vw, 1320px"
-              className="object-cover opacity-30 blur-sm"
-              priority={false}
+            <video
+              ref={videoRef}
+              className="absolute inset-0 size-full object-cover"
+              src={FRANCHISE_PARTNER.video}
+              poster={FRANCHISE_PARTNER.poster}
+              preload="metadata"
+              playsInline
+              controls={play}
+              onEnded={() => setPlay(false)}
             />
-            <div aria-hidden className="absolute inset-0 bg-plum/50" />
 
-            {/* The reel — centred, native 9:16, contained in the frame. */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative aspect-[9/16] h-[92%] max-w-full overflow-hidden rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.35)]">
-                <video
-                  ref={videoRef}
-                  className="absolute inset-0 size-full object-cover"
-                  src={FRANCHISE_PARTNER.video}
-                  poster={FRANCHISE_PARTNER.poster}
-                  preload="metadata"
-                  playsInline
-                  controls={play}
-                  onEnded={() => setPlay(false)}
+            {!play && (
+              <>
+                <Image
+                  src={FRANCHISE_PARTNER.poster}
+                  alt="Oh My Açaí Flagship-Store in Düsseldorf"
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 1320px"
+                  className="object-cover"
+                  priority={false}
                 />
-
-                {!play && (
-                  <>
-                    <Image
-                      src={FRANCHISE_PARTNER.poster}
-                      alt="Bowl-Zubereitung im Oh My Açaí Store"
-                      fill
-                      sizes="(max-width: 1024px) 60vw, 300px"
-                      className="object-cover"
-                      priority={false}
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-gradient-to-t from-plum/40 via-transparent to-transparent"
-                    />
-                    <motion.button
-                      type="button"
-                      onClick={start}
-                      aria-label="Reel von @ohmyacai_dues abspielen"
-                      whileHover={{ scale: 1.12 }}
-                      whileTap={{ scale: 0.94 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow-[0_8px_24px_rgba(0,0,0,0.25)] outline-none backdrop-blur focus-visible:ring-4 focus-visible:ring-gold sm:size-16"
-                    >
-                      <motion.span
-                        aria-hidden
-                        animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
-                        className="absolute inset-0 rounded-full border-2 border-white"
-                      />
-                      <svg viewBox="0 0 24 24" className="size-6 translate-x-0.5 sm:size-7" aria-hidden>
-                        <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#4d294e" />
-                      </svg>
-                    </motion.button>
-                  </>
-                )}
-              </div>
-            </div>
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-plum/50 via-transparent to-transparent"
+                />
+                <motion.button
+                  type="button"
+                  onClick={start}
+                  aria-label="Reel von @ohmyacai_dues abspielen"
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.94 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow-[0_8px_24px_rgba(0,0,0,0.25)] outline-none backdrop-blur focus-visible:ring-4 focus-visible:ring-gold sm:size-16"
+                >
+                  <motion.span
+                    aria-hidden
+                    animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
+                    className="absolute inset-0 rounded-full border-2 border-white"
+                  />
+                  <svg viewBox="0 0 24 24" className="size-6 translate-x-0.5 sm:size-7" aria-hidden>
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#4d294e" />
+                  </svg>
+                </motion.button>
+              </>
+            )}
 
             {/* Handle badge, top-left of the card frame */}
-            <span className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/40 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur sm:left-6 sm:top-6">
+            <span className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/50 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur sm:left-6 sm:top-6">
               <svg viewBox="0 0 24 24" className="size-4" aria-hidden fill="none">
                 <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" strokeWidth="1.8" />
                 <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
