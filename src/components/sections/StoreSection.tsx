@@ -43,16 +43,19 @@ export default function StoreSection() {
              pushed 45px of horizontal overflow onto the page. */
           className="w-full lg:w-[51.14%] lg:shrink-0"
         >
-          <div className="relative aspect-[675/520] w-full overflow-hidden rounded-3xl">
-            {/* The updated Figma storefront is a full-height portrait; the
-                landscape card shows its centre band (menu boards + counter). */}
-            <motion.div style={{ y: imgY }} className="absolute inset-[-8%]">
+          {/* The daylight storefront is portrait (1440×1920, 3:4), so the
+              card now matches — full image visible top-to-bottom: OH MY!
+              disc above the menu screens, herringbone counter and second
+              OH MY! disc at the base. The tiny parallax stays but is
+              gated to a 4% inset so we never crop the logos out. */}
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl">
+            <motion.div style={{ y: imgY }} className="absolute inset-[-4%]">
               <Image
                 src="/img/store.jpg"
                 alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
                 sizes="(max-width:1024px) 92vw, 675px"
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </motion.div>
           </div>
