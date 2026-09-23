@@ -55,7 +55,7 @@ const FRUIT: Fruit[] = [
   { src: '/img/fruit-blueberry-sm.png', alt: '', l: 40.83, t: 93.76, w: 5.21, h: 8.69, depth: 80, z: 30, spin: 22, delay: 0.6 },
 ];
 
-const HEADLINE = ['Frisch', 'Gemixte', 'Momente'];
+const HEADLINE = ['Düsseldorfs', 'Beste'];
 
 const SPRING = { stiffness: 110, damping: 20, mass: 0.6 } as const;
 
@@ -193,7 +193,7 @@ export default function Hero() {
                   className="h-5 w-[118px] sm:h-6 sm:w-[142px] lg:h-[1.67cqw] lg:w-[9.86cqw]"
                 />
                 <p className="whitespace-nowrap text-[13px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]">
-                  17.000+ 5-Sterne-Bewertungen auf
+                  100+ 5-Sterne-Bewertungen auf
                 </p>
                 <Image
                   src="/svg/hero-google.svg"
@@ -206,7 +206,7 @@ export default function Hero() {
 
               {/* Headline — per-line mask reveal */}
               <h1 className="font-display text-[clamp(2.5rem,8.4vw,3.5rem)] uppercase leading-[1.2] text-white lg:text-[clamp(3rem,4.444cqw,5.5rem)]">
-                <span className="sr-only">Frisch gemixte Momente</span>
+                <span className="sr-only">Düsseldorfs beste Açaí Bowls</span>
                 {HEADLINE.map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
                     <motion.span
@@ -237,7 +237,7 @@ export default function Hero() {
                 className="-mt-1 w-fit origin-left rounded-3xl bg-gold px-[15px] py-[5px]"
               >
                 <p className="font-display whitespace-nowrap text-[clamp(2rem,7vw,3rem)] uppercase leading-[1.2] text-white lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]">
-                  Los geht’s
+                  Acai Bowls
                 </p>
               </motion.div>
 
@@ -247,8 +247,8 @@ export default function Hero() {
                 transition={{ duration: 0.7, delay: 0.7 }}
                 className="text-[15px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]"
               >
-                nahrhafte &amp; köstliche Smoothies, die sich mühelos in deinen
-                Alltag einfügen
+                Cremige Açaí Bowls aus echtem Püree, frische Toppings, jeden
+                Tag frisch gemacht – mitten in Düsseldorf
               </motion.p>
             </div>
 
