@@ -66,3 +66,6 @@ pids
 lib-cov
 .cache
 .parcel-cache
+
+# raw source assets — not shipped
+.source-assets/

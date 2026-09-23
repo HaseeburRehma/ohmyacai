@@ -132,7 +132,8 @@ function BowlCard({
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
           onClick={(e) => {
-            // On touch, the first tap previews (activate); the second tap navigates.
+            // On touch, the first tap previews (activate + play video); the
+            // second tap follows the link. On mouse, the click always follows.
             if (touched.current) return;
             touched.current = false;
             if (!active) {
@@ -140,6 +141,7 @@ function BowlCard({
               if (isTouch) {
                 e.preventDefault();
                 setActive(true);
+                playNow();
                 touched.current = true;
                 window.setTimeout(() => { touched.current = false; }, 400);
               }

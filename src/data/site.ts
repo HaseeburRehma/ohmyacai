@@ -119,11 +119,11 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Klassische Açaí Bowl', price: '€12,90', rating: '4.8', image: '/img/signature/acai.jpg',   video: '/img/bowls/acai.mp4',          fade: '#864f33' },
-  { name: 'Tropische Mango Bowl', price: '€12,90', rating: '4.8', image: '/img/signature/mango.jpg',  video: '/img/bowls/mango.mp4',         fade: '#fcba3f' },
-  { name: 'Beeren-Traum Bowl',    price: '€12,90', rating: '4.6', image: '/img/signature/green.jpg',  video: '/img/bowls/beeren.mp4',        fade: '#abb264' },
-  { name: 'Kakao-Crunch Bowl',    price: '€12,90', rating: '4.9', image: '/img/signature/cream.jpg',  video: '/img/bowls/kakao.mp4',         fade: '#d2c3b0' },
-  { name: 'Erdnussbutter Bowl',   price: '€12,90', rating: '4.8', image: '/img/signature/peanut.jpg', video: '/img/bowls/erdnussbutter.mp4', fade: '#895331' },
+  { name: 'Bueno Açaí Bowl',       price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
+  { name: 'Cheesecake Açaí Bowl',  price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
+  { name: 'Erdnussbutter Açaí',    price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
+  { name: 'Pistazien Açaí Bowl',   price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
+  { name: 'Tropical Açaí Bowl',    price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy
