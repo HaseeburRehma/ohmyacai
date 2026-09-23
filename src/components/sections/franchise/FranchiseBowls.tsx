@@ -50,8 +50,10 @@ export default function FranchiseBowls() {
           </InView>
         </div>
 
-        {/* Cards ------------------------------------------------------ */}
-        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-5 lg:mt-[108px] lg:grid-cols-4 lg:gap-5">
+        {/* Cards — one per row on the smallest phones so BUENO AÇAÍ BOWL,
+            CHEESECAKE AÇAÍ BOWL etc. never wrap mid-word inside the tiny
+            2-up card at 360 px. 2-up from sm, the Figma 4-up from lg. */}
+        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-[108px] lg:grid-cols-4 lg:gap-5">
           {FRANCHISE_BOWLS.map((bowl, i) => (
             <InView
               key={bowl.name}

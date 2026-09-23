@@ -167,13 +167,14 @@ function Slide({
       }}
     >
       {/* Cup — object-contain in a region between the title and the CTA.
-          On mobile the region is tighter (inset-x-[18%] top-[42%]
-          bottom-[16%]) so the cup reads at ~55% of the card instead of
-          swallowing every pixel of copy on a 360-px Galaxy A55. From lg
-          the Figma placement takes over (inset-x-8 / top-25 / bottom-4). */}
+          On mobile the cup sits at roughly two-thirds of the card
+          (inset-x-[12%] top-[36%] bottom-[14%]) — a touch bigger than
+          before so the bowl reads clearly, and clear of the copy area
+          up top and the CTA at the bottom. From lg the Figma placement
+          takes over (inset-x-8 / top-25 / bottom-4). */}
       <div
         data-slide-art
-        className="pointer-events-none absolute inset-x-[18%] bottom-[16%] top-[42%] lg:inset-x-[8%] lg:bottom-[4%] lg:top-[25%]"
+        className="pointer-events-none absolute inset-x-[12%] bottom-[14%] top-[36%] lg:inset-x-[8%] lg:bottom-[4%] lg:top-[25%]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
@@ -185,15 +186,18 @@ function Slide({
         />
       </div>
 
-      {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title */}
-      <div className={`absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(86%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] ${onLight ? 'text-ink' : 'text-white'}`}>
-        <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
+      {/* Copy — Figma: inset 22px, 608 wide, 16px eyebrow, 48px title.
+          Column shrinks on mobile so long titles like ERDNUSSBUTTER never
+          overrun the right-edge plus badge, and the h3 hyphenates at word
+          boundaries if it does need to wrap. */}
+      <div className={`absolute left-[max(1rem,2.45cqh)] top-[max(1rem,2.45cqh)] z-10 flex w-[min(72%,67.71cqh)] flex-col gap-[max(0.4rem,0.9cqh)] ${onLight ? 'text-ink' : 'text-white'}`}>
+        <p className="text-[clamp(0.75rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
-        <h3 className="font-display text-[clamp(1.5rem,5.345cqh,3.75rem)] uppercase leading-[1.2]">
+        <h3 className="font-display text-[clamp(1.15rem,4.6cqh,3.5rem)] uppercase leading-[1.1] [hyphens:auto] [overflow-wrap:break-word]">
           {slide.title}
         </h3>
-        <p className="text-[clamp(0.8125rem,1.782cqh,1.25rem)] tracking-[-0.5px]">
+        <p className="text-[clamp(0.75rem,1.782cqh,1.25rem)] leading-[1.35] tracking-[-0.3px]">
           {slide.body}
         </p>
       </div>

@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
 
-const HEADING = ['Besuche', 'unseren', 'Store'];
+const HEADING = ['Besuche unseren', 'Store'];
 
 /**
  * Figma: "Image Section → Content" — 675 × 520 rounded-24 photo on the left,
@@ -83,7 +83,7 @@ export default function StoreSection() {
                line is 9.36% of the column width, and the ratio holds because
                both scale together. 9.1cqw leaves a little slack, capped at
                Figma's 64px so it never grows past the design. */
-            className="font-display text-[min(4rem,9.1cqw)] uppercase leading-[1.2] text-ink"
+            className="font-display text-[min(2.25rem,6.6cqw)] uppercase leading-[1.15] text-ink lg:text-[min(4rem,9.1cqw)]"
           >
             <span className="sr-only">Besuche unseren Store</span>
             {HEADING.map((line) => (
