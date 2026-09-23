@@ -82,6 +82,13 @@ function BowlCard({
 }) {
   const [active, setActive] = useState(false);
   const touched = useRef(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const playNow = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.readyState < 2) { try { v.load(); } catch {} }
+    v.play().catch(() => {});
+  };
   useEffect(() => {
     // On touch, tapping elsewhere on the document deactivates any active card.
     const off = (e: PointerEvent) => {
@@ -120,7 +127,7 @@ function BowlCard({
           whileHover="hover"
           whileFocus="hover"
           data-bowl-card
-          onPointerEnter={(e) => { if (e.pointerType !== 'touch') setActive(true); }}
+          onPointerEnter={(e) => { if (e.pointerType !== 'touch') { setActive(true); playNow(); } }}
           onPointerLeave={(e) => { if (e.pointerType !== 'touch') setActive(false); }}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
@@ -141,7 +148,7 @@ function BowlCard({
           style={{ transformStyle: 'preserve-3d' }}
           className="group relative block size-full overflow-hidden rounded-3xl border-[1.5px] border-white/60 outline-none focus-visible:ring-4 focus-visible:ring-white/50"
         >
-          <HoverMedia bowl={bowl} active={active} />
+          <HoverMedia bowl={bowl} active={active} videoRef={videoRef} />
 
           {/* Bottom fade to the card's backdrop colour, for legible copy */}
           <div
@@ -230,12 +237,13 @@ function BowlCard({
 function HoverMedia({
   bowl,
   active,
+  videoRef,
 }: {
   bowl: (typeof BOWLS)[number];
   active: boolean;
+  videoRef: React.RefObject<HTMLVideoElement | null>;
 }) {
   const [reduce, setReduce] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -268,7 +276,7 @@ function HoverMedia({
       v.pause();
       try { v.currentTime = 0; } catch {}
     }
-  }, [active, reduce]);
+  }, [active, reduce, videoRef]);
 
   return (
     <motion.div
