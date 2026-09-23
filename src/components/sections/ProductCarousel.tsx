@@ -166,23 +166,21 @@ function Slide({
         transformStyle: 'preserve-3d',
       }}
     >
-      {/* Cup — the branded Buenoacai photo. It sits in a region between the
-          title and the CTA and is fit with object-contain, so the whole cup is
-          always visible whatever the panel's aspect. The panel is
-          `w-1/2 x 100svh`, so its ratio swings from ~0.8 (Figma) on a tall
-          window to ~1 on a short wide one; keying the cup to height alone made
-          it tower and clip 7% off the base on the wide case. Anchored to the
-          region's bottom so the base stays put, tilted -7.11deg as in Figma. */}
+      {/* Cup — object-contain in a region between the title and the CTA.
+          On mobile the region is tighter (inset-x-[18%] top-[42%]
+          bottom-[16%]) so the cup reads at ~55% of the card instead of
+          swallowing every pixel of copy on a 360-px Galaxy A55. From lg
+          the Figma placement takes over (inset-x-8 / top-25 / bottom-4). */}
       <div
         data-slide-art
-        className="pointer-events-none absolute inset-x-[8%] bottom-[4%] top-[25%]"
+        className="pointer-events-none absolute inset-x-[18%] bottom-[16%] top-[42%] lg:inset-x-[8%] lg:bottom-[4%] lg:top-[25%]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
           src={slide.image}
           alt={slide.title}
           fill
-          sizes="(max-width:1024px) 86vw, 46vw"
+          sizes="(max-width:1024px) 50vw, 46vw"
           className="rotate-[-7.11deg] object-contain object-bottom drop-shadow-[10px_18px_28px_rgba(0,0,0,0.28)] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
         />
       </div>
