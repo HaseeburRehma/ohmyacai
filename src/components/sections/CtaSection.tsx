@@ -39,31 +39,51 @@ export default function CtaSection() {
           screens the inner part simply falls behind the centre text blocks
           (which are opaque), so the cups read as framing the copy rather than
           being sliced. */}
+      {/* Cups are given the FULL section height and object-contain, so the
+          whole cup renders inside the frame at every viewport — no
+          top/bottom/side clip. A gentle scroll drift + a per-side tilt
+          matches the Figma "cups leaning inward" composition. */}
       <motion.div
         style={{ y: rightY }}
-        className="pointer-events-none absolute bottom-[8px] right-0 hidden h-[74%] w-[30%] lg:block xl:w-[26%]"
+        className="pointer-events-none absolute inset-y-0 right-[-2%] hidden w-[36%] md:block lg:w-[34%] xl:w-[32%]"
         aria-hidden
       >
-        <Image
-          src="/img/panel/cup-2.png"
-          alt=""
-          fill
-          sizes="30vw"
-          className="rotate-[6deg] object-contain object-right-bottom drop-shadow-[16px_22px_30px_rgba(0,0,0,0.22)]"
-        />
+        <motion.div
+          initial={{ rotate: 14, opacity: 0, x: 40 }}
+          whileInView={{ rotate: 6, opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative size-full"
+        >
+          <Image
+            src="/img/panel/cup-2.png"
+            alt=""
+            fill
+            sizes="34vw"
+            className="object-contain [object-position:center_center] drop-shadow-[16px_22px_30px_rgba(0,0,0,0.22)]"
+          />
+        </motion.div>
       </motion.div>
       <motion.div
         style={{ y: leftY }}
-        className="pointer-events-none absolute bottom-[8px] left-0 hidden h-[74%] w-[30%] lg:block xl:w-[26%]"
+        className="pointer-events-none absolute inset-y-0 left-[-2%] hidden w-[36%] md:block lg:w-[34%] xl:w-[32%]"
         aria-hidden
       >
-        <Image
-          src="/img/panel/cup-3.png"
-          alt=""
-          fill
-          sizes="30vw"
-          className="rotate-[-6deg] object-contain object-left-bottom drop-shadow-[-16px_22px_30px_rgba(0,0,0,0.22)]"
-        />
+        <motion.div
+          initial={{ rotate: -14, opacity: 0, x: -40 }}
+          whileInView={{ rotate: -6, opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative size-full"
+        >
+          <Image
+            src="/img/panel/cup-3.png"
+            alt=""
+            fill
+            sizes="34vw"
+            className="object-contain [object-position:center_center] drop-shadow-[-16px_22px_30px_rgba(0,0,0,0.22)]"
+          />
+        </motion.div>
       </motion.div>
 
       <div className="relative mx-auto flex h-full w-full max-w-[1440px] flex-col items-center justify-center gap-6 px-6">

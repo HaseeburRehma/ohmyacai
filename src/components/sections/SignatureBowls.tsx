@@ -298,15 +298,19 @@ function HoverMedia({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden
-          className="absolute inset-0 size-full object-cover"
+          /* object-position keeps the top third of the source frame — where
+             the bowl sits in every clip — so the crop never lands on hands,
+             counter or floor. */
+          className="absolute inset-0 size-full object-cover [object-position:center_top]"
         />
       )}
       <Image
         src={bowl.image}
         alt={bowl.name}
         fill
+        loading="lazy"
         sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
         className={`object-cover transition-opacity duration-200 ease-out ${active && !reduce ? 'opacity-0' : 'opacity-100'}`}
       />
