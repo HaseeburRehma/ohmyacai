@@ -212,7 +212,7 @@ export const FAQS = [
 export const REVIEW_SUMMARY = {
   name: 'Oh My Acai',
   score: '5.0',
-  count: '480+ Bewertungen auf',
+  count: '100+ Bewertungen auf',
 };
 
 export const REVIEWS = [
@@ -258,17 +258,11 @@ export const REVIEWS = [
   },
 ];
 
-/** Footer (Figma: Footer - Desktop) */
-export const FOOTER_PAGES = [
-  'Über uns',
-  'Blog',
-  'Karte',
-  'Standort',
-  'Reservierung',
-  '404',
-];
+/** Footer (Figma: Footer - Desktop) — Twitter/Pinterest and the placeholder
+ *  Reservierung/404 rows are dropped since the shop doesn't run those. */
+export const FOOTER_PAGES = ['Über uns', 'Blog', 'Karte', 'Standort'];
 
-export const FOOTER_SOCIAL = ['Instagram', 'Facebook', 'Twitter', 'Pinterest'];
+export const FOOTER_SOCIAL = ['Instagram', 'Facebook'];
 
 export const CONTACT = {
   email: 'info@ohmyacai.de',
