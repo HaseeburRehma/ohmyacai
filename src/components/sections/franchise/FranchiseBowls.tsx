@@ -51,7 +51,7 @@ export default function FranchiseBowls() {
         </div>
 
         {/* Cards ------------------------------------------------------ */}
-        <div className="mt-24 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-[108px] lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-5 lg:mt-[108px] lg:grid-cols-4 lg:gap-5">
           {FRANCHISE_BOWLS.map((bowl, i) => (
             <InView
               key={bowl.name}

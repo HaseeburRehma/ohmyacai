@@ -154,11 +154,12 @@ export default function VideoFeature() {
               />
             </div>
 
-            {/* Bowl. Positioning and animation are on separate elements on
-                purpose: GSAP writes the whole `transform`, so animating the
-                same node would wipe the `-translate-x/y-1/2` centring and drop
-                the cup into the corner. */}
-            <div className="pointer-events-none relative mx-auto -my-4 h-[300px] w-[86%] sm:h-[360px] lg:absolute lg:left-[48.5%] lg:top-[62.3%] lg:mx-0 lg:h-[60.6%] lg:w-[33.5%] lg:-translate-x-1/2 lg:-translate-y-1/2">
+            {/* Bowl — absolutely positioned only on lg. On mobile the cup is
+                rendered inline BETWEEN card pairs (see the two mobile grids
+                below), so it can sit visually centred between callouts 2 and 3
+                rather than at the top of the stack. `hidden lg:block` here so
+                the same GSAP-driven node only paints in the Figma composition. */}
+            <div className="pointer-events-none absolute left-[48.5%] top-[62.3%] hidden h-[60.6%] w-[33.5%] -translate-x-1/2 -translate-y-1/2 lg:block">
               <div
                 data-video-cup
                 style={{ transformStyle: 'preserve-3d' }}
@@ -168,16 +169,66 @@ export default function VideoFeature() {
                   src="/img/panel/cup-4.png"
                   alt="Oh My Açaí Bowl"
                   fill
-                  sizes="(max-width: 1024px) 60vw, 34vw"
-                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)] lg:drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
+                  sizes="34vw"
+                  className="object-contain drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
                 />
               </div>
             </div>
 
-            {/* Callout cards — a grid on phones, the Figma float from lg up.
-                `lg:contents` drops the grid box so each card positions against
-                the panel itself. */}
-            <div className="relative grid gap-3 sm:grid-cols-2 sm:gap-4 lg:contents">
+            {/* Mobile stack: first two callouts, then the cup, then the last
+                two callouts — the layout the user asked for. From lg the
+                grid collapses (`lg:hidden`) and the desktop float takes over. */}
+            <div className="flex flex-col gap-4 lg:hidden">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {VIDEO_CARDS.slice(0, 2).map((card, i) => (
+                  <motion.div
+                    key={`m-top-${i}`}
+                    whileHover={{ y: -6, scale: 1.04 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
+                  >
+                    <h3 className="font-display text-[clamp(0.9rem,3.8vw,1.15rem)] uppercase leading-[1.2] tracking-[-0.5px]">
+                      {card.title}
+                    </h3>
+                    <p className="text-[0.8rem] leading-[1.3] tracking-[-0.5px]">
+                      {card.body}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="pointer-events-none relative mx-auto h-[300px] w-[80%] sm:h-[360px]">
+                <Image
+                  src="/img/panel/cup-4.png"
+                  alt="Oh My Açaí Bowl"
+                  fill
+                  sizes="80vw"
+                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)]"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {VIDEO_CARDS.slice(2, 4).map((card, i) => (
+                  <motion.div
+                    key={`m-bot-${i}`}
+                    whileHover={{ y: -6, scale: 1.04 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
+                  >
+                    <h3 className="font-display text-[clamp(0.9rem,3.8vw,1.15rem)] uppercase leading-[1.2] tracking-[-0.5px]">
+                      {card.title}
+                    </h3>
+                    <p className="text-[0.8rem] leading-[1.3] tracking-[-0.5px]">
+                      {card.body}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop float — the Figma pinboard composition, absolute
+                against the panel and untouched by the mobile stack above. */}
+            <div className="hidden lg:contents">
               {VIDEO_CARDS.map((card, i) => (
                 <motion.div
                   key={i}
@@ -190,10 +241,10 @@ export default function VideoFeature() {
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className={`relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white lg:absolute lg:w-[27%] lg:gap-3 lg:rounded-3xl ${card.pos}`}
                 >
-                  <h3 className="font-display text-[clamp(0.95rem,4.2vw,1.15rem)] uppercase leading-[1.2] tracking-[-0.5px] lg:text-[clamp(0.6rem,1.6vw,1.5rem)]">
+                  <h3 className="font-display text-[clamp(0.6rem,1.6vw,1.5rem)] uppercase leading-[1.2] tracking-[-0.5px]">
                     {card.title}
                   </h3>
-                  <p className="text-[0.85rem] leading-[1.3] tracking-[-0.5px] lg:text-[clamp(0.5rem,1.05vw,1rem)] lg:leading-[1.2]">
+                  <p className="text-[clamp(0.5rem,1.05vw,1rem)] leading-[1.2] tracking-[-0.5px]">
                     {card.body}
                   </p>
                 </motion.div>

@@ -27,7 +27,7 @@ export default function CtaSection() {
     <section
       ref={ref}
       data-cta
-      className="relative w-full overflow-hidden bg-white py-24 lg:h-[710px] lg:py-0"
+      className="relative w-full overflow-hidden bg-white py-12 sm:py-16 lg:h-[710px] lg:py-0"
     >
       {/* Two branded cups frame the copy — cup-2 right, cup-3 left. They are
           NOT mirrored (that would flip the "OH MY! Açaí" label): each side is
@@ -45,6 +45,26 @@ export default function CtaSection() {
           front and centre and the cups read as corner ornaments, not the
           composition. object-contain keeps every side of the cup visible
           at any viewport. */}
+      {/* Mobile cup — one small cup tucked into the top-right of the section
+          on phones, since the diagonal desktop pair would swallow the copy
+          at 440 px. Hidden from md up where the desktop layout takes over. */}
+      <motion.div
+        aria-hidden
+        initial={{ rotate: 24, opacity: 0, x: 30, y: -20 }}
+        whileInView={{ rotate: 12, opacity: 1, x: 0, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="pointer-events-none absolute right-[-6%] top-[2%] block h-[28%] w-[38%] md:hidden"
+      >
+        <Image
+          src="/img/panel/cup-2.png"
+          alt=""
+          fill
+          sizes="38vw"
+          className="object-contain drop-shadow-[10px_14px_18px_rgba(0,0,0,0.22)]"
+        />
+      </motion.div>
+
       <motion.div
         style={{ y: rightY }}
         className="pointer-events-none absolute right-[3%] top-[6%] hidden h-[38%] w-[22%] md:block lg:h-[40%] lg:w-[20%] xl:w-[18%]"
