@@ -250,11 +250,23 @@ function HoverMedia({
     const v = videoRef.current;
     if (!v) return;
     if (active && !reduce) {
-      v.currentTime = 0;
-      v.play().catch(() => {});
+      // Kick network fetch even if the browser hadn't started preloading.
+      if (v.readyState < 2) {
+        try { v.load(); } catch {}
+      }
+      const onCanPlay = () => {
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      };
+      if (v.readyState >= 2) {
+        onCanPlay();
+      } else {
+        v.addEventListener('loadeddata', onCanPlay, { once: true });
+        return () => v.removeEventListener('loadeddata', onCanPlay);
+      }
     } else {
       v.pause();
-      v.currentTime = 0;
+      try { v.currentTime = 0; } catch {}
     }
   }, [active, reduce]);
 
