@@ -359,17 +359,16 @@ export const FRANCHISE_STEPS = [
  *  same photos re-canvassed to Figma's 236 × 314 bowl box with the cup filling
  *  the height and centred, which makes the four cards identical by
  *  construction rather than by per-card nudging. */
-/** The four hero bowls the franchise pack ships with. `color` is the
- *  studio-backdrop tint of each photo (sampled from the top-quarter edges
- *  where no bowl is present) so the card fill and the photo backdrop are
- *  the SAME colour — the card reads as one continuous field of colour,
- *  matching the Figma "Meet Our Bowls" frame, instead of splitting into
- *  a two-tone top-fill vs bottom-photo card. */
+/** The four hero bowls the franchise pack ships with. The image is a
+ *  background-removed cutout of each cup (rembg / u2net + WebP, ~57 KB
+ *  each), so the cup floats on top of the solid-colour card exactly like
+ *  the Figma "Meet Our Bowls" frame — no photo backdrop, no two-tone
+ *  split. `color` is the card fill, chosen from Figma's palette. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Bueno Açaí Bowl',      image: '/img/bowls/bueno.jpg',      color: '#663b23' },
-  { name: 'Tropical Açaí Bowl',   image: '/img/bowls/tropical.jpg',   color: '#d48f17' },
-  { name: 'Pistazien Açaí Bowl',  image: '/img/bowls/pistazie.jpg',   color: '#596526' },
-  { name: 'Cheesecake Açaí Bowl', image: '/img/bowls/cheesecake.jpg', color: '#ac9784' },
+  { name: 'Bueno Açaí Bowl',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
+  { name: 'Tropical Açaí Bowl',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
+  { name: 'Pistazien Açaí Bowl',  image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
+  { name: 'Cheesecake Açaí Bowl', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {

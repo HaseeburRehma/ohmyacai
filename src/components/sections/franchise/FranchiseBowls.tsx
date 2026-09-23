@@ -67,11 +67,13 @@ export default function FranchiseBowls() {
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <Tilt3D max={7} scale={1.02} className="aspect-[315/340] w-full">
-                {/* Figma "Meet Our Bowls": solid colour card, two-line white
-                    title top-left, and the bowl photo filling the bottom
-                    two thirds. Toppings-forward crop (object-position:top)
-                    keeps the strawberries + granola visible on every width
-                    so every card reads the same. */}
+                {/* Figma "Meet Our Bowls": one solid-colour card, two-line
+                    white title top-left, and the bowl (background-removed
+                    cutout) FLOATING on top of the fill — no two-tone split,
+                    just the cup drop-shadowed onto the colour. object-contain
+                    keeps the whole cup — rim, logo, base — visible at every
+                    viewport, and object-bottom lifts the base against the
+                    card's lower edge like the Figma reference. */}
                 <motion.div
                   initial="rest"
                   whileHover="hover"
@@ -85,15 +87,15 @@ export default function FranchiseBowls() {
                   <motion.div
                     variants={{ rest: { y: 0, scale: 1 }, hover: { y: -6, scale: 1.05 } }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="pointer-events-none absolute inset-x-0 bottom-0 top-[42%]"
+                    className="pointer-events-none absolute inset-x-[8%] bottom-[4%] top-[30%]"
                   >
                     <Image
                       src={bowl.image}
                       alt={bowl.name}
                       fill
                       loading="lazy"
-                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
-                      className="object-cover [object-position:center_top] drop-shadow-[6px_14px_22px_rgba(0,0,0,0.28)]"
+                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 20vw"
+                      className="object-contain object-bottom drop-shadow-[8px_18px_22px_rgba(0,0,0,0.35)]"
                     />
                   </motion.div>
                 </motion.div>
