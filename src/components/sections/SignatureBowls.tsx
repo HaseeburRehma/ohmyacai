@@ -81,6 +81,20 @@ function BowlCard({
   index: number;
 }) {
   const [active, setActive] = useState(false);
+  const touched = useRef(false);
+  useEffect(() => {
+    // On touch, tapping elsewhere on the document deactivates any active card.
+    const off = (e: PointerEvent) => {
+      if (e.pointerType !== 'touch') return;
+      const t = e.target as Node | null;
+      const card = document.querySelectorAll('[data-bowl-card]');
+      let inside = false;
+      card.forEach((c) => { if (t && c.contains(t)) inside = true; });
+      if (!inside) setActive(false);
+    };
+    document.addEventListener('pointerdown', off);
+    return () => document.removeEventListener('pointerdown', off);
+  }, []);
   return (
     <InView
       variants={{
@@ -105,10 +119,25 @@ function BowlCard({
           initial="rest"
           whileHover="hover"
           whileFocus="hover"
-          onMouseEnter={() => setActive(true)}
-          onMouseLeave={() => setActive(false)}
+          data-bowl-card
+          onPointerEnter={(e) => { if (e.pointerType !== 'touch') setActive(true); }}
+          onPointerLeave={(e) => { if (e.pointerType !== 'touch') setActive(false); }}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
+          onClick={(e) => {
+            // On touch, the first tap previews (activate); the second tap navigates.
+            if (touched.current) return;
+            touched.current = false;
+            if (!active) {
+              const isTouch = window.matchMedia('(hover: none)').matches;
+              if (isTouch) {
+                e.preventDefault();
+                setActive(true);
+                touched.current = true;
+                window.setTimeout(() => { touched.current = false; }, 400);
+              }
+            }
+          }}
           style={{ transformStyle: 'preserve-3d' }}
           className="group relative block size-full overflow-hidden rounded-3xl border-[1.5px] border-white/60 outline-none focus-visible:ring-4 focus-visible:ring-white/50"
         >
@@ -250,11 +279,11 @@ function HoverMedia({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden
           initial={{ opacity: 0 }}
           animate={{ opacity: active ? 1 : 0 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 size-full object-cover"
         />
       )}
