@@ -235,12 +235,6 @@ function HoverMedia({
   active: boolean;
 }) {
   const [reduce, setReduce] = useState(false);
-  const [ioMount, setIoMount] = useState(false);
-  // Mount the <video> if the IntersectionObserver has ever fired OR the user
-  // has just hovered (some browsers throttle IO in inactive tabs, so hovering
-  // is the guaranteed fallback).
-  const mount = ioMount || active;
-  const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -252,40 +246,20 @@ function HoverMedia({
     return () => mq.removeEventListener('change', on);
   }, []);
 
-  // Only mount the <video> when the card intersects the viewport — saves the
-  // ~1 MB per-mp4 download on pages that never scroll to the grid.
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el || typeof IntersectionObserver === 'undefined') return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setIoMount(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: '200px 0px' }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     if (active && !reduce) {
-      requestAnimationFrame(() => {
-        v.currentTime = 0;
-        v.play().catch(() => {});
-      });
+      v.currentTime = 0;
+      v.play().catch(() => {});
     } else {
       v.pause();
+      v.currentTime = 0;
     }
-  }, [active, reduce, mount]);
+  }, [active, reduce]);
 
   return (
     <motion.div
-      ref={wrapRef}
       variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="absolute inset-0"
@@ -297,7 +271,7 @@ function HoverMedia({
         sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
         className="object-cover"
       />
-      {!reduce && mount && (
+      {!reduce && (
         <video
           ref={videoRef}
           src={bowl.video}
@@ -305,7 +279,7 @@ function HoverMedia({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           aria-hidden
           className={`absolute inset-0 size-full object-cover transition-opacity duration-200 ease-out ${active ? 'opacity-100' : 'opacity-0'}`}
         />
