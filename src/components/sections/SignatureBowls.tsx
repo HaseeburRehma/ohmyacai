@@ -220,13 +220,12 @@ function BowlCard({
 /* ------------------------------------------------------------------ */
 
 /**
- * Image on rest, video on hover / focus. The video is preloaded on the client
- * (metadata only) so the swap has no lag, and it rewinds on leave so the next
- * hover restarts from frame 0. On touch devices there is no hover, so a first
- * tap plays the video and any tap outside the currently-playing card pauses
- * it — the anchor's onClick is untouched so the actual navigation still works
- * on the second tap, matching how touch users expect gallery cards to behave.
- * Skipped entirely under prefers-reduced-motion (image stays visible always).
+ * Image on rest, video on hover / focus / touch-tap. The video only mounts
+ * when the card first scrolls into view (IntersectionObserver), so idle pages
+ * download nothing extra. Preload="auto" so the mp4 is ready by the time
+ * hover happens; play() is fired inside a rAF so browsers accept it as
+ * user-gesture-adjacent. On leave the video pauses and rewinds so the next
+ * hover restarts from frame 0. Skipped under prefers-reduced-motion.
  */
 function HoverMedia({
   bowl,
@@ -236,6 +235,8 @@ function HoverMedia({
   active: boolean;
 }) {
   const [reduce, setReduce] = useState(false);
+  const [mount, setMount] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -247,19 +248,40 @@ function HoverMedia({
     return () => mq.removeEventListener('change', on);
   }, []);
 
+  // Only mount the <video> when the card intersects the viewport — saves the
+  // ~1 MB per-mp4 download on pages that never scroll to the grid.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setMount(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     if (active && !reduce) {
-      v.currentTime = 0;
-      v.play().catch(() => {});
+      requestAnimationFrame(() => {
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      });
     } else {
       v.pause();
     }
-  }, [active, reduce]);
+  }, [active, reduce, mount]);
 
   return (
     <motion.div
+      ref={wrapRef}
       variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="absolute inset-0"
@@ -271,8 +293,8 @@ function HoverMedia({
         sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
         className="object-cover"
       />
-      {!reduce && (
-        <motion.video
+      {!reduce && mount && (
+        <video
           ref={videoRef}
           src={bowl.video}
           poster={bowl.image}
@@ -281,10 +303,7 @@ function HoverMedia({
           playsInline
           preload="auto"
           aria-hidden
-          initial={{ opacity: 0 }}
-          animate={{ opacity: active ? 1 : 0 }}
-          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 size-full object-cover"
+          className={`absolute inset-0 size-full object-cover transition-opacity duration-200 ease-out ${active ? 'opacity-100' : 'opacity-0'}`}
         />
       )}
     </motion.div>

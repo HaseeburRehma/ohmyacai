@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import NextImage from 'next/image';
 import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import { INSTAGRAM } from '@/data/site';
@@ -24,6 +25,18 @@ export default function InstagramReels() {
   const [manuallyPaused, setManuallyPaused] = useState(false);
   const [reduce, setReduce] = useState(false);
   const railRef = useRef<HTMLDivElement>(null);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const [sectionMounted, setSectionMounted] = useState(false);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') { setSectionMounted(true); return; }
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setSectionMounted(true); io.disconnect(); }
+    }, { rootMargin: '400px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -56,6 +69,7 @@ export default function InstagramReels() {
 
   return (
     <section
+      ref={sectionRef}
       id="instagram"
       className="w-full bg-white px-6 py-16 sm:px-10 lg:px-[60px] lg:py-[110px]"
     >
@@ -117,6 +131,7 @@ export default function InstagramReels() {
                 index={i}
                 total={reels.length}
                 active={i === index}
+                mounted={sectionMounted}
                 onActivate={(pause) => {
                   setIndex(i);
                   setManuallyPaused(pause);
@@ -153,12 +168,14 @@ function ReelCard({
   index,
   total,
   active,
+  mounted,
   onActivate,
 }: {
   reel: (typeof INSTAGRAM.reels)[number];
   index: number;
   total: number;
   active: boolean;
+  mounted: boolean;
   onActivate: (paused: boolean) => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -217,21 +234,30 @@ function ReelCard({
           active ? 'ring-2 ring-plum ring-offset-4 ring-offset-white' : ''
         }`}
       >
-        {/* Video always mounted (native controls false); Play/pause driven by
-            the button. Poster stays as background image so paused cards show a
-            clean still. */}
-        <video
-          ref={videoRef}
+        {/* Poster (Next Image) is always shown; the <video> mounts only
+            once the section scrolls into view, so idle pages don't download
+            all four mp4s. */}
+        <NextImage
+          src={reel.poster}
+          alt={reel.alt}
+          fill
+          sizes="(max-width: 640px) 64vw, (max-width: 1024px) 42vw, 300px"
           className="absolute inset-0 size-full object-cover"
-          src={reel.video}
-          poster={reel.poster}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
         />
+        {mounted && (
+          <video
+            ref={videoRef}
+            className={`absolute inset-0 size-full object-cover transition-opacity duration-300 ease-out ${active && playing ? 'opacity-100' : 'opacity-0'}`}
+            src={reel.video}
+            poster={reel.poster}
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          />
+        )}
 
         {/* legibility gradient + play/pause glyph */}
         <div
