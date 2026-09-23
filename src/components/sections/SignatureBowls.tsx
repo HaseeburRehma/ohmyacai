@@ -284,13 +284,10 @@ function HoverMedia({
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="absolute inset-0"
     >
-      <Image
-        src={bowl.image}
-        alt={bowl.name}
-        fill
-        sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
-        className="object-cover"
-      />
+      {/* Video sits UNDER the image; when the image fades out on hover,
+          the video is revealed. Toggling opacity on the <img> avoids the
+          stuck-transition issue Chrome exhibits when it tries to animate
+          opacity on a <video> whose first frame hasn't decoded yet. */}
       {!reduce && (
         <video
           ref={videoRef}
@@ -301,9 +298,16 @@ function HoverMedia({
           playsInline
           preload="metadata"
           aria-hidden
-          className={`absolute inset-0 size-full object-cover transition-opacity duration-200 ease-out ${active ? 'opacity-100' : 'opacity-0'}`}
+          className="absolute inset-0 size-full object-cover"
         />
       )}
+      <Image
+        src={bowl.image}
+        alt={bowl.name}
+        fill
+        sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 424px"
+        className={`object-cover transition-opacity duration-200 ease-out ${active && !reduce ? 'opacity-0' : 'opacity-100'}`}
+      />
     </motion.div>
   );
 }
