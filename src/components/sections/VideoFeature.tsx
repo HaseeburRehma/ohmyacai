@@ -178,8 +178,13 @@ export default function VideoFeature() {
             {/* Mobile stack: first two callouts, then the cup, then the last
                 two callouts — the layout the user asked for. From lg the
                 grid collapses (`lg:hidden`) and the desktop float takes over. */}
-            <div className="flex flex-col gap-4 lg:hidden">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {/* Mobile stack: one card per row from 360 → sm, two-up at sm,
+                cup mounted between the pairs. `grid-cols-1 sm:grid-cols-2`
+                keeps the copy from getting crushed on the smallest phones
+                (Galaxy A55 / iPhone SE) where two cards side-by-side clipped
+                "HANDVERLESE BEEREN" mid-word. */}
+            <div className="flex flex-col gap-3 lg:hidden">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {VIDEO_CARDS.slice(0, 2).map((card, i) => (
                   <motion.div
                     key={`m-top-${i}`}
@@ -187,27 +192,27 @@ export default function VideoFeature() {
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
                   >
-                    <h3 className="font-display text-[clamp(0.9rem,3.8vw,1.15rem)] uppercase leading-[1.2] tracking-[-0.5px]">
+                    <h3 className="font-display text-[clamp(0.95rem,4.2vw,1.15rem)] uppercase leading-[1.15] tracking-[-0.5px]">
                       {card.title}
                     </h3>
-                    <p className="text-[0.8rem] leading-[1.3] tracking-[-0.5px]">
+                    <p className="text-[0.85rem] leading-[1.35] tracking-[-0.3px]">
                       {card.body}
                     </p>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="pointer-events-none relative mx-auto h-[300px] w-[80%] sm:h-[360px]">
+              <div className="pointer-events-none relative mx-auto h-[240px] w-[74%] sm:h-[320px]">
                 <Image
                   src="/img/panel/cup-4.png"
                   alt="Oh My Açaí Bowl"
                   fill
-                  sizes="80vw"
-                  className="object-contain drop-shadow-[18px_24px_30px_rgba(0,0,0,0.45)]"
+                  sizes="74vw"
+                  className="object-contain drop-shadow-[16px_20px_28px_rgba(0,0,0,0.45)]"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {VIDEO_CARDS.slice(2, 4).map((card, i) => (
                   <motion.div
                     key={`m-bot-${i}`}
@@ -215,10 +220,10 @@ export default function VideoFeature() {
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
                   >
-                    <h3 className="font-display text-[clamp(0.9rem,3.8vw,1.15rem)] uppercase leading-[1.2] tracking-[-0.5px]">
+                    <h3 className="font-display text-[clamp(0.95rem,4.2vw,1.15rem)] uppercase leading-[1.15] tracking-[-0.5px]">
                       {card.title}
                     </h3>
-                    <p className="text-[0.8rem] leading-[1.3] tracking-[-0.5px]">
+                    <p className="text-[0.85rem] leading-[1.35] tracking-[-0.3px]">
                       {card.body}
                     </p>
                   </motion.div>

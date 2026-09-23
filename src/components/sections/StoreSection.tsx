@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
 
-const HEADING = ['Besuch', 'Deinen Eigenen', 'Store'];
+const HEADING = ['Besuche', 'unseren', 'Store'];
 
 /**
  * Figma: "Image Section → Content" — 675 × 520 rounded-24 photo on the left,
@@ -85,7 +85,7 @@ export default function StoreSection() {
                Figma's 64px so it never grows past the design. */
             className="font-display text-[min(4rem,9.1cqw)] uppercase leading-[1.2] text-ink"
           >
-            <span className="sr-only">Besuch deinen eigenen Store</span>
+            <span className="sr-only">Besuche unseren Store</span>
             {HEADING.map((line) => (
               <span key={line} aria-hidden className="block overflow-hidden whitespace-nowrap">
                 <motion.span
