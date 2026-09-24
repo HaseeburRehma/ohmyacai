@@ -101,7 +101,7 @@ export default function Hero() {
       <div
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="@container relative w-full [perspective:1600px] max-lg:min-h-[92svh] max-lg:pb-12 lg:aspect-[1440/898]"
+        className="@container relative w-full [perspective:1600px] max-lg:min-h-[78svh] max-lg:pb-6 lg:aspect-[1440/898]"
       >
         {/* Radial glow — Figma "Ellipse 1" (516px circle at 847,191 + 405px
             blur), rebuilt as the gradient it resolves to when sampled. */}
@@ -128,12 +128,11 @@ export default function Hero() {
               950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            /* Mobile: cup sits inside the right edge (right-[2%]) with a
-               small gap, sized at 38% × 56% so the whole bowl is visible
-               at every phone aspect ratio (iPhone SE 375, iPhone 16
-               Pro Max 440, Galaxy S 360-412, iPad Mini 768). Above the
-               marquee below by bottom-[8%] for breathing room. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[4%] max-lg:top-auto max-lg:bottom-[10%] max-lg:h-[36%] max-lg:w-[52%]"
+            /* Mobile: cup sits inside the right edge (right-[4%]) with a
+               small gap, sized at 46% × 60% so it fills the space next to
+               the CTA button instead of leaving an empty band beside it.
+               bottom-[4%] hugs the marquee for a tight composition. */
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[4%] max-lg:top-auto max-lg:bottom-[4%] max-lg:h-[46%] max-lg:w-[60%]"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
