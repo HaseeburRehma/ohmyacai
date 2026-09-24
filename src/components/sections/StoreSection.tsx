@@ -8,8 +8,11 @@ import PillButton from "@/components/ui/PillButton";
 
 const HEADING = ['Besuche unseren', 'Store'];
 
-/** Google Business Profile — Oh my acai · Flinger Str. 18, 40213 Düsseldorf. */
-const MAPS_URL = 'https://share.google/LS8USWFsjfZ8ex52N';
+/** Google Business Profile — Oh my acai · Flinger Str. 18, 40213 Düsseldorf.
+ *  Direct Maps directions URL (opens the routing UI on any device with
+ *  Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf as the destination). */
+const MAPS_URL =
+  'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf';
 const MAPS_EMBED =
   'https://maps.google.com/maps?q=Flinger%20Str.%2018,%2040213%20D%C3%BCsseldorf&t=&z=16&ie=UTF8&iwloc=&output=embed';
 
@@ -56,18 +59,20 @@ export default function StoreSection() {
           viewOptions={{ once: true, amount: 0.2 }}
           className="flex flex-col gap-5"
         >
-          {/* Storefront photo. Portrait 1440×1920 source, but the card is
-              capped in height (lg:h-[440px]) and switches to object-cover
-              so the shopfront reads big without letting the container
-              tower over the copy column on wide desktops. */}
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-ink/[0.03] lg:aspect-auto lg:h-[440px]">
+          {/* Storefront photo — object-contain so both OH MY! Açaí discs
+              (the sign above the shop and the counter disc) are always
+              fully visible, never cropped. Card uses the source's own
+              portrait 3:4 aspect ratio on every screen so the letterbox
+              stays minimal. Cream-tinted backdrop makes the letterbox
+              read as intentional framing. */}
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-[#f4ebd8]">
             <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
                 alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
                 sizes="(max-width:1024px) 92vw, 560px"
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </motion.div>
           </div>
