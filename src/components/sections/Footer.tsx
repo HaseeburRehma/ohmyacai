@@ -75,8 +75,13 @@ export default function Footer() {
           {/* Link columns --------------------------------------------- */}
           <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:mt-[120px]">
             <ul className="flex flex-col gap-[19px]">
-              {FOOTER_PAGES.map((label, i) => (
-                <FooterLink key={label} label={label} delay={i * 0.05} />
+              {FOOTER_PAGES.map((item, i) => (
+                <FooterLink
+                  key={item.label}
+                  label={item.label}
+                  href={item.href}
+                  delay={i * 0.05}
+                />
               ))}
             </ul>
 

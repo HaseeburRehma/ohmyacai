@@ -258,9 +258,14 @@ export const REVIEWS = [
   },
 ];
 
-/** Footer (Figma: Footer - Desktop) — Twitter/Pinterest and the placeholder
- *  Reservierung/404 rows are dropped since the shop doesn't run those. */
-export const FOOTER_PAGES = ['Über uns', 'Blog', 'Karte', 'Standort'];
+/** Footer (Figma: Footer - Desktop) — every entry points at a real section
+ *  anchor on the home page. Placeholder rows the shop doesn't run
+ *  (Blog, Reservierung, 404, Twitter, Pinterest) are dropped. */
+export const FOOTER_PAGES: { label: string; href: string }[] = [
+  { label: 'Über uns', href: '/#about' },
+  { label: 'Karte',    href: '/#menu' },
+  { label: 'Standort', href: '/#location' },
+];
 
 /** Real social handles (opened in new tab). Order matches the store's own
  *  activity — Instagram (@ohmyacai_dues) is the primary account, TikTok
