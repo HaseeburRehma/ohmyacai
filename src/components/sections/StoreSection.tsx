@@ -59,18 +59,20 @@ export default function StoreSection() {
           viewOptions={{ once: true, amount: 0.2 }}
           className="flex flex-col gap-5"
         >
-          {/* Storefront photo — landscape card (4:3) with object-cover +
-              object-top, so the OH MY! Açaí disc above the counter and
-              the menu screens/counter fill the frame. No tall portrait
-              letterbox, no cramped feel. */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
+          {/* Storefront photo — landscape 4:3 card with object-contain so
+              the FULL portrait shopfront reads inside the frame: OH MY!
+              Açaí disc above, matcha wall + menu screens + counter, and
+              the counter disc at the base. Cream backdrop mirrors the
+              menu-board panel colour so the letterbox on either side of
+              the portrait shot reads as intentional framing. */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#f4ebd8]">
             <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
                 alt="Oh My Açaí Storefront — Flinger Straße"
                 fill
                 sizes="(max-width:1024px) 92vw, 560px"
-                className="object-cover [object-position:center_35%]"
+                className="object-contain object-center"
               />
             </motion.div>
           </div>
