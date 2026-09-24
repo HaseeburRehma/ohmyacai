@@ -70,7 +70,7 @@ export default function StoreSection() {
                 alt="Oh My Açaí Storefront — Flinger Straße"
                 fill
                 sizes="(max-width:1024px) 92vw, 560px"
-                className="object-cover object-top"
+                className="object-cover [object-position:center_35%]"
               />
             </motion.div>
           </div>
