@@ -101,7 +101,7 @@ export default function Hero() {
       <div
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="@container relative w-full [perspective:1600px] max-lg:min-h-[92svh] max-lg:pb-8 lg:aspect-[1440/898]"
+        className="@container relative w-full [perspective:1600px] max-lg:min-h-[92svh] max-lg:pb-12 lg:aspect-[1440/898]"
       >
         {/* Radial glow — Figma "Ellipse 1" (516px circle at 847,191 + 405px
             blur), rebuilt as the gradient it resolves to when sampled. */}
@@ -133,7 +133,7 @@ export default function Hero() {
                at every phone aspect ratio (iPhone SE 375, iPhone 16
                Pro Max 440, Galaxy S 360-412, iPad Mini 768). Above the
                marquee below by bottom-[8%] for breathing room. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[2%] max-lg:top-auto max-lg:bottom-[8%] max-lg:h-[38%] max-lg:w-[56%]"
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[4%] max-lg:top-auto max-lg:bottom-[10%] max-lg:h-[36%] max-lg:w-[52%]"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
