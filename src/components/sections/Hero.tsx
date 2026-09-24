@@ -128,10 +128,12 @@ export default function Hero() {
               950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            /* Mobile: cup lifted off the bottom edge (bottom-[6%]) and
-               shrunk to 40% × 60% so the base clears the section edge and
-               a breathing gap sits between it and the marquee below. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[-4%] max-lg:top-auto max-lg:bottom-[6%] max-lg:h-[40%] max-lg:w-[60%]"
+            /* Mobile: cup sits inside the right edge (right-[2%]) with a
+               small gap, sized at 38% × 56% so the whole bowl is visible
+               at every phone aspect ratio (iPhone SE 375, iPhone 16
+               Pro Max 440, Galaxy S 360-412, iPad Mini 768). Above the
+               marquee below by bottom-[8%] for breathing room. */
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[2%] max-lg:top-auto max-lg:bottom-[8%] max-lg:h-[38%] max-lg:w-[56%]"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
@@ -177,7 +179,7 @@ export default function Hero() {
         {/* Copy — Figma: left 106 (7.36%), centred on the frame + 50px ---- */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute left-6 top-[8%] z-10 w-[min(88%,516px)] sm:left-10 sm:top-[12%] lg:left-[7.36%] lg:top-1/2 lg:w-[35.83%] lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="absolute left-6 top-[15%] z-10 w-[min(88%,516px)] sm:left-10 sm:top-[16%] lg:left-[7.36%] lg:top-1/2 lg:w-[35.83%] lg:-translate-y-[calc(50%-3.5cqw)]"
         >
           <div className="flex flex-col gap-[max(1.25rem,2.2cqw)]">
             <div className="flex flex-col gap-[max(0.75rem,1.1cqw)]">
