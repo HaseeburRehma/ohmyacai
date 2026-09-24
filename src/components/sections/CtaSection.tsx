@@ -45,9 +45,10 @@ export default function CtaSection() {
           front and centre and the cups read as corner ornaments, not the
           composition. object-contain keeps every side of the cup visible
           at any viewport. */}
-      {/* Mobile cup — one small cup tucked into the top-right of the section
-          on phones, since the diagonal desktop pair would swallow the copy
-          at 440 px. Hidden from md up where the desktop layout takes over. */}
+      {/* Mobile cups — a small diagonal pair on phones (right cup TOP-right,
+          left cup BOTTOM-left) so the composition matches the Figma
+          treatment even at 360-393 px. Hidden from md up where the
+          full-height desktop pair takes over. */}
       <motion.div
         aria-hidden
         initial={{ rotate: 24, opacity: 0, x: 30, y: -20 }}
@@ -62,6 +63,22 @@ export default function CtaSection() {
           fill
           sizes="38vw"
           className="object-contain drop-shadow-[10px_14px_18px_rgba(0,0,0,0.22)]"
+        />
+      </motion.div>
+      <motion.div
+        aria-hidden
+        initial={{ rotate: -24, opacity: 0, x: -30, y: 20 }}
+        whileInView={{ rotate: -12, opacity: 1, x: 0, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+        className="pointer-events-none absolute bottom-[2%] left-[-6%] block h-[28%] w-[38%] md:hidden"
+      >
+        <Image
+          src="/img/panel/cup-3.png"
+          alt=""
+          fill
+          sizes="38vw"
+          className="object-contain drop-shadow-[-10px_14px_18px_rgba(0,0,0,0.22)]"
         />
       </motion.div>
 
