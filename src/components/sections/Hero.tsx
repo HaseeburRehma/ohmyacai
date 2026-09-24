@@ -183,7 +183,7 @@ export default function Hero() {
             rather than being trapped in the top-left corner. */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute inset-x-6 top-[8%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="absolute inset-x-6 top-[14%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 sm:top-[16%] lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
         >
           <div className="flex w-full flex-col items-center gap-[max(1rem,2.2cqw)] lg:items-start">
             <div className="flex w-full flex-col items-center gap-[max(0.65rem,1.1cqw)] lg:items-start">
