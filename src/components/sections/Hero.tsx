@@ -101,7 +101,7 @@ export default function Hero() {
       <div
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="@container relative w-full [perspective:1600px] max-lg:min-h-[78svh] max-lg:pb-6 lg:aspect-[1440/898]"
+        className="@container relative w-full [perspective:1600px] max-lg:pt-6 max-lg:pb-8 lg:aspect-[1440/898]"
       >
         {/* Radial glow — Figma "Ellipse 1" (516px circle at 847,191 + 405px
             blur), rebuilt as the gradient it resolves to when sampled. */}
@@ -124,15 +124,13 @@ export default function Hero() {
           ))}
 
           {/* Cup 1 — the branded mango cup, the taller one behind, tilted
-              22.72° as in the artboard. object-contain so the cup keeps its
-              950:1450 aspect inside the box instead of stretching. */}
+              22.72° as in the artboard. Desktop only; on phones an
+              inline copy of the cup sits inside the copy flow, between
+              the paragraph and the CTA, so the CTA reads directly
+              beneath the bowl. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            /* Mobile: cup anchors to the bottom-centre of the hero and
-               reads big (46% × 60%). Sits close to the CTA above it so
-               there's no gap, and hugs the marquee (bottom-[2%]) so the
-               composition stays tight. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-1/2 max-lg:top-auto max-lg:bottom-[2%] max-lg:h-[46%] max-lg:w-[60%] max-lg:-translate-x-1/2"
+            className="absolute left-[59.78%] top-[20.76%] hidden h-[69.96%] w-[32.72%] lg:block"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
@@ -182,7 +180,7 @@ export default function Hero() {
             rather than being trapped in the top-left corner. */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute inset-x-6 top-[16%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 sm:top-[18%] lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="relative z-10 mx-auto flex w-full max-w-[520px] flex-col items-center px-6 text-center sm:px-10 lg:absolute lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:px-0 lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
         >
           <div className="flex w-full flex-col items-center gap-3 lg:items-start lg:gap-[max(1rem,2.2cqw)]">
             <div className="flex w-full flex-col items-center gap-[max(0.65rem,1.1cqw)] lg:items-start">
@@ -260,10 +258,30 @@ export default function Hero() {
               </motion.p>
             </div>
 
+            {/* Mobile-only inline cup — sits under the paragraph so the CTA
+                below reads directly beneath the bowl. Desktop keeps the
+                absolute-positioned cup on the right of the hero. */}
+            <motion.div
+              aria-hidden
+              initial={{ opacity: 0, y: 30, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+              className="pointer-events-none relative -my-2 h-[38svh] max-h-[360px] w-full lg:hidden"
+            >
+              <Image
+                src="/img/panel/cup-1.png"
+                alt="Açaí Bowl mit Erdbeere, Banane und Granola"
+                fill
+                priority
+                sizes="88vw"
+                className="rotate-[6deg] object-contain drop-shadow-[4px_10px_30px_rgba(0,0,0,0.45)]"
+              />
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.8 }}
+              transition={{ duration: 0.7, delay: 0.85 }}
               className="mx-auto w-fit lg:mx-0"
             >
               <PillButton href={ORDER_URL} newTab>Jetzt bestellen</PillButton>
