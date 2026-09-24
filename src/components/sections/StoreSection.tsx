@@ -44,8 +44,9 @@ export default function StoreSection() {
     >
       <div
         ref={ref}
-        className="mx-auto flex w-full max-w-[1320px] flex-col items-center gap-8 lg:flex-row"
+        className="mx-auto grid w-full max-w-[1220px] gap-8 lg:grid-cols-2 lg:gap-14"
       >
+        {/* LEFT column — storefront photo (top) + Google Maps (bottom). */}
         <InView
           variants={{
             hidden: { opacity: 0, x: -50, scale: 0.97 },
@@ -53,32 +54,39 @@ export default function StoreSection() {
           }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           viewOptions={{ once: true, amount: 0.2 }}
-          /* Figma's 675px is 51.14% of the 1320 container, and the container
-             is capped at 1320 — so the percentage is pixel-identical from
-             1440 up and scales below it. A hard 675px instead left the text
-             column less than its min-content between `lg` and ~1100 and
-             pushed 45px of horizontal overflow onto the page. */
-          className="w-full lg:w-[51.14%] lg:shrink-0"
+          className="flex flex-col gap-5"
         >
-          {/* The daylight storefront is portrait (1440×1920, 3:4), so the
-              card now matches — full image visible top-to-bottom: OH MY!
-              disc above the menu screens, herringbone counter and second
-              OH MY! disc at the base. The tiny parallax stays but is
-              gated to a 4% inset so we never crop the logos out. */}
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl">
-            <motion.div style={{ y: imgY }} className="absolute inset-[-4%]">
+          {/* Storefront photo. The image is portrait 1440×1920; the card
+              uses aspect-[4/5] to keep it compact next to the copy column
+              while still showing both OH MY! discs and the counter. */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-ink/[0.03]">
+            <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
                 alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
-                sizes="(max-width:1024px) 92vw, 675px"
+                sizes="(max-width:1024px) 92vw, 600px"
                 className="object-contain object-center"
               />
             </motion.div>
           </div>
+
+          {/* Google Maps embed sits under the photo so left column reads
+              image → map, right column reads copy → hours → CTA. */}
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] sm:aspect-[16/8] lg:aspect-[4/3]">
+            <iframe
+              title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
+              src={MAPS_EMBED}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="absolute inset-0 size-full border-0"
+            />
+          </div>
         </InView>
 
-        <div className="@container flex w-full flex-col gap-7">
+        {/* RIGHT column — heading, paragraph, hours card, CTA. */}
+        <div className="@container flex w-full flex-col gap-6 lg:justify-center">
           {/* The trigger sits on the h2, not on the lines. Each line starts
               translated 110% down, i.e. entirely outside its own
               `overflow-hidden` clip box — and IntersectionObserver clips a
@@ -131,7 +139,10 @@ export default function StoreSection() {
             </p>
           </InView>
 
-          {/* Opening hours — sourced from the Google Business Profile. */}
+          {/* Opening hours — sourced from the Google Business Profile.
+              Cleaner card: white surface, plum accent bar, two rows per
+              line so it scans as a real schedule instead of a bulleted
+              list. */}
           <InView
             variants={{
               hidden: { opacity: 0, y: 24 },
@@ -140,56 +151,32 @@ export default function StoreSection() {
             transition={{ duration: 0.8, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
             viewOptions={{ once: true, amount: 0.2 }}
           >
-            <div className="rounded-3xl bg-ink/[0.04] p-5 sm:p-6">
-              <div className="mb-3 flex items-center gap-2 text-plum">
+            <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white p-5 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.15)] sm:p-6">
+              <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-plum" />
+              <div className="mb-4 flex items-center gap-2.5 text-plum">
                 <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
                   <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <p className="font-display text-lg uppercase tracking-[-0.5px]">Öffnungszeiten</p>
               </div>
-              <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-sm text-ink sm:text-[15px]">
+              <dl className="divide-y divide-ink/10">
                 {HOURS.map((row) => (
-                  <div key={row.day} className="contents">
-                    <dt className="font-semibold">{row.day}</dt>
-                    <dd className="tabular-nums text-ink/80">{row.time}</dd>
+                  <div key={row.day} className="flex items-center justify-between py-2 text-[15px]">
+                    <dt className="font-semibold text-ink">{row.day}</dt>
+                    <dd className="tabular-nums text-ink/70">{row.time}</dd>
                   </div>
                 ))}
               </dl>
-              <p className="mt-4 border-t border-ink/10 pt-3 text-sm text-ink/70">
-                Flinger Str. 18, 40213 Düsseldorf · 4,7 ★ auf Google (92+ Bewertungen)
-              </p>
             </div>
           </InView>
 
-          {/* Google Maps embed — one iframe, lazy-loaded so it doesn't block
-              first paint. Wrapped in a rounded card matching the photo. */}
           <InView
             variants={{
               hidden: { opacity: 0, y: 24 },
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.8, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
-            viewOptions={{ once: true, amount: 0.2 }}
-          >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] sm:aspect-[16/9]">
-              <iframe
-                title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
-                src={MAPS_EMBED}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-                className="absolute inset-0 size-full border-0"
-              />
-            </div>
-          </InView>
-
-          <InView
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.8, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
             viewOptions={{ once: true, amount: 0.3 }}
             className="w-fit"
           >
