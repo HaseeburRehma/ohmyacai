@@ -56,24 +56,26 @@ export default function StoreSection() {
           viewOptions={{ once: true, amount: 0.2 }}
           className="flex flex-col gap-5"
         >
-          {/* Storefront photo. The image is portrait 1440×1920; the card
-              uses aspect-[4/5] to keep it compact next to the copy column
-              while still showing both OH MY! discs and the counter. */}
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-ink/[0.03]">
+          {/* Storefront photo. Portrait 1440×1920 source, but the card is
+              capped in height (lg:h-[440px]) and switches to object-cover
+              so the shopfront reads big without letting the container
+              tower over the copy column on wide desktops. */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-ink/[0.03] lg:aspect-auto lg:h-[440px]">
             <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
                 alt="Gäste bestellen an der Theke von Oh My Açaí"
                 fill
-                sizes="(max-width:1024px) 92vw, 600px"
-                className="object-contain object-center"
+                sizes="(max-width:1024px) 92vw, 560px"
+                className="object-cover object-center"
               />
             </motion.div>
           </div>
 
-          {/* Google Maps embed sits under the photo so left column reads
-              image → map, right column reads copy → hours → CTA. */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] sm:aspect-[16/8] lg:aspect-[4/3]">
+          {/* Google Maps embed sits under the photo with a matching card
+              treatment. Fixed 260 px tall from lg so image + map together
+              track the height of the copy column on desktop. */}
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[260px]">
             <iframe
               title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
               src={MAPS_EMBED}
