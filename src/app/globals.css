@@ -94,6 +94,27 @@ body {
   font-weight: 400;
 }
 
+/* Footer type-in credit ------------------------------------------------ *
+ * Matches the type-in effect on tylotech.de: monospaced-ish sans, blinking
+ * caret. Uses the site body font so it inherits the same rendering as the
+ * rest of the footer instead of jumping to a mismatched face. */
+.typing-credit {
+  font-family: 'Blauer Nue', var(--font-body), system-ui, sans-serif;
+  font-size: 0.9em;
+  letter-spacing: -0.005em;
+}
+.typing-caret {
+  animation: typing-blink 1s steps(1) infinite;
+  transform: translateY(1px);
+}
+@keyframes typing-blink {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typing-caret { animation: none; opacity: 1; }
+}
+
 /* Berry texture ------------------------------------------------------ *
  * The artboard's vector pattern, recovered from the supplied panel artwork:
  * solving the compositing equation across three differently-coloured panels

@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { InView } from '@/components/motion-primitives/in-view';
 import Scallop from '@/components/ui/Scallop';
+import TypingCredit from '@/components/ui/TypingCredit';
 import { CONTACT, FOOTER_PAGES, FOOTER_SOCIAL } from '@/data/site';
 
 /**
@@ -145,17 +146,7 @@ export default function Footer() {
               <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                 <span>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</span>
                 <span className="text-white/50" aria-hidden>·</span>
-                <span>
-                  Website by{' '}
-                  <a
-                    href="https://tylotech.de"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-white underline-offset-2 transition-colors hover:text-gold hover:underline"
-                  >
-                    TyloTech
-                  </a>
-                </span>
+                <TypingCredit />
               </p>
               <a
                 href="/impressum"
