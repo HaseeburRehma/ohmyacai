@@ -59,20 +59,18 @@ export default function StoreSection() {
           viewOptions={{ once: true, amount: 0.2 }}
           className="flex flex-col gap-5"
         >
-          {/* Storefront photo — object-contain so both OH MY! Açaí discs
-              (the sign above the shop and the counter disc) are always
-              fully visible, never cropped. Card uses the source's own
-              portrait 3:4 aspect ratio on every screen so the letterbox
-              stays minimal. Cream-tinted backdrop makes the letterbox
-              read as intentional framing. */}
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-[#f4ebd8]">
+          {/* Storefront photo — landscape card (4:3) with object-cover +
+              object-top, so the OH MY! Açaí disc above the counter and
+              the menu screens/counter fill the frame. No tall portrait
+              letterbox, no cramped feel. */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
             <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
-                alt="Gäste bestellen an der Theke von Oh My Açaí"
+                alt="Oh My Açaí Storefront — Flinger Straße"
                 fill
                 sizes="(max-width:1024px) 92vw, 560px"
-                className="object-contain object-center"
+                className="object-cover object-top"
               />
             </motion.div>
           </div>
