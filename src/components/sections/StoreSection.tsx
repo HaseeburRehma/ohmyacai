@@ -8,6 +8,23 @@ import PillButton from "@/components/ui/PillButton";
 
 const HEADING = ['Besuche unseren', 'Store'];
 
+/** Google Business Profile — Oh my acai · Flinger Str. 18, 40213 Düsseldorf. */
+const MAPS_URL = 'https://share.google/LS8USWFsjfZ8ex52N';
+const MAPS_EMBED =
+  'https://maps.google.com/maps?q=Flinger%20Str.%2018,%2040213%20D%C3%BCsseldorf&t=&z=16&ie=UTF8&iwloc=&output=embed';
+
+/** Opening hours as shown on the Google Business Profile. Monday first —
+ *  the shop is open every day and the times run through midnight on Fri/Sat. */
+const HOURS: { day: string; time: string }[] = [
+  { day: 'Montag',     time: '11:00 – 22:00' },
+  { day: 'Dienstag',   time: '11:00 – 22:00' },
+  { day: 'Mittwoch',   time: '11:00 – 22:00' },
+  { day: 'Donnerstag', time: '11:00 – 22:00' },
+  { day: 'Freitag',    time: '11:00 – 00:00' },
+  { day: 'Samstag',    time: '11:00 – 00:00' },
+  { day: 'Sonntag',    time: '12:00 – 23:00' },
+];
+
 /**
  * Figma: "Image Section → Content" — 675 × 520 rounded-24 photo on the left,
  * 64px Phonk heading + body + "Get Directions" on the right, 32px gap.
@@ -114,16 +131,69 @@ export default function StoreSection() {
             </p>
           </InView>
 
+          {/* Opening hours — sourced from the Google Business Profile. */}
           <InView
             variants={{
               hidden: { opacity: 0, y: 24 },
               visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            viewOptions={{ once: true, amount: 0.2 }}
+          >
+            <div className="rounded-3xl bg-ink/[0.04] p-5 sm:p-6">
+              <div className="mb-3 flex items-center gap-2 text-plum">
+                <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <p className="font-display text-lg uppercase tracking-[-0.5px]">Öffnungszeiten</p>
+              </div>
+              <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-sm text-ink sm:text-[15px]">
+                {HOURS.map((row) => (
+                  <div key={row.day} className="contents">
+                    <dt className="font-semibold">{row.day}</dt>
+                    <dd className="tabular-nums text-ink/80">{row.time}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 border-t border-ink/10 pt-3 text-sm text-ink/70">
+                Flinger Str. 18, 40213 Düsseldorf · 4,7 ★ auf Google (92+ Bewertungen)
+              </p>
+            </div>
+          </InView>
+
+          {/* Google Maps embed — one iframe, lazy-loaded so it doesn't block
+              first paint. Wrapped in a rounded card matching the photo. */}
+          <InView
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.8, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
+            viewOptions={{ once: true, amount: 0.2 }}
+          >
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] sm:aspect-[16/9]">
+              <iframe
+                title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
+                src={MAPS_EMBED}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="absolute inset-0 size-full border-0"
+              />
+            </div>
+          </InView>
+
+          <InView
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.8, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
             viewOptions={{ once: true, amount: 0.3 }}
             className="w-fit"
           >
-            <PillButton href="#location">Route anzeigen</PillButton>
+            <PillButton href={MAPS_URL} newTab>Route anzeigen</PillButton>
           </InView>
         </div>
       </div>
