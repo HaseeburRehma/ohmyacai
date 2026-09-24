@@ -128,11 +128,12 @@ export default function Hero() {
               950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            /* Mobile: cup sits inside the right edge (right-[4%]) with a
-               small gap, sized at 46% × 60% so it fills the space next to
-               the CTA button instead of leaving an empty band beside it.
-               bottom-[4%] hugs the marquee for a tight composition. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[4%] max-lg:top-auto max-lg:bottom-[4%] max-lg:h-[46%] max-lg:w-[60%]"
+            /* Mobile: cup anchors to the bottom-centre of the hero, small
+               enough (36% × 44%) that the centred copy above it (rating,
+               headline, pill, subhead, CTA) stacks comfortably in the
+               top half without colliding. bottom-[3%] pulls it right up
+               against the marquee for a tight, no-dead-space layout. */
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-1/2 max-lg:top-auto max-lg:bottom-[3%] max-lg:h-[36%] max-lg:w-[44%] max-lg:-translate-x-1/2"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
@@ -175,19 +176,23 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Copy — Figma: left 106 (7.36%), centred on the frame + 50px ---- */}
+        {/* Copy — Figma: left 106 (7.36%), centred on the frame + 50px.
+            On mobile the whole column becomes CENTERED horizontally so
+            the rating, headline, gold pill, subhead and CTA stack in the
+            middle of the screen and the CTA sits directly above the cup
+            rather than being trapped in the top-left corner. */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute left-6 top-[15%] z-10 w-[min(88%,516px)] sm:left-10 sm:top-[16%] lg:left-[7.36%] lg:top-1/2 lg:w-[35.83%] lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="absolute inset-x-6 top-[8%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
         >
-          <div className="flex flex-col gap-[max(1.25rem,2.2cqw)]">
-            <div className="flex flex-col gap-[max(0.75rem,1.1cqw)]">
+          <div className="flex w-full flex-col items-center gap-[max(1rem,2.2cqw)] lg:items-start">
+            <div className="flex w-full flex-col items-center gap-[max(0.65rem,1.1cqw)] lg:items-start">
               {/* Rating row */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-x-2 gap-y-1"
+                className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 lg:justify-start"
               >
                 <Image
                   src="/svg/hero-stars.svg"
@@ -238,7 +243,7 @@ export default function Hero() {
                   ease: [0.34, 1.56, 0.64, 1],
                   delay: 0.55,
                 }}
-                className="-mt-1 w-fit origin-left rounded-3xl bg-gold px-[15px] py-[5px]"
+                className="-mt-1 w-fit origin-center rounded-3xl bg-gold px-[15px] py-[5px] lg:origin-left"
               >
                 <p className="font-display whitespace-nowrap text-[clamp(1.6rem,6.4vw,2.6rem)] uppercase leading-[1.15] text-white lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]">
                   Acai Bowls
@@ -260,7 +265,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
-              className="w-fit"
+              className="mx-auto w-fit lg:mx-0"
             >
               <PillButton href={ORDER_URL} newTab>Jetzt bestellen</PillButton>
             </motion.div>
