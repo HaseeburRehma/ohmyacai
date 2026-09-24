@@ -142,7 +142,21 @@ export default function Footer() {
               className="absolute inset-x-0 top-0 block h-px origin-left bg-white/25"
             />
             <div className="flex flex-col items-center gap-3 pt-6 text-base tracking-[-0.5px] text-white/80 sm:flex-row sm:justify-between">
-              <p>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</p>
+              <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                <span>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</span>
+                <span className="text-white/50" aria-hidden>·</span>
+                <span>
+                  Website by{' '}
+                  <a
+                    href="https://tylotech.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-white underline-offset-2 transition-colors hover:text-gold hover:underline"
+                  >
+                    TyloTech
+                  </a>
+                </span>
+              </p>
               <a
                 href="/impressum"
                 className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
