@@ -128,12 +128,11 @@ export default function Hero() {
               950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            /* Mobile: cup anchors to the bottom-centre of the hero, small
-               enough (36% × 44%) that the centred copy above it (rating,
-               headline, pill, subhead, CTA) stacks comfortably in the
-               top half without colliding. bottom-[3%] pulls it right up
-               against the marquee for a tight, no-dead-space layout. */
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-1/2 max-lg:top-auto max-lg:bottom-[3%] max-lg:h-[36%] max-lg:w-[44%] max-lg:-translate-x-1/2"
+            /* Mobile: cup anchors to the bottom-centre of the hero and
+               reads big (46% × 60%). Sits close to the CTA above it so
+               there's no gap, and hugs the marquee (bottom-[2%]) so the
+               composition stays tight. */
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-1/2 max-lg:top-auto max-lg:bottom-[2%] max-lg:h-[46%] max-lg:w-[60%] max-lg:-translate-x-1/2"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
@@ -183,9 +182,9 @@ export default function Hero() {
             rather than being trapped in the top-left corner. */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute inset-x-6 top-[14%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 sm:top-[16%] lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="absolute inset-x-6 top-[16%] z-10 mx-auto flex flex-col items-center text-center sm:inset-x-10 sm:top-[18%] lg:inset-auto lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
         >
-          <div className="flex w-full flex-col items-center gap-[max(1rem,2.2cqw)] lg:items-start">
+          <div className="flex w-full flex-col items-center gap-3 lg:items-start lg:gap-[max(1rem,2.2cqw)]">
             <div className="flex w-full flex-col items-center gap-[max(0.65rem,1.1cqw)] lg:items-start">
               {/* Rating row */}
               <motion.div
