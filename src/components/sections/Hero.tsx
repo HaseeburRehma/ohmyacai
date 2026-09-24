@@ -101,7 +101,7 @@ export default function Hero() {
       <div
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="@container relative w-full [perspective:1600px] max-lg:min-h-[86svh] lg:aspect-[1440/898]"
+        className="@container relative w-full [perspective:1600px] max-lg:min-h-[92svh] max-lg:pb-8 lg:aspect-[1440/898]"
       >
         {/* Radial glow — Figma "Ellipse 1" (516px circle at 847,191 + 405px
             blur), rebuilt as the gradient it resolves to when sampled. */}
@@ -128,7 +128,10 @@ export default function Hero() {
               950:1450 aspect inside the box instead of stretching. */}
           <motion.div
             style={{ y: bowlY, translateZ: 90, transformStyle: 'preserve-3d' }}
-            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[-6%] max-lg:top-auto max-lg:bottom-0 max-lg:h-[46%] max-lg:w-[68%]"
+            /* Mobile: cup lifted off the bottom edge (bottom-[6%]) and
+               shrunk to 40% × 60% so the base clears the section edge and
+               a breathing gap sits between it and the marquee below. */
+            className="absolute left-[59.78%] top-[20.76%] h-[69.96%] w-[32.72%] max-lg:left-auto max-lg:right-[-4%] max-lg:top-auto max-lg:bottom-[6%] max-lg:h-[40%] max-lg:w-[60%]"
           >
             <motion.div
               initial={{ opacity: 0, x: 60, y: 40, scale: 0.92 }}
@@ -174,7 +177,7 @@ export default function Hero() {
         {/* Copy — Figma: left 106 (7.36%), centred on the frame + 50px ---- */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="absolute left-6 top-[16%] z-10 w-[min(88%,516px)] sm:left-10 lg:left-[7.36%] lg:top-1/2 lg:w-[35.83%] lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="absolute left-6 top-[8%] z-10 w-[min(88%,516px)] sm:left-10 sm:top-[12%] lg:left-[7.36%] lg:top-1/2 lg:w-[35.83%] lg:-translate-y-[calc(50%-3.5cqw)]"
         >
           <div className="flex flex-col gap-[max(1.25rem,2.2cqw)]">
             <div className="flex flex-col gap-[max(0.75rem,1.1cqw)]">
