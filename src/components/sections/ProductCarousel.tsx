@@ -197,9 +197,6 @@ function Slide({
         <h3 className="font-display text-[clamp(1.15rem,4.6cqh,3.5rem)] uppercase leading-[1.1] [hyphens:auto] [overflow-wrap:break-word]">
           {slide.title}
         </h3>
-        <p className="text-[clamp(0.75rem,1.782cqh,1.25rem)] leading-[1.35] tracking-[-0.3px]">
-          {slide.body}
-        </p>
       </div>
 
       {/* Plus badge — Figma: 48px, top/right 22 */}

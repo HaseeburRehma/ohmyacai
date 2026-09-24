@@ -75,7 +75,6 @@ export const SLIDES = [
   {
     eyebrow: 'Erdbeere, Mango & Beeren',
     title: 'Tropische Mango Bowl',
-    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/panel/cup-1.png',
@@ -83,7 +82,6 @@ export const SLIDES = [
   {
     eyebrow: 'Açaí, Banane & Granola',
     title: 'Klassische Açaí Bowl',
-    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#8c5737',
     bg: '/img/panel/panel-2.png',
     image: '/img/panel/cup-2.png',
@@ -91,7 +89,6 @@ export const SLIDES = [
   {
     eyebrow: 'Heidelbeere, Brombeere & Chia',
     title: 'Beeren-Traum Bowl',
-    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#99a75a',
     bg: '/img/panel/panel-3.png',
     image: '/img/panel/cup-3.png',
@@ -99,7 +96,6 @@ export const SLIDES = [
   {
     eyebrow: 'Kakao, Mandel & Kokos',
     title: 'Kakao-Crunch Bowl',
-    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#8c5737',
     bg: '/img/panel/panel-4.png',
     image: '/img/panel/cup-4.png',
@@ -107,7 +103,6 @@ export const SLIDES = [
   {
     eyebrow: 'Erdnussbutter, Banane & Hafer',
     title: 'Erdnussbutter Bowl',
-    body: 'nahrhafte & köstliche Smoothies, die sich mühelos in deinen Alltag einfügen',
     color: '#d0c1b0',
     bg: '/img/panel/panel-5.png',
     image: '/img/panel/cup-5.png',
