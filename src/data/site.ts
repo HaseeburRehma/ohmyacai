@@ -202,10 +202,6 @@ export const FAQS = [
     q: 'Habt ihr milchfreie und vegane Optionen',
     a: 'Fast die gesamte Karte ist von Haus aus milchfrei und vegan. Tausch jedes Topping nach Belieben — wir sagen dir, wenn etwas nicht vegan ist.',
   },
-  {
-    q: 'Kann man bei Oh My Açaí gut entspannen',
-    a: 'Genau darum geht es — weiche Sitzecken, ruhige Musik und kostenloses WLAN, gemacht für eine Pause statt für Hektik.',
-  },
 ];
 
 /** Google reviews widget (Figma: Frame 39) */
