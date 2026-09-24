@@ -101,7 +101,7 @@ export default function Hero() {
       <div
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
-        className="@container relative w-full [perspective:1600px] max-lg:pt-6 max-lg:pb-8 lg:aspect-[1440/898]"
+        className="@container relative w-full [perspective:1600px] max-lg:pt-28 max-lg:pb-8 lg:aspect-[1440/898] lg:pt-0"
       >
         {/* Radial glow — Figma "Ellipse 1" (516px circle at 847,191 + 405px
             blur), rebuilt as the gradient it resolves to when sampled. */}
