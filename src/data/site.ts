@@ -51,8 +51,8 @@ export const INSTAGRAM = {
 
 export const NAV_LINKS = [
   { label: 'Über uns', href: '/#about' },
-  { label: 'Blog', href: '/#blog' },
   { label: 'Karte', href: '/#menu' },
+  { label: 'Standort', href: '/#location' },
   { label: 'Franchise', href: '/franchise' },
 ];
 
