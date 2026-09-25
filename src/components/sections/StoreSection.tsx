@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
+import { LOCATION_COLOGNE } from "@/data/site";
 
 const HEADING = ['Besuche unseren', 'Store'];
 
@@ -190,6 +191,101 @@ export default function StoreSection() {
             <PillButton href={MAPS_URL} newTab>Route anzeigen</PillButton>
           </InView>
         </div>
+      </div>
+
+      {/* Second location — Oh My Açaí Köln.
+          Layout is content-left (heading, address, hours card, Route
+          button) and media-right (map + brand image tile). Same visual
+          language as the Düsseldorf grid so both stores read together. */}
+      <div className="mx-auto mt-16 w-full max-w-[1220px] lg:mt-24">
+        <InView
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewOptions={{ once: true, amount: 0.2 }}
+        >
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
+            {/* LEFT — content */}
+            <div className="@container flex flex-col gap-5">
+              <div className="flex flex-col gap-3">
+                <p className="font-menu inline-flex w-fit items-center gap-2 rounded-full bg-plum/10 px-3 py-1 text-xs font-bold uppercase tracking-[-0.3px] text-plum sm:text-sm">
+                  <span aria-hidden className="inline-block size-1.5 rounded-full bg-plum" />
+                  Zweiter Standort
+                </p>
+                <h3 className="font-display text-[min(2.25rem,6.6cqw)] uppercase leading-[1.1] tracking-[-0.5px] text-ink lg:text-[min(3.5rem,7.8cqw)]">
+                  {LOCATION_COLOGNE.label}
+                </h3>
+              </div>
+
+              <address className="not-italic text-base leading-[1.5] tracking-[-0.3px] text-ink">
+                {LOCATION_COLOGNE.addressLines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+                <span className="mt-2 block text-sm text-ink/60">
+                  {LOCATION_COLOGNE.ratingLine}
+                </span>
+              </address>
+
+              {/* Öffnungszeiten card, same treatment as Düsseldorf. */}
+              <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white p-5 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.15)] sm:p-6">
+                <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-plum" />
+                <div className="mb-4 flex items-center gap-2.5 text-plum">
+                  <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <p className="font-display text-lg uppercase tracking-[-0.5px]">Öffnungszeiten</p>
+                </div>
+                <dl className="divide-y divide-ink/10">
+                  {LOCATION_COLOGNE.hours.map((row) => (
+                    <div key={row.day} className="flex items-center justify-between py-2 text-[15px]">
+                      <dt className="font-semibold text-ink">{row.day}</dt>
+                      <dd className="tabular-nums text-ink/70">{row.time}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <div className="w-fit">
+                <PillButton href={LOCATION_COLOGNE.mapUrl} newTab>Route anzeigen</PillButton>
+              </div>
+            </div>
+
+            {/* RIGHT — map + brand image tile */}
+            <div className="flex flex-col gap-5">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[440px]">
+                <iframe
+                  title={`Karte: ${LOCATION_COLOGNE.label}`}
+                  src={LOCATION_COLOGNE.mapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="absolute inset-0 size-full border-0"
+                />
+              </div>
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[260px]">
+                <Image
+                  src="/img/logo-badge.png"
+                  alt=""
+                  width={512}
+                  height={512}
+                  aria-hidden
+                  className="pointer-events-none absolute right-[-60px] top-1/2 size-[300px] -translate-y-1/2 rotate-[8deg] object-contain opacity-95"
+                />
+                <div className="relative flex h-full flex-col justify-center gap-2 p-6 sm:p-8">
+                  <p className="font-menu text-xs font-bold uppercase tracking-[-0.3px] text-gold sm:text-sm">
+                    Neu in Köln
+                  </p>
+                  <p className="font-display text-[clamp(1.35rem,3.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-cream">
+                    Frisch gemixt<br />in der Innenstadt
+                  </p>
+                  <p className="max-w-[280px] text-sm leading-[1.4] tracking-[-0.2px] text-cream/80">
+                    Hohe Straße 105-107. Direkt in der Kölner Fußgängerzone, zwei Minuten vom Dom.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </InView>
       </div>
     </section>
   );

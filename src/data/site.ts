@@ -135,11 +135,11 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Bueno Bowl',         price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
-  { name: 'Cheesecake Bowl',    price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
-  { name: 'Erdnussbutter Bowl', price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
-  { name: 'Pistazien Bowl',     price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
-  { name: 'Tropical Bowl',      price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
+  { name: 'Açai Bueno',        price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
+  { name: 'Açai Erdnussbutter',price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
+  { name: 'Açai Pistazie',     price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
+  { name: 'Açai Tropical',     price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
+  { name: 'Açai Cheesecake',   price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy
@@ -294,8 +294,8 @@ export const CONTACT = {
   address: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
 };
 
-/** Both store locations for the footer. Cologne address will fill in as
- *  soon as it's confirmed on the Google Business Profile. */
+/** Both store locations for the footer. Addresses match the two Oh My Açaí
+ *  Google Business Profiles (Düsseldorf + Köln). */
 export const LOCATIONS = [
   {
     label: 'Düsseldorf',
@@ -305,10 +305,33 @@ export const LOCATIONS = [
   },
   {
     label: 'Köln',
-    lines: ['Innenstadt', '50667 Köln'],
-    mapUrl: 'https://share.google/bWmGDfxva6KprLk2G',
+    lines: ['Hohe Str. 105-107', '50667 Köln'],
+    mapUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Hohe+Str.+105-107+50667+K%C3%B6ln',
   },
 ];
+
+/** Second store — Oh My Açaí Köln. Hours + address per the Google Business
+ *  Profile the owner shared. */
+export const LOCATION_COLOGNE = {
+  city: 'Köln',
+  label: 'Oh My Açaí Köln',
+  addressLines: ['Hohe Str. 105-107', '50667 Köln', 'Deutschland'],
+  ratingLine: '4,4 ★ auf Google (25+ Bewertungen)',
+  mapUrl:
+    'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Hohe+Str.+105-107+50667+K%C3%B6ln',
+  mapEmbed:
+    'https://maps.google.com/maps?q=Hohe%20Str.%20105-107,%2050667%20K%C3%B6ln&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  hours: [
+    { day: 'Montag',     time: '11:00 – 20:30' },
+    { day: 'Dienstag',   time: '11:00 – 20:30' },
+    { day: 'Mittwoch',   time: '11:00 – 20:30' },
+    { day: 'Donnerstag', time: '11:00 – 20:30' },
+    { day: 'Freitag',    time: '11:00 – 20:30' },
+    { day: 'Samstag',    time: '10:00 – 21:00' },
+    { day: 'Sonntag',    time: '13:30 – 18:30' },
+  ],
+};
 
 /* ------------------------------------------------------------------ *
  * Franchise page — Figma "Screens / Franchise" (node 4128:112, 1440 × 8254)
@@ -399,10 +422,10 @@ export const FRANCHISE_STEPS = [
  *  the Figma "Meet Our Bowls" frame — no photo backdrop, no two-tone
  *  split. `color` is the card fill, chosen from Figma's palette. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Bueno Bowl',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
-  { name: 'Tropical Bowl',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
-  { name: 'Pistazien Bowl',  image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
-  { name: 'Cheesecake Bowl', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
+  { name: 'Açai Bueno',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
+  { name: 'Açai Tropical',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
+  { name: 'Açai Pistazie',   image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
+  { name: 'Açai Cheesecake', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {
