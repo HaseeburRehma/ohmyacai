@@ -55,7 +55,7 @@ const FRUIT: Fruit[] = [
   { src: '/img/fruit-blueberry-sm.png', alt: '', l: 40.83, t: 93.76, w: 5.21, h: 8.69, depth: 80, z: 30, spin: 22, delay: 0.6 },
 ];
 
-const HEADLINE = ['Düsseldorfs', 'Beste'];
+const HEADLINE = ['Die besten', 'Açaí Bowls', 'in Düsseldorf', '& Köln'];
 
 const SPRING = { stiffness: 110, damping: 20, mass: 0.6 } as const;
 
@@ -212,7 +212,7 @@ export default function Hero() {
 
               {/* Headline — per-line mask reveal */}
               <h1 className="font-display text-[clamp(1.75rem,6.8vw,2.75rem)] uppercase leading-[1.1] text-white lg:text-[clamp(2.6rem,3.85cqw,4.8rem)]">
-                <span className="sr-only">Düsseldorfs beste Açaí Bowls</span>
+                <span className="sr-only">Die besten Açaí Bowls in Düsseldorf & Köln</span>
                 {HEADLINE.map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
                     <motion.span
@@ -254,7 +254,7 @@ export default function Hero() {
                 className="text-[15px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]"
               >
                 Cremige Açaí Bowls aus echtem Püree, frische Toppings, jeden
-                Tag frisch gemacht – mitten in Düsseldorf
+                Tag frisch gemacht 
               </motion.p>
             </div>
 

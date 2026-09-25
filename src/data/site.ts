@@ -16,11 +16,11 @@ export const BRAZIL_SECTION = {
   titleBefore: 'Reines Açaí ',
   titleAccent: 'direkt aus Brasilien',
   body:
-    'Wir arbeiten mit Partner-Kooperativen im brasilianischen Amazonasbecken zusammen und beziehen unser Açaí-Püree tiefgefroren, unverdünnt und mit vollem Nährstoffprofil. Das gleiche Püree, mit dem wir in Düsseldorf jede Bowl mixen, verkaufen wir auch an Bars, Cafés und Hotelküchen im gesamten DACH-Raum.',
+    'Wir arbeiten mit Partner-Kooperativen im brasilianischen Amazonasbecken zusammen und beziehen unser Açaí-Püree tiefgefroren, unverdünnt und mit vollem Nährstoffprofil. Das gleiche Püree, mit dem wir in Düsseldorf & Köln jede Bowl mixen, verkaufen wir auch an Bars, Cafés und Hotelküchen im gesamten DACH-Raum.',
   bullets: [
     { title: '100% reines Frucht-Püree', body: 'Kein Sirup, kein Zucker, keine Zusätze. Nur die Beere, geerntet, entkernt und schockgefrostet.' },
     { title: 'Fair sourced', body: 'Direkter Bezug von Kleinfarmen im Estuário do Amazonas, mit fairen Preisen und langfristigen Verträgen.' },
-    { title: 'Skalierbar für Gastro', body: '4 kg Bricks, tiefgekühlte Lieferung deutschlandweit, angepasst an deinen Wochenbedarf.' },
+    { title: 'Skalierbar für Gastro', body: ' Lieferung deutschlandweit, angepasst an deinen Wochenbedarf.' },
   ],
   ctaLabel: 'Großhandel anfragen',
   ctaHref: 'mailto:info@ohmyacai.de?subject=Anfrage%20Gro%C3%9Fhandel%20A%C3%A7a%C3%AD-P%C3%BCree',
