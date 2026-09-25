@@ -71,9 +71,9 @@ export const INSTAGRAM = {
 };
 
 export const NAV_LINKS = [
-  { label: 'Über uns', href: '/#about' },
   { label: 'Karte', href: '/#menu' },
   { label: 'Standort', href: '/#location' },
+  { label: 'Großhandel', href: '/#wholesale' },
   { label: 'Franchise', href: '/franchise' },
 ];
 
@@ -135,11 +135,11 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Bueno Açaí Bowl',       price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
-  { name: 'Cheesecake Açaí Bowl',  price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
-  { name: 'Erdnussbutter Açaí',    price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
-  { name: 'Pistazien Açaí Bowl',   price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
-  { name: 'Tropical Açaí Bowl',    price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
+  { name: 'Bueno Bowl',         price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
+  { name: 'Cheesecake Bowl',    price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
+  { name: 'Erdnussbutter Bowl', price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
+  { name: 'Pistazien Bowl',     price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
+  { name: 'Tropical Bowl',      price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy
@@ -294,6 +294,22 @@ export const CONTACT = {
   address: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
 };
 
+/** Both store locations for the footer. Cologne address will fill in as
+ *  soon as it's confirmed on the Google Business Profile. */
+export const LOCATIONS = [
+  {
+    label: 'Düsseldorf',
+    lines: ['Flinger Str. 18', '40213 Düsseldorf'],
+    mapUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf',
+  },
+  {
+    label: 'Köln',
+    lines: ['Innenstadt', '50667 Köln'],
+    mapUrl: 'https://share.google/bWmGDfxva6KprLk2G',
+  },
+];
+
 /* ------------------------------------------------------------------ *
  * Franchise page — Figma "Screens / Franchise" (node 4128:112, 1440 × 8254)
  * ------------------------------------------------------------------ */
@@ -383,10 +399,10 @@ export const FRANCHISE_STEPS = [
  *  the Figma "Meet Our Bowls" frame — no photo backdrop, no two-tone
  *  split. `color` is the card fill, chosen from Figma's palette. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Bueno Açaí Bowl',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
-  { name: 'Tropical Açaí Bowl',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
-  { name: 'Pistazien Açaí Bowl',  image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
-  { name: 'Cheesecake Açaí Bowl', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
+  { name: 'Bueno Bowl',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
+  { name: 'Tropical Bowl',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
+  { name: 'Pistazien Bowl',  image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
+  { name: 'Cheesecake Bowl', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {

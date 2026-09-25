@@ -8,7 +8,7 @@ import { useLenis } from 'lenis/react';
 import { InView } from '@/components/motion-primitives/in-view';
 import Scallop from '@/components/ui/Scallop';
 import TypingCredit from '@/components/ui/TypingCredit';
-import { CONTACT, FOOTER_PAGES, FOOTER_SOCIAL } from '@/data/site';
+import { CONTACT, FOOTER_PAGES, FOOTER_SOCIAL, LOCATIONS } from '@/data/site';
 
 /**
  * Figma: "Footer - Desktop" — 1440 × 1011 plum panel with a scalloped top
@@ -105,17 +105,31 @@ export default function Footer() {
                 </a>
               </div>
 
-              <div className="flex flex-col gap-2 sm:items-center">
+              <div className="flex flex-col gap-4 sm:items-center">
                 <h3 className="font-display text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] text-white">
-                  Oh My Acai
+                  Standorte
                 </h3>
-                <address className="text-base not-italic leading-[1.2] tracking-[-0.5px] text-mist">
-                  {CONTACT.address.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
+                <div className="flex flex-col gap-4 sm:items-center">
+                  {LOCATIONS.map((loc) => (
+                    <div key={loc.label} className="flex flex-col gap-1 sm:items-center">
+                      <p className="font-display text-base uppercase leading-[1.15] tracking-[-0.5px] text-gold">
+                        {loc.label}
+                      </p>
+                      <a
+                        href={loc.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-base leading-[1.35] tracking-[-0.5px] text-mist transition-colors hover:text-white"
+                      >
+                        {loc.lines.map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </a>
+                    </div>
                   ))}
-                </address>
+                </div>
               </div>
             </div>
 
