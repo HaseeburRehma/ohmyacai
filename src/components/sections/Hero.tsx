@@ -180,7 +180,7 @@ export default function Hero() {
             rather than being trapped in the top-left corner. */}
         <motion.div
           style={{ y: copyY, opacity: copyOpacity }}
-          className="relative z-10 mx-auto flex w-full max-w-[520px] flex-col items-center px-6 text-center sm:px-10 lg:absolute lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:px-0 lg:text-left lg:-translate-y-[calc(50%-3.5cqw)]"
+          className="relative z-10 mx-auto flex w-full max-w-[520px] flex-col items-center px-6 text-center sm:px-10 lg:absolute lg:left-[7.36%] lg:top-1/2 lg:mx-0 lg:w-[35.83%] lg:items-start lg:px-0 lg:text-left lg:-translate-y-[calc(50%-1cqw)]"
         >
           <div className="flex w-full flex-col items-center gap-3 lg:items-start lg:gap-[max(1rem,2.2cqw)]">
             <div className="flex w-full flex-col items-center gap-[max(0.65rem,1.1cqw)] lg:items-start">
@@ -210,19 +210,43 @@ export default function Hero() {
                 />
               </motion.div>
 
-              {/* Headline — per-line mask reveal */}
-              <h1 className="font-display text-[clamp(1.5rem,5.8vw,2.35rem)] uppercase leading-[1.1] text-white lg:text-[clamp(2.1rem,3.1cqw,3.9rem)]">
+              {/* Headline — per-line mask reveal, with "Açaí Bowls" as a
+                  gold badge row instead of a plain repeated line. */}
+              <h1 className="font-display text-[clamp(1.5rem,5.8vw,2.35rem)] uppercase leading-[1.28] text-white lg:text-[clamp(2.1rem,3.1cqw,3.9rem)] lg:leading-[1.22]">
                 <span className="sr-only">Die besten Açaí Bowls in Düsseldorf & Köln</span>
-                {HEADLINE.map((line, i) => (
+
+                <span aria-hidden className="block overflow-hidden">
+                  <motion.span
+                    className="block whitespace-nowrap"
+                    initial={{ y: '110%' }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+                  >
+                    {HEADLINE[0]}
+                  </motion.span>
+                </span>
+
+                {/* Açaí Bowls badge — Figma: rotate −4.54°, #d4973c, radius 24 */}
+                <motion.span
+                  aria-hidden
+                  initial={{ opacity: 0, scale: 0.86, rotate: 6 }}
+                  animate={{ opacity: 1, scale: 1, rotate: -4.54 }}
+                  transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1], delay: 0.34 }}
+                  className="my-2 block w-fit origin-center whitespace-nowrap rounded-3xl bg-gold px-[15px] py-[5px] text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.15] mx-auto lg:my-[0.6cqw] lg:mx-0 lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]"
+                >
+                  Açaí Bowls
+                </motion.span>
+
+                {HEADLINE.slice(1).map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
                     <motion.span
-                      className="block"
+                      className="block whitespace-nowrap"
                       initial={{ y: '110%' }}
                       animate={{ y: 0 }}
                       transition={{
                         duration: 0.95,
                         ease: [0.16, 1, 0.3, 1],
-                        delay: 0.12 + i * 0.09,
+                        delay: 0.3 + i * 0.09,
                       }}
                     >
                       {line}
@@ -230,22 +254,6 @@ export default function Hero() {
                   </span>
                 ))}
               </h1>
-
-              {/* Start Here badge — Figma: rotate −4.54°, #d4973c, radius 24 */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.86, rotate: 6 }}
-                animate={{ opacity: 1, scale: 1, rotate: -4.54 }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.34, 1.56, 0.64, 1],
-                  delay: 0.55,
-                }}
-                className="-mt-1 w-fit origin-center rounded-3xl bg-gold px-[15px] py-[5px] lg:origin-left"
-              >
-                <p className="font-display whitespace-nowrap text-[clamp(1.6rem,6.4vw,2.6rem)] uppercase leading-[1.15] text-white lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]">
-                  Acai Bowls
-                </p>
-              </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 14 }}
