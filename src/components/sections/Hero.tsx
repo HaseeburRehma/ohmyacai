@@ -55,7 +55,7 @@ const FRUIT: Fruit[] = [
   { src: '/img/fruit-blueberry-sm.png', alt: '', l: 40.83, t: 93.76, w: 5.21, h: 8.69, depth: 80, z: 30, spin: 22, delay: 0.6 },
 ];
 
-const HEADLINE = ['Die besten', 'Açaí Bowls', 'in Düsseldorf', '& Köln'];
+const HEADLINE = ['Die besten', 'in Düsseldorf', '& Köln'];
 
 const SPRING = { stiffness: 110, damping: 20, mass: 0.6 } as const;
 
@@ -211,7 +211,7 @@ export default function Hero() {
               </motion.div>
 
               {/* Headline — per-line mask reveal */}
-              <h1 className="font-display text-[clamp(1.75rem,6.8vw,2.75rem)] uppercase leading-[1.1] text-white lg:text-[clamp(2.6rem,3.85cqw,4.8rem)]">
+              <h1 className="font-display text-[clamp(1.5rem,5.8vw,2.35rem)] uppercase leading-[1.1] text-white lg:text-[clamp(2.1rem,3.1cqw,3.9rem)]">
                 <span className="sr-only">Die besten Açaí Bowls in Düsseldorf & Köln</span>
                 {HEADLINE.map((line, i) => (
                   <span key={line} aria-hidden className="block overflow-hidden">
