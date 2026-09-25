@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
+import { LOCATION_COLOGNE } from "@/data/site";
 
 const HEADING = ['Besuche unseren', 'Store'];
 
@@ -190,6 +191,66 @@ export default function StoreSection() {
             <PillButton href={MAPS_URL} newTab>Route anzeigen</PillButton>
           </InView>
         </div>
+      </div>
+
+      {/* Second location — Köln.
+          Compact card, one row on lg (map left, copy right). Same visual
+          language as the flagship card above so both locations sit in the
+          same section without a redesigned surface. */}
+      <div className="mx-auto mt-16 w-full max-w-[1220px] lg:mt-24">
+        <InView
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewOptions={{ once: true, amount: 0.2 }}
+        >
+          <div className="flex flex-col gap-2 pb-6 text-center sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:text-left">
+            <div>
+              <p className="font-menu inline-flex items-center gap-2 rounded-full bg-plum/10 px-3 py-1 text-xs font-bold uppercase tracking-[-0.3px] text-plum sm:text-sm">
+                <span aria-hidden className="inline-block size-1.5 rounded-full bg-plum" />
+                Zweiter Standort
+              </p>
+              <h3 className="font-display mt-3 text-[clamp(1.5rem,4.4vw,2.5rem)] uppercase leading-[1.1] tracking-[-0.5px] text-plum">
+                {LOCATION_COLOGNE.label}
+              </h3>
+            </div>
+            <PillButton href={LOCATION_COLOGNE.mapUrl} newTab>Route anzeigen</PillButton>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:items-stretch lg:gap-10">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:min-h-[300px]">
+              <iframe
+                title={`Karte: ${LOCATION_COLOGNE.label}`}
+                src={LOCATION_COLOGNE.mapEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="absolute inset-0 size-full border-0"
+              />
+            </div>
+            <div className="flex flex-col justify-center gap-4 rounded-3xl bg-ink/[0.03] p-6 sm:p-8">
+              <div className="flex items-center gap-3 text-plum">
+                <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none">
+                  <path
+                    d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="12" cy="10" r="2.6" stroke="currentColor" strokeWidth="1.8" />
+                </svg>
+                <p className="font-display text-lg uppercase tracking-[-0.5px]">Adresse</p>
+              </div>
+              <address className="not-italic text-[15px] leading-[1.6] tracking-[-0.2px] text-ink">
+                {LOCATION_COLOGNE.addressLines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </address>
+              <p className="text-sm leading-[1.5] text-ink/70">
+                Öffnungszeiten und weitere Details werden bekanntgegeben — folge <a href="https://www.instagram.com/ohmyacai_dues/" target="_blank" rel="noopener noreferrer" className="font-semibold text-plum underline-offset-2 hover:underline">@ohmyacai_dues</a> für alle Updates.
+              </p>
+            </div>
+          </div>
+        </InView>
       </div>
     </section>
   );

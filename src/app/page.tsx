@@ -7,6 +7,7 @@ import VideoFeature from '@/components/sections/VideoFeature';
 import ValueCards from '@/components/sections/ValueCards';
 import CrossTapes from '@/components/sections/CrossTapes';
 import StoreSection from '@/components/sections/StoreSection';
+import BrazilWholesale from '@/components/sections/BrazilWholesale';
 import InstagramReels from '@/components/sections/InstagramReels';
 import Reviews from '@/components/sections/Reviews';
 import Faq from '@/components/sections/Faq';
@@ -31,6 +32,7 @@ export default function Home() {
         <SignatureBowls />
         <VideoFeature />
         <ValueCards />
+        <BrazilWholesale />
         <CrossTapes />
         <StoreSection />
         <InstagramReels />

@@ -10,6 +10,39 @@ export const ANNOUNCEMENT =
 export const ORDER_URL =
   'https://www.ubereats.com/de-en/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw?diningMode=DELIVERY';
 
+/** B2B: pure açaí puree imported from Brazilian partner cooperatives,
+ *  sold to bars, cafés and hotel kitchens across DACH. */
+export const BRAZIL_SECTION = {
+  eyebrow: 'Großhandel · direkt aus dem Amazonas',
+  titleBefore: 'Reines Açaí — ',
+  titleAccent: 'direkt aus Brasilien',
+  body:
+    'Wir arbeiten mit Partner-Kooperativen im brasilianischen Amazonasbecken zusammen und beziehen unser Açaí-Püree tiefgefroren, unverdünnt und mit vollem Nährstoffprofil. Das gleiche Püree, mit dem wir in Düsseldorf jede Bowl mixen, verkaufen wir auch an Bars, Cafés und Hotelküchen im gesamten DACH-Raum.',
+  bullets: [
+    { title: '100% reines Frucht-Püree', body: 'Kein Sirup, kein Zucker, keine Zusätze — nur die Beere, geerntet, entkernt und schockgefrostet.' },
+    { title: 'Fair sourced', body: 'Direkter Bezug von Kleinfarmen im Estuário do Amazonas, mit fairen Preisen und langfristigen Verträgen.' },
+    { title: 'Skalierbar für Gastro', body: '4 kg-Bricks, tiefgekühlte Lieferung deutschlandweit, angepasst an deinen Wochenbedarf.' },
+  ],
+  ctaLabel: 'Großhandel anfragen',
+  ctaHref: 'mailto:info@ohmyacai.de?subject=Anfrage%20Gro%C3%9Fhandel%20A%C3%A7a%C3%AD-P%C3%BCree',
+  imageSrc: '/img/brazil-farm.jpg',
+  imageAlt: 'Açaí-Palmen (Euterpe oleracea) im Amazonasbecken',
+  mapEmbed:
+    'https://maps.google.com/maps?q=amazon+rainforest+brazil&t=&z=4&ie=UTF8&iwloc=&output=embed',
+};
+
+/** Second location — Oh My Açaí Köln.
+ *  Route link is the exact Google share URL the owner sent; the sit-in
+ *  address will fill in as soon as it's confirmed on the profile. */
+export const LOCATION_COLOGNE = {
+  city: 'Köln',
+  label: 'Oh My Açaí Köln',
+  addressLines: ['Innenstadt, 50667 Köln', 'Deutschland'],
+  mapEmbed:
+    'https://maps.google.com/maps?q=Oh+My+Acai+K%C3%B6ln&t=&z=13&ie=UTF8&iwloc=&output=embed',
+  mapUrl: 'https://share.google/bWmGDfxva6KprLk2G',
+};
+
 /** Instagram — @ohmyacai_dues. The reels are the shop's own cup photos; the
  *  section links out to the profile since the Graph API needs a token the
  *  site does not carry. */
