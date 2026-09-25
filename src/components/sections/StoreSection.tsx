@@ -220,9 +220,6 @@ export default function StoreSection() {
                 {LOCATION_COLOGNE.addressLines.map((line) => (
                   <span key={line} className="block">{line}</span>
                 ))}
-                <span className="mt-2 block text-sm text-ink/60">
-                  {LOCATION_COLOGNE.ratingLine}
-                </span>
               </address>
 
               {/* Öffnungszeiten card, same treatment as Düsseldorf. */}
@@ -252,7 +249,7 @@ export default function StoreSection() {
 
             {/* RIGHT — map + brand image tile */}
             <div className="flex flex-col gap-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[440px]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[380px]">
                 <iframe
                   title={`Karte: ${LOCATION_COLOGNE.label}`}
                   src={LOCATION_COLOGNE.mapEmbed}
@@ -262,19 +259,16 @@ export default function StoreSection() {
                   className="absolute inset-0 size-full border-0"
                 />
               </div>
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[260px]">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[220px]">
                 <Image
                   src="/img/logo-badge.png"
                   alt=""
                   width={512}
                   height={512}
                   aria-hidden
-                  className="pointer-events-none absolute right-[-60px] top-1/2 size-[300px] -translate-y-1/2 rotate-[8deg] object-contain opacity-95"
+                  className="pointer-events-none absolute right-[-50px] top-1/2 size-[260px] -translate-y-1/2 rotate-[8deg] object-contain opacity-95"
                 />
                 <div className="relative flex h-full flex-col justify-center gap-2 p-6 sm:p-8">
-                  <p className="font-menu text-xs font-bold uppercase tracking-[-0.3px] text-gold sm:text-sm">
-                    Neu in Köln
-                  </p>
                   <p className="font-display text-[clamp(1.35rem,3.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-cream">
                     Frisch gemixt<br />in der Innenstadt
                   </p>
