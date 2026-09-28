@@ -20,7 +20,7 @@ export const BRAZIL_SECTION = {
   bullets: [
     { title: '100% reines Frucht-Püree', body: 'Kein Sirup, kein Zucker, keine Zusätze. Nur die Beere, geerntet, entkernt und schockgefrostet.' },
     { title: 'Fair sourced', body: 'Direkter Bezug von Kleinfarmen im Estuário do Amazonas, mit fairen Preisen und langfristigen Verträgen.' },
-    { title: 'Skalierbar für Gastro', body: ' Lieferung deutschlandweit, angepasst an deinen Wochenbedarf.' },
+    { title: 'Düsseldorf & Köln', body: 'Aus unseren zwei Stores tiefgefroren an deine Bar, dein Café oder deine Hotelküche geliefert.' },
   ],
   ctaLabel: 'Großhandel anfragen',
   ctaHref: 'mailto:info@ohmyacai.de?subject=Anfrage%20Gro%C3%9Fhandel%20A%C3%A7a%C3%AD-P%C3%BCree',
@@ -38,7 +38,7 @@ export const INSTAGRAM = {
   handle: '@ohmyacai_dues',
   url: 'https://www.instagram.com/ohmyacai_dues/',
   heading: 'Frisch aus dem Feed',
-  body: 'Echte Momente aus unserem Store in Düsseldorf. Folge uns für Specials, neue Bowls und mehr.',
+  body: 'Echte Momente aus unseren Stores in Düsseldorf & Köln. Folge uns für Specials, neue Bowls und mehr.',
   /** Real reels from @ohmyacai_dues, downloaded so they play inline without
    *  a Graph API token. `code` is the Instagram shortcode — the "Auf
    *  Instagram ansehen" link uses it to open the original post. */
@@ -122,8 +122,8 @@ export const SLIDES = [
     image: '/img/panel/cup-4.png',
   },
   {
-    eyebrow: 'Erdnussbutter, Banane & Hafer',
-    title: 'Erdnussbutter Bowl',
+    eyebrow: 'Cheesecake, Beeren & Granola',
+    title: 'Açai Cheesecake',
     color: '#d0c1b0',
     bg: '/img/panel/panel-5.png',
     image: '/img/panel/cup-5.png',
