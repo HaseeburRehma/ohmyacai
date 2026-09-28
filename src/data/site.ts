@@ -94,29 +94,29 @@ export const MARQUEE_WORDS = [
  *  re-canvassed to a shared 950 × 1450 box so all five sit identically. */
 export const SLIDES = [
   {
-    eyebrow: 'Erdbeere, Mango & Beeren',
-    title: 'Tropische Mango Bowl',
+    eyebrow: 'Mango, Erdbeere & Banane',
+    title: 'Açai Tropical',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/panel/cup-1.png',
   },
   {
-    eyebrow: 'Açaí, Banane & Granola',
-    title: 'Klassische Açaí Bowl',
+    eyebrow: 'Kinder Bueno, Karamell & Granola',
+    title: 'Açai Bueno',
     color: '#8c5737',
     bg: '/img/panel/panel-2.png',
     image: '/img/panel/cup-2.png',
   },
   {
-    eyebrow: 'Heidelbeere, Brombeere & Chia',
-    title: 'Beeren-Traum Bowl',
+    eyebrow: 'Pistazie, Beeren & Chia',
+    title: 'Açai Pistazie',
     color: '#99a75a',
     bg: '/img/panel/panel-3.png',
     image: '/img/panel/cup-3.png',
   },
   {
-    eyebrow: 'Kakao, Mandel & Kokos',
-    title: 'Kakao-Crunch Bowl',
+    eyebrow: 'Erdnussbutter, Banane & Hafer',
+    title: 'Açai Erdnussbutter',
     color: '#8c5737',
     bg: '/img/panel/panel-4.png',
     image: '/img/panel/cup-4.png',
@@ -251,7 +251,7 @@ export const REVIEWS = [
   {
     name: 'Sophie Wagner',
     when: 'vor 2 Monaten',
-    body: 'Mega lecker und so frisch. Die Beeren-Traum Bowl ist ein Traum, wie der Name schon sagt.',
+    body: 'Mega lecker und so frisch. Die Açai Pistazie ist mein absoluter Favorit — cremig und gut gebalanced.',
   },
   {
     name: 'Tom Fischer',
@@ -266,7 +266,7 @@ export const REVIEWS = [
   {
     name: 'David Klein',
     when: 'vor 3 Tagen',
-    body: 'Die Kakao-Crunch Bowl ist unglaublich gut. Sättigt und schmeckt trotzdem leicht.',
+    body: 'Die Açai Bueno ist unglaublich gut. Sättigt und schmeckt trotzdem leicht.',
   },
 ];
 
