@@ -94,15 +94,15 @@ export const MARQUEE_WORDS = [
  *  re-canvassed to a shared 950 × 1450 box so all five sit identically. */
 export const SLIDES = [
   {
-    eyebrow: 'Kinder Bueno, Karamell & Granola',
-    title: 'Açai Bueno',
+    eyebrow: 'Mango, Erdbeere & Banane',
+    title: 'Açai Tropical',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/panel/cup-1.png',
   },
   {
-    eyebrow: 'Mango, Erdbeere & Banane',
-    title: 'Açai Tropical',
+    eyebrow: 'Kinder Bueno, Karamell & Granola',
+    title: 'Açai Bueno',
     color: '#8c5737',
     bg: '/img/panel/panel-2.png',
     image: '/img/panel/cup-2.png',
