@@ -84,6 +84,37 @@ export default function RootLayout({
         } as React.CSSProperties
       }
     >
+      {/* Guard against Google Translate crashing React 18/19.
+          When the Translate extension swaps text nodes on the fly, React
+          tries to remove or insert nodes whose parent has moved and
+          throws NotFoundError, which takes the whole tree down (the
+          "This page couldn't load" screen the user sees). Patching
+          removeChild + insertBefore to no-op when the parent-child
+          relationship is broken lets React recover cleanly. Inline in
+          head so it runs before hydration. */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                if (typeof Node !== 'function' || !Node.prototype) return;
+                var origRemove = Node.prototype.removeChild;
+                Node.prototype.removeChild = function(child){
+                  if (child && child.parentNode !== this) { return child; }
+                  return origRemove.apply(this, arguments);
+                };
+                var origInsert = Node.prototype.insertBefore;
+                Node.prototype.insertBefore = function(newNode, refNode){
+                  if (refNode && refNode.parentNode !== this) {
+                    return origInsert.call(this, newNode, null);
+                  }
+                  return origInsert.apply(this, arguments);
+                };
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
