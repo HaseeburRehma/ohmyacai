@@ -10,6 +10,8 @@ export const ANNOUNCEMENT =
  *  so the one outbound Uber Eats link lives there (plus schema.org), not on
  *  a dozen buttons across every page. */
 export const ORDER_URL = '/online-bestellen';
+/* NOTE: the content pages are switched off for now (see next.config.ts), so
+   the live order buttons use ORDER_LINK, which points at Uber Eats again. */
 
 /** The shop's Uber Eats store (delivery + pickup). Only linked from
  *  /online-bestellen. */
@@ -18,6 +20,11 @@ export const UBER_EATS_URL =
 
 /** Every delivery platform the Düsseldorf store is listed on. Only linked
  *  from /online-bestellen (and schema.org). */
+/** Where the live "Jetzt bestellen" buttons go while /online-bestellen is
+ *  switched off. */
+export const ORDER_LINK =
+  'https://www.ubereats.com/de/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw';
+
 export const DELIVERY_PLATFORMS = [
   { name: 'Wolt', url: 'https://wolt.com/de/deu/dusseldorf/restaurant/oh-my-acai-dusseldorf' },
   { name: 'Lieferando', url: 'https://www.lieferando.de/menu/oh-my-acai' },
@@ -90,6 +97,14 @@ export type NavLink = { label: string; href: string; children?: { label: string;
  *  the mobile drawer. The group's own href is where a click on the label
  *  goes. */
 export const NAV_LINKS: NavLink[] = [
+  { label: 'Karte', href: '/#menu' },
+  { label: 'Standorte', href: '/#location' },
+  { label: 'Großhandel', href: '/#wholesale' },
+  { label: 'Franchise', href: '/franchise' },
+];
+
+/** The full nav for when the content pages go live again. */
+export const NAV_LINKS_FULL: NavLink[] = [
   {
     label: 'Karte',
     href: '/speisekarte',
@@ -315,17 +330,10 @@ export const REVIEWS = [
  *  anchor on the home page. Placeholder rows the shop doesn't run
  *  (Blog, Reservierung, 404, Twitter, Pinterest) are dropped. */
 export const FOOTER_PAGES: { label: string; href: string }[] = [
-  { label: 'Speisekarte', href: '/speisekarte' },
-  { label: 'Açaí Bowls',  href: '/acai-bowls-duesseldorf' },
-  { label: 'Matcha',      href: '/matcha-duesseldorf' },
-  { label: 'Bestellen',   href: '/online-bestellen' },
-  { label: 'Über uns',    href: '/ueber-uns' },
-  { label: 'Franchise',   href: '/franchise' },
-  { label: 'Zutaten',     href: '/zutaten-allergene' },
-  { label: 'Magazin',     href: '/magazin' },
-  { label: 'Bewertungen', href: '/bewertungen' },
-  { label: 'FAQ',         href: '/faq' },
-  { label: 'Kontakt',     href: '/kontakt' },
+  { label: 'Karte',      href: '/#menu' },
+  { label: 'Standorte',  href: '/#location' },
+  { label: 'Großhandel', href: '/#wholesale' },
+  { label: 'Franchise',  href: '/franchise' },
 ];
 
 /** Real social handles (opened in new tab). Order matches the store's own

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ANNOUNCEMENT, CONTACT, FOOTER_SOCIAL, NAV_LINKS, type NavLink } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
-import { ORDER_URL } from '@/data/site';
+import { ORDER_LINK } from '@/data/site';
 import { cn } from '@/lib/utils';
 
 /**
@@ -145,7 +145,7 @@ export default function Navbar() {
 
         {/* Right: CTA */}
         <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-8 xl:pr-[82px]">
-          <PillButton href={ORDER_URL} labelClassName="text-[0.8125rem] sm:text-2xl">
+          <PillButton href={ORDER_LINK} newTab labelClassName="text-[0.8125rem] sm:text-2xl">
             Jetzt bestellen
           </PillButton>
         </div>
@@ -187,21 +187,28 @@ export default function Navbar() {
             {/* Grouped, left-aligned list — scrolls on short phones */}
             <nav aria-label="Hauptmenü" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-6 pt-4 sm:px-6">
               <ul className="mx-auto flex w-full max-w-[560px] flex-col gap-5">
-                {NAV_LINKS.map((l, i) => {
-                  const items = l.children ?? [{ label: l.label, href: l.href }];
+                {/* Plain links share one box; each dropdown group gets its own
+                    labelled box. */}
+                {NAV_LINKS.reduce<{ label?: string; items: { label: string; href: string }[] }[]>((groups, l) => {
+                  if (l.children) groups.push({ label: l.label, items: l.children });
+                  else if (groups.length && !groups[groups.length - 1].label) groups[groups.length - 1].items.push(l);
+                  else groups.push({ items: [l] });
+                  return groups;
+                }, []).map((l, i) => {
+                  const items = l.items;
                   return (
                     <motion.li
-                      key={l.label}
+                      key={l.label ?? `links-${i}`}
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.05 * i + 0.05, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      {l.children && (
+                      {l.label && (
                         <p className="font-menu mb-1 px-3 text-[13px] uppercase tracking-[0.14em] text-gold">{l.label}</p>
                       )}
                       <ul className="overflow-hidden rounded-2xl bg-white/[0.06]">
                         {items.map((c) => {
-                          const current = c.href === pathname;
+                          const current = c.href === pathname && !c.href.includes('#');
                           return (
                             <li key={c.href} className="border-b border-white/10 last:border-b-0">
                               <Link
@@ -231,7 +238,7 @@ export default function Navbar() {
             {/* Pinned footer — order CTA + direct contact */}
             <div className="shrink-0 border-t border-white/10 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:px-6">
               <div className="mx-auto flex w-full max-w-[560px] flex-col gap-3">
-                <PillButton href={ORDER_URL} onClick={() => setOpen(false)} className="w-full" labelClassName="text-lg">
+                <PillButton href={ORDER_LINK} newTab onClick={() => setOpen(false)} className="w-full" labelClassName="text-lg">
                   Jetzt bestellen
                 </PillButton>
                 <div className="flex items-center justify-between text-[14px] text-cream/80">

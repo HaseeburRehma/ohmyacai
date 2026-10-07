@@ -19,16 +19,35 @@ const nextConfig: NextConfig = {
    * and keep any shared / indexed English links working.
    */
   async redirects() {
+    /* Content pages are switched off for now: only Home, Franchise and the
+       legal pages are live. Temporary (307) redirects to the matching home
+       section, so search engines don't treat the removal as permanent and
+       the pages can come back by deleting the HIDDEN block. */
+    const HIDDEN: [string, string][] = [
+      ['/speisekarte', '/#menu'],
+      ['/acai-bowls-duesseldorf', '/#bowls'],
+      ['/matcha-duesseldorf', '/#menu'],
+      ['/zutaten-allergene', '/#faq'],
+      ['/duesseldorf', '/#location'],
+      ['/koeln', '/#location'],
+      ['/online-bestellen', '/'],
+      ['/bewertungen', '/'],
+      ['/faq', '/#faq'],
+      ['/magazin/:slug*', '/'],
+      ['/ueber-uns', '/'],
+      ['/kontakt', '/#location'],
+      // the sheet's English slugs, straight to the same targets
+      ['/menu', '/#menu'],
+      ['/order-online', '/'],
+      ['/about-us', '/'],
+      ['/contact', '/#location'],
+      ['/ingredients-allergens', '/#faq'],
+      ['/reviews', '/'],
+      ['/magazine/:slug*', '/'],
+    ];
     return [
-      { source: '/menu', destination: '/speisekarte', permanent: true },
-      { source: '/order-online', destination: '/online-bestellen', permanent: true },
-      { source: '/about-us', destination: '/ueber-uns', permanent: true },
-      { source: '/contact', destination: '/kontakt', permanent: true },
+      ...HIDDEN.map(([source, destination]) => ({ source, destination, permanent: false })),
       { source: '/privacy-policy', destination: '/datenschutz', permanent: true },
-      { source: '/ingredients-allergens', destination: '/zutaten-allergene', permanent: true },
-      { source: '/reviews', destination: '/bewertungen', permanent: true },
-      { source: '/magazine', destination: '/magazin', permanent: true },
-      { source: '/magazine/:slug', destination: '/magazin/:slug', permanent: true },
     ];
   },
 };

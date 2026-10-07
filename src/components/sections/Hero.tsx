@@ -11,7 +11,7 @@ import {
   type MotionValue,
 } from 'framer-motion';
 import PillButton from '@/components/ui/PillButton';
-import { ORDER_URL } from '@/data/site';
+import { ORDER_LINK } from '@/data/site';
 
 /**
  * Figma: "Hero Section → Content" — 1440 × 898, bg #4d294e.
@@ -292,7 +292,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.85 }}
               className="mx-auto w-fit lg:mx-0"
             >
-              <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
+              <PillButton href={ORDER_LINK} newTab>Jetzt bestellen</PillButton>
             </motion.div>
           </div>
         </motion.div>

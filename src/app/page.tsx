@@ -14,9 +14,8 @@ import Faq from '@/components/sections/Faq';
 import CtaSection from '@/components/sections/CtaSection';
 import Footer from '@/components/sections/Footer';
 import ScrollBar from '@/components/ui/ScrollBar';
-import RelatedLinks from '@/components/sections/RelatedLinks';
 import JsonLd from '@/components/ui/JsonLd';
-import { FAQS, PAGE_LINKS } from '@/data/site';
+import { FAQS } from '@/data/site';
 import { faqLd } from '@/lib/seo';
 
 /**
@@ -43,10 +42,6 @@ export default function Home() {
         <InstagramReels />
         <Reviews />
         <Faq />
-        <RelatedLinks
-          title="Mehr entdecken"
-          links={[PAGE_LINKS.bowls, PAGE_LINKS.speisekarte, PAGE_LINKS.duesseldorf, PAGE_LINKS.bestellen]}
-        />
         <CtaSection />
       </main>
       <Footer />

@@ -114,7 +114,7 @@ export default function Footer() {
                   {LOCATIONS.map((loc) => (
                     <div key={loc.label} className="flex flex-col gap-1 sm:items-center">
                       <Link
-                        href={loc.page}
+                        href="/#location"
                         className="font-display inline-flex min-h-10 items-center text-base uppercase leading-[1.15] tracking-[-0.5px] text-gold underline-offset-4 hover:underline"
                       >
                         {loc.label}

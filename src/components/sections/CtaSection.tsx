@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import PillButton from '@/components/ui/PillButton';
-import { ORDER_URL } from '@/data/site';
+import { ORDER_LINK } from '@/data/site';
 
 /**
  * Figma: "CTA Section" — 1440 × 710. Two −1° label blocks (plum then gold),
@@ -183,7 +183,7 @@ export default function CtaSection() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           viewOptions={{ once: true, amount: 0.3 }}
         >
-          <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
+          <PillButton href={ORDER_LINK} newTab>Jetzt bestellen</PillButton>
         </InView>
       </div>
     </section>
