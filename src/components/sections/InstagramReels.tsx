@@ -149,7 +149,7 @@ export default function InstagramReels() {
                 onClick={() => { setIndex(i); setManuallyPaused(false); }}
                 aria-label={`Reel ${i + 1} von ${reels.length}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full relative before:absolute before:inset-x-[-4px] before:inset-y-[-14px] before:content-[''] transition-all ${
                   i === index ? 'w-8 bg-plum' : 'w-2 bg-plum/25 hover:bg-plum/45'
                 }`}
               />

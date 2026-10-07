@@ -133,7 +133,7 @@ export default function PartnerStories() {
                 href={FRANCHISE_PARTNER.profileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-plum underline underline-offset-2 hover:text-mauve"
+                className="inline-flex min-h-11 items-center font-semibold text-plum underline underline-offset-2 hover:text-mauve"
               >
                 @ohmyacai_dues
               </a>

@@ -57,7 +57,7 @@ export default function PageHero({
             >
               <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] tracking-[-0.2px] text-cream/70">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-gold">Startseite</Link>
+                  <Link href="/" className="inline-flex min-h-8 items-center transition-colors hover:text-gold">Startseite</Link>
                 </li>
                 {crumbs.map((c, i) => (
                   <li key={c.path} className="flex items-center gap-2">
@@ -65,7 +65,7 @@ export default function PageHero({
                     {i === crumbs.length - 1 ? (
                       <span aria-current="page" className="text-cream">{c.name}</span>
                     ) : (
-                      <Link href={c.path} className="transition-colors hover:text-gold">{c.name}</Link>
+                      <Link href={c.path} className="inline-flex min-h-8 items-center transition-colors hover:text-gold">{c.name}</Link>
                     )}
                   </li>
                 ))}

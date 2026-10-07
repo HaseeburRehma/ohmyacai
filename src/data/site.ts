@@ -598,7 +598,7 @@ export const IMPRESSUM = {
         'Eingetragen im Handelsregister\nRegistergericht: Amtsgericht Düsseldorf\nRegisternummer: HRB (wird nachgetragen)',
     },
     {
-      heading: 'Umsatzsteuer-Identifikationsnummer',
+      heading: 'Umsatzsteuer-Identifikations\u00ADnummer',
       body:
         'Die Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz wird nachgetragen.',
     },
@@ -607,7 +607,7 @@ export const IMPRESSUM = {
       body: 'Karim Asabar\nFlinger Str. 18, 40213 Düsseldorf',
     },
     {
-      heading: 'Verbraucherstreitbeilegung / Universalschlichtungsstelle',
+      heading: 'Verbraucher\u00ADstreit\u00ADbeilegung / Universal\u00ADschlichtungs\u00ADstelle',
       body:
         'Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
     },
@@ -630,7 +630,7 @@ export const IMPRESSUM = {
 };
 
 export const DATENSCHUTZ = {
-  title: 'Datenschutzerklärung',
+  title: 'Datenschutz\u00ADerklärung',
   updated: 'Datenschutz',
   sections: [
     {

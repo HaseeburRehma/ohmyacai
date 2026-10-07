@@ -73,7 +73,7 @@ export default function MapEmbed({
               In Google Maps öffnen
             </a>
           </div>
-          <p className="relative max-w-[300px] text-[11px] leading-[1.4] text-ink/55">
+          <p className="relative max-w-[300px] text-[12px] leading-[1.4] text-ink/55">
             Beim Laden der Karte werden Daten an Google übertragen. Mehr in der{' '}
             <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
           </p>

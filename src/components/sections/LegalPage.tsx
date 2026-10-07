@@ -33,7 +33,7 @@ export default function LegalPage({
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-mauve">
             {updated}
           </p>
-          <h1 className="font-display mt-3 text-[clamp(2rem,6vw,3.5rem)] uppercase leading-[1.1] tracking-[-0.5px] text-plum">
+          <h1 lang="de" className="font-display mt-3 text-[clamp(1.6rem,6vw,3.5rem)] uppercase leading-[1.1] tracking-[-0.5px] text-plum hyphens-auto [overflow-wrap:anywhere]">
             {title}
           </h1>
         </InView>
@@ -53,10 +53,10 @@ export default function LegalPage({
               }}
               viewOptions={{ once: true, amount: 0.2 }}
             >
-              <motion.h2 className="font-display text-[clamp(1.2rem,2.6vw,1.6rem)] uppercase leading-[1.2] tracking-[-0.5px] text-plum">
+              <motion.h2 lang="de" className="font-display text-[clamp(1.05rem,2.6vw,1.6rem)] uppercase leading-[1.2] tracking-[-0.5px] text-plum hyphens-auto [overflow-wrap:anywhere]">
                 {s.heading}
               </motion.h2>
-              <p className="mt-3 whitespace-pre-line text-[15px] leading-[1.65] tracking-[-0.2px] text-ink/85">
+              <p className="mt-3 whitespace-pre-line [overflow-wrap:anywhere] text-[15px] leading-[1.65] tracking-[-0.2px] text-ink/85">
                 {s.body}
               </p>
             </InView>

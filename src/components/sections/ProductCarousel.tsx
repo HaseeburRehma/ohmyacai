@@ -114,7 +114,7 @@ export default function ProductCarousel() {
       </div>
 
       {/* Mobile pagination — tap to jump, reflects the centred card. */}
-      <div className="flex items-center justify-center gap-2 pb-6 lg:hidden">
+      <div className="flex items-center justify-center gap-2 py-4 pb-6 lg:hidden">
         {SLIDES.map((s, i) => (
           <button
             key={s.title}
@@ -122,7 +122,7 @@ export default function ProductCarousel() {
             aria-label={`${s.title} anzeigen`}
             aria-current={i === active}
             onClick={() => scrollToSlide(rail.current, i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full relative before:absolute before:inset-x-[-4px] before:inset-y-[-14px] before:content-[''] transition-all duration-300 ${
               i === active ? 'w-7 bg-plum' : 'w-2 bg-plum/25'
             }`}
           />
