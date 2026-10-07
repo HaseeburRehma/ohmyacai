@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { ANNOUNCEMENT, NAV_LINKS, type NavLink } from '@/data/site';
+import { ANNOUNCEMENT, CONTACT, FOOTER_SOCIAL, NAV_LINKS, type NavLink } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
 import { ORDER_URL } from '@/data/site';
 import { cn } from '@/lib/utils';
@@ -20,6 +21,7 @@ export default function Navbar() {
   const [stuck, setStuck] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const lastY = useRef(0);
 
@@ -34,8 +36,11 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    if (open) window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
     };
   }, [open]);
 
@@ -153,61 +158,102 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="pointer-events-auto fixed inset-0 z-50 bg-plum lg:hidden"
+            transition={{ duration: 0.25 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menü"
+            className="pointer-events-auto fixed inset-0 z-50 flex flex-col bg-plum lg:hidden"
           >
-            <button
-              type="button"
-              aria-label="Menü schließen"
-              onClick={() => setOpen(false)}
-              className="absolute right-6 top-6 grid size-11 place-items-center text-white"
-            >
-              <svg viewBox="0 0 24 24" className="size-7" aria-hidden>
-                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </button>
-            {/* Grouped list — scrolls on short phones instead of clipping. */}
-            <nav
-              aria-label="Hauptmenü"
-              className="flex h-full flex-col items-center overflow-y-auto overscroll-contain px-6 pb-12 pt-24"
-            >
-              <ul className="my-auto flex w-full max-w-[340px] flex-col gap-7 text-center">
-                {NAV_LINKS.map((l, i) => (
-                  <motion.li
-                    key={l.label}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i + 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {l.children ? (
-                      <>
-                        <p className="font-menu text-sm uppercase tracking-[0.12em] text-gold">{l.label}</p>
-                        <ul className="mt-2 flex flex-col gap-1">
-                          {l.children.map((c) => (
-                            <li key={c.href}>
+            {/* Top bar — same height as the nav, logo left, close right */}
+            <div className="flex h-[70px] shrink-0 items-center justify-between border-b border-white/10 px-4 sm:px-6">
+              <Link href="/" onClick={() => setOpen(false)} aria-label="Oh My Açaí — zur Startseite" className="flex items-center gap-3">
+                <span className="grid size-11 place-items-center rounded-full bg-white">
+                  <Image src="/img/logo-mark.png" alt="" width={320} height={324} className="h-8 w-8 object-contain" />
+                </span>
+                <span className="font-display text-base uppercase tracking-[-0.3px] text-white">Oh My Açaí</span>
+              </Link>
+              <button
+                type="button"
+                aria-label="Menü schließen"
+                onClick={() => setOpen(false)}
+                className="grid size-11 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+              >
+                <svg viewBox="0 0 24 24" className="size-6" aria-hidden>
+                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Grouped, left-aligned list — scrolls on short phones */}
+            <nav aria-label="Hauptmenü" className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-6 pt-4 sm:px-6">
+              <ul className="mx-auto flex w-full max-w-[560px] flex-col gap-5">
+                {NAV_LINKS.map((l, i) => {
+                  const items = l.children ?? [{ label: l.label, href: l.href }];
+                  return (
+                    <motion.li
+                      key={l.label}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 * i + 0.05, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {l.children && (
+                        <p className="font-menu mb-1 px-3 text-[13px] uppercase tracking-[0.14em] text-gold">{l.label}</p>
+                      )}
+                      <ul className="overflow-hidden rounded-2xl bg-white/[0.06]">
+                        {items.map((c) => {
+                          const current = c.href === pathname;
+                          return (
+                            <li key={c.href} className="border-b border-white/10 last:border-b-0">
                               <Link
                                 href={c.href}
                                 onClick={() => setOpen(false)}
-                                className="font-display inline-flex min-h-11 items-center text-[1.6rem] uppercase leading-[1.1] text-white"
+                                aria-current={current ? 'page' : undefined}
+                                className={cn(
+                                  'font-display flex min-h-[52px] items-center justify-between gap-3 px-3 text-[1.0625rem] uppercase leading-tight tracking-[-0.2px] transition-colors min-[400px]:text-lg',
+                                  current ? 'bg-white/10 text-gold' : 'text-white active:bg-white/10'
+                                )}
                               >
                                 {c.label}
+                                <svg viewBox="0 0 16 16" className="size-4 shrink-0 opacity-70" aria-hidden>
+                                  <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
                               </Link>
                             </li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <Link
-                        href={l.href}
-                        onClick={() => setOpen(false)}
-                        className="font-display inline-flex min-h-11 items-center text-[1.6rem] uppercase leading-[1.1] text-white"
-                      >
-                        {l.label}
-                      </Link>
-                    )}
-                  </motion.li>
-                ))}
+                          );
+                        })}
+                      </ul>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
+
+            {/* Pinned footer — order CTA + direct contact */}
+            <div className="shrink-0 border-t border-white/10 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:px-6">
+              <div className="mx-auto flex w-full max-w-[560px] flex-col gap-3">
+                <PillButton href={ORDER_URL} onClick={() => setOpen(false)} className="w-full" labelClassName="text-lg">
+                  Jetzt bestellen
+                </PillButton>
+                <div className="flex items-center justify-between text-[14px] text-cream/80">
+                  <a href={`tel:${CONTACT.phone.replace(/\s/g, '')}`} className="inline-flex min-h-11 items-center hover:text-white">
+                    {CONTACT.phone}
+                  </a>
+                  <div className="flex items-center gap-1">
+                    {FOOTER_SOCIAL.map((sc) => (
+                      <a
+                        key={sc.label}
+                        href={sc.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center px-2 hover:text-white"
+                      >
+                        {sc.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

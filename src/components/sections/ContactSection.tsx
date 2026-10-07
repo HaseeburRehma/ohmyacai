@@ -13,7 +13,7 @@ const rise = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 export default function ContactSection() {
   return (
     <section className="w-full bg-white px-6 pb-20 pt-4 sm:px-10 lg:px-[60px] lg:pb-[120px]">
-      <div className="mx-auto grid w-full max-w-[1220px] items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid w-full grid-cols-1 max-w-[1220px] items-start gap-10 lg:grid-cols-2 lg:gap-14">
         <InView
           variants={rise}
           transition={{ duration: 0.9, ease: EASE }}

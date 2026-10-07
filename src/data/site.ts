@@ -211,7 +211,7 @@ export const VIDEO_CARDS = [
   },
   {
     title: 'Vegan von Haus aus',
-    body: 'Fast unsere gesamte Karte ist milchfrei und vegan — ohne Kompromisse beim Geschmack oder der Cremigkeit.',
+    body: 'Açaí, Chia-Pudding und Obst sind rein pflanzlich, ohne Kompromisse beim Geschmack oder der Cremigkeit.',
     pos: 'lg:left-[10.6%] lg:top-[73%]',
   },
   {

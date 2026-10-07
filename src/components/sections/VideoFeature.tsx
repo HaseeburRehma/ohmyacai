@@ -127,7 +127,7 @@ export default function VideoFeature() {
         >
           <motion.div
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-            className="berry-vectors relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-[#8c5737] px-5 py-10 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
+            className="berry-vectors relative flex size-full flex-col gap-6 overflow-hidden rounded-[32px] bg-[#8c5737] px-4 py-9 min-[400px]:px-5 sm:px-8 sm:py-12 lg:block lg:gap-0 lg:rounded-[60px] lg:p-0"
           >
             {/* Heading — Figma: centred, cap height at y 125 */}
             <motion.h2
@@ -184,25 +184,30 @@ export default function VideoFeature() {
                 (Galaxy A55 / iPhone SE) where two cards side-by-side clipped
                 "HANDVERLESE BEEREN" mid-word. */}
             <div className="flex flex-col gap-3 lg:hidden">
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 min-[520px]:grid-cols-2 sm:gap-4">
                 {VIDEO_CARDS.slice(0, 2).map((card, i) => (
                   <motion.div
                     key={`m-top-${i}`}
                     whileHover={{ y: -6, scale: 1.04 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
+                    className="relative z-10 flex h-full gap-3.5 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white ring-1 ring-white/15 sm:p-5"
                   >
-                    <h3 className="font-display text-[clamp(0.95rem,4.2vw,1.15rem)] uppercase leading-[1.15] tracking-[-0.5px]">
-                      {card.title}
-                    </h3>
-                    <p className="text-[0.85rem] leading-[1.35] tracking-[-0.3px]">
-                      {card.body}
-                    </p>
+                    <span aria-hidden className="font-menu grid size-9 shrink-0 place-items-center rounded-full bg-white/20 text-base leading-none">
+                      0{i + 1}
+                    </span>
+                    <div className="flex min-w-0 flex-col gap-1.5">
+                      <h3 className="font-display text-[clamp(1rem,4.4vw,1.2rem)] uppercase leading-[1.15] tracking-[-0.3px] [overflow-wrap:anywhere]">
+                        {card.title}
+                      </h3>
+                      <p className="text-[0.9375rem] leading-[1.45] tracking-[-0.2px] text-white/95">
+                        {card.body}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="pointer-events-none relative mx-auto h-[240px] w-[74%] sm:h-[320px]">
+              <div className="pointer-events-none relative mx-auto my-1 h-[220px] w-[74%] sm:h-[300px]">
                 <Image
                   src="/img/panel/cup-4.png"
                   alt="Oh My Açaí Bowl"
@@ -212,20 +217,25 @@ export default function VideoFeature() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 min-[520px]:grid-cols-2 sm:gap-4">
                 {VIDEO_CARDS.slice(2, 4).map((card, i) => (
                   <motion.div
                     key={`m-bot-${i}`}
                     whileHover={{ y: -6, scale: 1.04 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-10 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white"
+                    className="relative z-10 flex h-full gap-3.5 overflow-hidden rounded-2xl bg-gold-soft p-4 text-white ring-1 ring-white/15 sm:p-5"
                   >
-                    <h3 className="font-display text-[clamp(0.95rem,4.2vw,1.15rem)] uppercase leading-[1.15] tracking-[-0.5px]">
-                      {card.title}
-                    </h3>
-                    <p className="text-[0.85rem] leading-[1.35] tracking-[-0.3px]">
-                      {card.body}
-                    </p>
+                    <span aria-hidden className="font-menu grid size-9 shrink-0 place-items-center rounded-full bg-white/20 text-base leading-none">
+                      0{i + 3}
+                    </span>
+                    <div className="flex min-w-0 flex-col gap-1.5">
+                      <h3 className="font-display text-[clamp(1rem,4.4vw,1.2rem)] uppercase leading-[1.15] tracking-[-0.3px] [overflow-wrap:anywhere]">
+                        {card.title}
+                      </h3>
+                      <p className="text-[0.9375rem] leading-[1.45] tracking-[-0.2px] text-white/95">
+                        {card.body}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>

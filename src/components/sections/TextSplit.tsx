@@ -33,7 +33,7 @@ export default function TextSplit({
 
   return (
     <section className={`w-full px-6 py-16 sm:px-10 lg:px-[60px] lg:py-[110px] ${tone === 'cream' ? 'bg-[#f7f3f7]' : 'bg-white'}`}>
-      <div className={`mx-auto grid w-full items-center gap-10 ${image ? 'max-w-[1220px] lg:grid-cols-2 lg:gap-16' : 'max-w-[860px]'}`}>
+      <div className={`mx-auto grid w-full grid-cols-1 items-center gap-10 ${image ? 'max-w-[1220px] lg:grid-cols-2 lg:gap-16' : 'max-w-[860px]'}`}>
         <InView
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.9, ease: EASE }}

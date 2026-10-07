@@ -17,7 +17,7 @@ export default function BrazilWholesale() {
       id="wholesale"
       className="w-full bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-[60px] lg:py-[120px]"
     >
-      <div className="mx-auto grid w-full max-w-[1220px] items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid w-full grid-cols-1 max-w-[1220px] items-start gap-10 lg:grid-cols-2 lg:gap-14">
         {/* LEFT — copy, bullets, CTA. Every child is scroll-revealed with
             a staggered delay so the section reads as one composed entry. */}
         <motion.div

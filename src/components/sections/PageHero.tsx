@@ -46,7 +46,7 @@ export default function PageHero({
         />
 
         <div
-          className={`relative mx-auto grid w-full max-w-[1220px] items-center gap-10 ${image ? 'lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14' : ''}`}
+          className={`relative mx-auto grid w-full grid-cols-1 max-w-[1220px] items-center gap-10 ${image ? 'lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14' : ''}`}
         >
           <div className="@container flex min-w-0 flex-col items-start gap-5">
             <motion.nav

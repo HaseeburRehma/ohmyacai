@@ -16,7 +16,7 @@ const rise = { hidden: { opacity: 0, y: 34 }, visible: { opacity: 1, y: 0 } };
 export default function OrderOptions() {
   return (
     <section className="w-full bg-white px-6 pb-20 pt-4 sm:px-10 lg:px-[60px] lg:pb-[120px]">
-      <div className="mx-auto grid w-full max-w-[1220px] gap-6 lg:grid-cols-3">
+      <div className="mx-auto grid w-full grid-cols-1 max-w-[1220px] gap-6 lg:grid-cols-3">
         {/* Delivery — the main card */}
         <InView
           variants={rise}

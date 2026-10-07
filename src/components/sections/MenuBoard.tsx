@@ -178,7 +178,7 @@ export function MatchaGlass({ color, className = '' }: { color: string; classNam
 export function MatchaGrid() {
   return (
     <section className="w-full bg-white px-6 pb-16 pt-4 sm:px-10 lg:px-[60px] lg:pb-[100px]">
-      <ul className="mx-auto grid w-full max-w-[1220px] gap-5 sm:grid-cols-3">
+      <ul className="mx-auto grid w-full grid-cols-1 max-w-[1220px] gap-5 sm:grid-cols-3">
         {MATCHA_DRINKS.map((d, i) => (
           <InView
             as="li"

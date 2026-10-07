@@ -25,7 +25,7 @@ export default function MapEmbed({
 
   return (
     <div
-      className={`relative min-h-[280px] w-full overflow-hidden rounded-3xl border lg:min-h-0 border-ink/10 bg-[#efe9df] shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] ${className}`}
+      className={`relative w-full min-w-0 overflow-hidden rounded-3xl border border-ink/10 bg-[#efe9df] shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] ${className}`}
     >
       {loaded ? (
         <iframe

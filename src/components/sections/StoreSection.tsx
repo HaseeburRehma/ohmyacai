@@ -40,7 +40,7 @@ export default function StoreSection() {
     >
       <div
         ref={ref}
-        className="mx-auto grid w-full max-w-[1220px] gap-8 lg:grid-cols-2 lg:gap-14"
+        className="mx-auto grid w-full grid-cols-1 max-w-[1220px] gap-8 lg:grid-cols-2 lg:gap-14"
       >
         {/* LEFT column — storefront photo (top) + Google Maps (bottom). */}
         <InView
@@ -78,7 +78,7 @@ export default function StoreSection() {
             src={MAPS_EMBED}
             address={['Flinger Str. 18', '40213 Düsseldorf']}
             routeUrl={MAPS_URL}
-            className="aspect-[16/9] lg:aspect-auto lg:h-[260px]"
+            className="h-[280px] sm:h-auto sm:aspect-[16/9] lg:aspect-auto lg:h-[260px]"
           />
         </InView>
 
@@ -192,7 +192,7 @@ export default function StoreSection() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           viewOptions={{ once: true, amount: 0.2 }}
         >
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
             {/* LEFT — content */}
             <div className="@container flex flex-col gap-5">
               <div className="flex flex-col gap-3">
@@ -243,7 +243,7 @@ export default function StoreSection() {
                 src={LOCATION_COLOGNE.mapEmbed}
                 address={LOCATION_COLOGNE.addressLines.slice(0, 2)}
                 routeUrl={LOCATION_COLOGNE.mapUrl}
-                className="aspect-[4/3] lg:aspect-auto lg:h-[380px]"
+                className="h-[280px] sm:h-auto sm:aspect-[4/3] lg:aspect-auto lg:h-[380px]"
               />
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[220px]">
                 <Image

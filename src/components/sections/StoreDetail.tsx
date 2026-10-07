@@ -21,7 +21,7 @@ export default function StoreDetail({ store }: { store: StoreLocation }) {
 
   return (
     <section className="w-full bg-white px-6 pb-20 pt-4 sm:px-10 lg:px-[60px] lg:pb-[120px]">
-      <div className="mx-auto grid w-full max-w-[1220px] gap-8 lg:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid w-full grid-cols-1 max-w-[1220px] gap-8 lg:grid-cols-2 lg:gap-14">
         {/* LEFT — facts */}
         <InView
           variants={rise}
@@ -96,7 +96,7 @@ export default function StoreDetail({ store }: { store: StoreLocation }) {
             src={store.mapEmbed}
             address={store.addressLines.slice(0, 2)}
             routeUrl={store.mapUrl}
-            className="aspect-[16/10] lg:aspect-auto lg:h-[300px]"
+            className="h-[280px] sm:h-auto sm:aspect-[16/10] lg:aspect-auto lg:h-[300px]"
           />
         </InView>
       </div>
