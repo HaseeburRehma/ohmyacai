@@ -77,7 +77,7 @@ export default function ReviewPlatforms() {
               Erzähl anderen von deiner Bowl. Jede ehrliche Bewertung hilft uns und anderen Gästen.
             </p>
           </div>
-          <PillButton href={GOOGLE[0].url} newTab variant="ink">Bewertung schreiben</PillButton>
+          <PillButton href={GOOGLE[0].url} newTab variant="ink" labelClassName="text-[1rem] min-[400px]:text-[1.0625rem] sm:text-2xl">Bewertung schreiben</PillButton>
         </InView>
       </div>
     </section>

@@ -77,7 +77,7 @@ export default function AcaiBowlsPage() {
         ]}
       >
         <PillButton href={ORDER_URL}>Online bestellen</PillButton>
-        <PillButton href="/duesseldorf" variant="plum">Store & Öffnungszeiten</PillButton>
+        <PillButton href="/duesseldorf" variant="plum">Store & Zeiten</PillButton>
       </TextSplit>
       <p lang="ja" className="mx-auto w-full max-w-[860px] px-6 pb-10 text-center text-[15px] text-ink/60 sm:px-10">
         デュッセルドルフ旧市街のアサイーボウル: Oh My Açaí, Flinger Straße 18
