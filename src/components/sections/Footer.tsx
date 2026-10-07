@@ -75,13 +75,14 @@ export default function Footer() {
 
           {/* Link columns --------------------------------------------- */}
           <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 lg:mt-[120px]">
-            <ul className="flex flex-col gap-[19px]">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-1 self-start">
               {FOOTER_PAGES.map((item, i) => (
                 <FooterLink
                   key={item.label}
                   label={item.label}
                   href={item.href}
-                  delay={i * 0.05}
+                  delay={i * 0.03}
+                  small
                 />
               ))}
             </ul>
@@ -112,9 +113,12 @@ export default function Footer() {
                 <div className="flex flex-col gap-4 sm:items-center">
                   {LOCATIONS.map((loc) => (
                     <div key={loc.label} className="flex flex-col gap-1 sm:items-center">
-                      <p className="font-display text-base uppercase leading-[1.15] tracking-[-0.5px] text-gold">
+                      <Link
+                        href={loc.page}
+                        className="font-display text-base uppercase leading-[1.15] tracking-[-0.5px] text-gold underline-offset-4 hover:underline"
+                      >
                         {loc.label}
-                      </p>
+                      </Link>
                       <a
                         href={loc.mapUrl}
                         target="_blank"
@@ -217,11 +221,14 @@ function FooterLink({
   delay,
   href = '#',
   external = false,
+  small = false,
 }: {
   label: string;
   delay: number;
   href?: string;
   external?: boolean;
+  /** page links: two to a row, so a smaller size */
+  small?: boolean;
 }) {
   return (
     <li>
@@ -234,7 +241,7 @@ function FooterLink({
         whileFocus="hover"
         /* padding on the anchor keeps the tap target ≥44px; the clip box is a
            child so it can stay exactly one line tall */
-        className="font-display inline-flex min-h-11 items-center py-1.5 text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] outline-none"
+        className={`font-display inline-flex min-h-11 items-center py-1.5 leading-[1.2] tracking-[-1px] outline-none ${small ? 'text-[clamp(1.05rem,1.9vw,1.4rem)] tracking-[-0.5px]' : 'text-[clamp(1.4rem,3.2vw,2rem)]'}`}
       >
         <span className="block h-[1.2em] overflow-hidden">
         <motion.span

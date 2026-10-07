@@ -292,7 +292,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.85 }}
               className="mx-auto w-fit lg:mx-0"
             >
-              <PillButton href={ORDER_URL} newTab>Jetzt bestellen</PillButton>
+              <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
             </motion.div>
           </div>
         </motion.div>

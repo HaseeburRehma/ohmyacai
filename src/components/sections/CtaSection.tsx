@@ -183,7 +183,7 @@ export default function CtaSection() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           viewOptions={{ once: true, amount: 0.3 }}
         >
-          <PillButton href={ORDER_URL} newTab>Jetzt bestellen</PillButton>
+          <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
         </InView>
       </div>
     </section>

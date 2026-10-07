@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Lato, Bayon, Manrope, Boldonse, Archivo } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/providers/SmoothScroll';
+import { UBER_EATS_URL } from '@/data/site';
 
 /* Body copy — Figma: Lato Regular / Bold, 16px, -0.5px tracking */
 const lato = Lato({
@@ -84,21 +85,20 @@ const OPENING_CGN = [
   { days: ['Saturday'], opens: '10:00', closes: '21:00' },
   { days: ['Sunday'], opens: '13:30', closes: '18:30' },
 ];
-const ORDER_TARGET =
-  'https://www.ubereats.com/de-en/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw?diningMode=DELIVERY';
+const ORDER_TARGET = UBER_EATS_URL;
 
 function store(id: string, name: string, street: string, zip: string, city: string, geo: [number, number], hours: typeof OPENING_DUS) {
   return {
     '@type': 'CafeOrCoffeeShop',
     '@id': `${SITE_URL}/#${id}`,
     name,
-    url: SITE_URL,
+    url: `${SITE_URL}/${id}`,
     image: `${SITE_URL}/img/store.jpg`,
     logo: `${SITE_URL}/img/logo-badge.png`,
     servesCuisine: ['Açaí Bowls', 'Smoothie Bowls', 'Vegan'],
     priceRange: '€€',
     acceptsReservations: false,
-    hasMenu: `${SITE_URL}/#menu`,
+    hasMenu: `${SITE_URL}/menu`,
     parentOrganization: { '@id': `${SITE_URL}/#org` },
     address: { '@type': 'PostalAddress', streetAddress: street, postalCode: zip, addressLocality: city, addressCountry: 'DE' },
     geo: { '@type': 'GeoCoordinates', latitude: geo[0], longitude: geo[1] },
@@ -108,7 +108,6 @@ function store(id: string, name: string, street: string, zip: string, city: stri
       opens: h.opens,
       closes: h.closes,
     })),
-    potentialAction: { '@type': 'OrderAction', target: ORDER_TARGET },
   };
 }
 
@@ -130,6 +129,8 @@ const JSON_LD = {
     {
       ...store('duesseldorf', 'Oh My Açaí Düsseldorf', 'Flinger Str. 18', '40213', 'Düsseldorf', [51.2264, 6.7733], OPENING_DUS),
       telephone: '+4915732016134',
+      /* The Uber Eats listing is for the Flinger Straße store. */
+      potentialAction: { '@type': 'OrderAction', target: ORDER_TARGET },
     },
     store('koeln', 'Oh My Açaí Köln', 'Hohe Str. 105-107', '50667', 'Köln', [50.9376, 6.9571], OPENING_CGN),
   ],

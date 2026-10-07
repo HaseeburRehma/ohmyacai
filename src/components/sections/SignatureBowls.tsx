@@ -121,8 +121,6 @@ function BowlCard({
             top-right, name + price bottom-left, CTA bottom-right. */}
         <motion.a
           href={ORDER_URL}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
           initial="rest"
           whileHover="hover"
           whileFocus="hover"

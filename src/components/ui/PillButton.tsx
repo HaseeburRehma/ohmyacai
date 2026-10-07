@@ -1,7 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+
+/* Internal routes go through next/link so they prefetch and navigate
+   client-side; anchors, mailto/tel and external URLs stay plain <a>. */
+const MotionLink = motion.create(Link);
 
 type Props = {
   children: string;
@@ -45,8 +50,10 @@ export default function PillButton({
     labelClassName
   );
 
+  const Comp = !newTab && href.startsWith('/') ? MotionLink : motion.a;
+
   return (
-    <motion.a
+    <Comp
       href={href}
       onClick={onClick}
       target={newTab ? '_blank' : undefined}
@@ -84,6 +91,6 @@ export default function PillButton({
           </span>
         </motion.span>
       </span>
-    </motion.a>
+    </Comp>
   );
 }

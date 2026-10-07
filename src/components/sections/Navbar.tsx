@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { ANNOUNCEMENT, NAV_LINKS } from '@/data/site';
+import { ANNOUNCEMENT, NAV_LINKS, type NavLink } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
 import { ORDER_URL } from '@/data/site';
 import { cn } from '@/lib/utils';
@@ -102,18 +102,10 @@ export default function Navbar() {
         )}
       >
         {/* Left: links (desktop) / burger (mobile) */}
-        <div className="flex min-w-0 shrink-0 items-center pl-2 sm:flex-1 sm:pl-6 lg:pl-[82px]">
-          <ul className="hidden items-center gap-[14px] lg:flex">
+        <div className="flex min-w-0 shrink-0 items-center pl-2 sm:flex-1 sm:pl-6 lg:pl-8 xl:pl-[82px]">
+          <ul className="hidden items-center gap-1 lg:flex xl:gap-[14px]">
             {NAV_LINKS.map((l) => (
-              <li key={l.label}>
-                <a
-                  href={l.href}
-                  className="group font-nav relative flex min-h-10 items-center px-[6px] text-base font-bold uppercase leading-6 text-plum"
-                >
-                  {l.label}
-                  <span className="absolute inset-x-[6px] bottom-1.5 h-[2px] origin-left scale-x-0 rounded-full bg-gold transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-x-100" />
-                </a>
-              </li>
+              <DesktopNavItem key={l.label} link={l} />
             ))}
           </ul>
           <button
@@ -147,8 +139,8 @@ export default function Navbar() {
         </Link>
 
         {/* Right: CTA */}
-        <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-[82px]">
-          <PillButton href={ORDER_URL} newTab labelClassName="text-[0.8125rem] sm:text-2xl">
+        <div className="flex min-w-0 shrink-0 items-center justify-end pr-2 sm:flex-1 sm:pr-4 lg:pr-8 xl:pr-[82px]">
+          <PillButton href={ORDER_URL} labelClassName="text-[0.8125rem] sm:text-2xl">
             Jetzt bestellen
           </PillButton>
         </div>
@@ -173,27 +165,103 @@ export default function Navbar() {
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             </button>
-            <ul className="flex h-full flex-col items-center justify-center gap-6">
-              {NAV_LINKS.map((l, i) => (
-                <motion.li
-                  key={l.label}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 * i + 0.1, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="font-display text-4xl uppercase text-white"
+            {/* Grouped list — scrolls on short phones instead of clipping. */}
+            <nav
+              aria-label="Hauptmenü"
+              className="flex h-full flex-col items-center overflow-y-auto overscroll-contain px-6 pb-12 pt-24"
+            >
+              <ul className="my-auto flex w-full max-w-[340px] flex-col gap-7 text-center">
+                {NAV_LINKS.map((l, i) => (
+                  <motion.li
+                    key={l.label}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.06 * i + 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    {l.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
+                    {l.children ? (
+                      <>
+                        <p className="font-menu text-sm uppercase tracking-[0.12em] text-gold">{l.label}</p>
+                        <ul className="mt-2 flex flex-col gap-1">
+                          {l.children.map((c) => (
+                            <li key={c.href}>
+                              <Link
+                                href={c.href}
+                                onClick={() => setOpen(false)}
+                                className="font-display inline-flex min-h-11 items-center text-[1.6rem] uppercase leading-[1.1] text-white"
+                              >
+                                {c.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <Link
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className="font-display inline-flex min-h-11 items-center text-[1.6rem] uppercase leading-[1.1] text-white"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.header>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+const linkClass =
+  'group font-nav relative flex min-h-10 items-center gap-1 px-[6px] text-base font-bold uppercase leading-6 text-plum';
+
+/** Desktop link. Groups open a small dropdown on hover and on keyboard
+ *  focus (focus-within), so every child page stays reachable by Tab. */
+function DesktopNavItem({ link }: { link: NavLink }) {
+  const underline = (
+    <span className="absolute inset-x-[6px] bottom-1.5 h-[2px] origin-left scale-x-0 rounded-full bg-gold transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-x-100" />
+  );
+
+  if (!link.children) {
+    return (
+      <li>
+        <Link href={link.href} className={linkClass}>
+          {link.label}
+          {underline}
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li className="group/item relative">
+      <Link href={link.href} aria-haspopup="true" className={linkClass}>
+        {link.label}
+        <svg viewBox="0 0 12 12" className="size-3 transition-transform duration-300 group-hover/item:rotate-180 group-focus-within/item:rotate-180" aria-hidden>
+          <path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        {underline}
+      </Link>
+      {/* pt-3 bridges the gap so the pointer can travel into the panel */}
+      <div className="invisible absolute left-0 top-full z-10 pt-3 opacity-0 transition-[opacity,transform,visibility] duration-300 ease-[cubic-bezier(.16,1,.3,1)] [transform:translateY(6px)] group-hover/item:visible group-hover/item:opacity-100 group-hover/item:[transform:none] group-focus-within/item:visible group-focus-within/item:opacity-100 group-focus-within/item:[transform:none]">
+        <ul className="min-w-[230px] rounded-3xl bg-white p-2 shadow-[0_18px_44px_-14px_rgba(77,41,78,0.4)] ring-1 ring-plum/10">
+          {link.children.map((c) => (
+            <li key={c.href}>
+              <Link
+                href={c.href}
+                className="font-nav flex min-h-11 items-center rounded-2xl px-4 text-[15px] font-bold text-plum transition-colors hover:bg-plum/[0.07] focus-visible:bg-plum/[0.07] focus-visible:outline-none"
+              >
+                {c.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
   );
 }

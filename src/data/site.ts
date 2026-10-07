@@ -6,9 +6,15 @@
 export const ANNOUNCEMENT =
   'Entdecke in jeder Bowl die perfekte Harmonie aus frischen, lebendigen Aromen und wertvollen Zutaten — zu unserer Karte';
 
-/** Ordering runs through the shop's Uber Eats page. */
-export const ORDER_URL =
-  'https://www.ubereats.com/de-en/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw?diningMode=DELIVERY';
+/** Every "Jetzt bestellen" button on the site lands on our own order page,
+ *  so the one outbound Uber Eats link lives there (plus schema.org), not on
+ *  a dozen buttons across every page. */
+export const ORDER_URL = '/order-online';
+
+/** The shop's Uber Eats store (delivery + pickup). Only linked from
+ *  /order-online. */
+export const UBER_EATS_URL =
+  'https://www.ubereats.com/de/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw';
 
 /** B2B: pure açaí puree imported from Brazilian partner cooperatives,
  *  sold to bars, cafés and hotel kitchens across DACH. */
@@ -70,11 +76,40 @@ export const INSTAGRAM = {
   ],
 };
 
-export const NAV_LINKS = [
-  { label: 'Karte', href: '/#menu' },
-  { label: 'Standort', href: '/#location' },
-  { label: 'Großhandel', href: '/#wholesale' },
+export type NavLink = { label: string; href: string; children?: { label: string; href: string }[] };
+
+/** Top-level nav. Groups open a dropdown on desktop and are listed flat in
+ *  the mobile drawer. The group's own href is where a click on the label
+ *  goes. */
+export const NAV_LINKS: NavLink[] = [
+  {
+    label: 'Karte',
+    href: '/menu',
+    children: [
+      { label: 'Speisekarte & Preise', href: '/menu' },
+      { label: 'Açaí Bowls', href: '/acai-bowls-duesseldorf' },
+      { label: 'Iced Matcha', href: '/matcha-duesseldorf' },
+    ],
+  },
+  {
+    label: 'Standorte',
+    href: '/duesseldorf',
+    children: [
+      { label: 'Düsseldorf', href: '/duesseldorf' },
+      { label: 'Köln', href: '/koeln' },
+    ],
+  },
   { label: 'Franchise', href: '/franchise' },
+  {
+    label: 'Mehr',
+    href: '/about-us',
+    children: [
+      { label: 'Über uns', href: '/about-us' },
+      { label: 'Großhandel', href: '/#wholesale' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Kontakt', href: '/contact' },
+    ],
+  },
 ];
 
 export const MARQUEE_WORDS = [
@@ -274,9 +309,14 @@ export const REVIEWS = [
  *  anchor on the home page. Placeholder rows the shop doesn't run
  *  (Blog, Reservierung, 404, Twitter, Pinterest) are dropped. */
 export const FOOTER_PAGES: { label: string; href: string }[] = [
-  { label: 'Über uns', href: '/#about' },
-  { label: 'Karte',    href: '/#menu' },
-  { label: 'Standort', href: '/#location' },
+  { label: 'Speisekarte', href: '/menu' },
+  { label: 'Açaí Bowls',  href: '/acai-bowls-duesseldorf' },
+  { label: 'Matcha',      href: '/matcha-duesseldorf' },
+  { label: 'Bestellen',   href: '/order-online' },
+  { label: 'Über uns',    href: '/about-us' },
+  { label: 'Franchise',   href: '/franchise' },
+  { label: 'FAQ',         href: '/faq' },
+  { label: 'Kontakt',     href: '/contact' },
 ];
 
 /** Real social handles (opened in new tab). Order matches the store's own
@@ -299,21 +339,65 @@ export const CONTACT = {
 export const LOCATIONS = [
   {
     label: 'Düsseldorf',
+    page: '/duesseldorf',
     lines: ['Flinger Str. 18', '40213 Düsseldorf'],
     mapUrl:
       'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf',
   },
   {
     label: 'Köln',
+    page: '/koeln',
     lines: ['Hohe Str. 105-107', '50667 Köln'],
     mapUrl:
       'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Hohe+Str.+105-107+50667+K%C3%B6ln',
   },
 ];
 
+export type StoreLocation = {
+  slug: string;
+  city: string;
+  label: string;
+  addressLines: string[];
+  mapUrl: string;
+  mapEmbed: string;
+  hours: { day: string; time: string }[];
+  photo?: { src: string; alt: string };
+  /** how to get there, one short line each */
+  arrival: { title: string; body: string }[];
+};
+
+/** Flagship — Oh My Açaí Düsseldorf. Hours per the Google Business Profile;
+ *  open every day, through midnight on Fri/Sat. */
+export const LOCATION_DUESSELDORF: StoreLocation = {
+  slug: 'duesseldorf',
+  city: 'Düsseldorf',
+  label: 'Oh My Açaí Düsseldorf',
+  addressLines: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
+  mapUrl:
+    'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf',
+  mapEmbed:
+    'https://maps.google.com/maps?q=Flinger%20Str.%2018,%2040213%20D%C3%BCsseldorf&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  hours: [
+    { day: 'Montag',     time: '11:00 – 22:00' },
+    { day: 'Dienstag',   time: '11:00 – 22:00' },
+    { day: 'Mittwoch',   time: '11:00 – 22:00' },
+    { day: 'Donnerstag', time: '11:00 – 22:00' },
+    { day: 'Freitag',    time: '11:00 – 00:00' },
+    { day: 'Samstag',    time: '11:00 – 00:00' },
+    { day: 'Sonntag',    time: '12:00 – 23:00' },
+  ],
+  photo: { src: '/img/store.jpg', alt: 'Oh My Açaí Store in der Flinger Straße 18, Düsseldorf Altstadt' },
+  arrival: [
+    { title: 'U-Bahn', body: 'Haltestelle Heinrich-Heine-Allee, von dort ein paar Minuten zu Fuß durch die Altstadt.' },
+    { title: 'Zu Fuß', body: 'Die Flinger Straße ist Fußgängerzone, mitten zwischen Marktplatz und Heinrich-Heine-Allee.' },
+    { title: 'Mit dem Auto', body: 'Am einfachsten über die Parkhäuser an der Heinrich-Heine-Allee.' },
+  ],
+};
+
 /** Second store — Oh My Açaí Köln. Hours + address per the Google Business
  *  Profile the owner shared. */
-export const LOCATION_COLOGNE = {
+export const LOCATION_COLOGNE: StoreLocation & { ratingLine: string } = {
+  slug: 'koeln',
   city: 'Köln',
   label: 'Oh My Açaí Köln',
   addressLines: ['Hohe Str. 105-107', '50667 Köln', 'Deutschland'],
@@ -331,7 +415,14 @@ export const LOCATION_COLOGNE = {
     { day: 'Samstag',    time: '10:00 – 21:00' },
     { day: 'Sonntag',    time: '13:30 – 18:30' },
   ],
+  arrival: [
+    { title: 'Bahn', body: 'Köln Hbf oder Haltestelle Dom/Hbf, von dort wenige Minuten über die Hohe Straße.' },
+    { title: 'Zu Fuß', body: 'Die Hohe Straße ist Fußgängerzone und verbindet den Dom mit der Schildergasse.' },
+    { title: 'Mit dem Auto', body: 'Parkhäuser in der Innenstadt, zum Beispiel rund um den Dom und die Schildergasse.' },
+  ],
 };
+
+export const STORES = [LOCATION_DUESSELDORF, LOCATION_COLOGNE];
 
 /* ------------------------------------------------------------------ *
  * Franchise page — Figma "Screens / Franchise" (node 4128:112, 1440 × 8254)
@@ -586,3 +677,115 @@ export const DATENSCHUTZ = {
     },
   ],
 };
+
+
+/* ------------------------------------------------------------------ *
+ * Content pages (strategy sheet: /menu, /acai-bowls-duesseldorf,
+ * /matcha-duesseldorf, /order-online, /faq, /about-us, /contact)
+ * ------------------------------------------------------------------ */
+
+/** Bowl menu. Names, price and the base description come from the shop's
+ *  own Uber Eats listing (all bowls 12,90 €, every bowl is açaí purée on
+ *  vegan chia pudding). `slide` links each bowl to its panel cup photo. */
+export const MENU_BOWLS = [
+  {
+    name: 'Açai Erdnussbutter',
+    price: '12,90 €',
+    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Erdnussbutter.',
+    toppings: 'Erdnussbutter, Banane & Hafer',
+    image: '/img/bowls/erdnussbutter.jpg',
+  },
+  {
+    name: 'Açai Pistazie',
+    price: '12,90 €',
+    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Pistazie.',
+    toppings: 'Pistazie, Beeren & Chia',
+    image: '/img/bowls/pistazie.jpg',
+  },
+  {
+    name: 'Açai Bueno',
+    price: '12,90 €',
+    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Bueno.',
+    toppings: 'Kinder Bueno, Karamell & Granola',
+    image: '/img/bowls/bueno.jpg',
+  },
+  {
+    name: 'Açai Tropical',
+    price: '12,90 €',
+    body: 'Cremig-fruchtiges Açaí-Püree auf veganem Chia-Pudding mit tropischen Früchten.',
+    toppings: 'Mango, Erdbeere & Banane',
+    image: '/img/bowls/tropical.jpg',
+  },
+  {
+    name: 'Açai Cheesecake',
+    price: '12,90 €',
+    body: 'Cremig-fruchtiges Açaí-Püree auf veganem Chia-Pudding mit Cheesecake-Topping.',
+    toppings: 'Cheesecake, Beeren & Granola',
+    image: '/img/bowls/cheesecake.jpg',
+  },
+];
+
+/** Iced Matcha line-up in Düsseldorf (per the strategy sheet). Prices are
+ *  not published online yet, so the menu shows them as "im Store". */
+export const MATCHA_DRINKS = [
+  {
+    name: 'Iced Mango Matcha',
+    body: 'Matcha auf Eis, geschichtet mit fruchtigem Mangopüree.',
+    color: '#e6a002',
+  },
+  {
+    name: 'Iced Erdbeer Matcha',
+    body: 'Matcha auf Eis über einer Schicht aus Erdbeerpüree.',
+    color: '#c8475f',
+  },
+  {
+    name: 'Ohmy Matcha Spezial',
+    body: 'Unser Haus-Matcha. Frag im Store nach der aktuellen Kreation.',
+    color: '#7c8b3f',
+  },
+];
+
+/** Long-form FAQ for /faq. Answers stay within what the shop has
+ *  confirmed: prices, hours, both addresses, Uber Eats ordering. */
+export const FAQ_PAGE = [
+  {
+    q: 'Was ist Açaí?',
+    a: 'Açaí ist die dunkelviolette Beere der Açaí-Palme aus dem Amazonasgebiet in Brasilien. Sie wird direkt nach der Ernte zu Püree verarbeitet und tiefgefroren. Daraus mixen wir die cremige, eisgekühlte Basis jeder Bowl.',
+  },
+  {
+    q: 'Was kostet eine Açaí Bowl bei euch?',
+    a: 'Alle fünf Signature Bowls kosten 12,90 €: Açai Erdnussbutter, Açai Pistazie, Açai Bueno, Açai Tropical und Açai Cheesecake. Die komplette Karte findest du unter Speisekarte & Preise.',
+  },
+  {
+    q: 'Sind eure Bowls vegan?',
+    a: 'Die Basis aus Açaí-Püree und Chia-Pudding ist vegan. Einige Toppings, zum Beispiel Bueno oder Cheesecake, können Milch enthalten. Frag im Store nach, wir sagen dir genau, welche Bowl vegan ist und tauschen Toppings gern aus.',
+  },
+  {
+    q: 'Liefert ihr in Düsseldorf?',
+    a: 'Ja. Du kannst unsere Bowls über Uber Eats liefern lassen oder dort vorbestellen und selbst abholen. Alle Wege findest du auf der Seite Online bestellen.',
+  },
+  {
+    q: 'Wo finde ich euch?',
+    a: 'In Düsseldorf in der Flinger Str. 18 (40213, Altstadt) und in Köln in der Hohe Str. 105-107 (50667, Innenstadt). Beide Stores sind jeden Tag geöffnet.',
+  },
+  {
+    q: 'Wie sind eure Öffnungszeiten?',
+    a: 'Düsseldorf: Mo bis Do 11:00 bis 22:00, Fr und Sa 11:00 bis 00:00, So 12:00 bis 23:00. Köln: Mo bis Fr 11:00 bis 20:30, Sa 10:00 bis 21:00, So 13:30 bis 18:30.',
+  },
+  {
+    q: 'Gibt es bei euch auch Matcha?',
+    a: 'Ja, in Düsseldorf gibt es Iced Matcha, zum Beispiel mit Mango oder Erdbeere, und unseren Ohmy Matcha Spezial. Alles frisch zubereitet und auch zum Mitnehmen.',
+  },
+  {
+    q: 'Welche Allergene stecken in den Bowls?',
+    a: 'Je nach Bowl können Nüsse (Erdnuss, Pistazie), Gluten (Granola, Hafer) und Milch enthalten sein. Bitte sprich uns vor der Bestellung im Store an, wir zeigen dir die vollständige Allergenliste.',
+  },
+  {
+    q: 'Kann ich euer Açaí-Püree für mein Café kaufen?',
+    a: 'Ja. Wir verkaufen dasselbe reine Açaí-Püree, das wir selbst verwenden, an Cafés, Bars und Hotelküchen. Schick uns einfach eine Anfrage über das Großhandel-Formular.',
+  },
+  {
+    q: 'Kann ich ein Oh My Açaí Franchise eröffnen?',
+    a: 'Ja, wir suchen Partner für neue Standorte. Alle Infos und das Anfrageformular findest du auf unserer Franchise-Seite.',
+  },
+];

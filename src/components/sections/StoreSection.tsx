@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
 import MapEmbed from "@/components/ui/MapEmbed";
-import { LOCATION_COLOGNE } from "@/data/site";
+import { LOCATION_COLOGNE, LOCATION_DUESSELDORF } from "@/data/site";
 
 const HEADING = ['Besuche unseren', 'Store'];
 
@@ -18,17 +18,8 @@ const MAPS_URL =
 const MAPS_EMBED =
   'https://maps.google.com/maps?q=Flinger%20Str.%2018,%2040213%20D%C3%BCsseldorf&t=&z=16&ie=UTF8&iwloc=&output=embed';
 
-/** Opening hours as shown on the Google Business Profile. Monday first —
- *  the shop is open every day and the times run through midnight on Fri/Sat. */
-const HOURS: { day: string; time: string }[] = [
-  { day: 'Montag',     time: '11:00 – 22:00' },
-  { day: 'Dienstag',   time: '11:00 – 22:00' },
-  { day: 'Mittwoch',   time: '11:00 – 22:00' },
-  { day: 'Donnerstag', time: '11:00 – 22:00' },
-  { day: 'Freitag',    time: '11:00 – 00:00' },
-  { day: 'Samstag',    time: '11:00 – 00:00' },
-  { day: 'Sonntag',    time: '12:00 – 23:00' },
-];
+/** Opening hours as shown on the Google Business Profile (shared data). */
+const HOURS = LOCATION_DUESSELDORF.hours;
 
 /**
  * Figma: "Image Section → Content" — 675 × 520 rounded-24 photo on the left,
