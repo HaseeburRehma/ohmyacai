@@ -14,9 +14,10 @@ import PartnerStories from '@/components/sections/franchise/PartnerStories';
 import { FRANCHISE_FAQS } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Franchise — Oh My Açaí',
+  title: 'Açaí Franchise eröffnen | Werde Partner von Oh My Açaí',
   description:
-    'Eine schlüsselfertige Açaí-Bar mit fertigen Rezepten, gesicherter Beeren-Lieferkette und erprobtem Eröffnungsplan. 24+ Filialen, 12 Länder, sechs Wochen bis zur Eröffnung.',
+    'Du willst ein Açaí Franchise eröffnen? Erfahre, wie das Oh My Açaí Konzept funktioniert, welchen Support wir bieten und wie du dich bewirbst.',
+  alternates: { canonical: '/franchise' },
 };
 
 /**

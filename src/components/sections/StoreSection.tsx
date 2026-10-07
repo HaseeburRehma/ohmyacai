@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import PillButton from "@/components/ui/PillButton";
+import MapEmbed from "@/components/ui/MapEmbed";
 import { LOCATION_COLOGNE } from "@/data/site";
 
 const HEADING = ['Besuche unseren', 'Store'];
@@ -81,16 +82,13 @@ export default function StoreSection() {
           {/* Google Maps embed sits under the photo with a matching card
               treatment. Fixed 260 px tall from lg so image + map together
               track the height of the copy column on desktop. */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[260px]">
-            <iframe
-              title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
-              src={MAPS_EMBED}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-              className="absolute inset-0 size-full border-0"
-            />
-          </div>
+          <MapEmbed
+            title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
+            src={MAPS_EMBED}
+            address={['Flinger Str. 18', '40213 Düsseldorf']}
+            routeUrl={MAPS_URL}
+            className="aspect-[16/9] lg:aspect-auto lg:h-[260px]"
+          />
         </InView>
 
         {/* RIGHT column — heading, paragraph, hours card, CTA. */}
@@ -249,16 +247,13 @@ export default function StoreSection() {
 
             {/* RIGHT — map + brand image tile */}
             <div className="flex flex-col gap-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] lg:aspect-auto lg:h-[380px]">
-                <iframe
-                  title={`Karte: ${LOCATION_COLOGNE.label}`}
-                  src={LOCATION_COLOGNE.mapEmbed}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  className="absolute inset-0 size-full border-0"
-                />
-              </div>
+              <MapEmbed
+                title={`Karte: ${LOCATION_COLOGNE.label}`}
+                src={LOCATION_COLOGNE.mapEmbed}
+                address={LOCATION_COLOGNE.addressLines.slice(0, 2)}
+                routeUrl={LOCATION_COLOGNE.mapUrl}
+                className="aspect-[4/3] lg:aspect-auto lg:h-[380px]"
+              />
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[220px]">
                 <Image
                   src="/img/logo-badge.png"

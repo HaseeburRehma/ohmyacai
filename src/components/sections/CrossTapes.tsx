@@ -6,8 +6,10 @@ import { MarqueeRow } from './Marquee';
 
 /**
  * Figma: "Frame 40" — 1440 × 349. Two 1526px tapes crossing:
- * plum at rotate(9.43°) skewX(-1.17°), gold at rotate(170.57°) skewX(1.17°)
- * with scaleY(-1). Scroll adds a counter-rotation so the X opens as you pass.
+ * plum at rotate(9.43°) skewX(-1.17°), gold at rotate(-9.43°) skewX(1.17°).
+ * (Figma draws the gold tape as rotate(170.57°) + scaleY(-1), which is a
+ * horizontal mirror — the text read backwards — so it's re-expressed as the
+ * equivalent readable tilt.) Scroll adds a counter-rotation so the X opens.
  */
 export default function CrossTapes() {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,7 +43,7 @@ export default function CrossTapes() {
       >
         <div
           className="w-full origin-center"
-          style={{ transform: 'rotate(170.57deg) skewX(1.17deg) scaleY(-1)' }}
+          style={{ transform: 'rotate(-9.43deg) skewX(1.17deg)' }}
         >
           <MarqueeRow tone="gold" speed={48} reverse />
         </div>

@@ -122,7 +122,7 @@ function BowlCard({
         <motion.a
           href={ORDER_URL}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           initial="rest"
           whileHover="hover"
           whileFocus="hover"

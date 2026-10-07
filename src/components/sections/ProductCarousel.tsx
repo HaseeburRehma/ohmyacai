@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -25,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function ProductCarousel() {
   const root = useRef<HTMLDivElement>(null);
   const rail = useRef<HTMLDivElement>(null);
+  const active = useMobileSlider(root, rail);
 
   useGSAP(
     () => {
@@ -104,15 +105,134 @@ export default function ProductCarousel() {
     >
       <div
         ref={rail}
-        className="no-scrollbar flex h-full snap-x snap-mandatory overflow-x-auto lg:overflow-visible"
+        className="no-scrollbar flex h-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[7vw] py-6 sm:gap-4 sm:px-[16vw] lg:gap-0 lg:overflow-visible lg:p-0"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {SLIDES.map((slide, i) => (
           <Slide key={slide.title + i} slide={slide} index={i} />
         ))}
       </div>
+
+      {/* Mobile pagination — tap to jump, reflects the centred card. */}
+      <div className="flex items-center justify-center gap-2 pb-6 lg:hidden">
+        {SLIDES.map((s, i) => (
+          <button
+            key={s.title}
+            type="button"
+            aria-label={`${s.title} anzeigen`}
+            aria-current={i === active}
+            onClick={() => scrollToSlide(rail.current, i)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === active ? 'w-7 bg-plum' : 'w-2 bg-plum/25'
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
+}
+
+/* ------------------------------------------------------------------ */
+
+function scrollToSlide(railEl: HTMLDivElement | null, i: number) {
+  const card = railEl?.children[i] as HTMLElement | undefined;
+  if (!railEl || !card) return;
+  railEl.scrollTo({
+    left: card.offsetLeft - (railEl.clientWidth - card.clientWidth) / 2,
+    behavior: 'smooth',
+  });
+}
+
+/**
+ * Below lg the rail is a native swipe slider. This adds the "slider" feel on
+ * top of native scrolling (so swipe stays 60fps and accessible):
+ *  - off-centre cards scale down and dim, driven by their distance from the
+ *    rail centre on every scroll frame;
+ *  - auto-advance every 4.5 s with a smooth scroll, paused while the user is
+ *    touching, for 6 s after any interaction, while the section is off
+ *    screen, and entirely under prefers-reduced-motion;
+ *  - returns the centred index for the pagination dots.
+ * At lg the desktop GSAP rail takes over and every inline style is cleared.
+ */
+function useMobileSlider(
+  root: React.RefObject<HTMLElement | null>,
+  rail: React.RefObject<HTMLDivElement | null>
+) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const railEl = rail.current;
+    const rootEl = root.current;
+    if (!railEl || !rootEl) return;
+
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const cards = Array.from(railEl.children) as HTMLElement[];
+    let raf = 0;
+    let timer: number | undefined;
+    let pausedUntil = 0;
+    let touching = false;
+    let inView = false;
+    let current = 0;
+
+    const paint = () => {
+      raf = 0;
+      if (!mq.matches) return;
+      const centre = railEl.scrollLeft + railEl.clientWidth / 2;
+      let best = 0;
+      let bestD = Infinity;
+      cards.forEach((card, i) => {
+        const mid = card.offsetLeft + card.clientWidth / 2;
+        const d = Math.min(Math.abs(mid - centre) / card.clientWidth, 1);
+        if (d < bestD) { bestD = d; best = i; }
+        card.style.transform = `scale(${1 - d * 0.08})`;
+        card.style.opacity = String(1 - d * 0.35);
+      });
+      if (best !== current) { current = best; setActive(best); }
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(paint); };
+
+    const clear = () => cards.forEach((c) => { c.style.transform = ''; c.style.opacity = ''; });
+
+    const tick = () => {
+      if (mq.matches && inView && !touching && !reduce.matches && Date.now() > pausedUntil) {
+        scrollToSlide(railEl, (current + 1) % cards.length);
+      }
+      timer = window.setTimeout(tick, 4500);
+    };
+
+    const hold = () => { pausedUntil = Date.now() + 6000; };
+    const onTouchStart = () => { touching = true; hold(); };
+    const onTouchEnd = () => { touching = false; hold(); };
+    const onMq = () => { if (mq.matches) paint(); else clear(); };
+
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; }, { threshold: 0.4 });
+    io.observe(rootEl);
+
+    railEl.addEventListener('scroll', onScroll, { passive: true });
+    railEl.addEventListener('touchstart', onTouchStart, { passive: true });
+    railEl.addEventListener('touchend', onTouchEnd, { passive: true });
+    railEl.addEventListener('pointerdown', hold, { passive: true });
+    window.addEventListener('resize', onScroll);
+    mq.addEventListener('change', onMq);
+    paint();
+    timer = window.setTimeout(tick, 4500);
+
+    return () => {
+      io.disconnect();
+      railEl.removeEventListener('scroll', onScroll);
+      railEl.removeEventListener('touchstart', onTouchStart);
+      railEl.removeEventListener('touchend', onTouchEnd);
+      railEl.removeEventListener('pointerdown', hold);
+      window.removeEventListener('resize', onScroll);
+      mq.removeEventListener('change', onMq);
+      if (raf) cancelAnimationFrame(raf);
+      if (timer !== undefined) window.clearTimeout(timer);
+      clear();
+    };
+  }, [root, rail]);
+
+  return active;
 }
 
 /* ------------------------------------------------------------------ */
@@ -150,7 +270,7 @@ function Slide({
          height, the vertical composition is Figma's at every width and the
          extra width is just more background. All values below are the Figma
          px divided by 898. */
-      className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center overflow-hidden [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2"
+      className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center snap-always overflow-hidden rounded-3xl shadow-[0_16px_36px_-18px_rgba(0,0,0,0.45)] will-change-transform [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2 lg:rounded-none lg:shadow-none"
       /* The Figma panel artwork carries the flat colour AND the berry
          texture with its fade. `auto 100%` scales it by HEIGHT so the texture
          keeps its true scale and the fade line stays at the halfway mark, and
@@ -219,7 +339,7 @@ function Slide({
       <a
         href={ORDER_URL}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="absolute bottom-[max(1rem,2.45cqh)] left-[max(1rem,2.45cqh)] z-10 inline-flex min-h-11 items-center rounded-full bg-ink px-[max(1.1rem,2.67cqh)] py-[max(0.6rem,1.34cqh)] transition-transform duration-400 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-105"
       >
         <span className="font-display text-[clamp(1rem,2.673cqh,1.75rem)] uppercase leading-[1.2] tracking-[-0.5px] text-white">

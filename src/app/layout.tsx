@@ -50,16 +50,89 @@ const archivo = Archivo({
   display: 'swap',
 });
 
+const SITE_URL = 'https://www.ohmyacai.de';
+const SITE_TITLE = 'Açaí Bowls Düsseldorf & Köln | Oh My Açaí';
+const SITE_DESCRIPTION =
+  'Frische, vegane Açaí Bowls aus echtem Püree mit Granola, Obst und Chia Pudding. In der Flinger Straße Düsseldorf & Hohe Straße Köln, to go oder geliefert.';
+
 export const metadata: Metadata = {
-  title: 'Oh My Açaí — Frisch gemixte Momente beginnen hier',
-  description:
-    'Nahrhafte & köstliche Açaí-Bowls, die sich mühelos in deinen Alltag einfügen. Über 17.000 Fünf-Sterne-Bewertungen.',
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Oh My Açaí — Frisch gemixte Momente beginnen hier',
-    description:
-      'Nahrhafte & köstliche Açaí-Bowls, die sich mühelos in deinen Alltag einfügen.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: 'Oh My Açaí',
+    locale: 'de_DE',
     type: 'website',
+    images: [{ url: '/img/store.jpg', width: 1440, height: 1920, alt: 'Oh My Açaí Store in Düsseldorf' }],
   },
+};
+
+/* schema.org structured data — the brand plus one CafeOrCoffeeShop node per
+   store, so Google can show address, opening hours and an order action for
+   both locations. Kept in sync with LOCATIONS / hours on the page. */
+const OPENING_DUS = [
+  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '11:00', closes: '22:00' },
+  { days: ['Friday', 'Saturday'], opens: '11:00', closes: '23:59' },
+  { days: ['Sunday'], opens: '12:00', closes: '23:00' },
+];
+const OPENING_CGN = [
+  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '20:30' },
+  { days: ['Saturday'], opens: '10:00', closes: '21:00' },
+  { days: ['Sunday'], opens: '13:30', closes: '18:30' },
+];
+const ORDER_TARGET =
+  'https://www.ubereats.com/de-en/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw?diningMode=DELIVERY';
+
+function store(id: string, name: string, street: string, zip: string, city: string, geo: [number, number], hours: typeof OPENING_DUS) {
+  return {
+    '@type': 'CafeOrCoffeeShop',
+    '@id': `${SITE_URL}/#${id}`,
+    name,
+    url: SITE_URL,
+    image: `${SITE_URL}/img/store.jpg`,
+    logo: `${SITE_URL}/img/logo-badge.png`,
+    servesCuisine: ['Açaí Bowls', 'Smoothie Bowls', 'Vegan'],
+    priceRange: '€€',
+    acceptsReservations: false,
+    hasMenu: `${SITE_URL}/#menu`,
+    parentOrganization: { '@id': `${SITE_URL}/#org` },
+    address: { '@type': 'PostalAddress', streetAddress: street, postalCode: zip, addressLocality: city, addressCountry: 'DE' },
+    geo: { '@type': 'GeoCoordinates', latitude: geo[0], longitude: geo[1] },
+    openingHoursSpecification: hours.map((h) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: h.days,
+      opens: h.opens,
+      closes: h.closes,
+    })),
+    potentialAction: { '@type': 'OrderAction', target: ORDER_TARGET },
+  };
+}
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#org`,
+      name: 'Oh My Açaí',
+      legalName: 'Ohmyacai UG (haftungsbeschränkt)',
+      url: SITE_URL,
+      logo: `${SITE_URL}/img/logo-badge.png`,
+      email: 'info@ohmyacai.de',
+      telephone: '+4915732016134',
+      sameAs: ['https://www.instagram.com/ohmyacai_dues/', 'https://www.tiktok.com/@ohmyacai.de'],
+    },
+    { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: 'Oh My Açaí', inLanguage: 'de-DE', publisher: { '@id': `${SITE_URL}/#org` } },
+    {
+      ...store('duesseldorf', 'Oh My Açaí Düsseldorf', 'Flinger Str. 18', '40213', 'Düsseldorf', [51.2264, 6.7733], OPENING_DUS),
+      telephone: '+4915732016134',
+    },
+    store('koeln', 'Oh My Açaí Köln', 'Hohe Str. 105-107', '50667', 'Köln', [50.9376, 6.9571], OPENING_CGN),
+  ],
 };
 
 export const viewport: Viewport = {
@@ -116,6 +189,10 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

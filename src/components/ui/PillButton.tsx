@@ -50,7 +50,7 @@ export default function PillButton({
       href={href}
       onClick={onClick}
       target={newTab ? '_blank' : undefined}
-      rel={newTab ? 'noopener noreferrer' : undefined}
+      rel={newTab ? 'noopener noreferrer nofollow' : undefined}
       initial="rest"
       whileHover="hover"
       whileFocus="hover"
