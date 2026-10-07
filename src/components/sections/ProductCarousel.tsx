@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function ProductCarousel() {
   const root = useRef<HTMLDivElement>(null);
   const rail = useRef<HTMLDivElement>(null);
-  const active = useMobileSlider(root, rail);
+  useMobileSlider(root, rail);
 
   useGSAP(
     () => {
@@ -105,7 +105,7 @@ export default function ProductCarousel() {
     >
       <div
         ref={rail}
-        className="no-scrollbar flex h-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[7vw] py-6 sm:gap-4 sm:px-[16vw] lg:gap-0 lg:overflow-visible lg:p-0"
+        className="no-scrollbar flex h-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[7vw] pb-10 pt-6 sm:gap-4 sm:px-[16vw] lg:gap-0 lg:overflow-visible lg:p-0"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {SLIDES.map((slide, i) => (
@@ -113,21 +113,6 @@ export default function ProductCarousel() {
         ))}
       </div>
 
-      {/* Mobile pagination — tap to jump, reflects the centred card. */}
-      <div className="flex items-center justify-center gap-2 py-4 pb-6 lg:hidden">
-        {SLIDES.map((s, i) => (
-          <button
-            key={s.title}
-            type="button"
-            aria-label={`${s.title} anzeigen`}
-            aria-current={i === active}
-            onClick={() => scrollToSlide(rail.current, i)}
-            className={`h-2 rounded-full relative before:absolute before:inset-x-[-4px] before:inset-y-[-14px] before:content-[''] transition-all duration-300 ${
-              i === active ? 'w-7 bg-plum' : 'w-2 bg-plum/25'
-            }`}
-          />
-        ))}
-      </div>
     </section>
   );
 }
@@ -148,8 +133,8 @@ function scrollToSlide(railEl: HTMLDivElement | null, i: number) {
  * top of native scrolling (so swipe stays 60fps and accessible):
  *  - off-centre cards scale down and dim, driven by their distance from the
  *    rail centre on every scroll frame;
- *  - auto-advance every 4.5 s with a smooth scroll, paused while the user is
- *    touching, for 6 s after any interaction, while the section is off
+ *  - auto-advance every 2.8 s with a smooth scroll, paused while the user is
+ *    touching, for 4 s after any interaction, while the section is off
  *    screen, and entirely under prefers-reduced-motion;
  *  - returns the centred index for the pagination dots.
  * At lg the desktop GSAP rail takes over and every inline style is cleared.
@@ -198,10 +183,10 @@ function useMobileSlider(
       if (mq.matches && inView && !touching && !reduce.matches && Date.now() > pausedUntil) {
         scrollToSlide(railEl, (current + 1) % cards.length);
       }
-      timer = window.setTimeout(tick, 4500);
+      timer = window.setTimeout(tick, 2800);
     };
 
-    const hold = () => { pausedUntil = Date.now() + 6000; };
+    const hold = () => { pausedUntil = Date.now() + 4000; };
     const onTouchStart = () => { touching = true; hold(); };
     const onTouchEnd = () => { touching = false; hold(); };
     const onMq = () => { if (mq.matches) paint(); else clear(); };
@@ -216,7 +201,7 @@ function useMobileSlider(
     window.addEventListener('resize', onScroll);
     mq.addEventListener('change', onMq);
     paint();
-    timer = window.setTimeout(tick, 4500);
+    timer = window.setTimeout(tick, 2800);
 
     return () => {
       io.disconnect();
@@ -270,7 +255,7 @@ function Slide({
          height, the vertical composition is Figma's at every width and the
          extra width is just more background. All values below are the Figma
          px divided by 898. */
-      className="group relative h-[68svh] min-h-[440px] w-[86vw] shrink-0 snap-center snap-always overflow-hidden rounded-3xl shadow-[0_16px_36px_-18px_rgba(0,0,0,0.45)] will-change-transform [container-type:size] sm:h-[74svh] sm:w-[68vw] lg:h-full lg:w-1/2 lg:rounded-none lg:shadow-none"
+      className="group relative h-[min(60svh,500px)] min-h-[400px] w-[86vw] shrink-0 snap-center snap-always overflow-hidden rounded-3xl shadow-[0_16px_36px_-18px_rgba(0,0,0,0.45)] will-change-transform [container-type:size] sm:h-[min(66svh,600px)] sm:w-[68vw] lg:h-full lg:w-1/2 lg:rounded-none lg:shadow-none"
       /* The Figma panel artwork carries the flat colour AND the berry
          texture with its fade. `auto 100%` scales it by HEIGHT so the texture
          keeps its true scale and the fade line stays at the halfway mark, and
@@ -294,7 +279,7 @@ function Slide({
           takes over (inset-x-8 / top-25 / bottom-4). */}
       <div
         data-slide-art
-        className="pointer-events-none absolute inset-x-[12%] bottom-[14%] top-[36%] lg:inset-x-[8%] lg:bottom-[4%] lg:top-[25%]"
+        className="pointer-events-none absolute inset-x-[10%] bottom-[12%] top-[22%] lg:inset-x-[8%] lg:bottom-[4%] lg:top-[25%]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <Image
@@ -314,7 +299,7 @@ function Slide({
         <p className="text-[clamp(0.75rem,1.782cqh,1.25rem)] font-bold uppercase tracking-[-0.5px]">
           {slide.eyebrow}
         </p>
-        <h3 className="font-display text-[clamp(1.15rem,4.6cqh,3.5rem)] uppercase leading-[1.1] [hyphens:auto] [overflow-wrap:break-word]">
+        <h3 className="font-display text-[clamp(1.5rem,4.6cqh,3.5rem)] uppercase leading-[1.1] [hyphens:auto] [overflow-wrap:break-word]">
           {slide.title}
         </h3>
       </div>
