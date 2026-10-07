@@ -9,7 +9,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const rise = { hidden: { opacity: 0, y: 34 }, visible: { opacity: 1, y: 0 } };
 
 /**
- * /order-online — the one place the site links out to the delivery
+ * /online-bestellen — the one place the site links out to the delivery
  * platforms (Wolt, Lieferando, Uber Eats). Walk-in pickup at either store
  * needs no account at all.
  */

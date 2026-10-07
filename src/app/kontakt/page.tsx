@@ -3,7 +3,7 @@ import PageHero from '@/components/sections/PageHero';
 import ContactSection from '@/components/sections/ContactSection';
 import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 
-const PATH = '/contact';
+const PATH = '/kontakt';
 
 export const metadata = pageMetadata({
   title: 'Kontakt | Oh My Acai Düsseldorf, Flinger Straße 18, Altstadt',

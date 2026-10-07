@@ -9,7 +9,7 @@ import { CONTACT, STORES } from '@/data/site';
 const EASE = [0.16, 1, 0.3, 1] as const;
 const rise = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
-/** /contact — direct lines + both stores on the left, message form right. */
+/** /kontakt — direct lines + both stores on the left, message form right. */
 export default function ContactSection() {
   return (
     <section className="w-full bg-white px-6 pb-20 pt-4 sm:px-10 lg:px-[60px] lg:pb-[120px]">

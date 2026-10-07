@@ -23,7 +23,7 @@ export default function AcaiBowlsPage() {
   return (
     <PageShell jsonLd={[breadcrumbLd([{ name: 'Açaí Bowls', path: PATH }]), faqLd(FAQ)]}>
       <PageHero
-        crumbs={[{ name: 'Speisekarte', path: '/menu' }, { name: 'Açaí Bowls', path: PATH }]}
+        crumbs={[{ name: 'Speisekarte', path: '/speisekarte' }, { name: 'Açaí Bowls', path: PATH }]}
         eyebrow="Flinger Straße 18 · Altstadt"
         title="Açaí Bowls in Düsseldorf"
         accent="Açaí Bowls"
@@ -31,7 +31,7 @@ export default function AcaiBowlsPage() {
         image={{ src: '/img/bowls/bueno.jpg', alt: 'Açai Bueno Bowl in der Düsseldorfer Altstadt' }}
       >
         <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
-        <PillButton href="/menu" variant="plum">Zur Speisekarte</PillButton>
+        <PillButton href="/speisekarte" variant="plum">Zur Speisekarte</PillButton>
       </PageHero>
       <SignatureBowls />
       <TextSplit

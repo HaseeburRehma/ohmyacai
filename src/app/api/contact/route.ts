@@ -7,7 +7,7 @@ const esc = (v: string) =>
   v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /**
- * General contact form (/contact). Emails the team inbox only; no copy goes
+ * General contact form (/kontakt). Emails the team inbox only; no copy goes
  * back to the sender, so the form can't be used to relay mail to strangers.
  * Same SMTP env vars as the franchise + wholesale routes:
  *

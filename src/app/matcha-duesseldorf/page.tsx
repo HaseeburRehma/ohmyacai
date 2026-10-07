@@ -17,16 +17,16 @@ export const metadata = pageMetadata({
 
 export default function MatchaPage() {
   return (
-    <PageShell jsonLd={[breadcrumbLd([{ name: 'Speisekarte', path: '/menu' }, { name: 'Iced Matcha', path: PATH }])]}>
+    <PageShell jsonLd={[breadcrumbLd([{ name: 'Speisekarte', path: '/speisekarte' }, { name: 'Iced Matcha', path: PATH }])]}>
       <PageHero
-        crumbs={[{ name: 'Speisekarte', path: '/menu' }, { name: 'Iced Matcha', path: PATH }]}
+        crumbs={[{ name: 'Speisekarte', path: '/speisekarte' }, { name: 'Iced Matcha', path: PATH }]}
         eyebrow="Flinger Straße 18 · Altstadt"
         title="Iced Matcha in Düsseldorf"
         accent="Iced Matcha"
         intro="Mango, Erdbeere oder unser Ohmy Matcha Spezial: Matcha auf Eis, frisch zubereitet in der Flinger Straße 18. Perfekt zur Bowl oder einfach zum Mitnehmen durch die Altstadt."
       >
         <PillButton href="/duesseldorf">Store finden</PillButton>
-        <PillButton href="/menu" variant="plum">Zur Speisekarte</PillButton>
+        <PillButton href="/speisekarte" variant="plum">Zur Speisekarte</PillButton>
       </PageHero>
       <MatchaGrid />
       <TextSplit

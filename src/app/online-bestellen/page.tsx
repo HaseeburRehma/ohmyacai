@@ -6,7 +6,7 @@ import Faq from '@/components/sections/Faq';
 import { FAQ_PAGE } from '@/data/site';
 import { breadcrumbLd, faqLd, pageMetadata } from '@/lib/seo';
 
-const PATH = '/order-online';
+const PATH = '/online-bestellen';
 const FAQ = [3, 1, 5].map((i) => FAQ_PAGE[i]);
 
 export const metadata = pageMetadata({

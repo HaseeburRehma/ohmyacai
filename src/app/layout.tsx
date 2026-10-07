@@ -98,7 +98,7 @@ function store(id: string, name: string, street: string, zip: string, city: stri
     servesCuisine: ['Açaí Bowls', 'Smoothie Bowls', 'Vegan'],
     priceRange: '€€',
     acceptsReservations: false,
-    hasMenu: `${SITE_URL}/menu`,
+    hasMenu: `${SITE_URL}/speisekarte`,
     parentOrganization: { '@id': `${SITE_URL}/#org` },
     address: { '@type': 'PostalAddress', streetAddress: street, postalCode: zip, addressLocality: city, addressCountry: 'DE' },
     geo: { '@type': 'GeoCoordinates', latitude: geo[0], longitude: geo[1] },

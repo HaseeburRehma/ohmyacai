@@ -7,14 +7,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
     ...[
-      '/menu',
+      '/speisekarte',
       '/acai-bowls-duesseldorf',
       '/matcha-duesseldorf',
       '/duesseldorf',
       '/koeln',
-      '/order-online',
+      '/online-bestellen',
     ].map((p) => ({ url: `${SITE_URL}${p}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 })),
-    ...['/about-us', '/faq', '/contact'].map((p) => ({
+    ...['/ueber-uns', '/faq', '/kontakt'].map((p) => ({
       url: `${SITE_URL}${p}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,

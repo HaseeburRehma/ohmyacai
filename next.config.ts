@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 828, 1080, 1440, 1920],
     imageSizes: [128, 256, 384],
   },
+
+  /**
+   * Content pages moved to the German slugs from the SEO strategy sheet
+   * ("Cannibalization Map" tab). 308s pass link equity on to the new URLs
+   * and keep any shared / indexed English links working.
+   */
+  async redirects() {
+    return [
+      { source: '/menu', destination: '/speisekarte', permanent: true },
+      { source: '/order-online', destination: '/online-bestellen', permanent: true },
+      { source: '/about-us', destination: '/ueber-uns', permanent: true },
+      { source: '/contact', destination: '/kontakt', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

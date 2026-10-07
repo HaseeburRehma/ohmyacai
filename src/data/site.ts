@@ -9,15 +9,15 @@ export const ANNOUNCEMENT =
 /** Every "Jetzt bestellen" button on the site lands on our own order page,
  *  so the one outbound Uber Eats link lives there (plus schema.org), not on
  *  a dozen buttons across every page. */
-export const ORDER_URL = '/order-online';
+export const ORDER_URL = '/online-bestellen';
 
 /** The shop's Uber Eats store (delivery + pickup). Only linked from
- *  /order-online. */
+ *  /online-bestellen. */
 export const UBER_EATS_URL =
   'https://www.ubereats.com/de/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw';
 
 /** Every delivery platform the Düsseldorf store is listed on. Only linked
- *  from /order-online (and schema.org). */
+ *  from /online-bestellen (and schema.org). */
 export const DELIVERY_PLATFORMS = [
   { name: 'Wolt', url: 'https://wolt.com/de/deu/dusseldorf/restaurant/oh-my-acai-dusseldorf' },
   { name: 'Lieferando', url: 'https://www.lieferando.de/menu/oh-my-acai' },
@@ -92,9 +92,9 @@ export type NavLink = { label: string; href: string; children?: { label: string;
 export const NAV_LINKS: NavLink[] = [
   {
     label: 'Karte',
-    href: '/menu',
+    href: '/speisekarte',
     children: [
-      { label: 'Speisekarte & Preise', href: '/menu' },
+      { label: 'Speisekarte & Preise', href: '/speisekarte' },
       { label: 'Açaí Bowls', href: '/acai-bowls-duesseldorf' },
       { label: 'Iced Matcha', href: '/matcha-duesseldorf' },
     ],
@@ -110,12 +110,12 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Franchise', href: '/franchise' },
   {
     label: 'Mehr',
-    href: '/about-us',
+    href: '/ueber-uns',
     children: [
-      { label: 'Über uns', href: '/about-us' },
+      { label: 'Über uns', href: '/ueber-uns' },
       { label: 'Großhandel', href: '/#wholesale' },
       { label: 'FAQ', href: '/faq' },
-      { label: 'Kontakt', href: '/contact' },
+      { label: 'Kontakt', href: '/kontakt' },
     ],
   },
 ];
@@ -317,14 +317,14 @@ export const REVIEWS = [
  *  anchor on the home page. Placeholder rows the shop doesn't run
  *  (Blog, Reservierung, 404, Twitter, Pinterest) are dropped. */
 export const FOOTER_PAGES: { label: string; href: string }[] = [
-  { label: 'Speisekarte', href: '/menu' },
+  { label: 'Speisekarte', href: '/speisekarte' },
   { label: 'Açaí Bowls',  href: '/acai-bowls-duesseldorf' },
   { label: 'Matcha',      href: '/matcha-duesseldorf' },
-  { label: 'Bestellen',   href: '/order-online' },
-  { label: 'Über uns',    href: '/about-us' },
+  { label: 'Bestellen',   href: '/online-bestellen' },
+  { label: 'Über uns',    href: '/ueber-uns' },
   { label: 'Franchise',   href: '/franchise' },
   { label: 'FAQ',         href: '/faq' },
-  { label: 'Kontakt',     href: '/contact' },
+  { label: 'Kontakt',     href: '/kontakt' },
 ];
 
 /** Real social handles (opened in new tab). Order matches the store's own
@@ -688,8 +688,8 @@ export const DATENSCHUTZ = {
 
 
 /* ------------------------------------------------------------------ *
- * Content pages (strategy sheet: /menu, /acai-bowls-duesseldorf,
- * /matcha-duesseldorf, /order-online, /faq, /about-us, /contact)
+ * Content pages (strategy sheet: /speisekarte, /acai-bowls-duesseldorf,
+ * /matcha-duesseldorf, /online-bestellen, /faq, /ueber-uns, /kontakt)
  * ------------------------------------------------------------------ */
 
 /** Bowl menu. Toppings and prices from the shop's own delivery listings

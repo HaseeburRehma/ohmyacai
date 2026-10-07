@@ -7,7 +7,7 @@ import CtaSection from '@/components/sections/CtaSection';
 import PillButton from '@/components/ui/PillButton';
 import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 
-const PATH = '/about-us';
+const PATH = '/ueber-uns';
 
 export const metadata = pageMetadata({
   title: 'Über uns | Oh My Acai, dein Açaí Café in Düsseldorf Altstadt',

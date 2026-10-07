@@ -6,7 +6,7 @@ import PillButton from '@/components/ui/PillButton';
 import { MENU_BOWLS, ORDER_URL } from '@/data/site';
 import { SITE_URL, breadcrumbLd, pageMetadata } from '@/lib/seo';
 
-const PATH = '/menu';
+const PATH = '/speisekarte';
 
 export const metadata = pageMetadata({
   title: 'Speisekarte & Preise | Açaí Bowls, Matcha & Shakes Düsseldorf',

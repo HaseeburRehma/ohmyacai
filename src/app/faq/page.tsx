@@ -25,7 +25,7 @@ export default function FaqPage() {
         accent="Fragen"
         intro="Was ist Açaí, sind die Bowls vegan, was kosten sie und wie bestellst du? Hier sind die Antworten. Deine Frage ist nicht dabei? Schreib uns."
       >
-        <PillButton href="/contact" variant="mauve">Kontakt aufnehmen</PillButton>
+        <PillButton href="/kontakt" variant="mauve">Kontakt aufnehmen</PillButton>
       </PageHero>
       <Faq items={FAQ_PAGE} title="Alles rund um Oh My Açaí" />
       <CtaSection />
