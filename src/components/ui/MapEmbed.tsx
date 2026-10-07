@@ -25,7 +25,7 @@ export default function MapEmbed({
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-3xl border border-ink/10 bg-[#efe9df] shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] ${className}`}
+      className={`relative min-h-[280px] w-full overflow-hidden rounded-3xl border lg:min-h-0 border-ink/10 bg-[#efe9df] shadow-[0_10px_28px_-14px_rgba(0,0,0,0.25)] ${className}`}
     >
       {loaded ? (
         <iframe
@@ -36,7 +36,7 @@ export default function MapEmbed({
           className="absolute inset-0 size-full border-0"
         />
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-5 text-center">
           {/* Street-grid backdrop so the placeholder still reads as a map. */}
           <svg aria-hidden className="absolute inset-0 size-full opacity-40" preserveAspectRatio="none" viewBox="0 0 400 300">
             <g stroke="#d8cdbb" strokeWidth="6" fill="none">
@@ -45,8 +45,8 @@ export default function MapEmbed({
             </g>
             <path d="M-10 220 C120 190 160 260 410 210" stroke="#a9d4e6" strokeWidth="14" fill="none" />
           </svg>
-          <span className="relative grid size-12 place-items-center rounded-full bg-plum text-cream shadow-lg">
-            <svg viewBox="0 0 24 24" className="size-6" aria-hidden fill="none">
+          <span className="relative grid size-10 shrink-0 place-items-center rounded-full bg-plum text-cream shadow-lg">
+            <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none">
               <path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
               <circle cx="12" cy="10" r="2.6" stroke="currentColor" strokeWidth="1.8" />
             </svg>

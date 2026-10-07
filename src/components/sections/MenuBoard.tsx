@@ -188,8 +188,8 @@ export function MatchaGrid() {
             viewOptions={{ once: true, amount: 0.3 }}
             className="flex flex-col overflow-hidden rounded-3xl text-white"
           >
-            <div className="grid aspect-[4/3] place-items-center" style={{ background: d.color }}>
-              <MatchaGlass color={d.color} className="size-[150px] bg-white/85 sm:size-[170px]" />
+            <div className="grid aspect-[16/9] place-items-center sm:aspect-[4/3]" style={{ background: d.color }}>
+              <MatchaGlass color={d.color} className="size-[120px] bg-white/85 sm:size-[170px]" />
             </div>
             <div className="flex flex-1 flex-col gap-2 bg-plum p-6">
               <h2 className="font-display text-[clamp(1.25rem,2.4vw,1.6rem)] uppercase leading-[1.1] tracking-[-0.5px]">{d.name}</h2>
