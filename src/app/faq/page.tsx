@@ -2,8 +2,9 @@ import PageShell from '@/components/sections/PageShell';
 import PageHero from '@/components/sections/PageHero';
 import Faq from '@/components/sections/Faq';
 import CtaSection from '@/components/sections/CtaSection';
+import RelatedLinks from '@/components/sections/RelatedLinks';
 import PillButton from '@/components/ui/PillButton';
-import { FAQ_PAGE } from '@/data/site';
+import { FAQ_PAGE, PAGE_LINKS } from '@/data/site';
 import { breadcrumbLd, faqLd, pageMetadata } from '@/lib/seo';
 
 const PATH = '/faq';
@@ -28,6 +29,7 @@ export default function FaqPage() {
         <PillButton href="/kontakt" variant="mauve">Kontakt aufnehmen</PillButton>
       </PageHero>
       <Faq items={FAQ_PAGE} title="Alles rund um Oh My Açaí" />
+      <RelatedLinks links={[PAGE_LINKS.zutaten, PAGE_LINKS.magazin, PAGE_LINKS.bestellen, PAGE_LINKS.speisekarte]} />
       <CtaSection />
     </PageShell>
   );

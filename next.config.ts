@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
       { source: '/order-online', destination: '/online-bestellen', permanent: true },
       { source: '/about-us', destination: '/ueber-uns', permanent: true },
       { source: '/contact', destination: '/kontakt', permanent: true },
+      { source: '/privacy-policy', destination: '/datenschutz', permanent: true },
+      { source: '/ingredients-allergens', destination: '/zutaten-allergene', permanent: true },
+      { source: '/reviews', destination: '/bewertungen', permanent: true },
+      { source: '/magazine', destination: '/magazin', permanent: true },
+      { source: '/magazine/:slug', destination: '/magazin/:slug', permanent: true },
     ];
   },
 };

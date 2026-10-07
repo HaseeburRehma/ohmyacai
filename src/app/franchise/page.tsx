@@ -14,9 +14,9 @@ import PartnerStories from '@/components/sections/franchise/PartnerStories';
 import { FRANCHISE_FAQS } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Açaí Franchise eröffnen | Werde Partner von Oh My Açaí',
+  title: 'Franchise eröffnen | Açaí & Matcha Franchise mit Oh My Acai',
   description:
-    'Du willst ein Açaí Franchise eröffnen? Erfahre, wie das Oh My Açaí Konzept funktioniert, welchen Support wir bieten und wie du dich bewirbst.',
+    'Du willst ein Açaí Franchise eröffnen? Hier erfährst du, wie das Oh My Acai Konzept funktioniert, welchen Support wir bieten und wie du dich bewirbst.',
   alternates: { canonical: '/franchise' },
 };
 

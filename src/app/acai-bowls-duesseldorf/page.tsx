@@ -5,11 +5,19 @@ import TextSplit from '@/components/sections/TextSplit';
 import Faq from '@/components/sections/Faq';
 import CtaSection from '@/components/sections/CtaSection';
 import PillButton from '@/components/ui/PillButton';
-import { FAQ_PAGE, ORDER_URL } from '@/data/site';
+import RelatedLinks from '@/components/sections/RelatedLinks';
+import { ORDER_URL, PAGE_LINKS, faqByQ } from '@/data/site';
 import { breadcrumbLd, faqLd, pageMetadata } from '@/lib/seo';
 
 const PATH = '/acai-bowls-duesseldorf';
-const FAQ = [0, 1, 2, 7].map((i) => FAQ_PAGE[i]);
+const FAQ = faqByQ(
+  'Was ist eine Açaí Bowl?',
+  'Welche Toppings gibt es für Açaí Bowls?',
+  'Ist eine Açaí Bowl vegan?',
+  'Wie viel kostet eine Açaí Bowl?',
+  'Welche Größen gibt es?',
+  'Kann ich Açaí Bowls in Düsseldorf bestellen?',
+);
 
 export const metadata = pageMetadata({
   title: 'Açaí Bowl Düsseldorf Altstadt | 5 vegane Bowls, frisch gemacht',
@@ -50,6 +58,33 @@ export default function AcaiBowlsPage() {
       <TextSplit
         tone="cream"
         imageLeft
+        title="Unsere Açaí Bowl Toppings"
+        accent="Toppings"
+        paragraphs={[
+          'Jede Bowl beginnt mit derselben Basis, das Signature-Topping macht den Unterschied. Unsere Pistazien Açaí Bowl kommt mit cremiger Pistaziencreme, die Erdnussbutter Bowl (Peanut Butter Açaí Bowl) mit Erdnussbutter, dazu Bueno, Cheesecake-Creme und die fruchtige Açai Tropical.',
+          'Darunter: Açaí mit Granola, Chia Pudding, Erdbeeren, Heidelbeeren, Banane und Kokos. Die Basis ist vegan, kühl und cremig wie Sorbet, für viele unserer Gäste die frische Alternative zu Eis oder Dessert.',
+        ]}
+        image={{ src: '/img/bowls/pistazie.jpg', alt: 'Pistazien Açaí Bowl mit Pistaziencreme, Granola und Beeren' }}
+      >
+        <PillButton href="/zutaten-allergene" variant="plum">Zutaten & Allergene</PillButton>
+      </TextSplit>
+      <TextSplit
+        title="Açaí Bowl kaufen in der Innenstadt"
+        accent="Innenstadt"
+        paragraphs={[
+          'Unsere Açaí Bowls gibt es frisch gemixt in der Flinger Straße 18, mitten in der Düsseldorfer Altstadt und Innenstadt. Bestell an der Theke und nimm deine Bowl zum Mitnehmen mit, oder lass dir deine Açaí Smoothie Bowl über Wolt, Lieferando oder Uber Eats liefern.',
+          'Wer eine Smoothie Bowl in Düsseldorf sucht, die wirklich aus Açaí gemacht ist, findet sie hier: echtes Püree, kein Pulver.',
+        ]}
+      >
+        <PillButton href={ORDER_URL}>Online bestellen</PillButton>
+        <PillButton href="/duesseldorf" variant="plum">Store & Öffnungszeiten</PillButton>
+      </TextSplit>
+      <p lang="ja" className="mx-auto w-full max-w-[860px] px-6 pb-10 text-center text-[15px] text-ink/60 sm:px-10">
+        デュッセルドルフ旧市街のアサイーボウル: Oh My Açaí, Flinger Straße 18
+      </p>
+      <TextSplit
+        tone="cream"
+        imageLeft
         title="Direkt aus dem Amazonas"
         accent="Amazonas"
         paragraphs={[
@@ -61,6 +96,7 @@ export default function AcaiBowlsPage() {
         <PillButton href="/#wholesale" variant="plum">Großhandel anfragen</PillButton>
       </TextSplit>
       <Faq items={FAQ} title="Fragen zu unseren Bowls" />
+      <RelatedLinks links={[PAGE_LINKS.speisekarte, PAGE_LINKS.zutaten, PAGE_LINKS.bestellen, PAGE_LINKS.magazin]} />
       <CtaSection />
     </PageShell>
   );

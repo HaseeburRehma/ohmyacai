@@ -97,6 +97,7 @@ export const NAV_LINKS: NavLink[] = [
       { label: 'Speisekarte & Preise', href: '/speisekarte' },
       { label: 'Açaí Bowls', href: '/acai-bowls-duesseldorf' },
       { label: 'Iced Matcha', href: '/matcha-duesseldorf' },
+      { label: 'Zutaten & Allergene', href: '/zutaten-allergene' },
     ],
   },
   {
@@ -113,6 +114,8 @@ export const NAV_LINKS: NavLink[] = [
     href: '/ueber-uns',
     children: [
       { label: 'Über uns', href: '/ueber-uns' },
+      { label: 'Bewertungen', href: '/bewertungen' },
+      { label: 'Magazin', href: '/magazin' },
       { label: 'Großhandel', href: '/#wholesale' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Kontakt', href: '/kontakt' },
@@ -246,20 +249,20 @@ export const VALUE_CARDS = [
 /** FAQ (Figma: FAQ Section → Content) */
 export const FAQS = [
   {
-    q: 'Was macht Oh My Açaí besonders',
-    a: 'Bei Oh My Açaí zählt Qualität in jedem Schritt — vom Einkauf erstklassiger Beeren bis zur präzisen Zubereitung jeder einzelnen Bowl.',
+    q: 'Wo gibt es Açaí in Düsseldorf',
+    a: 'Unseren Açaí Shop in Düsseldorf findest du in der Flinger Straße 18, mitten in der Altstadt. Hier mixen wir frische Açaí Bowls aus brasilianischem Açaí-Püree, unseren zweiten Store gibt es in Köln in der Hohe Straße 105-107.',
+  },
+  {
+    q: 'Was ist in euren Açaí Bowls',
+    a: 'Die Basis ist Püree aus der Açaí-Beere auf veganem Chia Pudding, mit Granola und frischem Obst: Erdbeeren, Heidelbeeren, Banane und Kokos. Als Topping wählst du Erdnussbutter, Pistazie, Bueno, Cheesecake oder Tropical.',
   },
   {
     q: 'Gibt es Takeaway und Lieferung',
-    a: 'Ja — jede Bowl auf der Karte gibt es zum Mitnehmen, und im ganzen Viertel liefern wir über unsere Partner aus.',
+    a: 'Ja. Jede Bowl gibt es als Takeaway zum Mitnehmen, und in Düsseldorf liefern wir über Wolt, Lieferando und Uber Eats.',
   },
   {
-    q: 'Sind eure Zutaten fair beschafft',
-    a: 'Unser Açaí kommt von Partnerkooperativen im Amazonasbecken, unser Obst kaufen wir jede Woche frisch bei Erzeugern aus der Region.',
-  },
-  {
-    q: 'Habt ihr milchfreie und vegane Optionen',
-    a: 'Fast die gesamte Karte ist von Haus aus milchfrei und vegan. Tausch jedes Topping nach Belieben — wir sagen dir, wenn etwas nicht vegan ist.',
+    q: 'Habt ihr vegane Optionen',
+    a: 'Ja. Açaí, Chia Pudding, Obst und Kokos sind vegan, bei einzelnen Toppings sagen wir dir gern, was drin steckt. Ab 11 Uhr ist eine Bowl auch ein gutes spätes Frühstück in der Altstadt.',
   },
 ];
 
@@ -323,6 +326,9 @@ export const FOOTER_PAGES: { label: string; href: string }[] = [
   { label: 'Bestellen',   href: '/online-bestellen' },
   { label: 'Über uns',    href: '/ueber-uns' },
   { label: 'Franchise',   href: '/franchise' },
+  { label: 'Zutaten',     href: '/zutaten-allergene' },
+  { label: 'Magazin',     href: '/magazin' },
+  { label: 'Bewertungen', href: '/bewertungen' },
   { label: 'FAQ',         href: '/faq' },
   { label: 'Kontakt',     href: '/kontakt' },
 ];
@@ -539,7 +545,7 @@ export const FRANCHISE_WHY = {
   titleAfter: ' mit Oh My Açaí',
   body: 'Wir starten das Franchise mit dem Rezept, das in unserem Flagship-Store in Düsseldorf jeden Tag ausverkauft ist — mit fest verhandelten Lieferanten, geschulten Baristas und einem Eröffnungsplan, der jeden Schritt vorgibt. Du bringst den Standort und die Energie mit.',
   stats: [
-    { value: '100 %', label: 'Vegane, natürliche Zutaten' },
+    { value: '100 %', label: 'Echtes Açaí-Püree statt Pulver' },
     { value: '5', label: 'Signature Bowls von Tag 1' },
     { value: '6 Wo.', label: 'Vom Vertrag bis zur Eröffnung' },
   ],
@@ -769,40 +775,102 @@ export const COLD_DRINKS = [
   { name: 'Wasser sprudelnd', price: '2,95 €' },
 ];
 
-/** Long-form FAQ for /faq. Answers stay within what the shop has
- *  confirmed: prices, hours, both addresses, Uber Eats ordering. */
+/** Long-form FAQ for /faq. Questions are the 23 from the keyword sheet
+ *  ("Selected keywords" → FAQs), worded as people search them. Answers stay
+ *  within what is verified: menus and prices from Wolt / Lieferando / Uber
+ *  Eats, both addresses, store hours. No nutrition or health claims. */
 export const FAQ_PAGE = [
   {
     q: 'Was ist Açaí?',
-    a: 'Açaí ist die dunkelviolette Beere der Açaí-Palme aus dem Amazonasgebiet in Brasilien. Sie wird direkt nach der Ernte zu Püree verarbeitet und tiefgefroren. Daraus mixen wir die cremige, eisgekühlte Basis jeder Bowl.',
+    a: 'Açaí ist die kleine, dunkelviolette Beere der Açaí-Palme (Euterpe oleracea) aus dem Amazonasgebiet in Brasilien. Weil die frische Frucht schnell verdirbt, wird sie direkt nach der Ernte entkernt, zu Püree verarbeitet und tiefgefroren. Daraus mixen wir die cremige, eisgekühlte Basis jeder Bowl.',
   },
   {
-    q: 'Was kostet eine Açaí Bowl bei euch?',
-    a: 'Unsere Bowls gibt es ab 11,90 € (0,35 l) und ab 13,50 € (0,5 l), je nach Bowl und Bestellweg: Açai Erdnussbutter, Açai Pistazie, Açai Bueno, Açai Tropical und Açai Cheesecake. Alle Preise findest du unter Speisekarte & Preise.',
+    q: 'Was ist eine Açaí Bowl?',
+    a: 'Eine Açaí Bowl ist eine dicke, gefrorene Smoothie Bowl aus Açaí-Püree, die man löffelt statt trinkt. Bei uns kommt sie auf veganen Chia-Pudding und wird mit Granola, Banane, Erdbeeren, Heidelbeeren, Kokosraspeln und einem Signature-Topping belegt.',
   },
   {
-    q: 'Sind eure Bowls vegan?',
-    a: 'Die Basis aus Açaí-Püree und Chia-Pudding ist vegan. Einige Toppings, zum Beispiel Bueno oder Cheesecake, können Milch enthalten. Frag im Store nach, wir sagen dir genau, welche Bowl vegan ist und tauschen Toppings gern aus.',
+    q: 'Wie spricht man Açaí aus?',
+    a: 'Ungefähr „a-sa-ÍH“, mit Betonung auf der letzten Silbe. Das „ç“ wird wie ein scharfes „s“ gesprochen, das Wort kommt aus dem brasilianischen Portugiesisch.',
   },
   {
-    q: 'Liefert ihr in Düsseldorf?',
-    a: 'Ja. Du kannst unsere Bowls über Wolt, Lieferando oder Uber Eats liefern lassen oder dort vorbestellen und selbst abholen. Alle Wege findest du auf der Seite Online bestellen.',
+    q: 'Woher kommt Açaí?',
+    a: 'Die Açaí-Palme wächst im Amazonasgebiet, vor allem im brasilianischen Bundesstaat Pará rund um die Amazonasmündung. Unser Püree beziehen wir von Partner-Kooperativen aus dieser Region.',
   },
   {
-    q: 'Wo finde ich euch?',
-    a: 'In Düsseldorf in der Flinger Str. 18 (40213, Altstadt) und in Köln in der Hohe Str. 105-107 (50667, Innenstadt). Beide Stores sind jeden Tag geöffnet.',
+    q: 'Wie schmeckt Açaí?',
+    a: 'Reines Açaí schmeckt erdig-fruchtig, ein bisschen nach dunklen Beeren mit einem Hauch Kakao, und ist von Natur aus kaum süß. Die Süße in einer Bowl kommt vor allem vom Obst und den Toppings.',
   },
   {
-    q: 'Wie sind eure Öffnungszeiten?',
-    a: 'Düsseldorf: Mo bis Do 11:00 bis 22:00, Fr und Sa 11:00 bis 00:00, So 12:00 bis 23:00. Köln: Mo bis Fr 11:00 bis 20:30, Sa 10:00 bis 21:00, So 13:30 bis 18:30.',
+    q: 'Ist Açaí vegan?',
+    a: 'Ja. Açaí ist eine Frucht, das reine Püree ist rein pflanzlich.',
   },
   {
-    q: 'Gibt es bei euch auch Matcha?',
+    q: 'Ist eine Açaí Bowl vegan?',
+    a: 'Die Basis aus Açaí-Püree und Chia-Pudding ist vegan. Ob die ganze Bowl vegan ist, hängt vom Topping ab: Bei Bueno und Cheesecake-Creme frag bitte im Store nach, wir sagen dir genau, was drin steckt.',
+  },
+  {
+    q: 'Was ist in einer Açaí Bowl?',
+    a: 'Bei Oh My Açaí: Açaí-Püree, veganer Chia-Pudding, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln, dazu je nach Bowl Erdnussbutter, Pistaziencreme, Bueno oder Cheesecake-Creme. Alle Details findest du unter Zutaten & Allergene.',
+  },
+  {
+    q: 'Welche Toppings gibt es für Açaí Bowls?',
+    a: 'Jede Bowl hat Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln. Das Signature-Topping macht den Unterschied: Erdnussbutter, Pistaziencreme, Bueno, Cheesecake-Creme oder unsere Tropical Bowl.',
+  },
+  {
+    q: 'Enthält Açaí Zucker?',
+    a: 'Reines Açaí-Püree enthält von Natur aus nur wenig Zucker. Obst und Toppings wie Bueno, Cheesecake-Creme oder Granola bringen zusätzliche Süße mit.',
+  },
+  {
+    q: 'Wie viele Kalorien hat eine Açaí Bowl?',
+    a: 'Das hängt stark von Größe (0,35 l oder 0,5 l) und Topping ab. Geprüfte Nährwertangaben für unsere Bowls bekommst du auf Nachfrage im Store.',
+  },
+  {
+    q: 'Ist Granola glutenfrei?',
+    a: 'In der Regel nicht: Granola wird meist aus Hafer gemacht und kann Gluten enthalten. Wenn du glutenfrei essen musst, sprich uns vor der Bestellung an.',
+  },
+  {
+    q: 'Enthalten eure Bowls Nüsse?',
+    a: 'Die Erdnussbutter Bowl enthält Erdnüsse, die Pistazie Bowl Pistazien. Auch in anderen Toppings können Nüsse oder Spuren davon stecken. Bei einer Nussallergie frag bitte vor der Bestellung im Store nach.',
+  },
+  {
+    q: 'Kann ich meine Açaí Bowl individuell zusammenstellen?',
+    a: 'Sprich uns an der Theke an. Wir passen Toppings gern an, soweit es möglich ist.',
+  },
+  {
+    q: 'Kann ich Açaí Bowls in Düsseldorf bestellen?',
+    a: 'Ja, über Wolt, Lieferando und Uber Eats. Alle Wege findest du auf der Seite Online bestellen.',
+  },
+  {
+    q: 'Liefert Oh My Acai in Düsseldorf?',
+    a: 'Ja. Unser Store in der Flinger Straße liefert über Wolt, Lieferando und Uber Eats im jeweiligen Liefergebiet in Düsseldorf.',
+  },
+  {
+    q: 'Kann ich meine Bestellung abholen?',
+    a: 'Ja. Stell in der Liefer-App auf Abholung um, dann wartet deine Bowl fertig an der Theke. Oder komm einfach vorbei und bestell direkt im Store.',
+  },
+  {
+    q: 'Welche Größen gibt es?',
+    a: 'Unsere Bowls gibt es je nach Bowl in 0,35 l und 0,5 l.',
+  },
+  {
+    q: 'Wie viel kostet eine Açaí Bowl?',
+    a: 'Ab 11,90 € für 0,35 l und ab 13,50 € für 0,5 l, je nach Bowl und Bestellweg. Die aktuellen Preise stehen auf unserer Speisekarte.',
+  },
+  {
+    q: 'Gibt es Matcha bei Oh My Acai?',
     a: 'Ja, in Düsseldorf gibt es Iced Matcha: Ohmy Matcha Mango und Strawberry (je 6,50 €) und unseren Ohmy Matcha Spezial (5,40 €). Frisch zubereitet und auch zum Mitnehmen.',
   },
   {
-    q: 'Welche Allergene stecken in den Bowls?',
-    a: 'Je nach Bowl können Nüsse (Erdnuss, Pistazie), Gluten (Granola, Hafer) und Milch enthalten sein. Bitte sprich uns vor der Bestellung im Store an, wir zeigen dir die vollständige Allergenliste.',
+    q: 'Gibt es vegane Optionen?',
+    a: 'Ja. Açaí-Püree und Chia-Pudding sind vegan, ebenso Obst und Kokos. Bei einzelnen Toppings fragst du am besten kurz im Store nach.',
+  },
+  {
+    q: 'Wo befindet sich Oh My Acai Düsseldorf?',
+    a: 'In der Flinger Straße 18, 40213 Düsseldorf, mitten in der Altstadt, ein paar Gehminuten von der U-Bahn-Haltestelle Heinrich-Heine-Allee. Unseren zweiten Store findest du in Köln, Hohe Str. 105-107.',
+  },
+  {
+    q: 'Wie sind die Öffnungszeiten?',
+    a: 'Düsseldorf: Mo bis Do 11:00 bis 22:00, Fr und Sa 11:00 bis 00:00, So 12:00 bis 23:00. Köln: Mo bis Fr 11:00 bis 20:30, Sa 10:00 bis 21:00, So 13:30 bis 18:30.',
   },
   {
     q: 'Kann ich euer Açaí-Püree für mein Café kaufen?',
@@ -813,3 +881,27 @@ export const FAQ_PAGE = [
     a: 'Ja, wir suchen Partner für neue Standorte. Alle Infos und das Anfrageformular findest du auf unserer Franchise-Seite.',
   },
 ];
+
+/** Pick FAQ entries by their question text (keeps page subsets readable). */
+export const faqByQ = (...qs: string[]) => qs.map((q) => {
+  const f = FAQ_PAGE.find((x) => x.q === q);
+  if (!f) throw new Error(`FAQ missing: ${q}`);
+  return f;
+});
+
+/** Internal-link cards, one per page, anchor text = the page's keyword.
+ *  Pages pick from these per the sheet's "Recommended Internal Links". */
+export const PAGE_LINKS = {
+  home: { href: '/', label: 'Açaí Düsseldorf', body: 'Unsere Startseite: Bowls, Stores und alles rund um Oh My Açaí.' },
+  speisekarte: { href: '/speisekarte', label: 'Speisekarte & Preise', body: 'Alle Bowls, Größen und Preise, Iced Matcha und kalte Getränke.' },
+  bowls: { href: '/acai-bowls-duesseldorf', label: 'Açaí Bowls Düsseldorf', body: 'Fünf Signature Bowls aus echtem Açaí-Püree, frisch gemacht in der Altstadt.' },
+  matcha: { href: '/matcha-duesseldorf', label: 'Iced Matcha Düsseldorf', body: 'Mango, Strawberry oder Spezial, frisch zubereitet und to go.' },
+  zutaten: { href: '/zutaten-allergene', label: 'Zutaten & Allergene', body: 'Was in jeder Bowl steckt, was vegan ist und wo Nüsse drin sind.' },
+  ueber: { href: '/ueber-uns', label: 'Über Oh My Açaí', body: 'Unsere Geschichte, unser Açaí und die zwei Stores.' },
+  duesseldorf: { href: '/duesseldorf', label: 'Açaí Café Altstadt', body: 'Flinger Straße 18: Öffnungszeiten, Anfahrt und Karte.' },
+  bewertungen: { href: '/bewertungen', label: 'Bewertungen', body: 'Was Gäste über uns sagen, auf Google, Wolt, Lieferando und Uber Eats.' },
+  bestellen: { href: '/online-bestellen', label: 'Açaí online bestellen', body: 'Lieferung über Wolt, Lieferando und Uber Eats oder Abholung im Store.' },
+  faq: { href: '/faq', label: 'Häufige Fragen', body: 'Preise, Größen, vegan, Allergene, Lieferung: kurz beantwortet.' },
+  magazin: { href: '/magazin', label: 'Açaí & Matcha Magazin', body: 'Was ist Açaí, wie spricht man es aus und was ist Matcha?' },
+  kontakt: { href: '/kontakt', label: 'Kontakt', body: 'Telefon, E-Mail, Adressen und Öffnungszeiten beider Stores.' },
+} as const;

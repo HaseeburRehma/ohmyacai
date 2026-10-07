@@ -52,9 +52,9 @@ const archivo = Archivo({
 });
 
 const SITE_URL = 'https://www.ohmyacai.de';
-const SITE_TITLE = 'Açaí Bowls Düsseldorf & Köln | Oh My Açaí';
+const SITE_TITLE = 'Açaí Düsseldorf | Açaí Bowls & Iced Matcha in der Altstadt';
 const SITE_DESCRIPTION =
-  'Frische, vegane Açaí Bowls aus echtem Püree mit Granola, Obst und Chia Pudding. In der Flinger Straße Düsseldorf & Hohe Straße Köln, to go oder geliefert.';
+  'Frische Açaí Bowls und Iced Matcha in der Düsseldorfer Altstadt. Vor Ort genießen, mitnehmen oder liefern lassen. Flinger Straße 18, jetzt auch in Köln.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

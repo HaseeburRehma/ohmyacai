@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/koeln',
       '/online-bestellen',
     ].map((p) => ({ url: `${SITE_URL}${p}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 })),
-    ...['/ueber-uns', '/faq', '/kontakt'].map((p) => ({
+    ...['/zutaten-allergene', '/bewertungen', '/magazin', '/magazin/was-ist-acai', '/magazin/was-ist-matcha', '/ueber-uns', '/faq', '/kontakt'].map((p) => ({
       url: `${SITE_URL}${p}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,

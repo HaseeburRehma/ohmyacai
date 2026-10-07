@@ -2,6 +2,8 @@ import PageShell from '@/components/sections/PageShell';
 import PageHero from '@/components/sections/PageHero';
 import StoreDetail from '@/components/sections/StoreDetail';
 import CtaSection from '@/components/sections/CtaSection';
+import RelatedLinks from '@/components/sections/RelatedLinks';
+import { PAGE_LINKS } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
 import { LOCATION_COLOGNE as STORE } from '@/data/site';
 import { breadcrumbLd, pageMetadata } from '@/lib/seo';
@@ -28,6 +30,7 @@ export default function KoelnPage() {
         <PillButton href={STORE.mapUrl} newTab>Route anzeigen</PillButton>
       </PageHero>
       <StoreDetail store={STORE} />
+      <RelatedLinks links={[PAGE_LINKS.speisekarte, PAGE_LINKS.bowls, PAGE_LINKS.duesseldorf, PAGE_LINKS.kontakt]} />
       <CtaSection />
     </PageShell>
   );

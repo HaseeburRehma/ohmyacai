@@ -14,6 +14,10 @@ import Faq from '@/components/sections/Faq';
 import CtaSection from '@/components/sections/CtaSection';
 import Footer from '@/components/sections/Footer';
 import ScrollBar from '@/components/ui/ScrollBar';
+import RelatedLinks from '@/components/sections/RelatedLinks';
+import JsonLd from '@/components/ui/JsonLd';
+import { FAQS, PAGE_LINKS } from '@/data/site';
+import { faqLd } from '@/lib/seo';
 
 /**
  * Section order matches the Figma "Home" frame top to bottom:
@@ -23,6 +27,7 @@ import ScrollBar from '@/components/ui/ScrollBar';
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqLd(FAQS.map((f) => ({ ...f, q: `${f.q}?` })))} />
       <ScrollBar />
       <Navbar />
       <main>
@@ -38,6 +43,10 @@ export default function Home() {
         <InstagramReels />
         <Reviews />
         <Faq />
+        <RelatedLinks
+          title="Mehr entdecken"
+          links={[PAGE_LINKS.bowls, PAGE_LINKS.speisekarte, PAGE_LINKS.duesseldorf, PAGE_LINKS.bestellen]}
+        />
         <CtaSection />
       </main>
       <Footer />

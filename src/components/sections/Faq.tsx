@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import Scallop from '@/components/ui/Scallop';
 import { FAQS } from '@/data/site';
@@ -107,24 +107,26 @@ export default function Faq({
                       </button>
                     </h3>
 
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          id={`faq-panel-${i}`}
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{
-                            height: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                            opacity: { duration: 0.3 },
-                          }}
-                        >
-                          <p className="px-6 pb-8 text-base leading-[1.35] tracking-[-0.5px] text-ink sm:px-10">
-                            {item.a}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {/* Always rendered (height-animated, not unmounted) so every
+                        answer is in the HTML: search engines index it and it
+                        matches the FAQPage structured data on the page. */}
+                    <motion.div
+                      id={`faq-panel-${i}`}
+                      role="region"
+                      aria-hidden={!isOpen}
+                      inert={!isOpen}
+                      initial={false}
+                      animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                      transition={{
+                        height: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                        opacity: { duration: 0.3 },
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <p className="px-6 pb-8 text-base leading-[1.35] tracking-[-0.5px] text-ink sm:px-10">
+                        {item.a}
+                      </p>
+                    </motion.div>
                   </div>
                 </InView>
               );

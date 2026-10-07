@@ -6,9 +6,10 @@ import ScrollBar from '@/components/ui/ScrollBar';
 import { DATENSCHUTZ } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Datenschutz — Oh My Açaí',
+  title: 'Datenschutzerklärung | Oh My Acai Düsseldorf, Flinger Str. 18',
   description:
-    'Datenschutzerklärung nach DSGVO — wie wir personenbezogene Daten auf ohmyacai.de erheben und verarbeiten.',
+    'Wie Oh My Acai personenbezogene Daten erhebt, verwendet und schützt, DSGVO-konform. Inklusive Cookies, Kontaktformular, Karten und Online-Bestellung.',
+  alternates: { canonical: '/datenschutz' },
   robots: { index: true, follow: true },
 };
 

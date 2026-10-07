@@ -4,6 +4,8 @@ import TextSplit from '@/components/sections/TextSplit';
 import ValueCards from '@/components/sections/ValueCards';
 import VideoFeature from '@/components/sections/VideoFeature';
 import CtaSection from '@/components/sections/CtaSection';
+import RelatedLinks from '@/components/sections/RelatedLinks';
+import { PAGE_LINKS } from '@/data/site';
 import PillButton from '@/components/ui/PillButton';
 import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 
@@ -24,7 +26,7 @@ export default function AboutPage() {
         eyebrow="Oh My Açaí"
         title="Unsere Geschichte"
         accent="Geschichte"
-        intro="Angefangen hat alles in der Flinger Straße in Düsseldorf, mit einer Idee: echtes Açaí, so wie man es aus Brasilien kennt, frisch gemixt mitten in der Altstadt."
+        intro="Die Oh My Acai Story beginnt in der Flinger Straße in Düsseldorf, mit einer Idee: echtes Açaí, so wie man es aus Brasilien kennt, frisch gemixt mitten in der Altstadt. Heute ist Oh My Açaí eine Açaí-Marke aus Düsseldorf mit zwei Stores."
         image={{ src: '/img/store.jpg', alt: 'Der Oh My Açaí Store in der Flinger Straße', position: 'center 42%' }}
       />
       <TextSplit
@@ -53,6 +55,17 @@ export default function AboutPage() {
         <PillButton href="/franchise">Franchise</PillButton>
       </TextSplit>
       <ValueCards />
+      <TextSplit
+        title="Folge Oh My Açaí"
+        accent="Oh My Açaí"
+        paragraphs={[
+          'Neue Bowls, Specials und Momente aus unseren Stores zeigen wir zuerst auf Instagram unter @ohmyacai_dues und auf TikTok unter @ohmyacai.de. Unsere Website erreichst du immer unter ohmyacai.de.',
+        ]}
+      >
+        <PillButton href="https://www.instagram.com/ohmyacai_dues/" newTab>Instagram</PillButton>
+        <PillButton href="https://www.tiktok.com/@ohmyacai.de" newTab variant="plum">TikTok</PillButton>
+      </TextSplit>
+      <RelatedLinks links={[PAGE_LINKS.home, PAGE_LINKS.duesseldorf, PAGE_LINKS.kontakt, PAGE_LINKS.magazin]} />
       <CtaSection />
     </PageShell>
   );
