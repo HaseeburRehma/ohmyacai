@@ -26,6 +26,9 @@ export default function KoelnPage() {
         title="Besuch uns in der Hohe Straße"
         accent="Hohe Straße"
         intro="Unser Store in der Kölner Innenstadt liegt in der Fußgängerzone Hohe Straße 105-107, wenige Minuten vom Dom. Dieselben Bowls wie in Düsseldorf, jeden Tag frisch gemixt."
+        /* The shop's own photo from its Köln Google Business Profile, until
+           there is a storefront shot. */
+        image={{ src: '/img/koeln-bowls.jpg', alt: 'Açaí Bowls und Iced Matcha von Oh My Açaí Köln', position: 'center 60%' }}
       >
         <PillButton href={STORE.mapUrl} newTab>Route anzeigen</PillButton>
       </PageHero>
