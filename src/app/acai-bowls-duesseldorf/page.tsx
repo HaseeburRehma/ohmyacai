@@ -27,7 +27,7 @@ export default function AcaiBowlsPage() {
         eyebrow="Flinger Straße 18 · Altstadt"
         title="Açaí Bowls in Düsseldorf"
         accent="Açaí Bowls"
-        intro="Erdnussbutter, Pistazie, Tropical, Cheesecake und Bueno: fünf Bowls aus echtem Açaí-Püree auf veganem Chia-Pudding, mit Granola und frischem Obst. Jede für 12,90 €."
+        intro="Erdnussbutter, Pistazie, Tropical, Cheesecake und Bueno: fünf Bowls aus echtem Açaí-Püree auf veganem Chia-Pudding, mit Granola, Banane, Beeren und Kokos. Ab 11,90 €."
         image={{ src: '/img/bowls/bueno.jpg', alt: 'Açai Bueno Bowl in der Düsseldorfer Altstadt' }}
       >
         <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
@@ -38,12 +38,12 @@ export default function AcaiBowlsPage() {
         title="Was steckt in einer Açaí Bowl?"
         accent="Açaí Bowl"
         paragraphs={[
-          'Die Basis ist reines Açaí-Püree aus Brasilien, eisgekühlt cremig gemixt. Darunter liegt ein samtiger, veganer Chia-Pudding, obendrauf kommen Granola, frisches Obst und das Topping, das deiner Bowl ihren Namen gibt.',
+          'Die Basis ist reines Açaí-Püree aus Brasilien, eisgekühlt cremig gemixt. Darunter liegt ein samtiger, veganer Chia-Pudding, obendrauf kommen Granola, Banane, Erdbeeren, Heidelbeeren, Kokosraspeln und das Topping, das deiner Bowl ihren Namen gibt.',
         ]}
         bullets={[
           { title: 'Açaí-Püree', body: 'Die Beere der Açaí-Palme, direkt nach der Ernte verarbeitet und tiefgefroren.' },
           { title: 'Veganer Chia-Pudding', body: 'Die cremige Schicht unter jeder Bowl, rein pflanzlich.' },
-          { title: 'Granola, Obst & Topping', body: 'Erdnussbutter, Pistazie, Bueno, Cheesecake oder tropische Früchte.' },
+          { title: 'Granola, Obst & Topping', body: 'Banane, Erdbeeren, Heidelbeeren und Kokos, dazu Erdnussbutter, Pistaziencreme, Bueno oder Cheesecake-Creme.' },
         ]}
         image={{ src: '/img/bowls/erdnussbutter.jpg', alt: 'Açai Erdnussbutter Bowl mit Granola und Banane' }}
       />

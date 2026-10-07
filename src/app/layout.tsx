@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Lato, Bayon, Manrope, Boldonse, Archivo } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/providers/SmoothScroll';
-import { UBER_EATS_URL } from '@/data/site';
+import { DELIVERY_PLATFORMS } from '@/data/site';
 
 /* Body copy — Figma: Lato Regular / Bold, 16px, -0.5px tracking */
 const lato = Lato({
@@ -85,7 +85,7 @@ const OPENING_CGN = [
   { days: ['Saturday'], opens: '10:00', closes: '21:00' },
   { days: ['Sunday'], opens: '13:30', closes: '18:30' },
 ];
-const ORDER_TARGET = UBER_EATS_URL;
+const ORDER_TARGET = DELIVERY_PLATFORMS.map((p) => p.url);
 
 function store(id: string, name: string, street: string, zip: string, city: string, geo: [number, number], hours: typeof OPENING_DUS) {
   return {
@@ -129,7 +129,7 @@ const JSON_LD = {
     {
       ...store('duesseldorf', 'Oh My Açaí Düsseldorf', 'Flinger Str. 18', '40213', 'Düsseldorf', [51.2264, 6.7733], OPENING_DUS),
       telephone: '+4915732016134',
-      /* The Uber Eats listing is for the Flinger Straße store. */
+      /* The Wolt / Lieferando / Uber Eats listings are all for the Flinger Straße store. */
       potentialAction: { '@type': 'OrderAction', target: ORDER_TARGET },
     },
     store('koeln', 'Oh My Açaí Köln', 'Hohe Str. 105-107', '50667', 'Köln', [50.9376, 6.9571], OPENING_CGN),

@@ -12,7 +12,7 @@ const FAQ = [3, 1, 5].map((i) => FAQ_PAGE[i]);
 export const metadata = pageMetadata({
   title: 'Açaí Bowl bestellen Düsseldorf | Lieferung, Abholung & to go',
   description:
-    'Açaí Bowls in Düsseldorf bestellen: Lieferung oder Abholung über Uber Eats, oder direkt to go in der Flinger Straße 18 in der Altstadt und in der Hohe Straße in Köln.',
+    'Açaí Bowls und Matcha in ganz Düsseldorf bestellen, über Lieferando, Wolt und Uber Eats, oder direkt in der Flinger Straße 18 in der Altstadt abholen.',
   path: PATH,
 });
 
@@ -24,7 +24,7 @@ export default function OrderOnlinePage() {
         eyebrow="Lieferung · Abholung · to go"
         title="Online bestellen: Lieferung & Abholung"
         accent="Lieferung & Abholung"
-        intro="Lass dir deine Bowl über Uber Eats liefern, bestell vor und hol sie ab, oder komm einfach in einem unserer Stores vorbei."
+        intro="Lass dir deine Bowl über Wolt, Lieferando oder Uber Eats liefern, bestell vor und hol sie ab, oder komm einfach in einem unserer Stores vorbei."
       />
       <OrderOptions />
       <SignatureBowls />

@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import { InView } from '@/components/motion-primitives/in-view';
 import PillButton from '@/components/ui/PillButton';
-import { STORES, UBER_EATS_URL } from '@/data/site';
+import { DELIVERY_PLATFORMS, STORES } from '@/data/site';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const rise = { hidden: { opacity: 0, y: 34 }, visible: { opacity: 1, y: 0 } };
 
 /**
- * /order-online — the one place the site links out to Uber Eats. Delivery
- * and pre-order pickup run through Uber Eats; walk-in pickup at either store
+ * /order-online — the one place the site links out to the delivery
+ * platforms (Wolt, Lieferando, Uber Eats). Walk-in pickup at either store
  * needs no account at all.
  */
 export default function OrderOptions() {
@@ -28,25 +28,30 @@ export default function OrderOptions() {
             Lieferung & Vorbestellung
           </p>
           <h2 className="font-display max-w-[560px] text-[clamp(1.6rem,4.4vw,2.75rem)] uppercase leading-[1.08] tracking-[-0.5px]">
-            Per Uber Eats nach Hause oder ins Büro
+            Nach Hause oder ins Büro geliefert
           </h2>
           <p className="max-w-[560px] text-base leading-[1.55] tracking-[-0.3px] text-white/90">
-            Alle fünf Bowls kommen gut gekühlt zu dir, in ganz Düsseldorf im Liefergebiet von Uber Eats. In der App
-            kannst du auch auf Abholung umstellen, dann wartet deine Bowl fertig an der Theke.
+            Unser Store in der Flinger Straße liefert über Wolt, Lieferando und Uber Eats, gut gekühlt im jeweiligen
+            Liefergebiet in Düsseldorf. In der App kannst du auch auf Abholung umstellen, dann wartet deine Bowl
+            fertig an der Theke.
           </p>
           <ol className="grid gap-3 text-[15px] sm:grid-cols-3">
-            {['Bowl auswählen', 'Lieferung oder Abholung wählen', 'Bezahlen, fertig'].map((s, i) => (
+            {['Plattform wählen', 'Bowl auswählen', 'Liefern oder abholen'].map((s, i) => (
               <li key={s} className="flex items-center gap-3 rounded-2xl bg-white/15 px-4 py-3">
                 <span className="font-menu text-xl leading-none">0{i + 1}</span>
                 <span className="font-bold leading-tight">{s}</span>
               </li>
             ))}
           </ol>
-          <div className="mt-1">
-            <PillButton href={UBER_EATS_URL} newTab variant="ink" labelClassName="text-[0.9rem] min-[400px]:text-[1.0625rem] sm:text-2xl">
-              Bei Uber Eats bestellen
-            </PillButton>
-          </div>
+          <ul className="mt-1 flex flex-wrap gap-3">
+            {DELIVERY_PLATFORMS.map((p) => (
+              <li key={p.name}>
+                <PillButton href={p.url} newTab variant="ink" labelClassName="text-[1rem] sm:text-xl">
+                  {p.name}
+                </PillButton>
+              </li>
+            ))}
+          </ul>
         </InView>
 
         {/* Walk-in */}

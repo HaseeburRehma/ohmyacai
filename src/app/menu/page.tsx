@@ -46,7 +46,7 @@ export default function MenuPage() {
         eyebrow="Düsseldorf & Köln"
         title="Unsere Speisekarte & Preise"
         accent="& Preise"
-        intro="Fünf Signature Bowls aus echtem Açaí-Püree auf veganem Chia-Pudding, dazu Iced Matcha in Düsseldorf. Jede Bowl kostet 12,90 €, frisch gemacht, to go oder geliefert."
+        intro="Fünf Signature Bowls aus echtem Açaí-Püree auf veganem Chia-Pudding, dazu Iced Matcha und kalte Getränke. Bowls ab 11,90 €, frisch gemacht, to go oder geliefert."
         image={{ src: '/img/bowls/pistazie.jpg', alt: 'Açai Pistazie Bowl von Oh My Açaí' }}
       >
         <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>

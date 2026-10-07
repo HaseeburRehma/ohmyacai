@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { InView } from '@/components/motion-primitives/in-view';
-import { MATCHA_DRINKS, MENU_BOWLS } from '@/data/site';
+import { COLD_DRINKS, MATCHA_DRINKS, MENU_BOWLS } from '@/data/site';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const rise = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } };
@@ -19,7 +19,7 @@ export default function MenuBoard({ showMatcha = true }: { showMatcha?: boolean 
       <div className="mx-auto flex w-full max-w-[1020px] flex-col gap-16 lg:gap-24">
         <MenuGroup
           title="Açaí Bowls"
-          note="Alle Bowls mit cremigem Açaí-Püree auf veganem Chia-Pudding, frisch für dich gemacht."
+          note="Açaí-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokos. Je nach Bowl in 0,35 l und 0,5 l."
           link={{ href: '/acai-bowls-duesseldorf', label: 'Mehr über unsere Bowls' }}
         >
           {MENU_BOWLS.map((b, i) => (
@@ -73,8 +73,8 @@ export default function MenuBoard({ showMatcha = true }: { showMatcha?: boolean 
                       {d.name}
                     </h3>
                     <span aria-hidden className="hidden flex-1 translate-y-[-4px] border-b-2 border-dotted border-plum/25 sm:block" />
-                    <span className="font-menu ml-auto shrink-0 text-base uppercase leading-none text-ink/60 sm:ml-0">
-                      Preis im Store
+                    <span className="font-menu ml-auto shrink-0 text-[clamp(1.25rem,2.6vw,1.6rem)] leading-none text-ink sm:ml-0">
+                      {d.price}
                     </span>
                   </div>
                   <p className="mt-1.5 text-[15px] leading-[1.45] tracking-[-0.2px] text-ink/75">{d.body}</p>
@@ -84,11 +84,30 @@ export default function MenuBoard({ showMatcha = true }: { showMatcha?: boolean 
           </MenuGroup>
         )}
 
+        <div>
+          <InView variants={rise} transition={{ duration: 0.9, ease: EASE }} viewOptions={{ once: true, amount: 0.4 }}>
+            <h2 className="font-display border-b-2 border-plum pb-5 text-[clamp(1.75rem,5vw,3rem)] uppercase leading-[1.05] tracking-[-0.5px] text-ink">
+              Kalte Getränke
+            </h2>
+          </InView>
+          <ul className="grid gap-x-10 sm:grid-cols-2">
+            {COLD_DRINKS.map((d) => (
+              <li key={d.name} className="flex items-baseline gap-3 border-b border-ink/10 py-3.5">
+                <span className="font-display text-[clamp(1rem,2vw,1.15rem)] uppercase tracking-[-0.3px] text-plum">{d.name}</span>
+                <span aria-hidden className="flex-1 translate-y-[-4px] border-b-2 border-dotted border-plum/20" />
+                <span className="font-menu text-lg leading-none text-ink">{d.price}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[13px] text-ink/55">inkl. 0,25 € Pfand</p>
+        </div>
+
         <InView variants={rise} transition={{ duration: 0.8, ease: EASE }} viewOptions={{ once: true, amount: 0.4 }}>
           <p className="rounded-3xl bg-[#f7f3f7] p-6 text-[15px] leading-[1.55] text-ink/80 sm:p-8">
             <strong className="text-plum">Allergene:</strong> Je nach Bowl können Nüsse (Erdnuss, Pistazie), Gluten
             (Granola, Hafer) und Milch enthalten sein. Sprich uns vor der Bestellung im Store an, wir zeigen dir die
-            vollständige Allergenliste. Preise inkl. MwSt., Änderungen vorbehalten.
+            vollständige Allergenliste. Preise inkl. MwSt. laut unseren Lieferdienst-Karten, im Store und je
+            nach Plattform können sie abweichen.
           </p>
         </InView>
       </div>
@@ -175,7 +194,7 @@ export function MatchaGrid() {
             <div className="flex flex-1 flex-col gap-2 bg-plum p-6">
               <h2 className="font-display text-[clamp(1.25rem,2.4vw,1.6rem)] uppercase leading-[1.1] tracking-[-0.5px]">{d.name}</h2>
               <p className="text-[15px] leading-[1.5] text-cream/85">{d.body}</p>
-              <p className="font-menu mt-auto pt-2 text-sm uppercase text-gold">Preis im Store · to go</p>
+              <p className="font-menu mt-auto pt-2 text-lg uppercase text-gold">{d.price} · to go</p>
             </div>
           </InView>
         ))}

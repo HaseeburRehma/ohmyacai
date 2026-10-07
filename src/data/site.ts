@@ -16,6 +16,14 @@ export const ORDER_URL = '/order-online';
 export const UBER_EATS_URL =
   'https://www.ubereats.com/de/store/oh-my-acai/0chQmXzLWeqM6P1pC7jJAw';
 
+/** Every delivery platform the Düsseldorf store is listed on. Only linked
+ *  from /order-online (and schema.org). */
+export const DELIVERY_PLATFORMS = [
+  { name: 'Wolt', url: 'https://wolt.com/de/deu/dusseldorf/restaurant/oh-my-acai-dusseldorf' },
+  { name: 'Lieferando', url: 'https://www.lieferando.de/menu/oh-my-acai' },
+  { name: 'Uber Eats', url: UBER_EATS_URL },
+];
+
 /** B2B: pure açaí puree imported from Brazilian partner cooperatives,
  *  sold to bars, cafés and hotel kitchens across DACH. */
 export const BRAZIL_SECTION = {
@@ -129,35 +137,35 @@ export const MARQUEE_WORDS = [
  *  re-canvassed to a shared 950 × 1450 box so all five sit identically. */
 export const SLIDES = [
   {
-    eyebrow: 'Mango, Erdbeere & Banane',
+    eyebrow: 'Banane, Erdbeere & Kokos',
     title: 'Açai Tropical',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/panel/cup-1.png',
   },
   {
-    eyebrow: 'Kinder Bueno, Karamell & Granola',
+    eyebrow: 'Bueno, Granola & Erdbeeren',
     title: 'Açai Bueno',
     color: '#8c5737',
     bg: '/img/panel/panel-2.png',
     image: '/img/panel/cup-2.png',
   },
   {
-    eyebrow: 'Pistazie, Beeren & Chia',
+    eyebrow: 'Pistaziencreme, Granola & Banane',
     title: 'Açai Pistazie',
     color: '#99a75a',
     bg: '/img/panel/panel-3.png',
     image: '/img/panel/cup-3.png',
   },
   {
-    eyebrow: 'Erdnussbutter, Banane & Hafer',
+    eyebrow: 'Erdnussbutter, Granola & Banane',
     title: 'Açai Erdnussbutter',
     color: '#8c5737',
     bg: '/img/panel/panel-4.png',
     image: '/img/panel/cup-4.png',
   },
   {
-    eyebrow: 'Cheesecake, Beeren & Granola',
+    eyebrow: 'Cheesecake-Creme, Granola & Beeren',
     title: 'Açai Cheesecake',
     color: '#d0c1b0',
     bg: '/img/panel/panel-5.png',
@@ -170,11 +178,11 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Açai Bueno',        price: '€12,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
-  { name: 'Açai Erdnussbutter',price: '€12,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
-  { name: 'Açai Pistazie',     price: '€12,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
-  { name: 'Açai Tropical',     price: '€12,90', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
-  { name: 'Açai Cheesecake',   price: '€12,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
+  { name: 'Açai Bueno',        price: 'ab €11,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
+  { name: 'Açai Erdnussbutter',price: 'ab €11,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
+  { name: 'Açai Pistazie',     price: 'ab €11,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
+  { name: 'Açai Tropical',     price: 'ab €12,80', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
+  { name: 'Açai Cheesecake',   price: 'ab €11,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy
@@ -684,65 +692,81 @@ export const DATENSCHUTZ = {
  * /matcha-duesseldorf, /order-online, /faq, /about-us, /contact)
  * ------------------------------------------------------------------ */
 
-/** Bowl menu. Names, price and the base description come from the shop's
- *  own Uber Eats listing (all bowls 12,90 €, every bowl is açaí purée on
- *  vegan chia pudding). `slide` links each bowl to its panel cup photo. */
+/** Bowl menu. Toppings and prices from the shop's own delivery listings
+ *  (Wolt, Lieferando, Uber Eats, checked 2026-10-07): every bowl is açaí
+ *  purée on chia pudding with granola, banana, strawberries, blueberries and
+ *  coconut, plus its signature topping. Wolt sells 0,35 l (11,90 €) and
+ *  0,5 l (13,50 €); Tropical is only on Lieferando (12,80 €) / Uber Eats. */
 export const MENU_BOWLS = [
   {
     name: 'Açai Erdnussbutter',
-    price: '12,90 €',
-    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Erdnussbutter.',
-    toppings: 'Erdnussbutter, Banane & Hafer',
+    price: 'ab 11,90 €',
+    body: 'Açaí-Püree auf veganem Chia-Pudding mit Erdnussbutter, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    toppings: 'Erdnussbutter, Granola & Banane',
     image: '/img/bowls/erdnussbutter.jpg',
   },
   {
     name: 'Açai Pistazie',
-    price: '12,90 €',
-    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Pistazie.',
-    toppings: 'Pistazie, Beeren & Chia',
+    price: 'ab 11,90 €',
+    body: 'Açaí-Püree auf veganem Chia-Pudding mit Pistaziencreme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    toppings: 'Pistaziencreme, Granola & Banane',
     image: '/img/bowls/pistazie.jpg',
   },
   {
     name: 'Açai Bueno',
-    price: '12,90 €',
-    body: 'Cremig-fruchtiges Açaí-Püree trifft auf samtigen, veganen Chia-Pudding und Bueno.',
-    toppings: 'Kinder Bueno, Karamell & Granola',
+    price: 'ab 11,90 €',
+    body: 'Açaí-Püree auf veganem Chia-Pudding mit Bueno, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    toppings: 'Bueno, Granola & Erdbeeren',
     image: '/img/bowls/bueno.jpg',
   },
   {
     name: 'Açai Tropical',
-    price: '12,90 €',
-    body: 'Cremig-fruchtiges Açaí-Püree auf veganem Chia-Pudding mit tropischen Früchten.',
-    toppings: 'Mango, Erdbeere & Banane',
+    price: 'ab 12,80 €',
+    body: 'Açaí-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    toppings: 'Banane, Erdbeere & Kokos',
     image: '/img/bowls/tropical.jpg',
   },
   {
     name: 'Açai Cheesecake',
-    price: '12,90 €',
-    body: 'Cremig-fruchtiges Açaí-Püree auf veganem Chia-Pudding mit Cheesecake-Topping.',
-    toppings: 'Cheesecake, Beeren & Granola',
+    price: 'ab 11,90 €',
+    body: 'Açaí-Püree auf veganem Chia-Pudding mit Cheesecake-Creme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    toppings: 'Cheesecake-Creme, Granola & Beeren',
     image: '/img/bowls/cheesecake.jpg',
   },
 ];
 
-/** Iced Matcha line-up in Düsseldorf (per the strategy sheet). Prices are
- *  not published online yet, so the menu shows them as "im Store". */
+/** Iced Matcha line-up in Düsseldorf. Names and prices from the shop's
+ *  Lieferando menu (ohmyacai-dusseldorf.de, checked 2026-10-07). */
 export const MATCHA_DRINKS = [
   {
-    name: 'Iced Mango Matcha',
-    body: 'Matcha auf Eis, geschichtet mit fruchtigem Mangopüree.',
+    name: 'Ohmy Matcha Mango',
+    price: '6,50 €',
+    body: 'Iced Matcha, geschichtet mit fruchtigem Mangopüree.',
     color: '#e6a002',
   },
   {
-    name: 'Iced Erdbeer Matcha',
-    body: 'Matcha auf Eis über einer Schicht aus Erdbeerpüree.',
+    name: 'Ohmy Matcha Strawberry',
+    price: '6,50 €',
+    body: 'Iced Matcha über einer Schicht aus Erdbeerpüree.',
     color: '#c8475f',
   },
   {
     name: 'Ohmy Matcha Spezial',
-    body: 'Unser Haus-Matcha. Frag im Store nach der aktuellen Kreation.',
+    price: '5,40 €',
+    body: 'Unser Haus-Matcha auf Eis, pur und erfrischend.',
     color: '#7c8b3f',
   },
+];
+
+/** Cold drinks, from the Lieferando menu (prices incl. 0,25 € Pfand). */
+export const COLD_DRINKS = [
+  { name: 'Cola', price: '3,15 €' },
+  { name: 'Cola Zero', price: '3,15 €' },
+  { name: 'Fanta', price: '3,15 €' },
+  { name: 'Sprite', price: '3,15 €' },
+  { name: 'Mezzo Mix', price: '3,15 €' },
+  { name: 'Wasser still', price: '2,95 €' },
+  { name: 'Wasser sprudelnd', price: '2,95 €' },
 ];
 
 /** Long-form FAQ for /faq. Answers stay within what the shop has
@@ -754,7 +778,7 @@ export const FAQ_PAGE = [
   },
   {
     q: 'Was kostet eine Açaí Bowl bei euch?',
-    a: 'Alle fünf Signature Bowls kosten 12,90 €: Açai Erdnussbutter, Açai Pistazie, Açai Bueno, Açai Tropical und Açai Cheesecake. Die komplette Karte findest du unter Speisekarte & Preise.',
+    a: 'Unsere Bowls gibt es ab 11,90 € (0,35 l) und ab 13,50 € (0,5 l), je nach Bowl und Bestellweg: Açai Erdnussbutter, Açai Pistazie, Açai Bueno, Açai Tropical und Açai Cheesecake. Alle Preise findest du unter Speisekarte & Preise.',
   },
   {
     q: 'Sind eure Bowls vegan?',
@@ -762,7 +786,7 @@ export const FAQ_PAGE = [
   },
   {
     q: 'Liefert ihr in Düsseldorf?',
-    a: 'Ja. Du kannst unsere Bowls über Uber Eats liefern lassen oder dort vorbestellen und selbst abholen. Alle Wege findest du auf der Seite Online bestellen.',
+    a: 'Ja. Du kannst unsere Bowls über Wolt, Lieferando oder Uber Eats liefern lassen oder dort vorbestellen und selbst abholen. Alle Wege findest du auf der Seite Online bestellen.',
   },
   {
     q: 'Wo finde ich euch?',
@@ -774,7 +798,7 @@ export const FAQ_PAGE = [
   },
   {
     q: 'Gibt es bei euch auch Matcha?',
-    a: 'Ja, in Düsseldorf gibt es Iced Matcha, zum Beispiel mit Mango oder Erdbeere, und unseren Ohmy Matcha Spezial. Alles frisch zubereitet und auch zum Mitnehmen.',
+    a: 'Ja, in Düsseldorf gibt es Iced Matcha: Ohmy Matcha Mango und Strawberry (je 6,50 €) und unseren Ohmy Matcha Spezial (5,40 €). Frisch zubereitet und auch zum Mitnehmen.',
   },
   {
     q: 'Welche Allergene stecken in den Bowls?',
