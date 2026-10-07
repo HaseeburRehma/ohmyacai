@@ -61,7 +61,7 @@ export default function StoreDetail({ store }: { store: StoreLocation }) {
 
         {/* RIGHT — photo + map */}
         <InView
-          variants={{ hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0 } }}
+          variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
           transition={{ duration: 1, delay: 0.1, ease: EASE }}
           viewOptions={{ once: true, amount: 0.15 }}
           className="flex flex-col gap-5"
