@@ -205,11 +205,6 @@ export const VIDEO_CARDS = [
     pos: 'lg:left-[8.6%] lg:top-[24.5%]',
   },
   {
-    title: 'Frisch aus der Region',
-    body: 'Obst und Toppings kaufen wir jede Woche frisch bei Erzeugern in Düsseldorf und Umgebung ein.',
-    pos: 'lg:left-[62.8%] lg:top-[32.8%]',
-  },
-  {
     title: 'Vegan von Haus aus',
     body: 'Açaí, Chia-Pudding und Obst sind rein pflanzlich, ohne Kompromisse beim Geschmack oder der Cremigkeit.',
     pos: 'lg:left-[10.6%] lg:top-[73%]',
@@ -217,7 +212,7 @@ export const VIDEO_CARDS = [
   {
     title: 'Ein Ort zum Bleiben',
     body: 'Weiche Sitzecken, ruhige Musik und kostenloses WLAN — gemacht für eine Pause, nicht für die Hektik.',
-    pos: 'lg:left-[65.4%] lg:top-[64.6%]',
+    pos: 'lg:left-[63%] lg:top-[46%]',
   },
 ];
 

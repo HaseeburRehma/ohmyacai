@@ -217,8 +217,8 @@ export default function VideoFeature() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-3 min-[520px]:grid-cols-2 sm:gap-4">
-                {VIDEO_CARDS.slice(2, 4).map((card, i) => (
+              <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                {VIDEO_CARDS.slice(2).map((card, i) => (
                   <motion.div
                     key={`m-bot-${i}`}
                     whileHover={{ y: -6, scale: 1.04 }}
