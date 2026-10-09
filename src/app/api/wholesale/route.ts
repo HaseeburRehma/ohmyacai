@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import {
   wholesaleApplicantEmail,
+  wholesaleApplicantText,
   wholesaleTeamEmail,
   wholesaleTeamText,
   type WholesaleEnquiry,
@@ -75,6 +76,7 @@ export async function POST(req: Request) {
       to: `${firstName} ${lastName} <${email}>`,
       replyTo: to,
       subject: 'Deine Oh My Açaí Großhandel-Anfrage ist da',
+      text: wholesaleApplicantText(enquiry),
       html: wholesaleApplicantEmail(enquiry),
     });
 

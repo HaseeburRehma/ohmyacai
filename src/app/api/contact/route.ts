@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { contactTeamEmail, contactTeamText } from '@/lib/contact-emails';
 
 export const runtime = 'nodejs';
 
-const esc = (v: string) =>
-  v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /**
  * General contact form (/kontakt). Emails the team inbox only; no copy goes
@@ -57,8 +56,8 @@ export async function POST(req: Request) {
       to,
       replyTo: `${name} <${email}>`,
       subject: `Kontaktanfrage${store ? ` (${store})` : ''} — ${name}`,
-      text: `Name: ${name}\nE-Mail: ${email}\nStore: ${store || '—'}\n\n${message}`,
-      html: `<p><strong>Name:</strong> ${esc(name)}<br/><strong>E-Mail:</strong> ${esc(email)}<br/><strong>Store:</strong> ${esc(store || '—')}</p><p style="white-space:pre-line">${esc(message)}</p>`,
+      text: contactTeamText({ name, email, store, message }),
+      html: contactTeamEmail({ name, email, store, message }),
     });
 
     return NextResponse.json({ ok: true });

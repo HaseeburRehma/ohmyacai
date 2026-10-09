@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import {
   applicantEmail,
+  applicantText,
   teamEmail,
   teamText,
   type FranchiseEnquiry,
@@ -89,6 +90,7 @@ export async function POST(req: Request) {
       to: `${firstName} ${lastName} <${email}>`,
       replyTo: to,
       subject: 'Deine Oh My Açaí Franchise-Anfrage ist da',
+      text: applicantText(enquiry),
       html: applicantEmail(enquiry),
     });
 
