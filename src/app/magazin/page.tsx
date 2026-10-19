@@ -10,9 +10,9 @@ import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 const PATH = '/magazin';
 
 export const metadata = pageMetadata({
-  title: 'Açaí & Matcha Magazin | Was ist Açaí? | Oh My Acai Düsseldorf',
+  title: 'Acai & Matcha Magazin | Was ist Acai? | Oh My Acai Düsseldorf',
   description:
-    'Wissen rund um Açaí und Matcha aus unserem Düsseldorfer Café: Herkunft, Aussprache und was wirklich in eine richtig gute Açaí Bowl gehört.',
+    'Wissen rund um Acai und Matcha aus unserem Düsseldorfer Café: Herkunft, Aussprache und was wirklich in eine richtig gute Acai Bowl gehört.',
   path: PATH,
   image: '/img/brazil-farm.jpg',
 });
@@ -23,9 +23,9 @@ export default function MagazinPage() {
       <PageHero
         crumbs={[{ name: 'Magazin', path: PATH }]}
         eyebrow="Wissen aus unserem Café"
-        title="Açaí & Matcha Magazin"
+        title="Acai & Matcha Magazin"
         accent="Magazin"
-        intro="Was ist Açaí, woher kommt die Beere, wie spricht man sie aus, und was ist eigentlich Matcha? Kurz und verständlich erklärt aus unserem Café in Düsseldorf."
+        intro="Was ist Acai, woher kommt die Beere, wie spricht man sie aus, und was ist eigentlich Matcha? Kurz und verständlich erklärt aus unserem Café in Düsseldorf."
       />
       <section className="w-full bg-white px-6 pb-16 pt-4 sm:px-10 lg:px-[60px] lg:pb-24">
         <ul className="mx-auto grid w-full max-w-[1220px] gap-6 md:grid-cols-2">

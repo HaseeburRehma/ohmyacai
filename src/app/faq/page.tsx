@@ -10,9 +10,9 @@ import { breadcrumbLd, faqLd, pageMetadata } from '@/lib/seo';
 const PATH = '/faq';
 
 export const metadata = pageMetadata({
-  title: 'FAQ | Açaí, vegane Optionen, Allergene & Bestellung Düsseldorf',
+  title: 'FAQ | Acai, vegane Optionen, Allergene & Bestellung Düsseldorf',
   description:
-    'Was ist Açaí, sind die Bowls vegan, was kosten sie und liefert ihr in Düsseldorf? Hier findest du Antworten auf die häufigsten Fragen unserer Gäste.',
+    'Was ist Acai, sind die Bowls vegan, was kosten sie und liefert ihr in Düsseldorf? Hier findest du Antworten auf die häufigsten Fragen unserer Gäste.',
   path: PATH,
 });
 
@@ -24,11 +24,11 @@ export default function FaqPage() {
         eyebrow="Gut zu wissen"
         title="Häufige Fragen"
         accent="Fragen"
-        intro="Was ist Açaí, sind die Bowls vegan, was kosten sie und wie bestellst du? Hier sind die Antworten. Deine Frage ist nicht dabei? Schreib uns."
+        intro="Was ist Acai, sind die Bowls vegan, was kosten sie und wie bestellst du? Hier sind die Antworten. Deine Frage ist nicht dabei? Schreib uns."
       >
         <PillButton href="/kontakt" variant="mauve">Kontakt aufnehmen</PillButton>
       </PageHero>
-      <Faq items={FAQ_PAGE} title="Alles rund um Oh My Açaí" />
+      <Faq items={FAQ_PAGE} title="Alles rund um Oh My Acai" />
       <RelatedLinks links={[PAGE_LINKS.zutaten, PAGE_LINKS.magazin, PAGE_LINKS.bestellen, PAGE_LINKS.speisekarte]} />
       <CtaSection />
     </PageShell>

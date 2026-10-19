@@ -12,9 +12,9 @@ import { SITE_URL, breadcrumbLd, pageMetadata } from '@/lib/seo';
 const PATH = '/speisekarte';
 
 export const metadata = pageMetadata({
-  title: 'Speisekarte & Preise | Açaí Bowls, Matcha & Getränke Düsseldorf',
+  title: 'Speisekarte & Preise | Acai Bowls, Matcha & Getränke Düsseldorf',
   description:
-    'Die komplette Speisekarte von Oh My Acai: fünf Açaí Bowls, Iced Matcha und kalte Getränke mit aktuellen Preisen für unser Café in Düsseldorf.',
+    'Die komplette Speisekarte von Oh My Acai: fünf Acai Bowls, Iced Matcha und kalte Getränke mit aktuellen Preisen für unser Café in Düsseldorf.',
   path: PATH,
   image: '/img/bowls/pistazie.jpg',
 });
@@ -25,12 +25,12 @@ const MENU_LD = {
   '@context': 'https://schema.org',
   '@type': 'Menu',
   '@id': `${SITE_URL}${PATH}#menu`,
-  name: 'Oh My Açaí Speisekarte',
+  name: 'Oh My Acai Speisekarte',
   inLanguage: 'de-DE',
   hasMenuSection: [
     {
       '@type': 'MenuSection',
-      name: 'Açaí Bowls',
+      name: 'Acai Bowls',
       hasMenuItem: MENU_BOWLS.map((b) => ({
         '@type': 'MenuItem',
         name: b.name,
@@ -49,22 +49,22 @@ export default function MenuPage() {
         eyebrow="Düsseldorf & Köln"
         title="Unsere Speisekarte & Preise"
         accent="& Preise"
-        intro="Die komplette Oh My Acai Speisekarte (Menü) für Düsseldorf: fünf Signature Bowls aus echtem Açaí-Püree auf veganem Chia-Pudding, dazu Iced Matcha und kalte Getränke. Bowls ab 11,90 €, frisch gemacht, to go oder geliefert."
-        image={{ src: '/img/bowls/pistazie.jpg', alt: 'Açai Pistazie Bowl von Oh My Açaí' }}
+        intro="Die komplette Oh My Acai Speisekarte (Menü) für Düsseldorf: fünf Signature Bowls aus echtem Acai-Püree auf veganem Chia-Pudding, dazu Iced Matcha und kalte Getränke. Bowls ab 11,90 €, frisch gemacht, to go oder geliefert."
+        image={{ src: '/img/bowls/pistazie.jpg', alt: 'Acai Pistazie Bowl von Oh My Acai' }}
       >
         <PillButton href={ORDER_URL}>Jetzt bestellen</PillButton>
       </PageHero>
       <MenuBoard />
       <TextSplit
         tone="cream"
-        title="Açaí Bowl Größen & Preise in Düsseldorf"
+        title="Acai Bowl Größen & Preise in Düsseldorf"
         accent="Größen & Preise"
         paragraphs={[
-          'Unsere Açaí Bowls gibt es in zwei Größen: 0,35 l (350 ml) ab 11,90 € und 0,5 l (500 ml) ab 13,50 €. Der Açaí Bowl Preis in Düsseldorf hängt also von der Größe ab. Die Açaí Bowl Preise können je nach Bowl und Bestellweg leicht abweichen, im Store genauso wie bei Wolt, Lieferando oder Uber Eats.',
+          'Unsere Acai Bowls gibt es in zwei Größen: 0,35 l (350 ml) ab 11,90 € und 0,5 l (500 ml) ab 13,50 €. Der Acai Bowl Preis in Düsseldorf hängt also von der Größe ab. Die Acai Bowl Preise können je nach Bowl und Bestellweg leicht abweichen, im Store genauso wie bei Wolt, Lieferando oder Uber Eats.',
           'Zum Matcha Menü in Düsseldorf gehören Ohmy Matcha Mango und Strawberry für je 6,50 € und der Ohmy Matcha Spezial für 5,40 €. Shakes haben wir aktuell nicht auf der Karte.',
         ]}
       >
-        <PillButton href={ORDER_URL}>Açaí Bowl bestellen</PillButton>
+        <PillButton href={ORDER_URL}>Acai Bowl bestellen</PillButton>
       </TextSplit>
       <RelatedLinks links={[PAGE_LINKS.bowls, PAGE_LINKS.matcha, PAGE_LINKS.zutaten, PAGE_LINKS.bestellen]} />
       <CtaSection />

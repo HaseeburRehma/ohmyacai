@@ -6,7 +6,7 @@ import ScrollBar from '@/components/ui/ScrollBar';
 import { IMPRESSUM } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Impressum — Oh My Açaí',
+  title: 'Impressum — Oh My Acai',
   description:
     'Rechtliche Angaben der Ohmyacai UG (haftungsbeschränkt), Flinger Str. 18, 40213 Düsseldorf.',
   robots: { index: true, follow: true },

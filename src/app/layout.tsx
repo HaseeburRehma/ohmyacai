@@ -52,9 +52,9 @@ const archivo = Archivo({
 });
 
 const SITE_URL = 'https://www.ohmyacai.de';
-const SITE_TITLE = 'Açaí Düsseldorf | Açaí Bowls & Iced Matcha in der Altstadt';
+const SITE_TITLE = 'Acai Düsseldorf | Acai Bowls & Iced Matcha in der Altstadt';
 const SITE_DESCRIPTION =
-  'Frische Açaí Bowls und Iced Matcha in der Düsseldorfer Altstadt. Vor Ort genießen, mitnehmen oder liefern lassen. Flinger Straße 18, jetzt auch in Köln.';
+  'Frische Acai Bowls und Iced Matcha in der Düsseldorfer Altstadt. Vor Ort genießen, mitnehmen oder liefern lassen. Flinger Straße 18, jetzt auch in Köln.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,10 +65,10 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: 'Oh My Açaí',
+    siteName: 'Oh My Acai',
     locale: 'de_DE',
     type: 'website',
-    images: [{ url: '/img/store.jpg', width: 1440, height: 1920, alt: 'Oh My Açaí Store in Düsseldorf' }],
+    images: [{ url: '/img/store.jpg', width: 1440, height: 1920, alt: 'Oh My Acai Store in Düsseldorf' }],
   },
 };
 
@@ -95,7 +95,7 @@ function store(id: string, name: string, street: string, zip: string, city: stri
     url: SITE_URL,
     image: `${SITE_URL}/img/store.jpg`,
     logo: `${SITE_URL}/img/logo-badge.png`,
-    servesCuisine: ['Açaí Bowls', 'Smoothie Bowls', 'Vegan'],
+    servesCuisine: ['Acai Bowls', 'Smoothie Bowls', 'Vegan'],
     priceRange: '€€',
     acceptsReservations: false,
     hasMenu: `${SITE_URL}/#menu`,
@@ -117,7 +117,7 @@ const JSON_LD = {
     {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#org`,
-      name: 'Oh My Açaí',
+      name: 'Oh My Acai',
       legalName: 'Ohmyacai UG (haftungsbeschränkt)',
       url: SITE_URL,
       logo: `${SITE_URL}/img/logo-badge.png`,
@@ -125,14 +125,14 @@ const JSON_LD = {
       telephone: '+4915732016134',
       sameAs: ['https://www.instagram.com/ohmyacai_dues/', 'https://www.tiktok.com/@ohmyacai.de'],
     },
-    { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: 'Oh My Açaí', inLanguage: 'de-DE', publisher: { '@id': `${SITE_URL}/#org` } },
+    { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: 'Oh My Acai', inLanguage: 'de-DE', publisher: { '@id': `${SITE_URL}/#org` } },
     {
-      ...store('duesseldorf', 'Oh My Açaí Düsseldorf', 'Flinger Str. 18', '40213', 'Düsseldorf', [51.2264, 6.7733], OPENING_DUS),
+      ...store('duesseldorf', 'Oh My Acai Düsseldorf', 'Flinger Str. 18', '40213', 'Düsseldorf', [51.2264, 6.7733], OPENING_DUS),
       telephone: '+4915732016134',
       /* The Wolt / Lieferando / Uber Eats listings are all for the Flinger Straße store. */
       potentialAction: { '@type': 'OrderAction', target: ORDER_TARGET },
     },
-    store('koeln', 'Oh My Açaí Köln', 'Hohe Str. 105-107', '50667', 'Köln', [50.9376, 6.9571], OPENING_CGN),
+    store('koeln', 'Oh My Acai Köln', 'Hohe Str. 105-107', '50667', 'Köln', [50.9376, 6.9571], OPENING_CGN),
   ],
 };
 

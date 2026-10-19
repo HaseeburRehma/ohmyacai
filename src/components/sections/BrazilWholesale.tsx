@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { BRAZIL_SECTION } from '@/data/site';
 
 /**
- * Section: "Reines Açaí direkt aus Brasilien" — B2B pitch to café / bar /
+ * Section: "Reines Acai direkt aus Brasilien" — B2B pitch to café / bar /
  * hotel owners. Left column carries the copy + three benefit bullets;
  * right column carries the contact form that emails info@tylotech.de.
  */

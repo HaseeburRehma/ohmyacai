@@ -1,5 +1,5 @@
 /**
- * Shared, mail-client-safe layout for every Oh My Açaí email.
+ * Shared, mail-client-safe layout for every Oh My Acai email.
  *
  * Built the way email has to be built: nested tables, inline styles on every
  * element, a 600px fluid container, and a small <style> block that only
@@ -118,7 +118,7 @@ export const steps = (title: string, items: string[]) =>
   </table>`;
 
 export const signoff = () =>
-  paragraph(`Bis bald,<br/><strong style="color:${C.plum};">dein Oh My Açaí Team</strong>`);
+  paragraph(`Bis bald,<br/><strong style="color:${C.plum};">dein Oh My Acai Team</strong>`);
 
 /* ------------------------------------------------------------------ */
 /* Page shell                                                          */
@@ -207,10 +207,10 @@ export function emailShell({
         <tr><td style="background:${C.plum};padding:22px 40px;" class="em-pad">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
             <td valign="middle" width="56">
-              <a href="${SITE}" target="_blank"><img src="${SITE}/img/logo-badge.png" width="52" height="52" alt="Oh My Açaí" style="display:block;width:52px;height:52px;border-radius:999px;background:#ffffff;font-family:${FONT};font-size:12px;color:#ffffff;"/></a>
+              <a href="${SITE}" target="_blank"><img src="${SITE}/img/logo-badge.png" width="52" height="52" alt="Oh My Acai" style="display:block;width:52px;height:52px;border-radius:999px;background:#ffffff;font-family:${FONT};font-size:12px;color:#ffffff;"/></a>
             </td>
             <td valign="middle" style="padding-left:14px;font-family:${DISPLAY};font-size:18px;line-height:1.1;font-weight:900;letter-spacing:.4px;text-transform:uppercase;color:#ffffff;">
-              Oh My <span style="color:${C.gold};">Açaí</span>
+              Oh My <span style="color:${C.gold};">Acai</span>
             </td>
           </tr></table>
         </td></tr>

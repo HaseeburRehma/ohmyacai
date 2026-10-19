@@ -16,7 +16,7 @@ export const runtime = 'nodejs';
  * a confirmation via SMTP. Same env vars as the franchise route:
  *
  *   SMTP_HOST, SMTP_PORT (465 or 587), SMTP_USER, SMTP_PASS
- *   MAIL_FROM  e.g. "Oh My Açaí <info@ohmyacai.de>"
+ *   MAIL_FROM  e.g. "Oh My Acai <info@ohmyacai.de>"
  *   WHOLESALE_MAIL_TO  (optional) defaults to info@tylotech.de
  */
 export async function POST(req: Request) {
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       from,
       to: `${firstName} ${lastName} <${email}>`,
       replyTo: to,
-      subject: 'Deine Oh My Açaí Großhandel-Anfrage ist da',
+      subject: 'Deine Oh My Acai Großhandel-Anfrage ist da',
       text: wholesaleApplicantText(enquiry),
       html: wholesaleApplicantEmail(enquiry),
     });

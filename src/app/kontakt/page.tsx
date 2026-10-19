@@ -12,7 +12,7 @@ const PATH = '/kontakt';
 export const metadata = pageMetadata({
   title: 'Kontakt | Oh My Acai Düsseldorf, Flinger Straße 18, Altstadt',
   description:
-    'Kontaktiere Oh My Acai in Düsseldorf: Telefon, Adresse, Öffnungszeiten und Anfahrt zu unserem Açaí- und Matcha-Café in der Flinger Straße 18 in der Altstadt.',
+    'Kontaktiere Oh My Acai in Düsseldorf: Telefon, Adresse, Öffnungszeiten und Anfahrt zu unserem Acai- und Matcha-Café in der Flinger Straße 18 in der Altstadt.',
   path: PATH,
 });
 

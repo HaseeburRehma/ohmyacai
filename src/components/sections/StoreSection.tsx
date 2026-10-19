@@ -12,7 +12,7 @@ const HEADING = ['Besuche unseren', 'Store'];
 
 /** Google Business Profile — Oh my acai · Flinger Str. 18, 40213 Düsseldorf.
  *  Direct Maps directions URL (opens the routing UI on any device with
- *  Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf as the destination). */
+ *  Oh My Acai, Flinger Str. 18, 40213 Düsseldorf as the destination). */
 const MAPS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf';
 const MAPS_EMBED =
@@ -55,14 +55,14 @@ export default function StoreSection() {
           {/* Storefront photo — landscape 4:3 card with object-cover so
               the shot fills the frame side-to-side (no letterbox). The
               crop pans through the middle of the source (object-position
-              center 42%) so the OH MY! Açaí disc, the menu boards and
+              center 42%) so the OH MY! Acai disc, the menu boards and
               the counter all read together, without dead brick above or
               floor below. */}
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
             <motion.div style={{ y: imgY }} className="absolute inset-0">
               <Image
                 src="/img/store.jpg"
-                alt="Oh My Açaí Storefront — Flinger Straße"
+                alt="Oh My Acai Storefront — Flinger Straße"
                 fill
                 sizes="(max-width:1024px) 92vw, 560px"
                 className="object-cover [object-position:center_42%]"
@@ -74,7 +74,7 @@ export default function StoreSection() {
               treatment. Fixed 260 px tall from lg so image + map together
               track the height of the copy column on desktop. */}
           <MapEmbed
-            title="Karte: Oh My Açaí, Flinger Str. 18, 40213 Düsseldorf"
+            title="Karte: Oh My Acai, Flinger Str. 18, 40213 Düsseldorf"
             src={MAPS_EMBED}
             address={['Flinger Str. 18', '40213 Düsseldorf']}
             routeUrl={MAPS_URL}
@@ -130,8 +130,8 @@ export default function StoreSection() {
             viewOptions={{ once: true, amount: 0.3 }}
           >
             <p className="max-w-[640px] text-base leading-[1.2] tracking-[-0.5px] text-ink">
-              Bei Oh My Açaí steckt in jeder Bowl mehr als nur Obst. Wir mixen
-              samtiges Açaí mit frischen Früchten und knusprigem Granola zu
+              Bei Oh My Acai steckt in jeder Bowl mehr als nur Obst. Wir mixen
+              samtiges Acai mit frischen Früchten und knusprigem Granola zu
               einem ausgewogenen, erfrischenden Erlebnis.
             </p>
           </InView>
@@ -182,7 +182,7 @@ export default function StoreSection() {
         </div>
       </div>
 
-      {/* Second location — Oh My Açaí Köln.
+      {/* Second location — Oh My Acai Köln.
           Layout is content-left (heading, address, hours card, Route
           button) and media-right (map + brand image tile). Same visual
           language as the Düsseldorf grid so both stores read together. */}

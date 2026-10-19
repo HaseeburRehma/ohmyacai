@@ -28,13 +28,13 @@ export function wholesaleTeamEmail(d: WholesaleEnquiry) {
   const body = `
     ${eyebrow('Großhandel')}
     ${heading('Neue Großhandel&#8209;Anfrage')}
-    ${paragraph(`<strong>${esc(name)}</strong> möchte reines Açaí-Püree von Oh My Açaí beziehen.`)}
+    ${paragraph(`<strong>${esc(name)}</strong> möchte reines Acai-Püree von Oh My Acai beziehen.`)}
     ${details('Kontakt', [
       ['Name', name],
       ['E-Mail', d.email, `mailto:${d.email}`],
       ['Telefon', d.phone, `tel:${d.phone.replace(/\s/g, '')}`],
     ])}
-    ${button(`${d.firstName} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Angebot für Açaí-Püree')}`)}
+    ${button(`${d.firstName} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Angebot für Acai-Püree')}`)}
     ${paragraph('Antworten auf diese E-Mail gehen direkt an die anfragende Person.', { muted: true, size: 13 })}`;
   return emailShell({ title: 'Neue Großhandel-Anfrage', preheader: `${name} · ${d.email}`, body, audience: 'team' });
 }
@@ -44,13 +44,13 @@ export function wholesaleApplicantEmail(d: WholesaleEnquiry) {
   const body = `
     ${eyebrow('Anfrage erhalten')}
     ${heading(`Danke, ${esc(d.firstName)}!`)}
-    ${paragraph('Deine Anfrage für reines Açaí-Püree ist bei uns angekommen. Es ist dasselbe Püree, mit dem wir in Düsseldorf und Köln jede Bowl mixen.')}
+    ${paragraph('Deine Anfrage für reines Acai-Püree ist bei uns angekommen. Es ist dasselbe Püree, mit dem wir in Düsseldorf und Köln jede Bowl mixen.')}
     ${steps('So geht es weiter', [
       'Wir melden uns in der Regel innerhalb eines Werktags bei dir.',
       'Du bekommst Preise, Liefermengen und das Datenblatt zum Püree.',
       'Gemeinsam klären wir Mengen, Lieferrhythmus und den Start.',
     ])}
-    ${button('Mehr über Oh My Açaí', SITE, 'plum')}
+    ${button('Mehr über Oh My Acai', SITE, 'plum')}
     ${paragraph('Fragen? Antworte einfach auf diese E-Mail.', { muted: true, size: 14 })}
     ${signoff()}`;
   return emailShell({
@@ -71,7 +71,7 @@ Telefon: ${d.phone}`;
 export function wholesaleApplicantText(d: WholesaleEnquiry) {
   return `Danke, ${d.firstName}!
 
-Deine Anfrage für reines Açaí-Püree ist bei uns angekommen.
+Deine Anfrage für reines Acai-Püree ist bei uns angekommen.
 
 So geht es weiter:
 1. Wir melden uns in der Regel innerhalb eines Werktags bei dir.
@@ -81,6 +81,6 @@ So geht es weiter:
 Fragen? Antworte einfach auf diese E-Mail.
 
 Bis bald,
-dein Oh My Açaí Team
+dein Oh My Acai Team
 ${SITE}`;
 }

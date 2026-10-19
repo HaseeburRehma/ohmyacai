@@ -24,13 +24,13 @@ export type FranchiseEnquiry = {
   budget: string;
 };
 
-/** Notification to the Oh My Açaí team. */
+/** Notification to the Oh My Acai team. */
 export function teamEmail(d: FranchiseEnquiry) {
   const name = `${d.firstName} ${d.lastName}`.trim();
   const body = `
     ${eyebrow('Franchise-Anfrage')}
     ${heading('Neue Franchise&#8209;Anfrage')}
-    ${paragraph(`<strong>${esc(name)}</strong> möchte eine Oh My Açaí Filiale in <strong>${esc(d.city) || 'einer neuen Stadt'}</strong> eröffnen.`)}
+    ${paragraph(`<strong>${esc(name)}</strong> möchte eine Oh My Acai Filiale in <strong>${esc(d.city) || 'einer neuen Stadt'}</strong> eröffnen.`)}
     ${details('Kontakt & Eckdaten', [
       ['Name', name],
       ['E-Mail', d.email, `mailto:${d.email}`],
@@ -38,7 +38,7 @@ export function teamEmail(d: FranchiseEnquiry) {
       ['Wunschstadt', d.city],
       ['Budget', d.budget],
     ])}
-    ${button(`${d.firstName} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Oh My Açaí Franchise-Paket')}`)}
+    ${button(`${d.firstName} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Oh My Acai Franchise-Paket')}`)}
     ${paragraph('Antworten auf diese E-Mail gehen direkt an die Bewerberin oder den Bewerber.', { muted: true, size: 13 })}`;
   return emailShell({
     title: 'Neue Franchise-Anfrage',
@@ -53,7 +53,7 @@ export function applicantEmail(d: FranchiseEnquiry) {
   const body = `
     ${eyebrow('Anfrage erhalten')}
     ${heading(`Danke, ${esc(d.firstName)}!`)}
-    ${paragraph('Deine Anfrage für ein Oh My Açaí Franchise ist bei uns angekommen. Schön, dass du unser Konzept in deine Stadt bringen möchtest.')}
+    ${paragraph('Deine Anfrage für ein Oh My Acai Franchise ist bei uns angekommen. Schön, dass du unser Konzept in deine Stadt bringen möchtest.')}
     ${steps('So geht es weiter', [
       'Unser Team prüft deine Angaben, in der Regel innerhalb eines Werktags.',
       'Du bekommst das Franchise-Paket: Kosten, Gebietskarte und den Eröffnungsplan.',
@@ -87,7 +87,7 @@ Budget: ${d.budget}`;
 export function applicantText(d: FranchiseEnquiry) {
   return `Danke, ${d.firstName}!
 
-Deine Anfrage für ein Oh My Açaí Franchise ist bei uns angekommen.
+Deine Anfrage für ein Oh My Acai Franchise ist bei uns angekommen.
 
 So geht es weiter:
 1. Unser Team prüft deine Angaben, in der Regel innerhalb eines Werktags.
@@ -102,6 +102,6 @@ Telefon: ${d.phone}
 Fragen? Antworte einfach auf diese E-Mail.
 
 Bis bald,
-dein Oh My Açaí Team
+dein Oh My Acai Team
 ${SITE}/franchise`;
 }

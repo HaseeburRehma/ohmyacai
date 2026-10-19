@@ -30,7 +30,7 @@ export default function CtaSection() {
       className="relative w-full overflow-hidden bg-white py-12 sm:py-16 lg:h-[710px] lg:py-0"
     >
       {/* Two branded cups frame the copy — cup-2 right, cup-3 left. They are
-          NOT mirrored (that would flip the "OH MY! Açaí" label): each side is
+          NOT mirrored (that would flip the "OH MY! Acai" label): each side is
           its own cup, tilted outward.
 
           Fully on-screen, never cropped by the viewport edge: each sits in a
@@ -127,7 +127,7 @@ export default function CtaSection() {
 
       <div className="relative mx-auto flex h-full w-full max-w-[1440px] flex-col items-center justify-center gap-6 px-6">
         <h2 className="flex flex-col items-center">
-          <span className="sr-only">Mach deinen Açaí-Moment besonders</span>
+          <span className="sr-only">Mach deinen Acai-Moment besonders</span>
 
           <InView
             variants={{
@@ -141,7 +141,7 @@ export default function CtaSection() {
               aria-hidden
               className="font-display block rounded-2xl bg-plum px-5 py-4 text-center text-[clamp(1.15rem,4.6vw,4rem)] uppercase leading-[1.15] tracking-[-0.06em] text-white sm:px-6 sm:py-5 lg:px-10 lg:py-[26px]"
             >
-              Mach deinen Açaí
+              Mach deinen Acai
             </span>
           </InView>
 
@@ -173,7 +173,7 @@ export default function CtaSection() {
           viewOptions={{ once: true, amount: 0.3 }}
         >
           <p className="mt-4 max-w-[432px] text-center text-base leading-[1.2] tracking-[-0.5px] text-ink">
-            Jeder Tag verdient eine bessere Açaí-Bowl — erfrischend, üppig und
+            Jeder Tag verdient eine bessere Acai-Bowl — erfrischend, üppig und
             mit Bedacht gemacht.
           </p>
         </InView>

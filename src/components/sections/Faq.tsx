@@ -46,7 +46,7 @@ export default function Faq({
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <p className="text-base tracking-[-0.5px] text-white">
-                Alles, was du vor deiner ersten Oh My Açaí Bowl&nbsp; wissen
+                Alles, was du vor deiner ersten Oh My Acai Bowl&nbsp; wissen
                 musst.
               </p>
             </InView>

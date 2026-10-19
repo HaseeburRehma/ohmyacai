@@ -140,7 +140,7 @@ export default function Hero() {
             >
               <Image
                 src="/img/panel/cup-1.png"
-                alt="Açaí Bowl mit Erdbeere, Banane und Granola"
+                alt="Acai Bowl mit Erdbeere, Banane und Granola"
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 34vw"
@@ -149,7 +149,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Cup 2 — the branded açaí cup, the shorter one in front, tilted
+          {/* Cup 2 — the branded acai cup, the shorter one in front, tilted
               −15.17°. lg only; on phones just the single cup 1 reads. */}
           <motion.div
             style={{ y: bowlY, translateZ: 150, transformStyle: 'preserve-3d' }}
@@ -210,10 +210,10 @@ export default function Hero() {
                 />
               </motion.div>
 
-              {/* Headline — per-line mask reveal, with "Açaí Bowls" as a
+              {/* Headline — per-line mask reveal, with "Acai Bowls" as a
                   gold badge row instead of a plain repeated line. */}
               <h1 className="font-display text-[clamp(1.5rem,5.8vw,2.35rem)] uppercase leading-[1.28] text-white lg:text-[clamp(2.1rem,3.1cqw,3.9rem)] lg:leading-[1.22]">
-                <span className="sr-only">Die besten Açaí Bowls in Düsseldorf & Köln</span>
+                <span className="sr-only">Die besten Acai Bowls in Düsseldorf & Köln</span>
 
                 <span aria-hidden className="block overflow-hidden">
                   <motion.span
@@ -226,7 +226,7 @@ export default function Hero() {
                   </motion.span>
                 </span>
 
-                {/* Açaí Bowls badge — Figma: rotate −4.54°, #d4973c, radius 24 */}
+                {/* Acai Bowls badge — Figma: rotate −4.54°, #d4973c, radius 24 */}
                 <motion.span
                   aria-hidden
                   initial={{ opacity: 0, scale: 0.86, rotate: 6 }}
@@ -234,7 +234,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1], delay: 0.34 }}
                   className="my-2 block w-fit origin-center whitespace-nowrap rounded-3xl bg-gold px-[15px] py-[5px] text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.15] mx-auto lg:my-[0.6cqw] lg:mx-0 lg:text-[clamp(2.5rem,3.75cqw,4.6rem)]"
                 >
-                  Açaí Bowls
+                  Acai Bowls
                 </motion.span>
 
                 {HEADLINE.slice(1).map((line, i) => (
@@ -261,7 +261,7 @@ export default function Hero() {
                 transition={{ duration: 0.7, delay: 0.7 }}
                 className="text-[15px] tracking-[-0.5px] text-white sm:text-base lg:text-[clamp(0.875rem,1.111cqw,1.4rem)]"
               >
-                Cremige Açaí Bowls aus echtem Püree, frische Toppings, jeden
+                Cremige Acai Bowls aus echtem Püree, frische Toppings, jeden
                 Tag frisch gemacht 
               </motion.p>
             </div>
@@ -278,7 +278,7 @@ export default function Hero() {
             >
               <Image
                 src="/img/panel/cup-1.png"
-                alt="Açaí Bowl mit Erdbeere, Banane und Granola"
+                alt="Acai Bowl mit Erdbeere, Banane und Granola"
                 fill
                 priority
                 sizes="88vw"

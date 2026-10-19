@@ -10,34 +10,34 @@ import { breadcrumbLd, faqLd, pageMetadata } from '@/lib/seo';
 const PATH = '/zutaten-allergene';
 
 export const metadata = pageMetadata({
-  title: 'Açaí Bowl Zutaten & Allergene | vegan | Oh My Acai Düsseldorf',
+  title: 'Acai Bowl Zutaten & Allergene | vegan | Oh My Acai Düsseldorf',
   description:
-    'Alle Zutaten und Allergene unserer Açaí Bowls und Matcha Drinks: Nüsse, Gluten, Laktose und vegane Kennzeichnung. Frag gern unser Team direkt vor Ort.',
+    'Alle Zutaten und Allergene unserer Acai Bowls und Matcha Drinks: Nüsse, Gluten, Laktose und vegane Kennzeichnung. Frag gern unser Team direkt vor Ort.',
   path: PATH,
   image: '/img/bowls/erdnussbutter.jpg',
 });
 
-const BASE = ['Açaí-Püree', 'veganer Chia-Pudding', 'Granola', 'Banane', 'Erdbeeren', 'Heidelbeeren', 'Kokosraspeln'];
+const BASE = ['Acai-Püree', 'veganer Chia-Pudding', 'Granola', 'Banane', 'Erdbeeren', 'Heidelbeeren', 'Kokosraspeln'];
 
 /* Ingredients per bowl from the shop's Wolt / Lieferando listings.
    "contains" only where the topping itself is the allergen; everything else
    is "kann enthalten" until the shop's official LMIV list is published. */
 const BOWLS = [
-  { name: 'Açai Erdnussbutter', topping: 'Erdnussbutter', contains: 'Erdnüsse', may: 'Gluten (Granola)' },
-  { name: 'Açai Pistazie', topping: 'Pistaziencreme', contains: 'Schalenfrüchte (Pistazie)', may: 'Gluten (Granola), Milch' },
-  { name: 'Açai Bueno', topping: 'Bueno', contains: '', may: 'Milch, Gluten, Schalenfrüchte (Haselnuss), Soja' },
-  { name: 'Açai Cheesecake', topping: 'Cheesecake-Creme', contains: '', may: 'Milch, Gluten, Ei' },
-  { name: 'Açai Tropical', topping: 'Früchte der Basis, ohne Creme-Topping', contains: '', may: 'Gluten (Granola)' },
+  { name: 'Acai Erdnussbutter', topping: 'Erdnussbutter', contains: 'Erdnüsse', may: 'Gluten (Granola)' },
+  { name: 'Acai Pistazie', topping: 'Pistaziencreme', contains: 'Schalenfrüchte (Pistazie)', may: 'Gluten (Granola), Milch' },
+  { name: 'Acai Bueno', topping: 'Bueno', contains: '', may: 'Milch, Gluten, Schalenfrüchte (Haselnuss), Soja' },
+  { name: 'Acai Cheesecake', topping: 'Cheesecake-Creme', contains: '', may: 'Milch, Gluten, Ei' },
+  { name: 'Acai Tropical', topping: 'Früchte der Basis, ohne Creme-Topping', contains: '', may: 'Gluten (Granola)' },
 ];
 
 const FAQ = faqByQ(
-  'Was ist in einer Açaí Bowl?',
-  'Ist Açaí vegan?',
-  'Ist eine Açaí Bowl vegan?',
+  'Was ist in einer Acai Bowl?',
+  'Ist Acai vegan?',
+  'Ist eine Acai Bowl vegan?',
   'Ist Granola glutenfrei?',
   'Enthalten eure Bowls Nüsse?',
-  'Enthält Açaí Zucker?',
-  'Wie viele Kalorien hat eine Açaí Bowl?',
+  'Enthält Acai Zucker?',
+  'Wie viele Kalorien hat eine Acai Bowl?',
 );
 
 export default function ZutatenPage() {
@@ -45,10 +45,10 @@ export default function ZutatenPage() {
     <PageShell jsonLd={[breadcrumbLd([{ name: 'Zutaten & Allergene', path: PATH }]), faqLd(FAQ)]}>
       <PageHero
         crumbs={[{ name: 'Speisekarte', path: '/speisekarte' }, { name: 'Zutaten & Allergene', path: PATH }]}
-        eyebrow="Açaí Bowl Zutaten"
+        eyebrow="Acai Bowl Zutaten"
         title="Zutaten & Allergene"
         accent="Allergene"
-        intro="Was ist in einer Açaí Bowl? Hier findest du alle Zutaten und Inhaltsstoffe unserer Bowls, welche Teile vegan sind und wo Nüsse, Gluten oder Milch stecken können."
+        intro="Was ist in einer Acai Bowl? Hier findest du alle Zutaten und Inhaltsstoffe unserer Bowls, welche Teile vegan sind und wo Nüsse, Gluten oder Milch stecken können."
       />
 
       <section className="w-full bg-white px-6 pb-16 pt-4 sm:px-10 lg:px-[60px] lg:pb-24">
@@ -63,7 +63,7 @@ export default function ZutatenPage() {
               ))}
             </ul>
             <p className="mt-4 max-w-[720px] text-base leading-[1.6] text-ink/80">
-              Açaí-Püree und Chia-Pudding sind vegan, ebenso Obst und Kokos. Eine vegane Açaí Bowl hängt also nur vom
+              Acai-Püree und Chia-Pudding sind vegan, ebenso Obst und Kokos. Eine vegane Acai Bowl hängt also nur vom
               Signature-Topping ab. Die Bowls gibt es je nach Sorte in 0,35 l und 0,5 l.
             </p>
           </div>
@@ -100,13 +100,13 @@ export default function ZutatenPage() {
 
       <TextSplit
         tone="cream"
-        title="Ist Açaí vegan?"
+        title="Ist Acai vegan?"
         accent="vegan"
         paragraphs={[
-          'Ja. Açaí ist die Frucht einer Palme aus dem Amazonasgebiet, das reine Püree ist rein pflanzlich. Auch unser Chia-Pudding ist vegan.',
-          'Ob eine Açaí Bowl laktosefrei oder ohne Nüsse möglich ist, hängt vom Topping ab. Die Tropical Bowl kommt ohne Nusscreme aus, bei Bueno und Cheesecake-Creme kann Milch enthalten sein.',
+          'Ja. Acai ist die Frucht einer Palme aus dem Amazonasgebiet, das reine Püree ist rein pflanzlich. Auch unser Chia-Pudding ist vegan.',
+          'Ob eine Acai Bowl laktosefrei oder ohne Nüsse möglich ist, hängt vom Topping ab. Die Tropical Bowl kommt ohne Nusscreme aus, bei Bueno und Cheesecake-Creme kann Milch enthalten sein.',
         ]}
-        image={{ src: '/img/bowls/tropical.jpg', alt: 'Açai Tropical Bowl mit Banane, Erdbeeren und Kokos' }}
+        image={{ src: '/img/bowls/tropical.jpg', alt: 'Acai Tropical Bowl mit Banane, Erdbeeren und Kokos' }}
       >
         <PillButton href="/speisekarte" variant="plum">Zur Speisekarte</PillButton>
       </TextSplit>

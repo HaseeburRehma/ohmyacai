@@ -7,7 +7,7 @@ import { InView } from '@/components/motion-primitives/in-view';
 import { FRANCHISE_BANNER } from '@/data/site';
 
 /**
- * Figma: "Banner — Açaí Franchise" (4128:155) — 1440 × 440, a darkened store
+ * Figma: "Banner — Acai Franchise" (4128:155) — 1440 × 440, a darkened store
  * photo with the title, a line of copy and a gold pill centred over it.
  */
 export default function FranchiseBanner() {

@@ -33,13 +33,13 @@ export default function MatchaPage() {
       <MatchaGrid />
       <TextSplit
         tone="cream"
-        title="Matcha trifft Açaí"
-        accent="Açaí"
+        title="Matcha trifft Acai"
+        accent="Acai"
         paragraphs={[
-          'Erdig-frischer Matcha und fruchtiges Açaí passen erstaunlich gut zusammen. Viele unserer Gäste nehmen zur Bowl einen Iced Matcha mit, gerade an warmen Tagen in der Altstadt.',
+          'Erdig-frischer Matcha und fruchtiges Acai passen erstaunlich gut zusammen. Viele unserer Gäste nehmen zur Bowl einen Iced Matcha mit, gerade an warmen Tagen in der Altstadt.',
           'Du findest uns in der Flinger Straße 18, nur ein paar Minuten von der U-Bahn-Haltestelle Heinrich-Heine-Allee.',
         ]}
-        image={{ src: '/img/store.jpg', alt: 'Oh My Açaí Store in der Flinger Straße 18', position: 'center 42%' }}
+        image={{ src: '/img/store.jpg', alt: 'Oh My Acai Store in der Flinger Straße 18', position: 'center 42%' }}
       >
         <PillButton href="/duesseldorf" variant="plum">Zeiten & Anfahrt</PillButton>
       </TextSplit>
@@ -47,7 +47,7 @@ export default function MatchaPage() {
         title="Dein Matcha Café in der Altstadt"
         accent="Matcha Café"
         paragraphs={[
-          'Oh My Açaí ist Açaí- und Matcha-Café in einem. Im Store in der Flinger Straße 18 bereiten wir jeden Iced Matcha frisch zu, geschichtet über Fruchtpüree und Eis. Du kannst ihn vor Ort trinken oder als Matcha to go mitnehmen.',
+          'Oh My Acai ist Acai- und Matcha-Café in einem. Im Store in der Flinger Straße 18 bereiten wir jeden Iced Matcha frisch zu, geschichtet über Fruchtpüree und Eis. Du kannst ihn vor Ort trinken oder als Matcha to go mitnehmen.',
           'Lieber liefern lassen? Matcha bestellen in Düsseldorf geht über unsere Liefer-Partner, alle Wege findest du auf der Bestellseite.',
         ]}
       >
@@ -55,7 +55,7 @@ export default function MatchaPage() {
         <PillButton href="/magazin/was-ist-matcha" variant="plum">Was ist Matcha?</PillButton>
       </TextSplit>
       <p lang="ja" className="mx-auto w-full max-w-[860px] px-6 pb-10 text-center text-[15px] text-ink/60 sm:px-10">
-        デュッセルドルフ旧市街の抹茶: Oh My Açaí, Flinger Straße 18
+        デュッセルドルフ旧市街の抹茶: Oh My Acai, Flinger Straße 18
       </p>
       <RelatedLinks links={[PAGE_LINKS.speisekarte, PAGE_LINKS.bestellen, PAGE_LINKS.magazin, PAGE_LINKS.duesseldorf]} />
       <CtaSection />

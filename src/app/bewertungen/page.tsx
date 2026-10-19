@@ -12,7 +12,7 @@ const PATH = '/bewertungen';
 export const metadata = pageMetadata({
   title: 'Oh My Acai Bewertungen | Erfahrungen unserer Gäste in Düsseldorf',
   description:
-    'Das sagen unsere Gäste über Açaí Bowls und Matcha bei Oh My Acai in Düsseldorf: Bewertungen von Google, Lieferando, Wolt und Uber Eats hier auf einen Blick.',
+    'Das sagen unsere Gäste über Acai Bowls und Matcha bei Oh My Acai in Düsseldorf: Bewertungen von Google, Lieferando, Wolt und Uber Eats hier auf einen Blick.',
   path: PATH,
 });
 

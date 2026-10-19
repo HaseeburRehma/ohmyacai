@@ -11,15 +11,15 @@ const PATH = '/online-bestellen';
 const FAQ = faqByQ(
   'Liefert Oh My Acai in Düsseldorf?',
   'Kann ich meine Bestellung abholen?',
-  'Kann ich Açaí Bowls in Düsseldorf bestellen?',
-  'Wie viel kostet eine Açaí Bowl?',
+  'Kann ich Acai Bowls in Düsseldorf bestellen?',
+  'Wie viel kostet eine Acai Bowl?',
   'Wie sind die Öffnungszeiten?',
 );
 
 export const metadata = pageMetadata({
-  title: 'Açaí Bowl bestellen Düsseldorf | Lieferung, Abholung & to go',
+  title: 'Acai Bowl bestellen Düsseldorf | Lieferung, Abholung & to go',
   description:
-    'Açaí Bowls und Matcha in ganz Düsseldorf bestellen, über Lieferando, Wolt und Uber Eats, oder direkt in der Flinger Straße 18 in der Altstadt abholen.',
+    'Acai Bowls und Matcha in ganz Düsseldorf bestellen, über Lieferando, Wolt und Uber Eats, oder direkt in der Flinger Straße 18 in der Altstadt abholen.',
   path: PATH,
 });
 
@@ -31,7 +31,7 @@ export default function OrderOnlinePage() {
         eyebrow="Lieferung · Abholung · to go"
         title="Online bestellen: Lieferung & Abholung"
         accent="Lieferung & Abholung"
-        intro="Dein Açaí Lieferservice in Düsseldorf: Lass Açaí in Düsseldorf liefern, über Wolt, Lieferando oder Uber Eats (Delivery), bestell vor und hol sie ab, oder nimm sie als Takeaway direkt im Store mit."
+        intro="Dein Acai Lieferservice in Düsseldorf: Lass Acai in Düsseldorf liefern, über Wolt, Lieferando oder Uber Eats (Delivery), bestell vor und hol sie ab, oder nimm sie als Takeaway direkt im Store mit."
       />
       <OrderOptions />
       <SignatureBowls />

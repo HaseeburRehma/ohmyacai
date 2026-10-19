@@ -26,7 +26,7 @@ export function pageMetadata({
       title,
       description,
       url: `${SITE_URL}${path}`,
-      siteName: 'Oh My Açaí',
+      siteName: 'Oh My Acai',
       locale: 'de_DE',
       type: 'website',
       images: [{ url: image }],

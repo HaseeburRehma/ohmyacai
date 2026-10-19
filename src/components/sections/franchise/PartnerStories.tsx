@@ -83,7 +83,7 @@ export default function PartnerStories() {
               <>
                 <Image
                   src={FRANCHISE_PARTNER.poster}
-                  alt="Oh My Açaí Flagship-Store in Düsseldorf"
+                  alt="Oh My Acai Flagship-Store in Düsseldorf"
                   fill
                   sizes="(max-width: 1024px) 92vw, 1320px"
                   className="object-cover"

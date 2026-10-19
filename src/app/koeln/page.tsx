@@ -11,9 +11,9 @@ import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 const PATH = '/koeln';
 
 export const metadata = pageMetadata({
-  title: 'Açaí Bowls Köln Innenstadt | Hohe Straße 105-107 | Oh My Acai',
+  title: 'Acai Bowls Köln Innenstadt | Hohe Straße 105-107 | Oh My Acai',
   description:
-    'Oh My Acai in Köln: Hohe Straße 105-107, 50667 Köln, wenige Minuten vom Dom. Öffnungszeiten, Anfahrt und frische Açaí Bowls aus echtem Püree.',
+    'Oh My Acai in Köln: Hohe Straße 105-107, 50667 Köln, wenige Minuten vom Dom. Öffnungszeiten, Anfahrt und frische Acai Bowls aus echtem Püree.',
   path: PATH,
 });
 
@@ -28,7 +28,7 @@ export default function KoelnPage() {
         intro="Unser Store in der Kölner Innenstadt liegt in der Fußgängerzone Hohe Straße 105-107, wenige Minuten vom Dom. Dieselben Bowls wie in Düsseldorf, jeden Tag frisch gemixt."
         /* The shop's own photo from its Köln Google Business Profile, until
            there is a storefront shot. */
-        image={{ src: '/img/koeln-bowls.jpg', alt: 'Açaí Bowls und Iced Matcha von Oh My Açaí Köln', position: 'center 60%' }}
+        image={{ src: '/img/koeln-bowls.jpg', alt: 'Acai Bowls und Iced Matcha von Oh My Acai Köln', position: 'center 60%' }}
       >
         <PillButton href={STORE.mapUrl} newTab>Route anzeigen</PillButton>
       </PageHero>

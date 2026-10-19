@@ -46,7 +46,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     <PageShell jsonLd={[breadcrumbLd([{ name: 'Magazin', path: '/magazin' }, { name: a.h1, path }]), articleLd]}>
       <PageHero
         crumbs={[{ name: 'Magazin', path: '/magazin' }, { name: a.h1, path }]}
-        eyebrow="Açaí & Matcha Magazin"
+        eyebrow="Acai & Matcha Magazin"
         title={a.h1}
         accent={a.accent}
         intro={a.intro}

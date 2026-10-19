@@ -49,7 +49,7 @@ export default function SignatureBowls() {
               viewOptions={{ once: true, amount: 0.3 }}
             >
               <p className="max-w-[377px] text-base tracking-[-0.5px] text-white lg:pb-[24px]">
-                Eine Auswahl unserer Lieblinge — gemacht für alle, die Açaí
+                Eine Auswahl unserer Lieblinge — gemacht für alle, die Acai
                 lieben.
               </p>
             </InView>

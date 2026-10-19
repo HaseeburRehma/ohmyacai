@@ -167,7 +167,7 @@ export default function VideoFeature() {
               >
                 <Image
                   src="/img/panel/cup-4.png"
-                  alt="Oh My Açaí Bowl"
+                  alt="Oh My Acai Bowl"
                   fill
                   sizes="34vw"
                   className="object-contain drop-shadow-[38px_44px_44px_rgba(0,0,0,0.35)]"
@@ -210,7 +210,7 @@ export default function VideoFeature() {
               <div className="pointer-events-none relative mx-auto my-1 h-[220px] w-[74%] sm:h-[300px]">
                 <Image
                   src="/img/panel/cup-4.png"
-                  alt="Oh My Açaí Bowl"
+                  alt="Oh My Acai Bowl"
                   fill
                   sizes="74vw"
                   className="object-contain drop-shadow-[16px_20px_28px_rgba(0,0,0,0.45)]"

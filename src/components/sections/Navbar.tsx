@@ -130,11 +130,11 @@ export default function Navbar() {
 
         {/* Centre: logo — always links to the home page (not the current
             page's #top), so it works from /franchise, /impressum, /datenschutz. */}
-        <Link href="/" aria-label="Oh My Açaí — zur Startseite" className="shrink-0">
+        <Link href="/" aria-label="Oh My Acai — zur Startseite" className="shrink-0">
           <motion.div whileHover={{ rotate: -6, scale: 1.06 }} transition={{ type: 'spring', stiffness: 300, damping: 14 }}>
             <Image
               src="/img/logo-mark.png"
-              alt="Oh My Açaí"
+              alt="Oh My Acai"
               width={320}
               height={324}
               priority
@@ -166,11 +166,11 @@ export default function Navbar() {
           >
             {/* Top bar — same height as the nav, logo left, close right */}
             <div className="flex h-[70px] shrink-0 items-center justify-between border-b border-white/10 px-4 sm:px-6">
-              <Link href="/" onClick={() => setOpen(false)} aria-label="Oh My Açaí — zur Startseite" className="flex items-center gap-3">
+              <Link href="/" onClick={() => setOpen(false)} aria-label="Oh My Acai — zur Startseite" className="flex items-center gap-3">
                 <span className="grid size-11 place-items-center rounded-full bg-white">
                   <Image src="/img/logo-mark.png" alt="" width={320} height={324} className="h-8 w-8 object-contain" />
                 </span>
-                <span className="font-display text-base uppercase tracking-[-0.3px] text-white">Oh My Açaí</span>
+                <span className="font-display text-base uppercase tracking-[-0.3px] text-white">Oh My Acai</span>
               </Link>
               <button
                 type="button"

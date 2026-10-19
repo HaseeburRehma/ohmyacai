@@ -43,7 +43,7 @@ export default function Footer() {
                   "Nach oben" scroller is the separate button in the credit row. */}
               <Link
                 href="/"
-                aria-label="Oh My Açaí — zur Startseite"
+                aria-label="Oh My Acai — zur Startseite"
                 className="block"
               >
                 <motion.div
@@ -57,7 +57,7 @@ export default function Footer() {
                     floating inside it. */}
                 <Image
                   src="/img/logo-badge.png"
-                  alt="Oh My Açaí"
+                  alt="Oh My Acai"
                   width={768}
                   height={768}
                   className="size-[120px] rounded-full object-contain drop-shadow-[0_10px_26px_rgba(0,0,0,0.35)]"
@@ -66,7 +66,7 @@ export default function Footer() {
               </Link>
 
               <p className="font-display text-[clamp(1.4rem,3.2vw,2rem)] leading-[1.2] tracking-[-1px] text-white lg:text-right">
-                Mach jeden Açaí-Moment
+                Mach jeden Acai-Moment
                 <br />
                 zu einem bewussten
               </p>
@@ -162,7 +162,7 @@ export default function Footer() {
             />
             <div className="flex flex-col items-center gap-3 pt-6 text-base tracking-[-0.5px] text-white/80 sm:flex-row sm:justify-between">
               <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                <span>© 2026 Oh My Açaí. Alle Rechte vorbehalten.</span>
+                <span>© 2026 Oh My Acai. Alle Rechte vorbehalten.</span>
                 <span className="text-white/50" aria-hidden>·</span>
                 <TypingCredit />
               </p>

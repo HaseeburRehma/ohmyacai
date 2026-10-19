@@ -12,7 +12,7 @@ import { breadcrumbLd, pageMetadata } from '@/lib/seo';
 const PATH = '/duesseldorf';
 
 export const metadata = pageMetadata({
-  title: 'Açaí Café Düsseldorf Altstadt | Flinger Straße 18 | Oh My Acai',
+  title: 'Acai Café Düsseldorf Altstadt | Flinger Straße 18 | Oh My Acai',
   description:
     'Oh My Acai findest du in der Flinger Straße 18, 40213 Düsseldorf. Öffnungszeiten, Anfahrt ab Heinrich-Heine-Allee und der kurze Weg durch die Altstadt.',
   path: PATH,
@@ -26,7 +26,7 @@ export default function DuesseldorfPage() {
         eyebrow="Unser Flagship-Store"
         title="Besuch uns in der Flinger Straße 18"
         accent="Flinger Straße 18"
-        intro="Mitten in der Düsseldorfer Altstadt, ein paar Minuten von der Heinrich-Heine-Allee: Hier mixen wir jeden Tag frische Açaí Bowls und Iced Matcha, zum Bleiben oder to go."
+        intro="Mitten in der Düsseldorfer Altstadt, ein paar Minuten von der Heinrich-Heine-Allee: Hier mixen wir jeden Tag frische Acai Bowls und Iced Matcha, zum Bleiben oder to go."
         image={{ src: STORE.photo!.src, alt: STORE.photo!.alt, position: 'center 42%' }}
       >
         <PillButton href={STORE.mapUrl} newTab>Route anzeigen</PillButton>
@@ -34,11 +34,11 @@ export default function DuesseldorfPage() {
       <StoreDetail store={STORE} />
       <TextSplit
         tone="cream"
-        title="Açaí in der Nähe der Altstadt"
+        title="Acai in der Nähe der Altstadt"
         accent="in der Nähe"
         paragraphs={[
-          'Du suchst eine Açaí Bowl in der Nähe? Unser Açaí Shop liegt in der Flinger Straße 18, mitten in der Düsseldorfer Altstadt und Innenstadt. Von der Bolkerstraße, dem Burgplatz und der U-Bahn-Haltestelle Heinrich-Heine-Allee sind es nur wenige Gehminuten, auch die Königsallee ist gleich um die Ecke.',
-          'Vom Düsseldorf Hauptbahnhof fährst du mit der U-Bahn bis Heinrich-Heine-Allee und gehst von dort ein paar Minuten durch die Altstadt. Bei uns gibt es Açaí Bowls, Smoothie Bowls aus echtem Açaí und Iced Matcha, zum Bleiben oder als Açaí to go.',
+          'Du suchst eine Acai Bowl in der Nähe? Unser Acai Shop liegt in der Flinger Straße 18, mitten in der Düsseldorfer Altstadt und Innenstadt. Von der Bolkerstraße, dem Burgplatz und der U-Bahn-Haltestelle Heinrich-Heine-Allee sind es nur wenige Gehminuten, auch die Königsallee ist gleich um die Ecke.',
+          'Vom Düsseldorf Hauptbahnhof fährst du mit der U-Bahn bis Heinrich-Heine-Allee und gehst von dort ein paar Minuten durch die Altstadt. Bei uns gibt es Acai Bowls, Smoothie Bowls aus echtem Acai und Iced Matcha, zum Bleiben oder als Acai to go.',
         ]}
         bullets={[
           { title: 'Bolkerstraße & Burgplatz', body: 'Ein paar Gehminuten durch die Altstadt.' },

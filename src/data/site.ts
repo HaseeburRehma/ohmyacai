@@ -1,6 +1,6 @@
 /* Site copy, in German. The Figma artboard is in English; this is the
  * translated equivalent, kept in the same shape so every component reads
- * unchanged. Brand names (Oh My Açaí, the social networks) and the Latin
+ * unchanged. Brand names (Oh My Acai, the social networks) and the Latin
  * placeholder blocks the artboard ships with are left alone. */
 
 export const ANNOUNCEMENT =
@@ -31,13 +31,13 @@ export const DELIVERY_PLATFORMS = [
   { name: 'Uber Eats', url: UBER_EATS_URL },
 ];
 
-/** B2B: pure açaí puree imported from Brazilian partner cooperatives,
+/** B2B: pure acai puree imported from Brazilian partner cooperatives,
  *  sold to bars, cafés and hotel kitchens across DACH. */
 export const BRAZIL_SECTION = {
-  titleBefore: 'Reines Açaí ',
+  titleBefore: 'Reines Acai ',
   titleAccent: 'direkt aus Brasilien',
   body:
-    'Wir arbeiten mit Partner-Kooperativen im brasilianischen Amazonasbecken zusammen und beziehen unser Açaí-Püree tiefgefroren, unverdünnt und mit vollem Nährstoffprofil. Das gleiche Püree, mit dem wir in Düsseldorf & Köln jede Bowl mixen, verkaufen wir auch an Bars, Cafés und Hotelküchen im gesamten DACH-Raum.',
+    'Wir arbeiten mit Partner-Kooperativen im brasilianischen Amazonasbecken zusammen und beziehen unser Acai-Püree tiefgefroren, unverdünnt und mit vollem Nährstoffprofil. Das gleiche Püree, mit dem wir in Düsseldorf & Köln jede Bowl mixen, verkaufen wir auch an Bars, Cafés und Hotelküchen im gesamten DACH-Raum.',
   bullets: [
     { title: '100% reines Frucht-Püree', body: 'Kein Sirup, kein Zucker, keine Zusätze. Nur die Beere, geerntet, entkernt und schockgefrostet.' },
     { title: 'Fair sourced', body: 'Direkter Bezug von Kleinfarmen im Estuário do Amazonas, mit fairen Preisen und langfristigen Verträgen.' },
@@ -46,7 +46,7 @@ export const BRAZIL_SECTION = {
   ctaLabel: 'Großhandel anfragen',
   ctaHref: 'mailto:info@ohmyacai.de?subject=Anfrage%20Gro%C3%9Fhandel%20A%C3%A7a%C3%AD-P%C3%BCree',
   imageSrc: '/img/brazil-farm.jpg',
-  imageAlt: 'Açaí-Palmen (Euterpe oleracea) im Amazonasbecken',
+  imageAlt: 'Acai-Palmen (Euterpe oleracea) im Amazonasbecken',
   mapEmbed:
     'https://maps.google.com/maps?q=amazon+rainforest+brazil&t=&z=4&ie=UTF8&iwloc=&output=embed',
 };
@@ -74,19 +74,19 @@ export const INSTAGRAM = {
       code: 'DdbrcrExmq1',
       video: '/instagram/DdbrcrExmq1.mp4',
       poster: '/instagram/DdbrcrExmq1.webp',
-      alt: 'Zuckerfreie Açaí-Bowl im Special',
+      alt: 'Zuckerfreie Acai-Bowl im Special',
     },
     {
       code: 'DdUCZPuMOIr',
       video: '/instagram/DdUCZPuMOIr.mp4',
       poster: '/instagram/DdUCZPuMOIr.webp',
-      alt: 'Açaí-Spot in Düsseldorf gefunden',
+      alt: 'Acai-Spot in Düsseldorf gefunden',
     },
     {
       code: 'DdMgssAMmDr',
       video: '/instagram/DdMgssAMmDr.mp4',
       poster: '/instagram/DdMgssAMmDr.webp',
-      alt: 'Oh My Açaí — Signature Reel',
+      alt: 'Oh My Acai — Signature Reel',
     },
   ],
 };
@@ -110,7 +110,7 @@ export const NAV_LINKS_FULL: NavLink[] = [
     href: '/speisekarte',
     children: [
       { label: 'Speisekarte & Preise', href: '/speisekarte' },
-      { label: 'Açaí Bowls', href: '/acai-bowls-duesseldorf' },
+      { label: 'Acai Bowls', href: '/acai-bowls-duesseldorf' },
       { label: 'Iced Matcha', href: '/matcha-duesseldorf' },
       { label: 'Zutaten & Allergene', href: '/zutaten-allergene' },
     ],
@@ -156,35 +156,35 @@ export const MARQUEE_WORDS = [
 export const SLIDES = [
   {
     eyebrow: 'Banane, Erdbeere & Kokos',
-    title: 'Açai Tropical',
+    title: 'Acai Tropical',
     color: '#e6a002',
     bg: '/img/panel/panel-1.png',
     image: '/img/panel/cup-1.png',
   },
   {
     eyebrow: 'Bueno, Granola & Erdbeeren',
-    title: 'Açai Bueno',
+    title: 'Acai Bueno',
     color: '#8c5737',
     bg: '/img/panel/panel-2.png',
     image: '/img/panel/cup-2.png',
   },
   {
     eyebrow: 'Pistaziencreme, Granola & Banane',
-    title: 'Açai Pistazie',
+    title: 'Acai Pistazie',
     color: '#99a75a',
     bg: '/img/panel/panel-3.png',
     image: '/img/panel/cup-3.png',
   },
   {
     eyebrow: 'Erdnussbutter, Granola & Banane',
-    title: 'Açai Erdnussbutter',
+    title: 'Acai Erdnussbutter',
     color: '#8c5737',
     bg: '/img/panel/panel-4.png',
     image: '/img/panel/cup-4.png',
   },
   {
     eyebrow: 'Cheesecake-Creme, Granola & Beeren',
-    title: 'Açai Cheesecake',
+    title: 'Acai Cheesecake',
     color: '#d0c1b0',
     bg: '/img/panel/panel-5.png',
     image: '/img/panel/cup-5.png',
@@ -196,15 +196,15 @@ export const SLIDES = [
  * each a cup photographed on its own coloured backdrop with a bottom fade for
  * legible white copy. `fade` is the artboard's per-card gradient end colour. */
 export const BOWLS = [
-  { name: 'Açai Bueno',        price: 'ab €11,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
-  { name: 'Açai Erdnussbutter',price: 'ab €11,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
-  { name: 'Açai Pistazie',     price: 'ab €11,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
-  { name: 'Açai Tropical',     price: 'ab €12,80', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
-  { name: 'Açai Cheesecake',   price: 'ab €11,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
+  { name: 'Acai Bueno',        price: 'ab €11,90', rating: '4.9', image: '/img/bowls/bueno.jpg',        video: '/img/bowls/bueno.mp4',        fade: '#5c3d2f' },
+  { name: 'Acai Erdnussbutter',price: 'ab €11,90', rating: '4.8', image: '/img/bowls/erdnussbutter.jpg',video: '/img/bowls/erdnussbutter.mp4',fade: '#764f38' },
+  { name: 'Acai Pistazie',     price: 'ab €11,90', rating: '4.9', image: '/img/bowls/pistazie.jpg',     video: '/img/bowls/pistazie.mp4',     fade: '#64653b' },
+  { name: 'Acai Tropical',     price: 'ab €12,80', rating: '4.7', image: '/img/bowls/tropical.jpg',     video: '/img/bowls/tropical.mp4',     fade: '#a87728' },
+  { name: 'Acai Cheesecake',   price: 'ab €11,90', rating: '4.8', image: '/img/bowls/cheesecake.jpg',   video: '/img/bowls/cheesecake.mp4',   fade: '#948377' },
 ];
 
 /** Feature callouts floating over the video panel (Figma: placeholder copy
- *  was replaced with real Oh My Açaí value props).
+ *  was replaced with real Oh My Acai value props).
  *  `pos` is lg-only: below that the cards sit in a grid, where a bare
  *  left/top would shove each one out of its grid cell. */
 export const VIDEO_HEADING = {
@@ -216,12 +216,12 @@ export const VIDEO_HEADING = {
 export const VIDEO_CARDS = [
   {
     title: 'Handverlesene Beeren',
-    body: 'Wir wählen unsere Açaí-Beeren aus Partnerkooperativen im Amazonasbecken — jede Bowl schmeckt nach ihrem Ursprung.',
+    body: 'Wir wählen unsere Acai-Beeren aus Partnerkooperativen im Amazonasbecken — jede Bowl schmeckt nach ihrem Ursprung.',
     pos: 'lg:left-[8.6%] lg:top-[24.5%]',
   },
   {
     title: 'Vegan von Haus aus',
-    body: 'Açaí, Chia-Pudding und Obst sind rein pflanzlich, ohne Kompromisse beim Geschmack oder der Cremigkeit.',
+    body: 'Acai, Chia-Pudding und Obst sind rein pflanzlich, ohne Kompromisse beim Geschmack oder der Cremigkeit.',
     pos: 'lg:left-[10.6%] lg:top-[73%]',
   },
   {
@@ -250,7 +250,7 @@ export const VALUE_CARDS = [
   {
     n: '03',
     title: 'Für alle Momente,\ndie zählen',
-    body: 'Oh My Açaí ist mehr als eine Bowl — es geht um den Raum, kurz innezuhalten, sich zu treffen und den Tag zu genießen.',
+    body: 'Oh My Acai ist mehr als eine Bowl — es geht um den Raum, kurz innezuhalten, sich zu treffen und den Tag zu genießen.',
     bg: 'bg-gold',
     badge: '#d4973c',
   },
@@ -259,12 +259,12 @@ export const VALUE_CARDS = [
 /** FAQ (Figma: FAQ Section → Content) */
 export const FAQS = [
   {
-    q: 'Wo gibt es Açaí in Düsseldorf',
-    a: 'Unseren Açaí Shop in Düsseldorf findest du in der Flinger Straße 18, mitten in der Altstadt. Hier mixen wir frische Açaí Bowls aus brasilianischem Açaí-Püree, unseren zweiten Store gibt es in Köln in der Hohe Straße 105-107.',
+    q: 'Wo gibt es Acai in Düsseldorf',
+    a: 'Unseren Acai Shop in Düsseldorf findest du in der Flinger Straße 18, mitten in der Altstadt. Hier mixen wir frische Acai Bowls aus brasilianischem Acai-Püree, unseren zweiten Store gibt es in Köln in der Hohe Straße 105-107.',
   },
   {
-    q: 'Was ist in euren Açaí Bowls',
-    a: 'Die Basis ist Püree aus der Açaí-Beere auf veganem Chia Pudding, mit Granola und frischem Obst: Erdbeeren, Heidelbeeren, Banane und Kokos. Als Topping wählst du Erdnussbutter, Pistazie, Bueno, Cheesecake oder Tropical.',
+    q: 'Was ist in euren Acai Bowls',
+    a: 'Die Basis ist Püree aus der Acai-Beere auf veganem Chia Pudding, mit Granola und frischem Obst: Erdbeeren, Heidelbeeren, Banane und Kokos. Als Topping wählst du Erdnussbutter, Pistazie, Bueno, Cheesecake oder Tropical.',
   },
   {
     q: 'Gibt es Takeaway und Lieferung',
@@ -272,7 +272,7 @@ export const FAQS = [
   },
   {
     q: 'Habt ihr vegane Optionen',
-    a: 'Ja. Açaí, Chia Pudding, Obst und Kokos sind vegan, bei einzelnen Toppings sagen wir dir gern, was drin steckt. Ab 11 Uhr ist eine Bowl auch ein gutes spätes Frühstück in der Altstadt.',
+    a: 'Ja. Acai, Chia Pudding, Obst und Kokos sind vegan, bei einzelnen Toppings sagen wir dir gern, was drin steckt. Ab 11 Uhr ist eine Bowl auch ein gutes spätes Frühstück in der Altstadt.',
   },
 ];
 
@@ -287,7 +287,7 @@ export const REVIEWS = [
   {
     name: 'Lena Vogel',
     when: 'vor 2 Wochen',
-    body: 'Beste Açaí Bowl in Düsseldorf! Cremig, frisch und die Toppings sind top. Komme definitiv wieder.',
+    body: 'Beste Acai Bowl in Düsseldorf! Cremig, frisch und die Toppings sind top. Komme definitiv wieder.',
   },
   {
     name: 'Marco Bianchi',
@@ -297,7 +297,7 @@ export const REVIEWS = [
   {
     name: 'Aylin Demir',
     when: 'vor 3 Wochen',
-    body: 'Endlich echtes Açaí! Nicht zu süß, richtig cremig und schöne Portionen. Klare Empfehlung.',
+    body: 'Endlich echtes Acai! Nicht zu süß, richtig cremig und schöne Portionen. Klare Empfehlung.',
   },
   {
     name: 'Jonas Keller',
@@ -307,7 +307,7 @@ export const REVIEWS = [
   {
     name: 'Sophie Wagner',
     when: 'vor 2 Monaten',
-    body: 'Mega lecker und so frisch. Die Açai Pistazie ist mein absoluter Favorit — cremig und gut gebalanced.',
+    body: 'Mega lecker und so frisch. Die Acai Pistazie ist mein absoluter Favorit — cremig und gut gebalanced.',
   },
   {
     name: 'Tom Fischer',
@@ -322,7 +322,7 @@ export const REVIEWS = [
   {
     name: 'David Klein',
     when: 'vor 3 Tagen',
-    body: 'Die Açai Bueno ist unglaublich gut. Sättigt und schmeckt trotzdem leicht.',
+    body: 'Die Acai Bueno ist unglaublich gut. Sättigt und schmeckt trotzdem leicht.',
   },
 ];
 
@@ -351,7 +351,7 @@ export const CONTACT = {
   address: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
 };
 
-/** Both store locations for the footer. Addresses match the two Oh My Açaí
+/** Both store locations for the footer. Addresses match the two Oh My Acai
  *  Google Business Profiles (Düsseldorf + Köln). */
 export const LOCATIONS = [
   {
@@ -383,12 +383,12 @@ export type StoreLocation = {
   arrival: { title: string; body: string }[];
 };
 
-/** Flagship — Oh My Açaí Düsseldorf. Hours per the Google Business Profile;
+/** Flagship — Oh My Acai Düsseldorf. Hours per the Google Business Profile;
  *  open every day, through midnight on Fri/Sat. */
 export const LOCATION_DUESSELDORF: StoreLocation = {
   slug: 'duesseldorf',
   city: 'Düsseldorf',
-  label: 'Oh My Açaí Düsseldorf',
+  label: 'Oh My Acai Düsseldorf',
   addressLines: ['Flinger Str. 18', '40213 Düsseldorf', 'Deutschland'],
   mapUrl:
     'https://www.google.com/maps/dir/?api=1&destination=Oh+My+Acai+Flinger+Str.+18+40213+D%C3%BCsseldorf',
@@ -403,7 +403,7 @@ export const LOCATION_DUESSELDORF: StoreLocation = {
     { day: 'Samstag',    time: '11:00 – 00:00' },
     { day: 'Sonntag',    time: '12:00 – 23:00' },
   ],
-  photo: { src: '/img/store.jpg', alt: 'Oh My Açaí Store in der Flinger Straße 18, Düsseldorf Altstadt' },
+  photo: { src: '/img/store.jpg', alt: 'Oh My Acai Store in der Flinger Straße 18, Düsseldorf Altstadt' },
   arrival: [
     { title: 'U-Bahn', body: 'Haltestelle Heinrich-Heine-Allee, von dort ein paar Minuten zu Fuß durch die Altstadt.' },
     { title: 'Zu Fuß', body: 'Die Flinger Straße ist Fußgängerzone, mitten zwischen Marktplatz und Heinrich-Heine-Allee.' },
@@ -411,12 +411,12 @@ export const LOCATION_DUESSELDORF: StoreLocation = {
   ],
 };
 
-/** Second store — Oh My Açaí Köln. Hours + address per the Google Business
+/** Second store — Oh My Acai Köln. Hours + address per the Google Business
  *  Profile the owner shared. */
 export const LOCATION_COLOGNE: StoreLocation & { ratingLine: string } = {
   slug: 'koeln',
   city: 'Köln',
-  label: 'Oh My Açaí Köln',
+  label: 'Oh My Acai Köln',
   addressLines: ['Hohe Str. 105-107', '50667 Köln', 'Deutschland'],
   ratingLine: '4,4 ★ auf Google (25+ Bewertungen)',
   mapUrl:
@@ -449,9 +449,9 @@ export const FRANCHISE_HERO = {
   eyebrow: 'Franchise-Programm 2026',
   /** the middle span is set in gold in the artboard */
   titleBefore: 'Hol ',
-  titleAccent: 'Oh My Açaí',
+  titleAccent: 'Oh My Acai',
   titleAfter: ' in deine Stadt',
-  body: 'Eine schlüsselfertige Açaí-Bar: Rezepte, Beeren-Lieferkette und Eröffnungsplan stehen bereits — sag uns einfach, wo du starten willst.',
+  body: 'Eine schlüsselfertige Acai-Bar: Rezepte, Beeren-Lieferkette und Eröffnungsplan stehen bereits — sag uns einfach, wo du starten willst.',
   stats: [
     { value: '1', label: 'Flagship-Store in Düsseldorf' },
     { value: '30 +', label: 'Rezepte, Playbook & SOPs' },
@@ -462,7 +462,7 @@ export const FRANCHISE_HERO = {
 export const FRANCHISE_FORM = {
   title: 'Franchise-Paket anfordern',
   body: 'Kosten, Gebietskarte und der Sechs-Wochen-Eröffnungsplan — innerhalb eines Werktags in deinem Postfach.',
-  consent: 'Oh My Açaí darf mich zur Eröffnung einer eigenen Filiale kontaktieren.',
+  consent: 'Oh My Acai darf mich zur Eröffnung einer eigenen Filiale kontaktieren.',
   submit: 'Franchise-Paket schicken',
   budgets: [
     'Unter 80.000 €',
@@ -473,8 +473,8 @@ export const FRANCHISE_FORM = {
 };
 
 export const FRANCHISE_BANNER = {
-  title: 'Açaí-Franchise',
-  body: 'Eine fertige Açaí-Bar im Paket — Ladenbau, Technik, Rezepte und Lieferantennetz aus einer Hand, damit du schnell eröffnest und überall gleich gut bleibst.',
+  title: 'Acai-Franchise',
+  body: 'Eine fertige Acai-Bar im Paket — Ladenbau, Technik, Rezepte und Lieferantennetz aus einer Hand, damit du schnell eröffnest und überall gleich gut bleibst.',
   cta: 'Mehr erfahren',
 };
 
@@ -489,9 +489,9 @@ export const FRANCHISE_STEPS = [
     n: '01',
     label: 'Schritt 01',
     title: 'Anmelden',
-    body: 'Wir schauen uns gemeinsam an, was in deiner Stadt möglich ist. Du bekommst die Gebietsanalyse, die Investitionsübersicht und einen Blick auf die Zahlen einer laufenden Oh My Açaí Bar — bevor irgendetwas unterschrieben wird.',
+    body: 'Wir schauen uns gemeinsam an, was in deiner Stadt möglich ist. Du bekommst die Gebietsanalyse, die Investitionsübersicht und einen Blick auf die Zahlen einer laufenden Oh My Acai Bar — bevor irgendetwas unterschrieben wird.',
     image: '/img/fr/step-1.webp',
-    alt: 'Illustration: Franchise-Handschlag über einer Karte, Açaí-Bowl daneben',
+    alt: 'Illustration: Franchise-Handschlag über einer Karte, Acai-Bowl daneben',
     bg: 'bg-cream',
     /** Figma alternates which half the photo sits on */
     imageFirst: true,
@@ -502,7 +502,7 @@ export const FRANCHISE_STEPS = [
     title: 'Aufbauen',
     body: 'Ladenbau, Technik, Kasse und Lieferwege übernimmt unser Team. Dein Team wird auf der kompletten Bowl-Karte geschult, bis jede Bowl genauso aussieht wie die, die wir in unserem Flagship-Store in Düsseldorf servieren.',
     image: '/img/fr/step-2.webp',
-    alt: 'Illustration: Team baut die neue Oh My Açaí Bar auf und trainiert die Bowl-Karte',
+    alt: 'Illustration: Team baut die neue Oh My Acai Bar auf und trainiert die Bowl-Karte',
     bg: 'bg-[#fdf3e3]',
     imageFirst: false,
   },
@@ -530,10 +530,10 @@ export const FRANCHISE_STEPS = [
  *  the Figma "Meet Our Bowls" frame — no photo backdrop, no two-tone
  *  split. `color` is the card fill, chosen from Figma's palette. */
 export const FRANCHISE_BOWLS = [
-  { name: 'Açai Bueno',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
-  { name: 'Açai Tropical',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
-  { name: 'Açai Pistazie',   image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
-  { name: 'Açai Cheesecake', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
+  { name: 'Acai Bueno',      image: '/img/bowls/bueno-cutout.webp',        color: '#e6a002' },
+  { name: 'Acai Tropical',   image: '/img/bowls/tropical-cutout.webp',     color: '#8c5737' },
+  { name: 'Acai Pistazie',   image: '/img/bowls/pistazie-cutout.webp',     color: '#7c8b3f' },
+  { name: 'Acai Cheesecake', image: '/img/bowls/cheesecake-cutout.webp',   color: '#d0c1b0' },
 ];
 
 export const FRANCHISE_BOWLS_HEAD = {
@@ -545,10 +545,10 @@ export const FRANCHISE_BOWLS_HEAD = {
 export const FRANCHISE_WHY = {
   titleBefore: 'Warum ',
   titleAccent: 'Franchise',
-  titleAfter: ' mit Oh My Açaí',
+  titleAfter: ' mit Oh My Acai',
   body: 'Wir starten das Franchise mit dem Rezept, das in unserem Flagship-Store in Düsseldorf jeden Tag ausverkauft ist — mit fest verhandelten Lieferanten, geschulten Baristas und einem Eröffnungsplan, der jeden Schritt vorgibt. Du bringst den Standort und die Energie mit.',
   stats: [
-    { value: '100 %', label: 'Echtes Açaí-Püree statt Pulver' },
+    { value: '100 %', label: 'Echtes Acai-Püree statt Pulver' },
     { value: '5', label: 'Signature Bowls von Tag 1' },
     { value: '6 Wo.', label: 'Vom Vertrag bis zur Eröffnung' },
   ],
@@ -702,43 +702,43 @@ export const DATENSCHUTZ = {
  * ------------------------------------------------------------------ */
 
 /** Bowl menu. Toppings and prices from the shop's own delivery listings
- *  (Wolt, Lieferando, Uber Eats, checked 2026-10-07): every bowl is açaí
+ *  (Wolt, Lieferando, Uber Eats, checked 2026-10-07): every bowl is acai
  *  purée on chia pudding with granola, banana, strawberries, blueberries and
  *  coconut, plus its signature topping. Wolt sells 0,35 l (11,90 €) and
  *  0,5 l (13,50 €); Tropical is only on Lieferando (12,80 €) / Uber Eats. */
 export const MENU_BOWLS = [
   {
-    name: 'Açai Erdnussbutter',
+    name: 'Acai Erdnussbutter',
     price: 'ab 11,90 €',
-    body: 'Açaí-Püree auf veganem Chia-Pudding mit Erdnussbutter, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    body: 'Acai-Püree auf veganem Chia-Pudding mit Erdnussbutter, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
     toppings: 'Erdnussbutter, Granola & Banane',
     image: '/img/bowls/erdnussbutter.jpg',
   },
   {
-    name: 'Açai Pistazie',
+    name: 'Acai Pistazie',
     price: 'ab 11,90 €',
-    body: 'Açaí-Püree auf veganem Chia-Pudding mit Pistaziencreme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    body: 'Acai-Püree auf veganem Chia-Pudding mit Pistaziencreme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
     toppings: 'Pistaziencreme, Granola & Banane',
     image: '/img/bowls/pistazie.jpg',
   },
   {
-    name: 'Açai Bueno',
+    name: 'Acai Bueno',
     price: 'ab 11,90 €',
-    body: 'Açaí-Püree auf veganem Chia-Pudding mit Bueno, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    body: 'Acai-Püree auf veganem Chia-Pudding mit Bueno, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
     toppings: 'Bueno, Granola & Erdbeeren',
     image: '/img/bowls/bueno.jpg',
   },
   {
-    name: 'Açai Tropical',
+    name: 'Acai Tropical',
     price: 'ab 12,80 €',
-    body: 'Açaí-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    body: 'Acai-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
     toppings: 'Banane, Erdbeere & Kokos',
     image: '/img/bowls/tropical.jpg',
   },
   {
-    name: 'Açai Cheesecake',
+    name: 'Acai Cheesecake',
     price: 'ab 11,90 €',
-    body: 'Açaí-Püree auf veganem Chia-Pudding mit Cheesecake-Creme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
+    body: 'Acai-Püree auf veganem Chia-Pudding mit Cheesecake-Creme, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln.',
     toppings: 'Cheesecake-Creme, Granola & Beeren',
     image: '/img/bowls/cheesecake.jpg',
   },
@@ -784,47 +784,47 @@ export const COLD_DRINKS = [
  *  Eats, both addresses, store hours. No nutrition or health claims. */
 export const FAQ_PAGE = [
   {
-    q: 'Was ist Açaí?',
-    a: 'Açaí ist die kleine, dunkelviolette Beere der Açaí-Palme (Euterpe oleracea) aus dem Amazonasgebiet in Brasilien. Weil die frische Frucht schnell verdirbt, wird sie direkt nach der Ernte entkernt, zu Püree verarbeitet und tiefgefroren. Daraus mixen wir die cremige, eisgekühlte Basis jeder Bowl.',
+    q: 'Was ist Acai?',
+    a: 'Acai ist die kleine, dunkelviolette Beere der Acai-Palme (Euterpe oleracea) aus dem Amazonasgebiet in Brasilien. Weil die frische Frucht schnell verdirbt, wird sie direkt nach der Ernte entkernt, zu Püree verarbeitet und tiefgefroren. Daraus mixen wir die cremige, eisgekühlte Basis jeder Bowl.',
   },
   {
-    q: 'Was ist eine Açaí Bowl?',
-    a: 'Eine Açaí Bowl ist eine dicke, gefrorene Smoothie Bowl aus Açaí-Püree, die man löffelt statt trinkt. Bei uns kommt sie auf veganen Chia-Pudding und wird mit Granola, Banane, Erdbeeren, Heidelbeeren, Kokosraspeln und einem Signature-Topping belegt.',
+    q: 'Was ist eine Acai Bowl?',
+    a: 'Eine Acai Bowl ist eine dicke, gefrorene Smoothie Bowl aus Acai-Püree, die man löffelt statt trinkt. Bei uns kommt sie auf veganen Chia-Pudding und wird mit Granola, Banane, Erdbeeren, Heidelbeeren, Kokosraspeln und einem Signature-Topping belegt.',
   },
   {
-    q: 'Wie spricht man Açaí aus?',
-    a: 'Ungefähr „a-sa-ÍH“, mit Betonung auf der letzten Silbe. Das „ç“ wird wie ein scharfes „s“ gesprochen, das Wort kommt aus dem brasilianischen Portugiesisch.',
+    q: 'Wie spricht man Acai aus?',
+    a: 'Ungefähr „a-sa-ÍH“, mit Betonung auf der letzten Silbe. Das Wort kommt aus dem brasilianischen Portugiesisch, dort schreibt man es mit Cedille (ç), die wie ein scharfes „s“ klingt.',
   },
   {
-    q: 'Woher kommt Açaí?',
-    a: 'Die Açaí-Palme wächst im Amazonasgebiet, vor allem im brasilianischen Bundesstaat Pará rund um die Amazonasmündung. Unser Püree beziehen wir von Partner-Kooperativen aus dieser Region.',
+    q: 'Woher kommt Acai?',
+    a: 'Die Acai-Palme wächst im Amazonasgebiet, vor allem im brasilianischen Bundesstaat Pará rund um die Amazonasmündung. Unser Püree beziehen wir von Partner-Kooperativen aus dieser Region.',
   },
   {
-    q: 'Wie schmeckt Açaí?',
-    a: 'Reines Açaí schmeckt erdig-fruchtig, ein bisschen nach dunklen Beeren mit einem Hauch Kakao, und ist von Natur aus kaum süß. Die Süße in einer Bowl kommt vor allem vom Obst und den Toppings.',
+    q: 'Wie schmeckt Acai?',
+    a: 'Reines Acai schmeckt erdig-fruchtig, ein bisschen nach dunklen Beeren mit einem Hauch Kakao, und ist von Natur aus kaum süß. Die Süße in einer Bowl kommt vor allem vom Obst und den Toppings.',
   },
   {
-    q: 'Ist Açaí vegan?',
-    a: 'Ja. Açaí ist eine Frucht, das reine Püree ist rein pflanzlich.',
+    q: 'Ist Acai vegan?',
+    a: 'Ja. Acai ist eine Frucht, das reine Püree ist rein pflanzlich.',
   },
   {
-    q: 'Ist eine Açaí Bowl vegan?',
-    a: 'Die Basis aus Açaí-Püree und Chia-Pudding ist vegan. Ob die ganze Bowl vegan ist, hängt vom Topping ab: Bei Bueno und Cheesecake-Creme frag bitte im Store nach, wir sagen dir genau, was drin steckt.',
+    q: 'Ist eine Acai Bowl vegan?',
+    a: 'Die Basis aus Acai-Püree und Chia-Pudding ist vegan. Ob die ganze Bowl vegan ist, hängt vom Topping ab: Bei Bueno und Cheesecake-Creme frag bitte im Store nach, wir sagen dir genau, was drin steckt.',
   },
   {
-    q: 'Was ist in einer Açaí Bowl?',
-    a: 'Bei Oh My Açaí: Açaí-Püree, veganer Chia-Pudding, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln, dazu je nach Bowl Erdnussbutter, Pistaziencreme, Bueno oder Cheesecake-Creme. Alle Details findest du unter Zutaten & Allergene.',
+    q: 'Was ist in einer Acai Bowl?',
+    a: 'Bei Oh My Acai: Acai-Püree, veganer Chia-Pudding, Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln, dazu je nach Bowl Erdnussbutter, Pistaziencreme, Bueno oder Cheesecake-Creme. Alle Details findest du unter Zutaten & Allergene.',
   },
   {
-    q: 'Welche Toppings gibt es für Açaí Bowls?',
+    q: 'Welche Toppings gibt es für Acai Bowls?',
     a: 'Jede Bowl hat Granola, Banane, Erdbeeren, Heidelbeeren und Kokosraspeln. Das Signature-Topping macht den Unterschied: Erdnussbutter, Pistaziencreme, Bueno, Cheesecake-Creme oder unsere Tropical Bowl.',
   },
   {
-    q: 'Enthält Açaí Zucker?',
-    a: 'Reines Açaí-Püree enthält von Natur aus nur wenig Zucker. Obst und Toppings wie Bueno, Cheesecake-Creme oder Granola bringen zusätzliche Süße mit.',
+    q: 'Enthält Acai Zucker?',
+    a: 'Reines Acai-Püree enthält von Natur aus nur wenig Zucker. Obst und Toppings wie Bueno, Cheesecake-Creme oder Granola bringen zusätzliche Süße mit.',
   },
   {
-    q: 'Wie viele Kalorien hat eine Açaí Bowl?',
+    q: 'Wie viele Kalorien hat eine Acai Bowl?',
     a: 'Das hängt stark von Größe (0,35 l oder 0,5 l) und Topping ab. Geprüfte Nährwertangaben für unsere Bowls bekommst du auf Nachfrage im Store.',
   },
   {
@@ -836,11 +836,11 @@ export const FAQ_PAGE = [
     a: 'Die Erdnussbutter Bowl enthält Erdnüsse, die Pistazie Bowl Pistazien. Auch in anderen Toppings können Nüsse oder Spuren davon stecken. Bei einer Nussallergie frag bitte vor der Bestellung im Store nach.',
   },
   {
-    q: 'Kann ich meine Açaí Bowl individuell zusammenstellen?',
+    q: 'Kann ich meine Acai Bowl individuell zusammenstellen?',
     a: 'Sprich uns an der Theke an. Wir passen Toppings gern an, soweit es möglich ist.',
   },
   {
-    q: 'Kann ich Açaí Bowls in Düsseldorf bestellen?',
+    q: 'Kann ich Acai Bowls in Düsseldorf bestellen?',
     a: 'Ja, über Wolt, Lieferando und Uber Eats. Alle Wege findest du auf der Seite Online bestellen.',
   },
   {
@@ -856,7 +856,7 @@ export const FAQ_PAGE = [
     a: 'Unsere Bowls gibt es je nach Bowl in 0,35 l und 0,5 l.',
   },
   {
-    q: 'Wie viel kostet eine Açaí Bowl?',
+    q: 'Wie viel kostet eine Acai Bowl?',
     a: 'Ab 11,90 € für 0,35 l und ab 13,50 € für 0,5 l, je nach Bowl und Bestellweg. Die aktuellen Preise stehen auf unserer Speisekarte.',
   },
   {
@@ -865,7 +865,7 @@ export const FAQ_PAGE = [
   },
   {
     q: 'Gibt es vegane Optionen?',
-    a: 'Ja. Açaí-Püree und Chia-Pudding sind vegan, ebenso Obst und Kokos. Bei einzelnen Toppings fragst du am besten kurz im Store nach.',
+    a: 'Ja. Acai-Püree und Chia-Pudding sind vegan, ebenso Obst und Kokos. Bei einzelnen Toppings fragst du am besten kurz im Store nach.',
   },
   {
     q: 'Wo befindet sich Oh My Acai Düsseldorf?',
@@ -876,11 +876,11 @@ export const FAQ_PAGE = [
     a: 'Düsseldorf: Mo bis Do 11:00 bis 22:00, Fr und Sa 11:00 bis 00:00, So 12:00 bis 23:00. Köln: Mo bis Fr 11:00 bis 20:30, Sa 10:00 bis 21:00, So 13:30 bis 18:30.',
   },
   {
-    q: 'Kann ich euer Açaí-Püree für mein Café kaufen?',
-    a: 'Ja. Wir verkaufen dasselbe reine Açaí-Püree, das wir selbst verwenden, an Cafés, Bars und Hotelküchen. Schick uns einfach eine Anfrage über das Großhandel-Formular.',
+    q: 'Kann ich euer Acai-Püree für mein Café kaufen?',
+    a: 'Ja. Wir verkaufen dasselbe reine Acai-Püree, das wir selbst verwenden, an Cafés, Bars und Hotelküchen. Schick uns einfach eine Anfrage über das Großhandel-Formular.',
   },
   {
-    q: 'Kann ich ein Oh My Açaí Franchise eröffnen?',
+    q: 'Kann ich ein Oh My Acai Franchise eröffnen?',
     a: 'Ja, wir suchen Partner für neue Standorte. Alle Infos und das Anfrageformular findest du auf unserer Franchise-Seite.',
   },
 ];
@@ -895,16 +895,16 @@ export const faqByQ = (...qs: string[]) => qs.map((q) => {
 /** Internal-link cards, one per page, anchor text = the page's keyword.
  *  Pages pick from these per the sheet's "Recommended Internal Links". */
 export const PAGE_LINKS = {
-  home: { href: '/', label: 'Açaí Düsseldorf', body: 'Unsere Startseite: Bowls, Stores und alles rund um Oh My Açaí.' },
+  home: { href: '/', label: 'Acai Düsseldorf', body: 'Unsere Startseite: Bowls, Stores und alles rund um Oh My Acai.' },
   speisekarte: { href: '/speisekarte', label: 'Speisekarte & Preise', body: 'Alle Bowls, Größen und Preise, Iced Matcha und kalte Getränke.' },
-  bowls: { href: '/acai-bowls-duesseldorf', label: 'Açaí Bowls Düsseldorf', body: 'Fünf Signature Bowls aus echtem Açaí-Püree, frisch gemacht in der Altstadt.' },
+  bowls: { href: '/acai-bowls-duesseldorf', label: 'Acai Bowls Düsseldorf', body: 'Fünf Signature Bowls aus echtem Acai-Püree, frisch gemacht in der Altstadt.' },
   matcha: { href: '/matcha-duesseldorf', label: 'Iced Matcha Düsseldorf', body: 'Mango, Strawberry oder Spezial, frisch zubereitet und to go.' },
   zutaten: { href: '/zutaten-allergene', label: 'Zutaten & Allergene', body: 'Was in jeder Bowl steckt, was vegan ist und wo Nüsse drin sind.' },
-  ueber: { href: '/ueber-uns', label: 'Über Oh My Açaí', body: 'Unsere Geschichte, unser Açaí und die zwei Stores.' },
-  duesseldorf: { href: '/duesseldorf', label: 'Açaí Café Altstadt', body: 'Flinger Straße 18: Öffnungszeiten, Anfahrt und Karte.' },
+  ueber: { href: '/ueber-uns', label: 'Über Oh My Acai', body: 'Unsere Geschichte, unser Acai und die zwei Stores.' },
+  duesseldorf: { href: '/duesseldorf', label: 'Acai Café Altstadt', body: 'Flinger Straße 18: Öffnungszeiten, Anfahrt und Karte.' },
   bewertungen: { href: '/bewertungen', label: 'Bewertungen', body: 'Was Gäste über uns sagen, auf Google, Wolt, Lieferando und Uber Eats.' },
-  bestellen: { href: '/online-bestellen', label: 'Açaí online bestellen', body: 'Lieferung über Wolt, Lieferando und Uber Eats oder Abholung im Store.' },
+  bestellen: { href: '/online-bestellen', label: 'Acai online bestellen', body: 'Lieferung über Wolt, Lieferando und Uber Eats oder Abholung im Store.' },
   faq: { href: '/faq', label: 'Häufige Fragen', body: 'Preise, Größen, vegan, Allergene, Lieferung: kurz beantwortet.' },
-  magazin: { href: '/magazin', label: 'Açaí & Matcha Magazin', body: 'Was ist Açaí, wie spricht man es aus und was ist Matcha?' },
+  magazin: { href: '/magazin', label: 'Acai & Matcha Magazin', body: 'Was ist Acai, wie spricht man es aus und was ist Matcha?' },
   kontakt: { href: '/kontakt', label: 'Kontakt', body: 'Telefon, E-Mail, Adressen und Öffnungszeiten beider Stores.' },
 } as const;

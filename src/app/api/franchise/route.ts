@@ -17,7 +17,7 @@ export const runtime = 'nodejs';
  * Configure in the environment (Vercel → Project → Settings → Environment
  * Variables):
  *   SMTP_HOST, SMTP_PORT (465 or 587), SMTP_USER, SMTP_PASS
- *   MAIL_FROM  e.g. "Oh My Açaí <info@tylotech.de>"
+ *   MAIL_FROM  e.g. "Oh My Acai <info@tylotech.de>"
  *   MAIL_TO    (optional) defaults to info@tylotech.de
  * Without these the route returns 503 and the form shows a fallback message.
  */
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       from,
       to: `${firstName} ${lastName} <${email}>`,
       replyTo: to,
-      subject: 'Deine Oh My Açaí Franchise-Anfrage ist da',
+      subject: 'Deine Oh My Acai Franchise-Anfrage ist da',
       text: applicantText(enquiry),
       html: applicantEmail(enquiry),
     });

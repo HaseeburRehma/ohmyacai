@@ -18,8 +18,8 @@ export default function MenuBoard({ showMatcha = true }: { showMatcha?: boolean 
     <section id="karte" className="w-full bg-white px-6 pb-20 pt-4 sm:px-10 lg:px-[60px] lg:pb-[120px]">
       <div className="mx-auto flex w-full max-w-[1020px] flex-col gap-16 lg:gap-24">
         <MenuGroup
-          title="Açaí Bowls"
-          note="Açaí-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokos. Je nach Bowl in 0,35 l und 0,5 l."
+          title="Acai Bowls"
+          note="Acai-Püree auf veganem Chia-Pudding mit Granola, Banane, Erdbeeren, Heidelbeeren und Kokos. Je nach Bowl in 0,35 l und 0,5 l."
           link={{ href: '/acai-bowls-duesseldorf', label: 'Mehr über unsere Bowls' }}
         >
           {MENU_BOWLS.map((b, i) => (
