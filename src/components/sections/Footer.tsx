@@ -165,6 +165,16 @@ export default function Footer() {
                 <span>© 2026 Oh My Acai. Alle Rechte vorbehalten.</span>
                 <span className="text-white/50" aria-hidden>·</span>
                 <TypingCredit />
+                <a
+                  href="https://tylotech.de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TyloTech, Webdesign & Entwicklung"
+                  className="inline-flex min-h-11 items-center opacity-90 transition-opacity hover:opacity-100"
+                >
+                  {/* TyloTech logo, dark-background variant (gold mark, white wordmark) */}
+                  <img src="/img/tylotech-logo.svg" alt="TyloTech" width={150} height={38} className="h-[22px] w-auto" />
+                </a>
               </p>
               <a
                 href="/impressum"
