@@ -245,23 +245,25 @@ export default function StoreSection() {
                 routeUrl={LOCATION_COLOGNE.mapUrl}
                 className="h-[280px] sm:h-auto sm:aspect-[4/3] lg:aspect-auto lg:h-[380px]"
               />
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-plum lg:aspect-auto lg:h-[220px]">
+              {/* Brand tile: copy and badge sit side by side (not stacked),
+                  so the badge can never cover the text at any width. */}
+              <div className="relative flex w-full items-center gap-4 overflow-hidden rounded-3xl bg-plum p-6 sm:gap-6 sm:p-8 lg:min-h-[220px]">
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <p className="font-display text-[clamp(1.1rem,4.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-cream lg:text-[clamp(1.2rem,2vw,1.75rem)]">
+                    Frisch gemixt in der Innenstadt
+                  </p>
+                  <p className="max-w-[300px] text-sm leading-[1.45] tracking-[-0.2px] text-cream/80">
+                    Hohe Straße 105-107. Direkt in der Kölner Fußgängerzone, zwei Minuten vom Dom.
+                  </p>
+                </div>
                 <Image
                   src="/img/logo-badge.png"
                   alt=""
                   width={512}
                   height={512}
                   aria-hidden
-                  className="pointer-events-none absolute right-[-50px] top-1/2 size-[260px] -translate-y-1/2 rotate-[8deg] object-contain opacity-95"
+                  className="pointer-events-none size-[84px] shrink-0 rotate-[8deg] object-contain min-[400px]:size-[104px] sm:size-[140px] lg:size-[150px]"
                 />
-                <div className="relative flex h-full max-w-[62%] flex-col justify-center gap-2 p-6 sm:max-w-[66%] sm:p-8">
-                  <p className="font-display text-[clamp(1.35rem,3.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-cream">
-                    Frisch gemixt<br />in der Innenstadt
-                  </p>
-                  <p className="max-w-[280px] text-sm leading-[1.4] tracking-[-0.2px] text-cream/80">
-                    Hohe Straße 105-107. Direkt in der Kölner Fußgängerzone, zwei Minuten vom Dom.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
