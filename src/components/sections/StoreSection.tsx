@@ -254,7 +254,7 @@ export default function StoreSection() {
                   aria-hidden
                   className="pointer-events-none absolute right-[-50px] top-1/2 size-[260px] -translate-y-1/2 rotate-[8deg] object-contain opacity-95"
                 />
-                <div className="relative flex h-full flex-col justify-center gap-2 p-6 sm:p-8">
+                <div className="relative flex h-full max-w-[62%] flex-col justify-center gap-2 p-6 sm:max-w-[66%] sm:p-8">
                   <p className="font-display text-[clamp(1.35rem,3.4vw,1.75rem)] uppercase leading-[1.1] tracking-[-0.5px] text-cream">
                     Frisch gemixt<br />in der Innenstadt
                   </p>
