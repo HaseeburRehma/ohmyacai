@@ -100,12 +100,12 @@ export default function StoreSection() {
               visible: { transition: { staggerChildren: 0.08 } },
             }}
             /* Sized against the column, not the viewport, so the heading
-               always sets as the three lines below. Measured at every
-               breakpoint: the largest size that keeps "Deinen Eigenen" on one
-               line is 9.36% of the column width, and the ratio holds because
-               both scale together. 9.1cqw leaves a little slack, capped at
-               Figma's 64px so it never grows past the design. */
-            className="font-display text-[min(2.25rem,6.6cqw)] uppercase leading-[1.15] text-ink lg:text-[min(4rem,9.1cqw)]"
+               always sets as the lines below. Measured at every breakpoint:
+               the largest size that keeps "Besuche unseren" on one line is
+               ~8% of the column width, and the ratio holds because both scale
+               together. 7.8cqw leaves a little slack, capped at Figma's 64px
+               so it never grows past the design. */
+            className="font-display text-[min(2.25rem,6.6cqw)] uppercase leading-[1.15] text-ink lg:text-[min(4rem,7.8cqw)]"
           >
             <span className="sr-only">Besuche unseren Store</span>
             {HEADING.map((line) => (
