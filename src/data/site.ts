@@ -459,18 +459,87 @@ export const FRANCHISE_HERO = {
   ],
 };
 
+/**
+ * Franchise enquiry — multi-step form (Content Brief "Franchise Page —
+ * Multi-Step Form", TyloTech). Same mechanic as the Light of Hope ad pages and
+ * the Meta Instant Form: progress bar, one question per step, contact last.
+ * The German strings are final copy — keep them word for word.
+ */
 export const FRANCHISE_FORM = {
-  title: 'Franchise-Paket anfordern',
-  body: 'Kosten, Gebietskarte und der Sechs-Wochen-Eröffnungsplan — innerhalb eines Werktags in deinem Postfach.',
-  consent: 'Oh My Acai darf mich zur Eröffnung einer eigenen Filiale kontaktieren.',
-  submit: 'Franchise-Paket schicken',
-  budgets: [
-    'Unter 80.000 €',
-    '80.000 – 150.000 €',
-    '150.000 – 250.000 €',
-    'Über 250.000 €',
+  title: 'Eröffne deinen eigenen Oh My Acai Laden',
+  body: 'Werde Franchise-Partner – auch ohne Gastro-Erfahrung. Beantworte kurz 4 Fragen, wir melden uns mit allen Infos zu deinem Laden.',
+  founder: {
+    name: 'Xenia',
+    role: 'Gründerin',
+    quote: 'Ich begleite dich von der ersten Frage bis zur Eröffnung.',
+    /** Round crop of the 4K brand photo (logo shirt). Until the file is in
+     *  /public the avatar falls back to an "X" monogram. */
+    photo: null as string | null,
+  },
+  steps: [
+    {
+      key: 'city',
+      label: 'Standort',
+      question: 'In welcher Stadt / Region möchtest du eröffnen?',
+      placeholder: 'Stadt / Region',
+    },
+    {
+      key: 'capital',
+      label: 'Kapital',
+      question: 'Wie viel Kapital kannst du investieren?',
+      options: [
+        '40.000 – 60.000 €',
+        '60.000 – 100.000 €',
+        '100.000 € +',
+        'Weniger als 40.000 €',
+      ],
+    },
+    {
+      key: 'timing',
+      label: 'Zeitpunkt',
+      question: 'Wann möchtest du starten?',
+      options: [
+        'So schnell wie möglich',
+        'In den nächsten 3 Monaten',
+        'In den nächsten 6–12 Monaten',
+        'Erstmal nur informieren',
+      ],
+    },
+    {
+      key: 'experience',
+      label: 'Erfahrung',
+      question: 'Hast du Gastro-Erfahrung?',
+      options: [
+        'Ja, in der Gastronomie',
+        'Nein, Quereinsteiger',
+        'Ich habe ein anderes Business',
+      ],
+    },
+    {
+      key: 'contact',
+      label: 'Kontakt',
+      question: 'Fast geschafft! Wohin dürfen wir dir deine Infos schicken?',
+    },
   ],
-};
+  fields: {
+    name: 'Vollständiger Name',
+    email: 'E-Mail-Adresse',
+    phone: 'Telefonnummer',
+  },
+  consent: 'Ich stimme zu, dass Oh My Acai mich zu meiner Franchise-Anfrage kontaktiert.',
+  privacy: { label: 'Datenschutz', href: '/datenschutz' },
+  next: 'Weiter',
+  back: 'Zurück',
+  submit: 'Absenden',
+  thanks: {
+    title: 'Danke!',
+    body: 'Wir melden uns innerhalb von 24 Stunden mit allen Infos zu deinem eigenen Oh My Acai Laden.',
+    actions: [
+      { label: 'Zurück zur Startseite', href: '/' },
+      { label: 'Mehr über uns', href: '/ueber-uns' },
+    ],
+  },
+} as const;
 
 export const FRANCHISE_BANNER = {
   title: 'Acai-Franchise',

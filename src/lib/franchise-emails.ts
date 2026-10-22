@@ -16,33 +16,38 @@ import {
 } from './email-layout';
 
 export type FranchiseEnquiry = {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   phone: string;
   city: string;
-  budget: string;
+  capital: string;
+  timing: string;
+  experience: string;
 };
+
+/** "Maria Schmidt" → "Maria", for the greeting. */
+const firstName = (name: string) => name.split(/\s+/)[0] || name;
 
 /** Notification to the Oh My Acai team. */
 export function teamEmail(d: FranchiseEnquiry) {
-  const name = `${d.firstName} ${d.lastName}`.trim();
   const body = `
     ${eyebrow('Franchise-Anfrage')}
     ${heading('Neue Franchise&#8209;Anfrage')}
-    ${paragraph(`<strong>${esc(name)}</strong> möchte eine Oh My Acai Filiale in <strong>${esc(d.city) || 'einer neuen Stadt'}</strong> eröffnen.`)}
+    ${paragraph(`<strong>${esc(d.name)}</strong> möchte einen Oh My Acai Laden in <strong>${esc(d.city) || 'einer neuen Stadt'}</strong> eröffnen.`)}
     ${details('Kontakt & Eckdaten', [
-      ['Name', name],
+      ['Name', d.name],
       ['E-Mail', d.email, `mailto:${d.email}`],
       ['Telefon', d.phone, `tel:${d.phone.replace(/\s/g, '')}`],
-      ['Wunschstadt', d.city],
-      ['Budget', d.budget],
+      ['Stadt / Region', d.city],
+      ['Kapital', d.capital],
+      ['Start', d.timing],
+      ['Gastro-Erfahrung', d.experience],
     ])}
-    ${button(`${d.firstName} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Oh My Acai Franchise-Paket')}`)}
-    ${paragraph('Antworten auf diese E-Mail gehen direkt an die Bewerberin oder den Bewerber.', { muted: true, size: 13 })}`;
+    ${button(`${firstName(d.name)} antworten`, `mailto:${d.email}?subject=${encodeURIComponent('Dein Oh My Acai Laden')}`)}
+    ${paragraph('Antworten auf diese E-Mail gehen direkt an die Bewerberin oder den Bewerber. Zugesagt: Rückmeldung innerhalb von 24 Stunden.', { muted: true, size: 13 })}`;
   return emailShell({
     title: 'Neue Franchise-Anfrage',
-    preheader: `${name} · ${d.city} · ${d.budget}`,
+    preheader: `${d.name} · ${d.city} · ${d.capital} · ${d.timing}`,
     body,
     audience: 'team',
   });
@@ -52,16 +57,18 @@ export function teamEmail(d: FranchiseEnquiry) {
 export function applicantEmail(d: FranchiseEnquiry) {
   const body = `
     ${eyebrow('Anfrage erhalten')}
-    ${heading(`Danke, ${esc(d.firstName)}!`)}
-    ${paragraph('Deine Anfrage für ein Oh My Acai Franchise ist bei uns angekommen. Schön, dass du unser Konzept in deine Stadt bringen möchtest.')}
+    ${heading(`Danke, ${esc(firstName(d.name))}!`)}
+    ${paragraph('Wir melden uns innerhalb von 24 Stunden mit allen Infos zu deinem eigenen Oh My Acai Laden.')}
     ${steps('So geht es weiter', [
-      'Unser Team prüft deine Angaben, in der Regel innerhalb eines Werktags.',
-      'Du bekommst das Franchise-Paket: Kosten, Gebietskarte und den Eröffnungsplan.',
+      'Wir schauen uns deine Angaben an.',
+      'Innerhalb von 24 Stunden bekommst du alle Infos zu deinem eigenen Laden.',
       'Wir vereinbaren ein persönliches Gespräch zu deinem Standort.',
     ])}
     ${details('Deine Angaben', [
-      ['Wunschstadt', d.city],
-      ['Budget', d.budget],
+      ['Stadt / Region', d.city],
+      ['Kapital', d.capital],
+      ['Start', d.timing],
+      ['Gastro-Erfahrung', d.experience],
       ['Telefon', d.phone],
     ])}
     ${button('Franchise-Seite ansehen', `${SITE}/franchise`, 'plum')}
@@ -69,7 +76,7 @@ export function applicantEmail(d: FranchiseEnquiry) {
     ${signoff()}`;
   return emailShell({
     title: 'Danke für deine Franchise-Anfrage',
-    preheader: 'Deine Anfrage ist da. Das Franchise-Paket kommt innerhalb eines Werktags.',
+    preheader: 'Wir melden uns innerhalb von 24 Stunden mit allen Infos zu deinem Laden.',
     body,
   });
 }
@@ -77,26 +84,30 @@ export function applicantEmail(d: FranchiseEnquiry) {
 export function teamText(d: FranchiseEnquiry) {
   return `Neue Franchise-Anfrage
 
-Name: ${d.firstName} ${d.lastName}
+Name: ${d.name}
 E-Mail: ${d.email}
 Telefon: ${d.phone}
-Wunschstadt: ${d.city}
-Budget: ${d.budget}`;
+Stadt / Region: ${d.city}
+Kapital: ${d.capital}
+Start: ${d.timing}
+Gastro-Erfahrung: ${d.experience}`;
 }
 
 export function applicantText(d: FranchiseEnquiry) {
-  return `Danke, ${d.firstName}!
+  return `Danke, ${firstName(d.name)}!
 
-Deine Anfrage für ein Oh My Acai Franchise ist bei uns angekommen.
+Wir melden uns innerhalb von 24 Stunden mit allen Infos zu deinem eigenen Oh My Acai Laden.
 
 So geht es weiter:
-1. Unser Team prüft deine Angaben, in der Regel innerhalb eines Werktags.
-2. Du bekommst das Franchise-Paket: Kosten, Gebietskarte und den Eröffnungsplan.
+1. Wir schauen uns deine Angaben an.
+2. Innerhalb von 24 Stunden bekommst du alle Infos zu deinem eigenen Laden.
 3. Wir vereinbaren ein persönliches Gespräch zu deinem Standort.
 
 Deine Angaben
-Wunschstadt: ${d.city}
-Budget: ${d.budget}
+Stadt / Region: ${d.city}
+Kapital: ${d.capital}
+Start: ${d.timing}
+Gastro-Erfahrung: ${d.experience}
 Telefon: ${d.phone}
 
 Fragen? Antworte einfach auf diese E-Mail.

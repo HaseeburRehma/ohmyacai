@@ -7,6 +7,7 @@ import {
   teamText,
   type FranchiseEnquiry,
 } from '@/lib/franchise-emails';
+import { FRANCHISE_FORM } from '@/data/site';
 
 export const runtime = 'nodejs';
 
@@ -22,22 +23,46 @@ export const runtime = 'nodejs';
  * Without these the route returns 503 and the form shows a fallback message.
  */
 export async function POST(req: Request) {
-  let data: Partial<FranchiseEnquiry> & { consent?: unknown };
+  let data: Record<string, unknown>;
   try {
     data = await req.json();
   } catch {
     return NextResponse.json({ error: 'invalid_body' }, { status: 400 });
   }
 
-  const firstName = String(data.firstName ?? '').trim();
-  const lastName = String(data.lastName ?? '').trim();
-  const email = String(data.email ?? '').trim();
-  const phone = String(data.phone ?? '').trim();
-  const city = String(data.city ?? '').trim();
-  const budget = String(data.budget ?? '').trim();
+  // Honeypot: real visitors never see or fill this field.
+  if (String(data.company ?? '').trim()) return NextResponse.json({ ok: true });
 
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!firstName || !lastName || !emailOk || !phone || !city || !budget) {
+  const field = (k: string, max = 200) => String(data[k] ?? '').trim().slice(0, max);
+  const enquiry: FranchiseEnquiry = {
+    name: field('name', 120),
+    email: field('email'),
+    phone: field('phone', 40),
+    city: field('city', 120),
+    capital: field('capital', 60),
+    timing: field('timing', 60),
+    experience: field('experience', 60),
+  };
+
+  // Answers must be one of the options on the form.
+  const options = (key: string) =>
+    FRANCHISE_FORM.steps.find((s) => s.key === key) as
+      | { options?: readonly string[] }
+      | undefined;
+  const isOption = (key: string, v: string) =>
+    !!options(key)?.options?.includes(v);
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(enquiry.email);
+  if (
+    !enquiry.name ||
+    !emailOk ||
+    !enquiry.phone ||
+    !enquiry.city ||
+    !isOption('capital', enquiry.capital) ||
+    !isOption('timing', enquiry.timing) ||
+    !isOption('experience', enquiry.experience) ||
+    data.consent !== true
+  ) {
     return NextResponse.json({ error: 'missing_fields' }, { status: 422 });
   }
 
@@ -47,25 +72,9 @@ export async function POST(req: Request) {
 
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !from) {
     // Not configured yet — don't lose the lead, log it for the server operator.
-    console.error('[franchise] SMTP not configured; enquiry not emailed:', {
-      firstName,
-      lastName,
-      email,
-      phone,
-      city,
-      budget,
-    });
+    console.error('[franchise] SMTP not configured; enquiry not emailed:', enquiry);
     return NextResponse.json({ error: 'not_configured' }, { status: 503 });
   }
-
-  const enquiry: FranchiseEnquiry = {
-    firstName,
-    lastName,
-    email,
-    phone,
-    city,
-    budget,
-  };
 
   try {
     const port = Number(SMTP_PORT);
@@ -79,15 +88,15 @@ export async function POST(req: Request) {
     await transport.sendMail({
       from,
       to,
-      replyTo: `${firstName} ${lastName} <${email}>`,
-      subject: `Neue Franchise-Anfrage — ${firstName} ${lastName} (${city})`,
+      replyTo: `${enquiry.name} <${enquiry.email}>`,
+      subject: `Neue Franchise-Anfrage — ${enquiry.name} (${enquiry.city})`,
       text: teamText(enquiry),
       html: teamEmail(enquiry),
     });
 
     await transport.sendMail({
       from,
-      to: `${firstName} ${lastName} <${email}>`,
+      to: `${enquiry.name} <${enquiry.email}>`,
       replyTo: to,
       subject: 'Deine Oh My Acai Franchise-Anfrage ist da',
       text: applicantText(enquiry),
