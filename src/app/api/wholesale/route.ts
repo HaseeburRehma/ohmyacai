@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { mailTransport, sendMail } from '@/lib/mailer';
 import {
   wholesaleApplicantEmail,
   wholesaleApplicantText,
@@ -13,10 +13,8 @@ export const runtime = 'nodejs';
 /**
  * Wholesale (Großhandel) enquiry endpoint. Emails the studio inbox
  * (WHOLESALE_MAIL_TO, default info@tylotech.de) and sends the applicant
- * a confirmation via SMTP. Same env vars as the franchise route:
+ * a confirmation, via src/lib/mailer.ts (Resend or SMTP).
  *
- *   SMTP_HOST, SMTP_PORT (465 or 587), SMTP_USER, SMTP_PASS
- *   MAIL_FROM  e.g. "Oh My Acai <info@ohmyacai.de>"
  *   WHOLESALE_MAIL_TO  (optional) defaults to info@tylotech.de
  */
 export async function POST(req: Request) {
@@ -37,12 +35,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'missing_fields' }, { status: 422 });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  const from = process.env.MAIL_FROM || SMTP_USER;
   const to = process.env.WHOLESALE_MAIL_TO || 'info@tylotech.de';
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !from) {
-    console.error('[wholesale] SMTP not configured; enquiry not emailed:', {
+  if (!mailTransport()) {
+    console.error('[wholesale] mail not configured; enquiry not emailed:', {
       firstName,
       lastName,
       email,
@@ -54,35 +50,29 @@ export async function POST(req: Request) {
   const enquiry: WholesaleEnquiry = { firstName, lastName, email, phone };
 
   try {
-    const port = Number(SMTP_PORT);
-    const transport = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port,
-      secure: port === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    });
-
-    await transport.sendMail({
-      from,
+    await sendMail({
       to,
       replyTo: `${firstName} ${lastName} <${email}>`,
       subject: `Neue Großhandel-Anfrage — ${firstName} ${lastName}`,
       text: wholesaleTeamText(enquiry),
       html: wholesaleTeamEmail(enquiry),
     });
+  } catch (err) {
+    console.error('[wholesale] send failed:', err);
+    return NextResponse.json({ error: 'send_failed' }, { status: 502 });
+  }
 
-    await transport.sendMail({
-      from,
+  try {
+    await sendMail({
       to: `${firstName} ${lastName} <${email}>`,
       replyTo: to,
       subject: 'Deine Oh My Acai Großhandel-Anfrage ist da',
       text: wholesaleApplicantText(enquiry),
       html: wholesaleApplicantEmail(enquiry),
     });
-
-    return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error('[wholesale] send failed:', err);
-    return NextResponse.json({ error: 'send_failed' }, { status: 502 });
+    // The team already has the enquiry; a bounced confirmation shouldn't fail it.
+    console.error('[wholesale] applicant confirmation failed:', err);
   }
+  return NextResponse.json({ ok: true });
 }

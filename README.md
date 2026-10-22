@@ -102,18 +102,17 @@ those instances too, so the FAQ takes its questions as a prop.
 ## Franchise leads: email + Google Sheet
 
 Every franchise enquiry (`/api/franchise`) is emailed to the team and
-appended to a Google Sheet. Either channel alone is enough: the lead counts
+appended to a Google Sheet (contact and wholesale enquiries are emailed
+only; all three use `src/lib/mailer.ts`). Either channel alone is enough: the lead counts
 as received if one of them works. Set these in Vercel → Project → Settings →
 Environment Variables, then redeploy:
 
 | Variable | Value |
 | --- | --- |
-| `SMTP_HOST` | `smtp.office365.com` (tylotech.de mail runs on Microsoft 365) |
-| `SMTP_PORT` | `587` |
-| `SMTP_USER` | `info@tylotech.de` |
-| `SMTP_PASS` | that mailbox's password / app password |
+| `RESEND_API_KEY` | Resend API key (used first when set) |
+| `EMAIL_FROM` | sender, e.g. `Oh My Acai <info@tylotech.de>`; its domain must be verified in Resend → Domains |
 | `MAIL_TO` | optional, defaults to `info@tylotech.de` |
-| `MAIL_FROM` | optional, defaults to `Oh My Acai <SMTP_USER>` |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | only if mail should go via SMTP instead of Resend |
 | `LEADS_SHEET_URL` | the Apps Script web app URL (`…/exec`) |
 | `LEADS_SHEET_SECRET` | the secret set in the script |
 

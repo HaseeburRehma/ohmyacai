@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 import {
   applicantEmail,
   applicantText,
@@ -9,6 +8,7 @@ import {
 } from '@/lib/franchise-emails';
 import { FRANCHISE_FORM } from '@/data/site';
 import { appendLead, sheetConfigured } from '@/lib/lead-sheet';
+import { mailTransport, sendMail } from '@/lib/mailer';
 
 export const runtime = 'nodejs';
 
@@ -16,10 +16,7 @@ export const runtime = 'nodejs';
  * Franchise enquiry endpoint. Every lead goes to two places:
  *
  * 1. Email — team notification to MAIL_TO (default info@tylotech.de) and a
- *    confirmation to the applicant, via SMTP:
- *      SMTP_HOST, SMTP_PORT (587 default, or 465), SMTP_USER, SMTP_PASS
- *      MAIL_FROM  optional, defaults to "Oh My Acai <SMTP_USER>"
- *      MAIL_TO    optional, defaults to info@tylotech.de
+ *    confirmation to the applicant, via Resend or SMTP (src/lib/mailer.ts).
  * 2. Google Sheet — one row per lead in the "Franchise" tab, see
  *    src/lib/lead-sheet.ts (LEADS_SHEET_URL, LEADS_SHEET_SECRET).
  *
@@ -71,12 +68,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'missing_fields' }, { status: 422 });
   }
 
-  const { SMTP_HOST, SMTP_USER, SMTP_PASS } = process.env;
-  const mailConfigured = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
+  const mailConfigured = mailTransport() !== null;
 
   if (!mailConfigured && !sheetConfigured()) {
     // Nothing configured — don't lose the lead, log it for the server operator.
-    console.error('[franchise] no SMTP and no sheet configured; enquiry:', enquiry);
+    console.error('[franchise] no mail and no sheet configured; enquiry:', enquiry);
     return NextResponse.json({ error: 'not_configured' }, { status: 503 });
   }
 
@@ -104,20 +100,9 @@ export async function POST(req: Request) {
 /** Team notification to MAIL_TO (default info@tylotech.de) plus the
  *  applicant's confirmation. Returns whether the team email went out. */
 async function sendMails(enquiry: FranchiseEnquiry): Promise<boolean> {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  const from = process.env.MAIL_FROM || `Oh My Acai <${SMTP_USER}>`;
   const to = process.env.MAIL_TO || 'info@tylotech.de';
-  const port = Number(SMTP_PORT) || 587;
-  const transport = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port,
-    secure: port === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
-
   try {
-    await transport.sendMail({
-      from,
+    await sendMail({
       to,
       replyTo: `${enquiry.name} <${enquiry.email}>`,
       subject: `Neue Franchise-Anfrage — ${enquiry.name} (${enquiry.city})`,
@@ -130,8 +115,7 @@ async function sendMails(enquiry: FranchiseEnquiry): Promise<boolean> {
   }
 
   try {
-    await transport.sendMail({
-      from,
+    await sendMail({
       to: `${enquiry.name} <${enquiry.email}>`,
       replyTo: to,
       subject: 'Deine Oh My Acai Franchise-Anfrage ist da',

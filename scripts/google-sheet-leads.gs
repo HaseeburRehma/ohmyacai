@@ -9,25 +9,52 @@
  *  1. Create a Google Sheet, e.g. "Oh My Acai – Leads", in the account that
  *     should own the data (share it with the team as usual).
  *  2. In the sheet: Erweiterungen → Apps Script. Delete the sample code and
- *     paste this whole file.
- *  3. Replace SECRET below with a long random string (e.g. from
- *     `openssl rand -hex 24`). Save.
- *  4. Bereitstellen → Neue Bereitstellung → Typ "Web-App":
+ *     paste this whole file. Save.
+ *  3. Bereitstellen → Neue Bereitstellung → Typ "Web-App":
  *       Ausführen als:     Ich
  *       Zugriff:           Jeder
  *     → Bereitstellen, grant access, copy the Web-App URL (ends in /exec).
+ *  4. Reload the sheet. Menu "Website-Leads" → "Secret anzeigen" creates the
+ *     shared secret on first use and shows it.
  *  5. In Vercel → Project → Settings → Environment Variables add
  *       LEADS_SHEET_URL     = the /exec URL
- *       LEADS_SHEET_SECRET  = the same secret as below
+ *       LEADS_SHEET_SECRET  = the secret from step 4
  *     and redeploy.
  *
  * "Jeder" only means the URL can be called without a Google login; requests
- * without the secret are rejected, and the sheet itself stays private.
- * After editing this script, deploy a new version (Bereitstellungen
- * verwalten → Bearbeiten → Version: Neu) — the URL stays the same.
+ * without the secret are rejected, and the sheet itself stays private. The
+ * secret lives in the script's properties, not in this code. After editing
+ * this script, deploy a new version (Bereitstellungen verwalten → Bearbeiten
+ * → Version: Neu) — the URL stays the same.
  */
 
-const SECRET = 'REPLACE_WITH_A_LONG_RANDOM_SECRET';
+const SECRET_PROPERTY = 'LEADS_SHEET_SECRET';
+
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('Website-Leads')
+    .addItem('Secret anzeigen', 'showSecret')
+    .addToUi();
+}
+
+/** Creates the shared secret on first use and shows it for Vercel. */
+function showSecret() {
+  SpreadsheetApp.getUi().alert(
+    'LEADS_SHEET_SECRET für Vercel',
+    secret(true),
+    SpreadsheetApp.getUi().ButtonSet.OK,
+  );
+}
+
+function secret(create) {
+  const props = PropertiesService.getScriptProperties();
+  let value = props.getProperty(SECRET_PROPERTY);
+  if (!value && create) {
+    value = (Utilities.getUuid() + Utilities.getUuid()).replace(/-/g, '');
+    props.setProperty(SECRET_PROPERTY, value);
+  }
+  return value;
+}
 
 function doPost(e) {
   let data;
@@ -36,7 +63,8 @@ function doPost(e) {
   } catch (err) {
     return json({ ok: false, error: 'bad_json' });
   }
-  if (!data || data.secret !== SECRET || SECRET.indexOf('REPLACE_') === 0) {
+  const expected = secret(false);
+  if (!data || !expected || data.secret !== expected) {
     return json({ ok: false, error: 'unauthorized' });
   }
 

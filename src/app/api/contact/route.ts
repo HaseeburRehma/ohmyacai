@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { mailTransport, sendMail } from '@/lib/mailer';
 import { contactTeamEmail, contactTeamText } from '@/lib/contact-emails';
 
 export const runtime = 'nodejs';
@@ -8,9 +8,8 @@ export const runtime = 'nodejs';
 /**
  * General contact form (/kontakt). Emails the team inbox only; no copy goes
  * back to the sender, so the form can't be used to relay mail to strangers.
- * Same SMTP env vars as the franchise + wholesale routes:
+ * Mail goes out via src/lib/mailer.ts (Resend or SMTP).
  *
- *   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM
  *   CONTACT_MAIL_TO (optional) → MAIL_TO → info@tylotech.de
  */
 export async function POST(req: Request) {
@@ -33,26 +32,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'missing_fields' }, { status: 422 });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  const from = process.env.MAIL_FROM || SMTP_USER;
   const to = process.env.CONTACT_MAIL_TO || process.env.MAIL_TO || 'info@tylotech.de';
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !from) {
-    console.error('[contact] SMTP not configured; message not emailed');
+  if (!mailTransport()) {
+    console.error('[contact] mail not configured; message not emailed');
     return NextResponse.json({ error: 'not_configured' }, { status: 503 });
   }
 
   try {
-    const port = Number(SMTP_PORT);
-    const transport = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port,
-      secure: port === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    });
-
-    await transport.sendMail({
-      from,
+    await sendMail({
       to,
       replyTo: `${name} <${email}>`,
       subject: `Kontaktanfrage${store ? ` (${store})` : ''} — ${name}`,
