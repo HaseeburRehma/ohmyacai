@@ -545,14 +545,14 @@ function ThankYou() {
       <p className="max-w-[400px] text-base leading-[1.4] tracking-[-0.5px] text-[#8a7e8b] sm:text-lg">
         {t.body}
       </p>
-      <div className="mt-2 flex w-full max-w-[340px] flex-col gap-3">
+      <div className="mt-2 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
         {t.actions.map((a, i) => (
           <Link
             key={a.href}
             href={a.href}
-            className={`font-display whitespace-nowrap rounded-full px-6 py-3.5 text-base uppercase leading-[1.15] tracking-[-0.5px] outline-none transition focus-visible:ring-4 focus-visible:ring-gold/60 ${
+            className={`font-display whitespace-nowrap rounded-full px-5 py-3.5 text-[15px] uppercase leading-[1.15] tracking-[-0.5px] outline-none transition focus-visible:ring-4 focus-visible:ring-gold/60 ${
               i === 0
-                ? 'bg-mauve text-cream hover:bg-plum'
+                ? 'border-2 border-mauve bg-mauve text-cream hover:border-plum hover:bg-plum'
                 : 'border-2 border-mauve text-mauve hover:bg-mauve hover:text-cream'
             }`}
           >
