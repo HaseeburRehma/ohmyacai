@@ -8,19 +8,24 @@ import {
   type FranchiseEnquiry,
 } from '@/lib/franchise-emails';
 import { FRANCHISE_FORM } from '@/data/site';
+import { appendLead, sheetConfigured } from '@/lib/lead-sheet';
 
 export const runtime = 'nodejs';
 
 /**
- * Franchise enquiry endpoint. Emails the team (MAIL_TO, default
- * info@tylotech.de) and sends the applicant a confirmation, both via SMTP.
+ * Franchise enquiry endpoint. Every lead goes to two places:
  *
- * Configure in the environment (Vercel → Project → Settings → Environment
- * Variables):
- *   SMTP_HOST, SMTP_PORT (465 or 587), SMTP_USER, SMTP_PASS
- *   MAIL_FROM  e.g. "Oh My Acai <info@tylotech.de>"
- *   MAIL_TO    (optional) defaults to info@tylotech.de
- * Without these the route returns 503 and the form shows a fallback message.
+ * 1. Email — team notification to MAIL_TO (default info@tylotech.de) and a
+ *    confirmation to the applicant, via SMTP:
+ *      SMTP_HOST, SMTP_PORT (587 default, or 465), SMTP_USER, SMTP_PASS
+ *      MAIL_FROM  optional, defaults to "Oh My Acai <SMTP_USER>"
+ *      MAIL_TO    optional, defaults to info@tylotech.de
+ * 2. Google Sheet — one row per lead in the "Franchise" tab, see
+ *    src/lib/lead-sheet.ts (LEADS_SHEET_URL, LEADS_SHEET_SECRET).
+ *
+ * Set them in Vercel → Project → Settings → Environment Variables. The lead
+ * counts as received if either channel works; with neither configured the
+ * route returns 503 and the form shows its fallback message.
  */
 export async function POST(req: Request) {
   let data: Record<string, unknown>;
@@ -66,25 +71,51 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'missing_fields' }, { status: 422 });
   }
 
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  const from = process.env.MAIL_FROM || SMTP_USER;
-  const to = process.env.MAIL_TO || 'info@tylotech.de';
+  const { SMTP_HOST, SMTP_USER, SMTP_PASS } = process.env;
+  const mailConfigured = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !from) {
-    // Not configured yet — don't lose the lead, log it for the server operator.
-    console.error('[franchise] SMTP not configured; enquiry not emailed:', enquiry);
+  if (!mailConfigured && !sheetConfigured()) {
+    // Nothing configured — don't lose the lead, log it for the server operator.
+    console.error('[franchise] no SMTP and no sheet configured; enquiry:', enquiry);
     return NextResponse.json({ error: 'not_configured' }, { status: 503 });
   }
 
-  try {
-    const port = Number(SMTP_PORT);
-    const transport = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port,
-      secure: port === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    });
+  // The sheet row and the team email go out in parallel; the lead counts as
+  // received if either of them lands.
+  const [sheet, mailed] = await Promise.all([
+    appendLead('Franchise', {
+      Name: enquiry.name,
+      'E-Mail': enquiry.email,
+      Telefon: enquiry.phone,
+      'Stadt / Region': enquiry.city,
+      Kapital: enquiry.capital,
+      Start: enquiry.timing,
+      'Gastro-Erfahrung': enquiry.experience,
+    }),
+    mailConfigured ? sendMails(enquiry) : Promise.resolve(false),
+  ]);
 
+  if (sheet !== 'saved' && !mailed) {
+    return NextResponse.json({ error: 'send_failed' }, { status: 502 });
+  }
+  return NextResponse.json({ ok: true, sheet, mailed });
+}
+
+/** Team notification to MAIL_TO (default info@tylotech.de) plus the
+ *  applicant's confirmation. Returns whether the team email went out. */
+async function sendMails(enquiry: FranchiseEnquiry): Promise<boolean> {
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
+  const from = process.env.MAIL_FROM || `Oh My Acai <${SMTP_USER}>`;
+  const to = process.env.MAIL_TO || 'info@tylotech.de';
+  const port = Number(SMTP_PORT) || 587;
+  const transport = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port,
+    secure: port === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+  });
+
+  try {
     await transport.sendMail({
       from,
       to,
@@ -93,7 +124,12 @@ export async function POST(req: Request) {
       text: teamText(enquiry),
       html: teamEmail(enquiry),
     });
+  } catch (err) {
+    console.error('[franchise] team email failed:', err);
+    return false;
+  }
 
+  try {
     await transport.sendMail({
       from,
       to: `${enquiry.name} <${enquiry.email}>`,
@@ -102,10 +138,9 @@ export async function POST(req: Request) {
       text: applicantText(enquiry),
       html: applicantEmail(enquiry),
     });
-
-    return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error('[franchise] send failed:', err);
-    return NextResponse.json({ error: 'send_failed' }, { status: 502 });
+    // The team already has the lead; a bounced confirmation shouldn't fail it.
+    console.error('[franchise] applicant confirmation failed:', err);
   }
+  return true;
 }

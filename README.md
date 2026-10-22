@@ -99,6 +99,29 @@ those instances too, so the FAQ takes its questions as a prop.
 | `FranchiseWhy`     | Why Franchise (`4128:161`)        |
 | `PartnerStories`   | Partner Stories (`4128:162`)      |
 
+## Franchise leads: email + Google Sheet
+
+Every franchise enquiry (`/api/franchise`) is emailed to the team and
+appended to a Google Sheet. Either channel alone is enough: the lead counts
+as received if one of them works. Set these in Vercel → Project → Settings →
+Environment Variables, then redeploy:
+
+| Variable | Value |
+| --- | --- |
+| `SMTP_HOST` | `smtp.office365.com` (tylotech.de mail runs on Microsoft 365) |
+| `SMTP_PORT` | `587` |
+| `SMTP_USER` | `info@tylotech.de` |
+| `SMTP_PASS` | that mailbox's password / app password |
+| `MAIL_TO` | optional, defaults to `info@tylotech.de` |
+| `MAIL_FROM` | optional, defaults to `Oh My Acai <SMTP_USER>` |
+| `LEADS_SHEET_URL` | the Apps Script web app URL (`…/exec`) |
+| `LEADS_SHEET_SECRET` | the secret set in the script |
+
+The sheet side is a small Apps Script, no Google credentials on the server:
+setup steps are at the top of [`scripts/google-sheet-leads.gs`](scripts/google-sheet-leads.gs).
+Leads land in a "Franchise" tab with the date, every answer and a "Status"
+column for the team.
+
 ## Responsive strategy
 
 The artboard is 1440 × 898. Two different rules apply, depending on what the
