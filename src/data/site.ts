@@ -472,9 +472,9 @@ export const FRANCHISE_FORM = {
     name: 'Xenia',
     role: 'Gründerin',
     quote: 'Ich begleite dich von der ersten Frage bis zur Eröffnung.',
-    /** Round crop of the 4K brand photo (logo shirt). Until the file is in
-     *  /public the avatar falls back to an "X" monogram. */
-    photo: null as string | null,
+    /** Round crop of the 4K brand photo (logo shirt); falls back to an "X"
+     *  monogram if set to null. */
+    photo: '/img/xenia.webp' as string | null,
   },
   steps: [
     {
