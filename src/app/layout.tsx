@@ -71,6 +71,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [{ url: '/img/store.jpg', width: 1440, height: 1920, alt: 'Oh My Acai Store in Düsseldorf' }],
   },
+  // Meta Business domain verification for ohmyacai.de (OhmyAcai business
+  // portfolio). Public token; keep it while the domain stays verified.
+  other: { 'facebook-domain-verification': 'lleogiif3qilsu5e16yqjhfa8rfedu' },
 };
 
 /* schema.org structured data — the brand plus one CafeOrCoffeeShop node per
