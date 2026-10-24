@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import { FRANCHISE_FORM, FRANCHISE_HERO } from '@/data/site';
+import { trackLead } from '@/lib/tracking';
 
 /**
  * Figma: "Hero — Franchise" (4128:133) — 1440 × 780, bg #4d294e with the berry
@@ -237,6 +238,7 @@ function EnquiryForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...answers, company: honeypot.current?.value }),
       });
+      if (res.ok) trackLead('franchise');
       setStatus(res.ok ? 'sent' : 'error');
     } catch {
       setStatus('error');

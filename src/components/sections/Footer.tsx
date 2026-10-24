@@ -9,6 +9,7 @@ import { InView } from '@/components/motion-primitives/in-view';
 import Scallop from '@/components/ui/Scallop';
 import TypingCredit from '@/components/ui/TypingCredit';
 import { CONTACT, FOOTER_PAGES, FOOTER_SOCIAL, LOCATIONS } from '@/data/site';
+import { openConsent } from '@/lib/tracking';
 
 /**
  * Figma: "Footer - Desktop" — 1440 × 1011 plum panel with a scalloped top
@@ -188,6 +189,13 @@ export default function Footer() {
               >
                 Datenschutz
               </a>
+              <button
+                type="button"
+                onClick={openConsent}
+                className="inline-flex min-h-11 items-center transition-colors hover:text-gold"
+              >
+                Cookie-Einstellungen
+              </button>
               <button
                 type="button"
                 onClick={() => lenis?.scrollTo(0, { duration: 1.4 })}

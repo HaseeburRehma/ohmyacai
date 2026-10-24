@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { InView } from '@/components/motion-primitives/in-view';
 import { CONTACT, STORES } from '@/data/site';
+import { trackLead } from '@/lib/tracking';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const rise = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
@@ -92,6 +93,7 @@ function ContactForm() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error(String(res.status));
+      trackLead('contact');
       setStatus('ok');
       setForm({ name: '', email: '', store: '', message: '', company: '' });
     } catch {

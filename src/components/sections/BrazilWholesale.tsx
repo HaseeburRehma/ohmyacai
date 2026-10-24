@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BRAZIL_SECTION } from '@/data/site';
+import { trackLead } from '@/lib/tracking';
 
 /**
  * Section: "Reines Acai direkt aus Brasilien" — B2B pitch to café / bar /
@@ -126,6 +127,7 @@ function WholesaleForm() {
         body: JSON.stringify({ firstName, lastName, email, phone }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      trackLead('wholesale');
       setStatus('ok');
       setFirst(''); setLast(''); setEmail(''); setPhone('');
     } catch {
